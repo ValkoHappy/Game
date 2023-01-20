@@ -2,19 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Turret))]
 public class ShootState : PeacefulConstructionState
 {
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform[] _shootPoint;
     [SerializeField] private float _waitForSecounds;
 
-    private Turret _turret;
     private Coroutine _shoot;
 
     private void Start()
     {
-        _turret = GetComponent<Turret>();
         StartShoot();
     }
 
@@ -33,7 +30,7 @@ public class ShootState : PeacefulConstructionState
 
         if(bullet != null)
         {
-            bullet.Seek(_turret.TargetEnemy);
+            bullet.Seek(Turret.TargetEnemy);
         }
     }
 

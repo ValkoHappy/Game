@@ -8,6 +8,7 @@ public class EnemyState : State
 
     protected PeacefulConstruction PeacefulConstruction { get; private set; }
     protected Animator Animator { get; private set; }
+
     public void Enter(PeacefulConstruction peacefulConstruction, Animator animator)
     {
         if (enabled == false)
@@ -24,25 +25,4 @@ public class EnemyState : State
             }
         }
     }
-    //[SerializeField] private EnemyTransition[] _transitions;
-
-    //protected PeacefulConstruction PeacefulConstruction { get; private set; }
-    //protected Animator Animator { get; private set; }
-
-    //public void Enter(PeacefulConstruction peacefulConstruction, Animator animator)
-    //{
-    //    if(enabled == false)
-    //    {
-    //        PeacefulConstruction = peacefulConstruction;
-    //        Animator = animator;
-
-    //        enabled = true;
-
-    //        foreach (var transition in _transitions)
-    //        {
-    //            transition.enabled = true;
-    //            transition.Init(PeacefulConstruction);
-    //        }
-    //    }
-    //}
 }

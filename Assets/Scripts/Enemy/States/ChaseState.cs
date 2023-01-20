@@ -27,7 +27,7 @@ public class ChaseState : EnemyState
 
     private void Update()
     {
-        _agent.SetDestination(FindTarget().position);
+        _agent.SetDestination(_peacefulConstruction.position);
     }
 
     private Transform FindTarget()

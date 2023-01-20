@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Turret))]
 public class PeacefulConstructionTransition : Transition
 {
+    private Turret _turret;
 
-    //[SerializeField] private PeacefulConstructionState _targetState;
+    protected Turret Turret => _turret;
 
-    //public PeacefulConstructionState TargetState => _targetState;
+    private void Start()
+    {
+        _turret = GetComponent<Turret>();
+    }
 }

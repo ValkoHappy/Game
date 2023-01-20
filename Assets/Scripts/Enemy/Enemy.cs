@@ -34,17 +34,6 @@ public class Enemy : StateMachine
         _currentState.Enter(PeacefulConstruction, _animator);
     }
 
-    private void Update()
-    {
-        if (_currentState != null)
-            return;
-
-        State nextState = _currentState.GetNextState();
-        if (nextState != null)
-            Transit(nextState);
-
-    }
-
     private void Transit(State nextState)
     {
         if (_currentState != null)

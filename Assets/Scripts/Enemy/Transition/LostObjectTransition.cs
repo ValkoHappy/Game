@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LostPlayerTransition : EnemyTransition
+public class LostObjectTransition : EnemyTransition
 {
     [SerializeField] private float _minimumLostDistance;
 

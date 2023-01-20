@@ -6,6 +6,5 @@ public class IbleState : PeacefulConstructionState
 {
     private void Update()
     {
-        
     }
 }
