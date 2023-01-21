@@ -6,7 +6,7 @@ public class ShootTransition : PeacefulConstructionTransition
 {
     private void Update()
     {
-        if (Turret.FindTarget() != null)
+        if (Turret.TargetEnemy != null)
             NeedTransit = true;
     }
 }

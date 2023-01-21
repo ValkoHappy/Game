@@ -46,7 +46,8 @@ public class StateMachine : MonoBehaviour
 
     protected virtual void OnDied()
     {
-        enabled = false;
+        //enabled = false;
+        Destroy(gameObject);
     }
 
     protected void Transit(State nextState)

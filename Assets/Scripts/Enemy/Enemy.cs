@@ -4,28 +4,40 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
-public class Enemy : StateMachine
+public class Enemy : MonoBehaviour
 {
-    [SerializeField] private State _firstState;
+    [SerializeField] private EnemyState _firstState;
 
-    private State _currentState;
+    private EnemyState _currentState;
     private Animator _animator;
 
+    public HealthContainer _healthContainer { get; protected set; }
     public PeacefulConstruction PeacefulConstruction { get; private set; }
 
     public event UnityAction<Enemy> Died;
 
-    protected override void OnDied()
+    protected void OnDied()
     {
         enabled = false;
 
         Died?.Invoke(this);
     }
 
+    private void OnEnable()
+    {
+        _healthContainer.Died += OnDied;
+    }
+
+    private void OnDisable()
+    {
+        _healthContainer.Died -= OnDied;
+    }
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         PeacefulConstruction = FindObjectOfType<PeacefulConstruction>();
+        _healthContainer = GetComponent<HealthContainer>();
     }
 
     private void Start()
@@ -34,7 +46,18 @@ public class Enemy : StateMachine
         _currentState.Enter(PeacefulConstruction, _animator);
     }
 
-    private void Transit(State nextState)
+    private void Update()
+    {
+        if (_currentState == null)
+            return;
+
+        EnemyState nextState = _currentState.GetNextState();
+
+        if (nextState != null)
+            Transit(nextState);
+    }
+
+    private void Transit(EnemyState nextState)
     {
         if (_currentState != null)
             _currentState.Exit();
@@ -43,5 +66,10 @@ public class Enemy : StateMachine
 
         if (_currentState != null)
             _currentState.Enter(PeacefulConstruction, _animator);
+    }
+
+    public void ApplyDamage(float damage)
+    {
+        _healthContainer.TakeDamage((int)damage);
     }
 }

@@ -10,7 +10,7 @@ public class ShootState : PeacefulConstructionState
 
     private Coroutine _shoot;
 
-    private void Start()
+    private void OnEnable()
     {
         StartShoot();
     }
@@ -27,10 +27,10 @@ public class ShootState : PeacefulConstructionState
     public void CreateBullet(Transform shootPoint)
     {
         Bullet bullet = Instantiate(_bullet, shootPoint.position, Quaternion.identity, transform);
-
-        if(bullet != null)
+        if (bullet != null)
         {
             bullet.Seek(Turret.TargetEnemy);
+            Debug.Log(bullet.transform.position);
         }
     }
 

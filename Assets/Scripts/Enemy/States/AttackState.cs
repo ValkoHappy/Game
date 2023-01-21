@@ -7,25 +7,28 @@ public class AttackState : EnemyState
     [SerializeField] private float _attackForce;
     [SerializeField] private float _attackDelay;
 
-    private Coroutine _coroutine;
+    private Coroutine _attack;
 
-    private void OnEnable()
+    private void Start()
     {
-        _coroutine = StartCoroutine(Attack());
+        StartShoot();
+    }
+
+    private void StartShoot()
+    {
+        if (_attack != null)
+        {
+            StopCoroutine(_attack);
+        }
+        _attack = StartCoroutine(Attack());
     }
 
     private IEnumerator Attack()
     {
-        while (enabled)
-        {
-            Animator.SetTrigger("Attack1");
-            PeacefulConstruction.ApplyDamage(_attackForce);
-            yield return new WaitForSeconds(_attackDelay);
-        }
-    }
-
-    private void OnDisable()
-    {
-        StopCoroutine(_coroutine);
+        var waitForSecounds = new WaitForSeconds(_attackDelay);
+        Animator.SetTrigger("Attack1");
+        PeacefulConstruction.ApplyDamage(_attackForce);
+        yield return waitForSecounds;
+        StartShoot();
     }
 }
