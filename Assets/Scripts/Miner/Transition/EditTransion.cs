@@ -6,7 +6,7 @@ public class EditTransion : Transition
 {
     private bool _isBuildingPlace;
 
-    public bool isBuildingPlace => _isBuildingPlace;
+    public bool IsBuildingPlace => _isBuildingPlace;
 
     private void Update()
     {
