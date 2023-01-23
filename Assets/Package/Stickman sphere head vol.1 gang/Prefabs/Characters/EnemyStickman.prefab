@@ -914,7 +914,7 @@ GameObject:
   - component: {fileID: 6611605807533283431}
   - component: {fileID: 5115965500337150208}
   - component: {fileID: 8204026400088783689}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: EnemyStickman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetState: {fileID: 6611605807533283428}
-  _foundDistance: 100
+  _foundDistance: 10
 --- !u!114 &6611605807533283434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1093,7 +1093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 50
+  _health: 10000
 --- !u!135 &5115965500337150208
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1129,6 +1129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6611605807532983322}
   - component: {fileID: 6611605807521780998}
+  - component: {fileID: 1670316350990356804}
   m_Layer: 0
   m_Name: Stickman_heads_sphere.011
   m_TagString: Untagged
@@ -1233,6 +1234,19 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000008940697, y: 0.89193386, z: -0.012163967}
     m_Extent: {x: 0.65829575, y: 0.9524551, z: 0.3219117}
   m_DirtyAABB: 0
+--- !u!65 &1670316350990356804
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6611605807533283450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6286049, y: 1.8782463, z: 0.28023362}
+  m_Center: {x: 0.0016727448, y: 0.8786018, z: -0.03133571}
 --- !u!1 &6611605807533283452
 GameObject:
   m_ObjectHideFlags: 0

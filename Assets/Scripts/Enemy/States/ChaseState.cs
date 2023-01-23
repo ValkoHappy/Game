@@ -1,20 +1,20 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(SphereCollider))]
 public class ChaseState : EnemyState
 {
     private NavMeshAgent _agent;
     private Transform _peacefulConstruction;
-    private Spawner _spawner;
-    private List<PeacefulConstruction> constructions;
+    private SphereCollider _collider;
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-        constructions = new List<PeacefulConstruction>();
+        _collider = GetComponent<SphereCollider>();
     }
 
     private void OnEnable()
@@ -37,38 +37,11 @@ public class ChaseState : EnemyState
 
     }
 
-    //private Transform FindTarget()
-    //{
-    //    float shortestDistance = Mathf.Infinity;
-    //    PeacefulConstruction nearestEnemy = null;
-
-    //    foreach (var construction in _spawner.Constructions)
-    //    {
-    //        float distanceToConstruction = Vector3.Distance(transform.position, construction.transform.position);
-
-    //        if (distanceToConstruction < shortestDistance)
-    //        {
-    //            shortestDistance = distanceToConstruction;
-    //            nearestEnemy = construction;
-    //        }
-    //    }
-
-    //    if (nearestEnemy != null)
-    //    {
-    //        return _peacefulConstruction = nearestEnemy.transform;
-
-    //    }
-    //    else
-    //    {
-    //        return _peacefulConstruction = null;
-    //    }
-    //}
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.TryGetComponent(out PeacefulConstruction peacefulConstruction))
+        if (other.TryGetComponent(out PeacefulConstruction peacefulConstruction))
         {
-            if (peacefulConstruction != null)
+            if (peacefulConstruction != null && peacefulConstruction.IsAlive())
             {
                 List<PeacefulConstruction> constructions = new List<PeacefulConstruction>();
                 constructions.Add(peacefulConstruction);
@@ -86,23 +59,11 @@ public class ChaseState : EnemyState
                     }
                 }
 
-                if (nearestEnemy != null)
+                if (nearestEnemy != null && nearestEnemy.IsAlive())
                 {
                     _peacefulConstruction = nearestEnemy.transform;
-                    peacefulConstruction.Died += OnDied;
-
-                }
-                else
-                {
-                    _peacefulConstruction = null;
-                    peacefulConstruction.Died -= OnDied;
                 }
             }
-        }
-    }
-
-    private void OnDied(PeacefulConstruction peacefulConstruction)
-    {
-        constructions.Remove(peacefulConstruction);
+        }  
     }
 }

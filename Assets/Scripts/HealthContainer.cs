@@ -7,6 +7,7 @@ public class HealthContainer : MonoBehaviour
 {
     [SerializeField] private int _health;
 
+    public int Health => _health;
     public event UnityAction<int> HealthChanged;
     public event UnityAction Died;
 

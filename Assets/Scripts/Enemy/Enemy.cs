@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
 
     private EnemyState _currentState;
     private Animator _animator;
+    private bool _isAlive;
 
     public HealthContainer _healthContainer { get; protected set; }
     public PeacefulConstruction PeacefulConstruction { get; private set; }
@@ -21,6 +22,18 @@ public class Enemy : MonoBehaviour
         enabled = false;
 
         Died?.Invoke(this);
+    }
+
+    public bool IsAlive()
+    {
+        if(_healthContainer.Health <= 0)
+        {
+            return _isAlive = false;
+        }
+        else
+        {
+            return _isAlive = true;
+        }
     }
 
     private void OnEnable()
