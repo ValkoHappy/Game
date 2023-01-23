@@ -4,7 +4,6 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     [SerializeField] private Transform _partToRotate;
-    [SerializeField] public float _range;
     [SerializeField] private float _rotationSpeed;
     public Transform TargetEnemy { get; private set; }
 
