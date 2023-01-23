@@ -34,15 +34,15 @@ public class ChaseState : EnemyState
         {
             _agent.SetDestination(_peacefulConstruction.position);
         }
-
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out PeacefulConstruction peacefulConstruction))
         {
             if (peacefulConstruction != null && peacefulConstruction.IsAlive())
             {
+                //_peacefulConstruction = peacefulConstruction.transform;
                 List<PeacefulConstruction> constructions = new List<PeacefulConstruction>();
                 constructions.Add(peacefulConstruction);
                 float shortestDistance = Mathf.Infinity;
@@ -56,12 +56,14 @@ public class ChaseState : EnemyState
                     {
                         shortestDistance = distanceToConstruction;
                         nearestEnemy = construction;
+                        PeacefulConstruction = nearestEnemy;
                     }
-                }
 
-                if (nearestEnemy != null && nearestEnemy.IsAlive())
-                {
-                    _peacefulConstruction = nearestEnemy.transform;
+
+                    if (nearestEnemy != null && nearestEnemy.IsAlive())
+                    {
+                        _peacefulConstruction = nearestEnemy.transform;
+                    }
                 }
             }
         }  

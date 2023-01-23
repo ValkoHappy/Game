@@ -911,6 +911,7 @@ GameObject:
   - component: {fileID: 6611605807533283429}
   - component: {fileID: 6611605807533283434}
   - component: {fileID: 6611605807533283415}
+  - component: {fileID: 7821345651773666049}
   - component: {fileID: 6611605807533283431}
   - component: {fileID: 5115965500337150208}
   - component: {fileID: 8204026400088783689}
@@ -1037,6 +1038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 6611605807533283415}
+  - {fileID: 7821345651773666049}
   _attackForce: 1
   _attackDelay: 1.5
 --- !u!114 &6611605807533283429
@@ -1081,6 +1083,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetState: {fileID: 6611605807533283428}
   _minimumLostDistance: 2
+--- !u!114 &7821345651773666049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6611605807533283448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce281b98828c2443b74bc4b63cc37c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetState: {fileID: 6611605807533283433}
 --- !u!114 &6611605807533283431
 MonoBehaviour:
   m_ObjectHideFlags: 0
