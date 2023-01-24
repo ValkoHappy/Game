@@ -8,13 +8,13 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _yOffSet;
 
-    private Transform _targetEnemy;
+    private Vector3 _targetEnemy;
 
     private void Update()
     {
         if(_targetEnemy != null)
         {
-            Vector3 direction = _targetEnemy.position - transform.position;
+            Vector3 direction = _targetEnemy - transform.position;
             float distance = _speed * Time.deltaTime;
 
             transform.Translate(new Vector3(direction.x, direction.y + _yOffSet, direction.z).normalized * distance, Space.World);
@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void Seek(Transform target)
+    public void Seek(Vector3 target)
     {
         _targetEnemy = target;
     }

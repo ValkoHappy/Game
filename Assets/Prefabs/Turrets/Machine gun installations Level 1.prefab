@@ -536,7 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
+  _health: 300
 --- !u!114 &1604014633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -579,7 +579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 3640013384620947120}
-  _bullet: {fileID: 4745777603551490520, guid: 1c51107d88de3b3428a3b1e1895d91b6, type: 3}
+  _bullet: {fileID: 1495704376739029221, guid: c056e19bd3871104a9b4b19a4fafbc5b, type: 3}
   _shootPoint:
   - {fileID: 3506538941386376502}
   - {fileID: 4779751654210065213}

@@ -5,7 +5,9 @@ public class Turret : MonoBehaviour
 {
     [SerializeField] private Transform _partToRotate;
     [SerializeField] private float _rotationSpeed;
-    public Transform TargetEnemy { get; private set; }
+
+    private List<Enemy> _enemies = new List<Enemy>();
+    public Vector3 TargetEnemy { get; private set; }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -13,26 +15,7 @@ public class Turret : MonoBehaviour
         {
             if (enemy != null && enemy.IsAlive())
             {
-                List<Enemy> enemies = new List<Enemy>();
-                enemies.Add(enemy);
-                float shortestDistance = Mathf.Infinity;
-                Enemy nearestEnemy = null;
-
-                foreach (var target in enemies)
-                {
-                    float distanceToEnemy = Vector3.Distance(transform.position, target.transform.position);
-
-                    if (distanceToEnemy < shortestDistance)
-                    {
-                        shortestDistance = distanceToEnemy;
-                        nearestEnemy = target;
-                    }
-                }
-
-                if (nearestEnemy != null && nearestEnemy.IsAlive())
-                {
-                    TargetEnemy = nearestEnemy.transform;
-                }
+                _enemies.Add(enemy);
             }
         }
     }
@@ -41,9 +24,30 @@ public class Turret : MonoBehaviour
     {
         if (TargetEnemy != null)
         {
-            Vector3 direction = TargetEnemy.position - transform.position;
+            Vector3 direction = TargetEnemy - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             _partToRotate.rotation = Quaternion.Slerp(_partToRotate.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
+        }
+        if(_enemies.Count > 0)
+        {
+            float shortestDistance = Mathf.Infinity;
+            Enemy nearestEnemy = null;
+
+            foreach (var target in _enemies)
+            {
+                float distanceToEnemy = Vector3.Distance(transform.position, target.transform.position);
+
+                if (distanceToEnemy < shortestDistance)
+                {
+                    shortestDistance = distanceToEnemy;
+                    nearestEnemy = target;
+                }
+            }
+
+            if (nearestEnemy != null && nearestEnemy.IsAlive())
+            {
+                TargetEnemy = nearestEnemy.transform.position;
+            }
         }
     }
 }

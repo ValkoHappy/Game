@@ -10,6 +10,7 @@ public class ChaseState : EnemyState
     private NavMeshAgent _agent;
     private Transform _peacefulConstruction;
     private SphereCollider _collider;
+    private List<PeacefulConstruction> _constructions = new List<PeacefulConstruction>();
 
     private void Awake()
     {
@@ -34,6 +35,29 @@ public class ChaseState : EnemyState
         {
             _agent.SetDestination(_peacefulConstruction.position);
         }
+        else if(_constructions.Count > 0)
+        {
+            float shortestDistance = Mathf.Infinity;
+            PeacefulConstruction nearestEnemy = null;
+
+            foreach (var construction in _constructions)
+            {
+                float distanceToConstruction = Vector3.Distance(transform.position, construction.transform.position);
+
+                if (distanceToConstruction < shortestDistance)
+                {
+                    shortestDistance = distanceToConstruction;
+                    nearestEnemy = construction;
+                    PeacefulConstruction = nearestEnemy;
+                }
+
+
+                if (nearestEnemy != null && nearestEnemy.IsAlive())
+                {
+                    _peacefulConstruction = nearestEnemy.transform;
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,28 +67,28 @@ public class ChaseState : EnemyState
             if (peacefulConstruction != null && peacefulConstruction.IsAlive())
             {
                 //_peacefulConstruction = peacefulConstruction.transform;
-                List<PeacefulConstruction> constructions = new List<PeacefulConstruction>();
-                constructions.Add(peacefulConstruction);
-                float shortestDistance = Mathf.Infinity;
-                PeacefulConstruction nearestEnemy = null;
 
-                foreach (var construction in constructions)
-                {
-                    float distanceToConstruction = Vector3.Distance(transform.position, construction.transform.position);
+                _constructions.Add(peacefulConstruction);
+                //float shortestDistance = Mathf.Infinity;
+                //PeacefulConstruction nearestEnemy = null;
 
-                    if (distanceToConstruction < shortestDistance)
-                    {
-                        shortestDistance = distanceToConstruction;
-                        nearestEnemy = construction;
-                        PeacefulConstruction = nearestEnemy;
-                    }
+                //foreach (var construction in constructions)
+                //{
+                //    float distanceToConstruction = Vector3.Distance(transform.position, construction.transform.position);
+
+                //    if (distanceToConstruction < shortestDistance)
+                //    {
+                //        shortestDistance = distanceToConstruction;
+                //        nearestEnemy = construction;
+                //        PeacefulConstruction = nearestEnemy;
+                //    }
 
 
-                    if (nearestEnemy != null && nearestEnemy.IsAlive())
-                    {
-                        _peacefulConstruction = nearestEnemy.transform;
-                    }
-                }
+                //    if (nearestEnemy != null && nearestEnemy.IsAlive())
+                //    {
+                //        _peacefulConstruction = nearestEnemy.transform;
+                //    }
+                //}
             }
         }  
     }

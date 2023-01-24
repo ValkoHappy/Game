@@ -26,11 +26,12 @@ public class ShootState : PeacefulConstructionState
 
     public void CreateBullet(Transform shootPoint)
     {
-        Bullet bullet = Instantiate(_bullet, shootPoint.position, Quaternion.identity, transform);
+        Bullet bullet = Instantiate(_bullet, shootPoint.position, Quaternion.identity);
         if (bullet != null)
         {
             bullet.Seek(Turret.TargetEnemy);
-            Debug.Log(bullet.transform.position);
+
+            //Debug.Log(bullet.transform.position);
         }
     }
 
