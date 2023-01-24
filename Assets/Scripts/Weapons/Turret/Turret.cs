@@ -7,7 +7,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private float _rotationSpeed;
     public Transform TargetEnemy { get; private set; }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out Enemy enemy))
         {
