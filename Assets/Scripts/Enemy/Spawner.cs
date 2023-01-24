@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator Spawn()
     {
-        while(_spawnCount >= 0)
+        while(_spawnCount > 0)
         {
             _spawnCount--;
             Instantiate(_templateEnemy, SpawnPosition(), Quaternion.identity, _conteiner);

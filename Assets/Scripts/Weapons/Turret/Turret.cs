@@ -6,18 +6,12 @@ public class Turret : MonoBehaviour
     [SerializeField] private Transform _partToRotate;
     [SerializeField] private float _rotationSpeed;
 
-    private List<Enemy> _enemies = new List<Enemy>();
+    private List<Enemy> _enemies;
     public Vector3 TargetEnemy { get; private set; }
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other.TryGetComponent(out Enemy enemy))
-        {
-            if (enemy != null && enemy.IsAlive())
-            {
-                _enemies.Add(enemy);
-            }
-        }
+        _enemies = new List<Enemy>();
     }
 
     private void Update()
@@ -47,6 +41,17 @@ public class Turret : MonoBehaviour
             if (nearestEnemy != null && nearestEnemy.IsAlive())
             {
                 TargetEnemy = nearestEnemy.transform.position;
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Enemy enemy))
+        {
+            if (enemy != null && enemy.IsAlive())
+            {
+                _enemies.Add(enemy);
             }
         }
     }
