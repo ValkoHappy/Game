@@ -14,10 +14,11 @@ public class Bullet : MonoBehaviour
     {
         if(_targetEnemy != null)
         {
+
             Vector3 direction = _targetEnemy - transform.position;
             float distance = _speed * Time.deltaTime;
-
-            transform.Translate(new Vector3(direction.x, direction.y + _yOffSet, direction.z).normalized * distance, Space.World);
+            //transform.LookAt(_targetEnemy);
+            transform.Translate(direction * distance, Space.World); ;
         }
         else
         {
@@ -25,9 +26,9 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public void Seek(Vector3 target)
+    public void Seek(Transform transform)
     {
-        _targetEnemy = target;
+        _targetEnemy = transform.position;
     }
 
     private void OnTriggerEnter(Collider other)

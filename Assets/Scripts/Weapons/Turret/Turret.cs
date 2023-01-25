@@ -1,13 +1,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ShootTurret))]
 public class Turret : MonoBehaviour
 {
     [SerializeField] private Transform _partToRotate;
     [SerializeField] private float _rotationSpeed;
 
+    private ShootTurret _shootTurret;
     private List<Enemy> _enemies;
-    public Vector3 TargetEnemy { get; private set; }
+    public Enemy TargetEnemy { get; private set; }
+
+    private void Awake()
+    {
+        _shootTurret = GetComponent<ShootTurret>();
+    }
 
     private void Start()
     {
@@ -16,13 +23,15 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        if (TargetEnemy != null)
+        if (TargetEnemy != null && TargetEnemy.IsAlive())
         {
-            Vector3 direction = TargetEnemy - transform.position;
+            _shootTurret.StartShoot();
+            Vector3 direction = TargetEnemy.transform.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             _partToRotate.rotation = Quaternion.Slerp(_partToRotate.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
         }
-        if(_enemies.Count > 0)
+
+        if (_enemies.Count > 0)
         {
             float shortestDistance = Mathf.Infinity;
             Enemy nearestEnemy = null;
@@ -40,7 +49,7 @@ public class Turret : MonoBehaviour
 
             if (nearestEnemy != null && nearestEnemy.IsAlive())
             {
-                TargetEnemy = nearestEnemy.transform.position;
+                TargetEnemy = nearestEnemy;
             }
         }
     }
@@ -52,6 +61,17 @@ public class Turret : MonoBehaviour
             if (enemy != null && enemy.IsAlive())
             {
                 _enemies.Add(enemy);
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent(out Enemy enemy))
+        {
+            if (enemy != null && enemy.IsAlive() == false)
+            {
+                _enemies.Remove(enemy);
             }
         }
     }

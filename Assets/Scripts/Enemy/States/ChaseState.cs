@@ -9,7 +9,7 @@ public class ChaseState : EnemyState
 {
     private NavMeshAgent _agent;
     private Transform _peacefulConstruction;
-    private List<PeacefulConstruction> _constructions;
+    private List<PeacefulConstruction> _constructions = new List<PeacefulConstruction>();
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class ChaseState : EnemyState
 
     private void Start()
     {
-        _constructions = new List<PeacefulConstruction>();
+
     }
 
     private void OnEnable()
@@ -38,7 +38,7 @@ public class ChaseState : EnemyState
         {
             _agent.SetDestination(_peacefulConstruction.position);
         }
-        else if(_constructions.Count > 0)
+        else if(_constructions.Count > 0 || _peacefulConstruction != null)
         {
             float shortestDistance = Mathf.Infinity;
             PeacefulConstruction nearestEnemy = null;
@@ -55,7 +55,7 @@ public class ChaseState : EnemyState
                 }
 
 
-                if (nearestEnemy != null && nearestEnemy.IsAlive())
+                if (nearestEnemy != null && nearestEnemy.IsAlive)
                 {
                     _peacefulConstruction = nearestEnemy.transform;
                 }
@@ -67,7 +67,7 @@ public class ChaseState : EnemyState
     {
         if (other.TryGetComponent(out PeacefulConstruction peacefulConstruction))
         {
-            if (peacefulConstruction != null && peacefulConstruction.IsAlive())
+            if (peacefulConstruction != null && peacefulConstruction.IsAlive)
             {
                 _constructions.Add(peacefulConstruction);
             }
