@@ -13,6 +13,7 @@ public class ShootTurret : MonoBehaviour
     private Coroutine _shoot;
     private bool _isShoot = true;
 
+
     private void Awake()
     {
         _turret = GetComponent<Turret>();
@@ -33,10 +34,7 @@ public class ShootTurret : MonoBehaviour
 
     public void StopShoot()
     {
-        if (_shoot != null)
-        {
-            StopCoroutine(_shoot);
-        }
+        _isShoot = false;
     }
 
     public void CreateBullet(Transform shootPoint)
@@ -55,7 +53,7 @@ public class ShootTurret : MonoBehaviour
         }
 
         yield return waitForSecounds;
-
+        StartShoot();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,6 +64,7 @@ public class ShootTurret : MonoBehaviour
             {
                 _isShoot = true;
             }
+            StartShoot();
         }
     }
 

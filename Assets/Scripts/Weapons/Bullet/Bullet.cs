@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
             Vector3 direction = _targetEnemy - transform.position;
             float distance = _speed * Time.deltaTime;
             //transform.LookAt(_targetEnemy);
-            transform.Translate(direction * distance, Space.World); ;
+            transform.Translate(new Vector3(direction.x, direction.y + _yOffSet, direction.z) * distance, Space.World); ;
         }
         else
         {

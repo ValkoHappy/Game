@@ -25,7 +25,6 @@ public class Turret : MonoBehaviour
     {
         if (TargetEnemy != null && TargetEnemy.IsAlive())
         {
-            _shootTurret.StartShoot();
             Vector3 direction = TargetEnemy.transform.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             _partToRotate.rotation = Quaternion.Slerp(_partToRotate.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
@@ -71,6 +70,7 @@ public class Turret : MonoBehaviour
         {
             if (enemy != null && enemy.IsAlive() == false)
             {
+                _shootTurret.StopShoot();
                 _enemies.Remove(enemy);
             }
         }
