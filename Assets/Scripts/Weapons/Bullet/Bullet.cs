@@ -33,9 +33,13 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out Enemy enemy))
+        if(other.TryGetComponent(out EnemyCollision enemy))
         {
             enemy.ApplyDamage(_damage);
+            Destroy(gameObject);
+        }
+        if (other.TryGetComponent(out Ground ground))
+        {
             Destroy(gameObject);
         }
     }

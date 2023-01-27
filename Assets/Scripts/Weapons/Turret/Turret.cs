@@ -8,8 +8,8 @@ public class Turret : MonoBehaviour
     [SerializeField] private float _rotationSpeed;
 
     private ShootTurret _shootTurret;
-    private List<Enemy> _enemies;
-    public Enemy TargetEnemy { get; private set; }
+    private List<EnemyCollision> _enemies;
+    public EnemyCollision TargetEnemy { get; private set; }
 
     private void Awake()
     {
@@ -18,7 +18,7 @@ public class Turret : MonoBehaviour
 
     private void Start()
     {
-        _enemies = new List<Enemy>();
+        _enemies = new List<EnemyCollision>();
     }
 
     private void Update()
@@ -33,7 +33,7 @@ public class Turret : MonoBehaviour
         if (_enemies.Count > 0)
         {
             float shortestDistance = Mathf.Infinity;
-            Enemy nearestEnemy = null;
+            EnemyCollision nearestEnemy = null;
 
             foreach (var target in _enemies)
             {
@@ -55,7 +55,7 @@ public class Turret : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Enemy enemy))
+        if (other.TryGetComponent(out EnemyCollision enemy))
         {
             if (enemy != null && enemy.IsAlive())
             {
@@ -66,7 +66,7 @@ public class Turret : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.TryGetComponent(out Enemy enemy))
+        if (other.TryGetComponent(out EnemyCollision enemy))
         {
             if (enemy != null && enemy.IsAlive() == false)
             {

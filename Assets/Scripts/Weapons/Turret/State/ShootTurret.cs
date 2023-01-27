@@ -58,7 +58,7 @@ public class ShootTurret : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Enemy enemy))
+        if (other.TryGetComponent(out EnemyCollision enemy))
         {
             if (enemy != null)
             {
@@ -70,7 +70,7 @@ public class ShootTurret : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.TryGetComponent(out Enemy enemy))
+        if(other.TryGetComponent(out EnemyCollision enemy))
         {
             if (enemy != null)
             {
