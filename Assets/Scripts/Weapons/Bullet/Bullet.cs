@@ -9,16 +9,16 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _yOffSet;
 
     private Vector3 _targetEnemy;
+    private Vector3 _targetDirection;
 
     private void Update()
     {
         if(_targetEnemy != null)
         {
-
             Vector3 direction = _targetEnemy - transform.position;
             float distance = _speed * Time.deltaTime;
-            //transform.LookAt(_targetEnemy);
-            transform.Translate(new Vector3(direction.x, direction.y + _yOffSet, direction.z) * distance, Space.World); ;
+            transform.Translate(direction * distance, Space.World);
+            transform.LookAt(_targetEnemy);
         }
         else
         {

@@ -11,10 +11,10 @@ public class AttackState : EnemyState
 
     private void Start()
     {
-        StartShoot();
+        StartAttack();
     }
 
-    private void StartShoot()
+    private void StartAttack()
     {
         if (_attack != null)
         {
@@ -29,6 +29,6 @@ public class AttackState : EnemyState
         Animator.SetTrigger("Attack1");
         PeacefulConstruction.ApplyDamage(_attackForce);
         yield return waitForSecounds;
-        StartShoot();
+        StartAttack();
     }
 }

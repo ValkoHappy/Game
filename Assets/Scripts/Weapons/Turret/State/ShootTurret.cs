@@ -10,6 +10,7 @@ public class ShootTurret : MonoBehaviour
     [SerializeField] private float _waitForSecounds;
 
     private Turret _turret;
+    //private RecoilAnimation _recoilAnimation;
     private Coroutine _shoot;
     private bool _isShoot = true;
 
@@ -17,6 +18,7 @@ public class ShootTurret : MonoBehaviour
     private void Awake()
     {
         _turret = GetComponent<Turret>();
+        //_recoilAnimation = GetComponentInChildren<RecoilAnimation>();
     }
 
     public void StartShoot()
@@ -28,7 +30,6 @@ public class ShootTurret : MonoBehaviour
                 StopCoroutine(_shoot);
             }
             _shoot = StartCoroutine(Shoot());
-            _isShoot =true;
         }
     }
 
@@ -41,6 +42,7 @@ public class ShootTurret : MonoBehaviour
     {
         Bullet bullet = Instantiate(_bullet, shootPoint.position, Quaternion.identity);
         bullet.Seek(_turret.TargetEnemy.transform);
+        //_recoilAnimation.StartRecoil(_waitForSecounds);
     }
 
     private IEnumerator Shoot()
@@ -53,7 +55,7 @@ public class ShootTurret : MonoBehaviour
         }
 
         yield return waitForSecounds;
-        StartShoot();
+        //StartShoot();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,8 +65,8 @@ public class ShootTurret : MonoBehaviour
             if (enemy != null)
             {
                 _isShoot = true;
+                StartShoot();
             }
-            StartShoot();
         }
     }
 

@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     private EnemyState _currentState;
     private Animator _animator;
 
-    public PeacefulConstruction PeacefulConstruction { get; private set; }
+    [SerializeField] public PeacefulConstruction PeacefulConstruction;
 
     private void Awake()
     {
@@ -45,5 +45,6 @@ public class Enemy : MonoBehaviour
 
         if (_currentState != null)
             _currentState.Enter(PeacefulConstruction, _animator);
+        Debug.Log(PeacefulConstruction.transform.position);
     }
 }
