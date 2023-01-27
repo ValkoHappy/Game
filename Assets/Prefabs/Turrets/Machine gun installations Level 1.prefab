@@ -492,8 +492,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2904838842187442412}
-  - component: {fileID: 3757003327803098104}
-  - component: {fileID: 1604014633}
   - component: {fileID: 6645822827207896814}
   - component: {fileID: 4003681586960472197}
   - component: {fileID: 1929432421550216400}
@@ -521,31 +519,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3757003327803098104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2529860969143120470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 300
---- !u!114 &1604014633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2529860969143120470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0891a58843160c247a14c26d9da3fe50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6645822827207896814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,7 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9709eec226425ef4e9d17c36ba87aac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 1495704376739029221, guid: c056e19bd3871104a9b4b19a4fafbc5b, type: 3}
+  _bullet: {fileID: 4395150195568702347, guid: 05a0351ef5da1054b930d0d8b55ce0ab, type: 3}
   _shootPoint:
   - {fileID: 3506538941386376502}
   - {fileID: 4779751654210065213}
@@ -1324,6 +1297,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1358397393814686475}
   - component: {fileID: 3416771759781880645}
+  - component: {fileID: 6497607483092316789}
+  - component: {fileID: 6070999513253214987}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -1361,6 +1336,31 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.6745718, z: 1}
   m_Center: {x: 0, y: 0.72016096, z: 0}
+--- !u!114 &6497607483092316789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6493706315455546615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
+--- !u!114 &6070999513253214987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6493706315455546615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0891a58843160c247a14c26d9da3fe50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6946557160471700070
 GameObject:
   m_ObjectHideFlags: 0

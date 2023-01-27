@@ -9,11 +9,13 @@ public class Turret : MonoBehaviour
 
     private ShootTurret _shootTurret;
     private List<EnemyCollision> _enemies;
+    private PeacefulConstruction _construction;
     public EnemyCollision TargetEnemy { get; private set; }
 
     private void Awake()
     {
         _shootTurret = GetComponent<ShootTurret>();
+        _construction = GetComponentInChildren<PeacefulConstruction>();
     }
 
     private void Start()
@@ -23,7 +25,7 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        if (TargetEnemy != null && TargetEnemy.IsAlive())
+        if (TargetEnemy != null && TargetEnemy.IsAlive() && _construction.IsAlive)
         {
             Vector3 direction = TargetEnemy.transform.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
