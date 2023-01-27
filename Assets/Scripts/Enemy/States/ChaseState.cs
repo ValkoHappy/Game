@@ -73,4 +73,15 @@ public class ChaseState : EnemyState
             }
         }  
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent(out PeacefulConstruction peacefulConstruction))
+        {
+            if (peacefulConstruction != null && peacefulConstruction.IsAlive == false)
+            {
+                _constructions.Remove(peacefulConstruction);
+            }
+        }
+    }
 }
