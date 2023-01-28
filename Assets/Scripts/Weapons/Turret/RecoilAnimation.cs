@@ -9,6 +9,6 @@ public class RecoilAnimation : MonoBehaviour
 
     public void StartRecoil(float delayBetween)
     {
-        transform.DOMoveZ(transform.position.z - _recoilDistance, delayBetween / 2).SetLoops(2, LoopType.Yoyo);
+        transform.DOMoveZ(transform.localPosition.z - _recoilDistance, delayBetween / 4).SetLoops(2, LoopType.Yoyo);
     }
 }

@@ -29,16 +29,26 @@ public class PeacefulConstruction : MonoBehaviour
     //    }
     //}
 
+    private void OnEnable()
+    {
+        _healthContainer.Died += OnDied;
+    }
+
+    private void OnDisable()
+    {
+        _healthContainer.Died -= OnDied;
+    }
+
     public void ApplyDamage(float damage)
     {
         _healthContainer.TakeDamage((int)damage);
         Damaged?.Invoke();
     }
 
-    //protected override void OnDied()
-    //{
-    //    enabled = false;
-    //    Destroy(gameObject);
-    //    Died?.Invoke(this);
-    //}
+    private void OnDied()
+    {
+        enabled = false;
+        Destroy(gameObject);
+        Died?.Invoke(this);
+    }
 }

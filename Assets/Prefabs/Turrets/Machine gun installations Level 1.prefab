@@ -549,7 +549,7 @@ MonoBehaviour:
   _shootPoint:
   - {fileID: 3506538941386376502}
   - {fileID: 4779751654210065213}
-  _waitForSecounds: 1.5
+  _waitForSecounds: 1
 --- !u!135 &1929432421550216400
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -953,6 +953,7 @@ GameObject:
   - component: {fileID: 7808846743835279080}
   - component: {fileID: 6098980061367359421}
   - component: {fileID: 339321403348610881}
+  - component: {fileID: 607787041}
   m_Layer: 0
   m_Name: head
   m_TagString: Untagged
@@ -1031,6 +1032,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &607787041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4192287122418671461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1747c2abfe32d1043b4cd53bb81898be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _recoilDistance: 0.2
 --- !u!1 &4859381565031505732
 GameObject:
   m_ObjectHideFlags: 0

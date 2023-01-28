@@ -51,6 +51,7 @@ public class Turret : MonoBehaviour
             if (nearestEnemy != null && nearestEnemy.IsAlive())
             {
                 TargetEnemy = nearestEnemy;
+                _shootTurret.RestartShoot();
             }
         }
     }
@@ -72,8 +73,8 @@ public class Turret : MonoBehaviour
         {
             if (enemy != null && enemy.IsAlive() == false)
             {
-                _shootTurret.StopShoot();
                 _enemies.Remove(enemy);
+                _shootTurret.StopShoot();
             }
         }
     }
