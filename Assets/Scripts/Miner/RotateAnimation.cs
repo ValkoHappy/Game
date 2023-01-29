@@ -5,11 +5,11 @@ using DG.Tweening;
 
 public class RotateAnimation : MonoBehaviour
 {
-    [SerializeField] private float _recoilDistance;
+    [SerializeField] private float _duration;
 
     public void Start()
     {
-        Tween tween = transform.DOLocalRotate(new Vector3(0,0, 360), 2, RotateMode.FastBeyond360).SetOptions(true);
+        Tween tween = transform.DOLocalRotate(new Vector3(0,0, _duration), 2);
         tween.SetEase(Ease.Linear).SetLoops(-1);
     }
 }
