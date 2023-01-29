@@ -55,7 +55,7 @@ public class ChaseState : EnemyState
                 }
 
 
-                if (nearestEnemy != null && nearestEnemy.IsAlive)
+                if (nearestEnemy != null && nearestEnemy.IsAlive())
                 {
                     _peacefulConstruction = nearestEnemy.transform;
                 }
@@ -67,7 +67,7 @@ public class ChaseState : EnemyState
     {
         if (other.TryGetComponent(out PeacefulConstruction peacefulConstruction))
         {
-            if (peacefulConstruction != null && peacefulConstruction.IsAlive)
+            if (peacefulConstruction != null && peacefulConstruction.IsAlive())
             {
                 _constructions.Add(peacefulConstruction);
             }
@@ -78,7 +78,7 @@ public class ChaseState : EnemyState
     {
         if (other.TryGetComponent(out PeacefulConstruction peacefulConstruction))
         {
-            if (peacefulConstruction != null && peacefulConstruction.IsAlive == false)
+            if (peacefulConstruction.IsAlive() == false)
             {
                 _constructions.Remove(peacefulConstruction);
             }

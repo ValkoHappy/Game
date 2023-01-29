@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExtractionState : State
+public class ExtractionState : MonoBehaviour
 {
     [SerializeField] private int _amountMoneyProduced;
     [SerializeField] private float _waitForSecounds;

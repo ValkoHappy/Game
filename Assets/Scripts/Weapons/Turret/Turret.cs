@@ -25,7 +25,7 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        if (TargetEnemy != null && TargetEnemy.IsAlive() && _construction.IsAlive)
+        if (TargetEnemy != null && TargetEnemy.IsAlive() && _construction.IsAlive())
         {
             Vector3 direction = TargetEnemy.transform.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);

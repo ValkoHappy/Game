@@ -10,24 +10,23 @@ public class PeacefulConstruction : MonoBehaviour
 
     public event UnityAction Damaged;
     private HealthContainer _healthContainer;
-    private bool _isAlive => _healthContainer.Health > 0;
-    public bool IsAlive => _isAlive;
+    private bool _isAlive;
 
     private void Awake()
     {
         _healthContainer = GetComponent<HealthContainer>();
     }
-    //public bool IsAlive()
-    //{
-    //    if (_healthContainer.Health <= 0)
-    //    {
-    //        return _isAlive = false;
-    //    }
-    //    else
-    //    {
-    //        return _isAlive = true;
-    //    }
-    //}
+    public bool IsAlive()
+    {
+        if (_healthContainer.Health <= 0)
+        {
+            return _isAlive = false;
+        }
+        else
+        {
+            return _isAlive = true;
+        }
+    }
 
     private void OnEnable()
     {
