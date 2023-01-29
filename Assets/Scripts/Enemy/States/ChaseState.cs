@@ -38,29 +38,7 @@ public class ChaseState : EnemyState
         {
             _agent.SetDestination(_peacefulConstruction.position);
         }
-        else if(_constructions.Count > 0 || _peacefulConstruction != null)
-        {
-            float shortestDistance = Mathf.Infinity;
-            PeacefulConstruction nearestEnemy = null;
-
-            foreach (var construction in _constructions)
-            {
-                float distanceToConstruction = Vector3.Distance(transform.position, construction.transform.position);
-
-                if (distanceToConstruction < shortestDistance)
-                {
-                    shortestDistance = distanceToConstruction;
-                    nearestEnemy = construction;
-                    PeacefulConstruction = nearestEnemy;
-                }
-
-
-                if (nearestEnemy != null && nearestEnemy.IsAlive())
-                {
-                    _peacefulConstruction = nearestEnemy.transform;
-                }
-            }
-        }
+        SortEnemies();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -81,6 +59,33 @@ public class ChaseState : EnemyState
             if (peacefulConstruction.IsAlive() == false)
             {
                 _constructions.Remove(peacefulConstruction);
+            }
+        }
+    }
+
+    private void SortEnemies()
+    {
+        if (_constructions.Count > 0 || _peacefulConstruction != null)
+        {
+            float shortestDistance = Mathf.Infinity;
+            PeacefulConstruction nearestEnemy = null;
+
+            foreach (var construction in _constructions)
+            {
+                float distanceToConstruction = Vector3.Distance(transform.position, construction.transform.position);
+
+                if (distanceToConstruction < shortestDistance)
+                {
+                    shortestDistance = distanceToConstruction;
+                    nearestEnemy = construction;
+                    PeacefulConstruction = nearestEnemy;
+                }
+
+
+                if (nearestEnemy != null && nearestEnemy.IsAlive())
+                {
+                    _peacefulConstruction = nearestEnemy.transform;
+                }
             }
         }
     }
