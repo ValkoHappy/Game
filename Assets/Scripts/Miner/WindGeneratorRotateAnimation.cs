@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class RotateAnimation : MonoBehaviour
+public class WindGeneratorRotateAnimation : MonoBehaviour
 {
     [SerializeField] private float _duration;
 
