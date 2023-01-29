@@ -3,33 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Animator), typeof(FoundBuildings))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyState _firstState;
 
+    private FoundBuildings _buildings;
     private EnemyState _currentState;
     private Animator _animator;
-    private List<PeacefulConstruction> _constructions = new List<PeacefulConstruction>();
 
-    [SerializeField] public PeacefulConstruction PeacefulConstruction;
+    [SerializeField] public PeacefulConstruction TargetConstruction;
 
     private void Awake()
     {
+        _buildings = GetComponent<FoundBuildings>();
         _animator = GetComponent<Animator>();
-        PeacefulConstruction = FindObjectOfType<PeacefulConstruction>();
+        //TargetConstruction = FindObjectOfType<PeacefulConstruction>();
     }
 
     private void Start()
     {
         _currentState = _firstState;
-        SortEnemies();
-        _currentState.Enter(PeacefulConstruction, _animator);
+        _buildings.SortEnemies();
+        TargetConstruction = _buildings.TargetConstruction;
+        _currentState.Enter(TargetConstruction, _animator);
     }
 
     private void Update()
     {
-        SortEnemies();
+        _buildings.SortEnemies();
+        TargetConstruction = _buildings.TargetConstruction;
+        _currentState.Enter(TargetConstruction, _animator);
 
         if (_currentState == null)
             return;
@@ -48,43 +52,6 @@ public class Enemy : MonoBehaviour
         _currentState = nextState;
 
         if (_currentState != null)
-            _currentState.Enter(PeacefulConstruction, _animator);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out PeacefulConstruction peacefulConstruction))
-        {
-            if (peacefulConstruction != null && peacefulConstruction.IsAlive())
-            {
-                _constructions.Add(peacefulConstruction);
-            }
-        }
-    }
-
-    private void SortEnemies()
-    {
-        if (_constructions.Count > 0 || PeacefulConstruction != null)
-        {
-            float shortestDistance = Mathf.Infinity;
-            PeacefulConstruction nearestEnemy = null;
-
-            foreach (var construction in _constructions)
-            {
-                float distanceToConstruction = Vector3.Distance(transform.position, construction.transform.position);
-
-                if (distanceToConstruction < shortestDistance)
-                {
-                    shortestDistance = distanceToConstruction;
-                    nearestEnemy = construction;
-                }
-
-
-                if (nearestEnemy != null && nearestEnemy.IsAlive())
-                {
-                    PeacefulConstruction = nearestEnemy;
-                }
-            }
-        }
+            _currentState.Enter(TargetConstruction, _animator);
     }
 }

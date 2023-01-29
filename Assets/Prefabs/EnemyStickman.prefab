@@ -906,6 +906,7 @@ GameObject:
   - component: {fileID: 6611605807533283437}
   - component: {fileID: 6611605807533283439}
   - component: {fileID: 1305874152407787249}
+  - component: {fileID: 2518113805674613955}
   - component: {fileID: 6611605807533283428}
   - component: {fileID: 6611605807533283433}
   - component: {fileID: 6611605807533283434}
@@ -1006,7 +1007,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firstState: {fileID: 6611605807533283428}
-  PeacefulConstruction: {fileID: 0}
+  TargetConstruction: {fileID: 0}
+--- !u!114 &2518113805674613955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6611605807533283448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ec22cfd8368ef48875642dbb75c8e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetConstruction: {fileID: 0}
 --- !u!114 &6611605807533283428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,6 +1035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 6611605807533283434}
+  _targetConstruction: {fileID: 0}
 --- !u!114 &6611605807533283433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1051,6 +1066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetState: {fileID: 6611605807533283433}
   _approachedDistance: 2
+  peacefulConstruction: {fileID: 0}
 --- !u!114 &7821345651773666049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1217,8 +1233,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5154754, y: 1.8517097, z: 0.30688816}
-  m_Center: {x: 0.031698644, y: 0.8653335, z: -0.034908146}
+  m_Size: {x: 0.5154754, y: 1.7959473, z: 0.30688816}
+  m_Center: {x: 0.031698644, y: 0.8932147, z: -0.034908146}
 --- !u!114 &6873381443288951235
 MonoBehaviour:
   m_ObjectHideFlags: 0

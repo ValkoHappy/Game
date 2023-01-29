@@ -46,8 +46,8 @@ public class PeacefulConstruction : MonoBehaviour
 
     private void OnDied()
     {
-        enabled = false;
-        Destroy(gameObject);
+        //enabled = false;
+        //Destroy(gameObject);
         Died?.Invoke(this);
     }
 }
