@@ -9,7 +9,7 @@ public class RotateAnimation : MonoBehaviour
 
     public void Start()
     {
-        Tween tween = transform.DOLocalRotate(new Vector3(0,0, _duration), 2);
+        Tween tween = transform.DOLocalRotate(new Vector3(0,0, 360), _duration);
         tween.SetEase(Ease.Linear).SetLoops(-1);
     }
 }
