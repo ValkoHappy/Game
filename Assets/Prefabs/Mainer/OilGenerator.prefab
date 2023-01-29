@@ -860,6 +860,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8138269166449502780}
+  - component: {fileID: 1025462025}
+  - component: {fileID: 1025462026}
+  - component: {fileID: 1025462027}
+  - component: {fileID: 4591982427868202346}
   m_Layer: 0
   m_Name: OilGenerator
   m_TagString: Untagged
@@ -885,3 +889,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &1025462025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915755195599483014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 0
+--- !u!114 &1025462026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915755195599483014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0891a58843160c247a14c26d9da3fe50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1025462027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915755195599483014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1be987cb6ad244d8381dd1b674bcd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _amountMoneyProduced: 1
+  _waitForSecounds: 1
+--- !u!65 &4591982427868202346
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915755195599483014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9968064, y: 0.9918904, z: 2.0403454}
+  m_Center: {x: 0.0040677786, y: 0.44219294, z: 0.007998347}
