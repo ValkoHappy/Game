@@ -19,10 +19,4 @@ public class EnemyTransition : MonoBehaviour
     {
         PeacefulConstruction = peacefulConstruction;
     }
-
-    private void Update()
-    {
-        if (PeacefulConstruction == null)
-            PeacefulConstruction = FindObjectOfType<PeacefulConstruction>();
-    }
 }
