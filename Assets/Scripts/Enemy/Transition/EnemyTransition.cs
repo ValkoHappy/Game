@@ -7,9 +7,7 @@ public class EnemyTransition : MonoBehaviour
     [SerializeField] private EnemyState _targetState;
 
     public EnemyState TargetState => _targetState;
-
     protected PeacefulConstruction PeacefulConstruction { get; private set; }
-
     public bool NeedTransit { get; protected set; }
 
     protected virtual void OnEnable()
@@ -20,5 +18,11 @@ public class EnemyTransition : MonoBehaviour
     public void Init(PeacefulConstruction peacefulConstruction)
     {
         PeacefulConstruction = peacefulConstruction;
+    }
+
+    private void Update()
+    {
+        if (PeacefulConstruction == null)
+            PeacefulConstruction = FindObjectOfType<PeacefulConstruction>();
     }
 }

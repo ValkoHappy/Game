@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     {
         _buildings = GetComponent<FoundBuildings>();
         _animator = GetComponent<Animator>();
-        //TargetConstruction = FindObjectOfType<PeacefulConstruction>();
+        TargetConstruction = FindObjectOfType<PeacefulConstruction>();
     }
 
     private void Start()
@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour
         _buildings.SortEnemies();
         TargetConstruction = _buildings.TargetConstruction;
         _currentState.Enter(TargetConstruction, _animator);
+
+
     }
 
     private void Update()

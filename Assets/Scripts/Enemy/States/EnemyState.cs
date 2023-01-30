@@ -6,8 +6,8 @@ public class EnemyState : MonoBehaviour
 {
     [SerializeField] private EnemyTransition[] _transitions;
 
-    public PeacefulConstruction PeacefulConstruction { get; protected set; }
-    protected Animator Animator { get; private set; }
+    public PeacefulConstruction PeacefulConstruction { get; private set; }
+    public Animator Animator { get; private set; }
 
     public void Enter(PeacefulConstruction peacefulConstruction, Animator animator)
     {

@@ -10,6 +10,12 @@ public class FoundBuildings : MonoBehaviour
 
     private List<PeacefulConstruction> _constructions = new List<PeacefulConstruction>();
 
+    private void Start()
+    {
+        if (_constructions.Count > 0)
+            SortEnemies();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out PeacefulConstruction peacefulConstruction))
