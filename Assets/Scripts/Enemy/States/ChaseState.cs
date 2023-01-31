@@ -7,7 +7,7 @@ public class ChaseState : EnemyState
 {
     private FoundBuildings _buildings;
     private NavMeshAgent _agent;
-    [SerializeField] private PeacefulConstruction _targetConstruction;
+    private PeacefulConstruction _targetConstruction;
 
     private void Awake()
     {
@@ -27,7 +27,6 @@ public class ChaseState : EnemyState
 
     private void Update()
     {
-        _buildings.SortEnemies();
         _targetConstruction = _buildings.TargetConstruction;
         if (_targetConstruction != null)
         {

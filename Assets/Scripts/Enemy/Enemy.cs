@@ -7,35 +7,39 @@ using UnityEngine.Events;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyState _firstState;
+    [SerializeField] private BrokenState _brokenState;
 
     private FoundBuildings _buildings;
     private EnemyState _currentState;
     private Animator _animator;
+    private HealthContainer _healthContainer;
 
-    [SerializeField] public PeacefulConstruction TargetConstruction;
+    private PeacefulConstruction _targetConstruction;
 
     private void Awake()
     {
         _buildings = GetComponent<FoundBuildings>();
         _animator = GetComponent<Animator>();
-        TargetConstruction = FindObjectOfType<PeacefulConstruction>();
+        _targetConstruction = FindObjectOfType<PeacefulConstruction>();
+        _healthContainer = GetComponentInChildren<HealthContainer>();
     }
 
     private void Start()
     {
         _currentState = _firstState;
-        _buildings.SortEnemies();
-        TargetConstruction = _buildings.TargetConstruction;
-        _currentState.Enter(TargetConstruction, _animator);
-
-
+        _targetConstruction = _buildings.TargetConstruction;
+        _currentState.Enter(_targetConstruction, _animator);
     }
 
     private void Update()
     {
-        _buildings.SortEnemies();
-        TargetConstruction = _buildings.TargetConstruction;
-        _currentState.Enter(TargetConstruction, _animator);
+        _targetConstruction = _buildings.TargetConstruction;
+
+        foreach (var transition in _currentState.Transitions)
+        {
+            transition.enabled = true;
+            transition.Init(_targetConstruction);
+        }
 
         if (_currentState == null)
             return;
@@ -44,6 +48,11 @@ public class Enemy : MonoBehaviour
 
         if (nextState != null)
             Transit(nextState);
+
+        if(_healthContainer.Health <= 0 && _currentState != _brokenState)
+        {
+            Transit(_brokenState);
+        }
     }
 
     private void Transit(EnemyState nextState)
@@ -54,6 +63,6 @@ public class Enemy : MonoBehaviour
         _currentState = nextState;
 
         if (_currentState != null)
-            _currentState.Enter(TargetConstruction, _animator);
+            _currentState.Enter(_targetConstruction, _animator);
     }
 }

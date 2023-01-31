@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class FoundBuildings : MonoBehaviour
 {
-    [SerializeField] private PeacefulConstruction _targetConstruction;
+    private PeacefulConstruction _targetConstruction;
 
     public PeacefulConstruction TargetConstruction => _targetConstruction;
 
     private List<PeacefulConstruction> _constructions = new List<PeacefulConstruction>();
 
-    private void Start()
+    private void Update()
     {
         if (_constructions.Count > 0)
             SortEnemies();
@@ -51,7 +51,6 @@ public class FoundBuildings : MonoBehaviour
             {
                 shortestDistance = distanceToConstruction;
                 nearestEnemy = construction;
-                _targetConstruction = nearestEnemy;
             }
 
             if (nearestEnemy != null && nearestEnemy.IsAlive())

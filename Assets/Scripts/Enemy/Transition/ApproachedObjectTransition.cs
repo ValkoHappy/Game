@@ -8,7 +8,10 @@ public class ApproachedObjectTransition : EnemyTransition
 
     private void Update()
     {
-        if (Vector3.Distance(PeacefulConstruction.transform.position, transform.position) < _approachedDistance)
-            NeedTransit = true;
+        if(PeacefulConstruction != null)
+        {
+            if (Vector3.Distance(PeacefulConstruction.transform.position, transform.position) < _approachedDistance)
+                NeedTransit = true;
+        }
     }
 }

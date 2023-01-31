@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 8910514400378040410}
   - component: {fileID: 4418293024778004939}
   - component: {fileID: 356011780}
+  - component: {fileID: 8436481162425632109}
   m_Layer: 0
   m_Name: Cube.001
   m_TagString: Untagged
@@ -350,7 +351,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1747c2abfe32d1043b4cd53bb81898be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _recoilDistance: 0.2
+  _recoilDistance: 0.25
+  _recoilSpeed: 10
+--- !u!65 &8436481162425632109
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3332377059864595402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.018504644, y: 0.010000001, z: 0.010000001}
+  m_Center: {x: -0.004252336, y: 0, z: 0.0000000017029899}
 --- !u!1 &3339321643284393164
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +691,7 @@ GameObject:
   - component: {fileID: 5388518271078800970}
   - component: {fileID: 5388518271078800971}
   - component: {fileID: 5388518271078800968}
+  - component: {fileID: 2019311054}
   m_Layer: 0
   m_Name: Machine gun installations Level 2 (1) 1
   m_TagString: Untagged
@@ -758,6 +774,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!95 &2019311054
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5388518271078800969}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c660364970d4f404f935fecdb49547cf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6496971399204812427
 GameObject:
   m_ObjectHideFlags: 0

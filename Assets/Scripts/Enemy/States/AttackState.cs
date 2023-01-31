@@ -14,6 +14,10 @@ public class AttackState : EnemyState
         StartAttack();
     }
 
+    private void Update()
+    {
+    }
+
     private void StartAttack()
     {
         if (_attack != null)
