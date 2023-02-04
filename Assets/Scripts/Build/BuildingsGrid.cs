@@ -1,73 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BuildingsGrid : MonoBehaviour
 {
-    [SerializeField] private Vector2Int _grigSize;
+    [SerializeField] private Vector2Int _gridSize;
+    [SerializeField] private Transform _container;
 
     private Building[,] _grid;
-    private Building _flayingBuilding;
+    private Building _flyingBuilding;
     private Camera _camera;
 
     private void Awake()
     {
-        _grid = new Building[_grigSize.x, _grigSize.y];
+        _grid = new Building[_gridSize.x, _gridSize.y];
         _camera = Camera.main;
     }
 
     public void CreateBuilding(Building buildingPrefab)
     {
-        if(_flayingBuilding != null)
+        if(_flyingBuilding != null)
         {
-            Destroy(_flayingBuilding.gameObject);
+            Destroy(_flyingBuilding.gameObject);
         }
 
-        _flayingBuilding = Instantiate(buildingPrefab);
+        _flyingBuilding = Instantiate(buildingPrefab, _container);
     }
 
     private void Update()
     {
-        if(_flayingBuilding != null)
+        if (_flyingBuilding != null)
         {
-            Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+            var groundPlane = new Plane(Vector3.up, Vector3.zero);
             Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
 
-            if(groundPlane.Raycast(ray, out float position))
+            if (groundPlane.Raycast(ray, out float position))
             {
                 Vector3 worldPosition = ray.GetPoint(position);
-
                 int x = Mathf.RoundToInt(worldPosition.x);
                 int y = Mathf.RoundToInt(worldPosition.z);
 
-                bool isAvailable = true;
-
-                if(x > _grigSize.x - _flayingBuilding.Size.x)
-                    isAvailable = false;
-                if(y > _grigSize.y - _flayingBuilding.Size.y)
-                    isAvailable = false;
-
-                if(isAvailable && IsPlaceTaken(x, y))
-                    isAvailable = false;
-
-                _flayingBuilding.transform.position = new Vector3(x, 0, y);
-                _flayingBuilding.SetTransparent(isAvailable);
-
-                if (isAvailable && Input.GetMouseButtonDown(0))
+                if (x < 0 || y < 0 || x > _gridSize.x - _flyingBuilding.TileSize.x || y > _gridSize.y - _flyingBuilding.TileSize.y || IsPlaceTaken(x, y))
                 {
-                    PlaceFlyingBuilding(x, y);
+                    _flyingBuilding.SetTransparent(false);
                 }
+                else
+                {
+                    _flyingBuilding.SetTransparent(true);
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        PlaceFlyingBuilding(x, y);
+                    }
+                }
+
+                _flyingBuilding.transform.position = new Vector3(x, 0, y);
+                Debug.Log(x + "" + y);
             }
         }
     }
-
     private bool IsPlaceTaken(int placeX, int placeY)
     {
-        for (int x = 0; x < _flayingBuilding.Size.x; x++)
+        for (int i = 0; i < _flyingBuilding.TileSize.x; i++)
         {
-            for (int y = 0; y < _flayingBuilding.Size.y; y++)
+            for (int j = 0; j < _flyingBuilding.TileSize.y; j++)
             {
-                if(_grid[placeX + x, placeY + y] != null)
+                if (_grid[placeX + i, placeY + j] != null)
                     return true;
             }
         }
@@ -76,27 +74,27 @@ public class BuildingsGrid : MonoBehaviour
 
     private void PlaceFlyingBuilding(int placeX, int placeY)
     {
-        for (int x = 0; x < _flayingBuilding.Size.x; x++)
+        for (int i = 0; i < _flyingBuilding.TileSize.x; i++)
         {
-            for (int y = 0; y < _flayingBuilding.Size.y; y++)
+            for (int j = 0; j < _flyingBuilding.TileSize.y; j++)
             {
-                _grid[placeX + x, placeY + y] = _flayingBuilding;
+                _grid[placeX + i, placeY + j] = _flyingBuilding;
             }
         }
 
-        _flayingBuilding = null;
-        _flayingBuilding.SetNormal();
+        _flyingBuilding.SetNormal();
+        _flyingBuilding = null;
     }
 
-    private void OnDrawGizmos()
-    {
-        for (int x = 0; x < _grigSize.x; x++)
-        {
-            for (int y = 0; y < _grigSize.y; y++)
-            {
-                Gizmos.color = new Color(0, 1, 0, 0.3f);
-                Gizmos.DrawCube(transform.position + new Vector3(x, 0, y), new Vector3(1, .1f, 1));
-            }
-        }
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    for (int x = 0; x < _gridSize.x; x++)
+    //    {
+    //        for (int y = 0; y < _gridSize.y; y++)
+    //        {
+    //            Gizmos.color = new Color(0, 1, 0, 0.3f);
+    //            Gizmos.DrawCube(transform.position + new Vector3(x, 0, y), new Vector3(1, .1f, 1));
+    //        }
+    //    }
+    //}
 }

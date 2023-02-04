@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class WindGeneratorRotateAnimation : MonoBehaviour
+public class WindGeneratorRotateAnimation : MinerAnimation
 {
-    [SerializeField] private float _duration;
-
-    public void Start()
+    public override void OnDeliveryBuilding()
     {
-        transform.DORotate(new Vector3(0,0, 360), _duration, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1);
+        transform.DORotate(new Vector3(0, 0, 360), Duration, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1);
     }
 }

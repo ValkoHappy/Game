@@ -3,12 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OilGeneratorRotateAnimation : MonoBehaviour
+public class OilGeneratorRotateAnimation : MinerAnimation
 {
-    [SerializeField] private float _duration;
-
-    public void Start()
+    public override void OnDeliveryBuilding()
     {
-        transform.DOLocalRotate(new Vector3(-105, 0, 0), _duration).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
+        transform.DOLocalRotate(new Vector3(-105, 0, 0), Duration).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
     }
 }

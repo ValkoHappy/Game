@@ -1,43 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Building : MonoBehaviour
 {
     [SerializeField] private Vector2Int _size;
 
     private Renderer[] _renderers;
+    private Color[] _originalColors;
 
-    public Vector2Int Size => _size;
+    public event UnityAction DeliveryBuilding;
+
+    public Vector2Int TileSize => _size;
 
     private void Awake()
     {
         _renderers = GetComponentsInChildren<Renderer>();
+        _originalColors = new Color[_renderers.Length];
+        for (int i = 0; i < _renderers.Length; i++)
+        {
+            _originalColors[i] = _renderers[i].material.color;
+        }
     }
 
     public void SetTransparent(bool available)
     {
         if (available)
         {
-            foreach (var renderer in _renderers)
-            {
-                renderer.material.color = Color.green;
-            }
+            SetColor(Color.green);
         }
         else
         {
-            foreach (var renderer in _renderers)
-            {
-                renderer.material.color = Color.red;
-            }
+            SetColor(Color.red);
         }
     }
 
     public void SetNormal()
     {
+        for (int i = 0; i < _renderers.Length; i++)
+        {
+            _renderers[i].material.color = _originalColors[i];
+        }
+        DeliveryBuilding?.Invoke();
+    }
+
+    private void SetColor(Color color)
+    {
         foreach (var renderer in _renderers)
         {
-            renderer.material.color = Color.white;
+            renderer.material.color = color;
         }
     }
 
