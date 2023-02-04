@@ -227,6 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 2
   _speed: 30
+  _explosionRadius: 1
   _yOffSet: 1
 --- !u!1 &8401881135752593587
 GameObject:

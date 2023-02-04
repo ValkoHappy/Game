@@ -6,10 +6,11 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float _damage;
     [SerializeField] private float _speed;
+    [SerializeField] private float _explosionRadius;
     [SerializeField] private float _yOffSet;
 
     private Vector3 _targetEnemy;
-    private Vector3 _targetDirection;
+    private string _enemyTag = "Enemy";
 
     private void Update()
     {
@@ -25,6 +26,23 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void Explode()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, _explosionRadius);
+
+        foreach (var collider in colliders)
+        {
+            if (collider.tag == _enemyTag)
+            {
+                //if (enemy == collider)
+                //{
+                //    enemy.ApplyDamage(_damage);
+                //}
+            }
+        }
+    }
+
 
     public void Seek(Transform transform)
     {

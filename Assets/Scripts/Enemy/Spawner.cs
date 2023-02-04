@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
         Constructions = FindObjectsOfType<PeacefulConstruction>();
     }
 
-    private void Start()
+    public void StartSpawn()
     {
         StartCoroutine(Spawn());
     }

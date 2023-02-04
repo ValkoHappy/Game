@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(Animator), typeof(FoundBuildings))]
+[RequireComponent(typeof(Animator), typeof(Rigidbody), typeof(FoundBuildings))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyState _firstState;
@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private FoundBuildings _buildings;
     private EnemyState _currentState;
     private Animator _animator;
+    private Rigidbody _rigidbody;
     private HealthContainer _healthContainer;
 
     private PeacefulConstruction _targetConstruction;
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour
     {
         _buildings = GetComponent<FoundBuildings>();
         _animator = GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody>();
         _targetConstruction = FindObjectOfType<PeacefulConstruction>();
         _healthContainer = GetComponentInChildren<HealthContainer>();
     }
@@ -28,7 +30,7 @@ public class Enemy : MonoBehaviour
     {
         _currentState = _firstState;
         _targetConstruction = _buildings.TargetConstruction;
-        _currentState.Enter(_targetConstruction, _animator);
+        _currentState.Enter(_targetConstruction, _animator, _rigidbody);
     }
 
     private void Update()
@@ -63,6 +65,13 @@ public class Enemy : MonoBehaviour
         _currentState = nextState;
 
         if (_currentState != null)
-            _currentState.Enter(_targetConstruction, _animator);
+            _currentState.Enter(_targetConstruction, _animator, _rigidbody);
     }
+
+    //public void ApplyDamage(Rigidbody attachedBody, float force)
+    //{
+    //    Vector3 direction = (transform.position - attachedBody.position);
+    //    direction.y = 0;
+    //    _rigidbody.AddForce(direction.normalized * force, ForceMode.Impulse);
+    //}
 }

@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class EnemyCollision : MonoBehaviour
 {
     private bool _isAlive;
+    private Enemy _enemy;
     public HealthContainer _healthContainer { get; protected set; }
 
     public event UnityAction<EnemyCollision> Died;
@@ -14,6 +15,7 @@ public class EnemyCollision : MonoBehaviour
     private void Awake()
     {
         _healthContainer = GetComponent<HealthContainer>();
+        _enemy = GetComponentInParent<Enemy>();
     }
 
     private void OnEnable()
@@ -48,5 +50,6 @@ public class EnemyCollision : MonoBehaviour
     public void ApplyDamage(float damage)
     {
         _healthContainer.TakeDamage((int)damage);
+        //_enemy.ApplyDamage();
     }
 }

@@ -9,13 +9,15 @@ public class EnemyState : MonoBehaviour
     public EnemyTransition[] Transitions => _transitions;
     public PeacefulConstruction PeacefulConstruction { get; private set; }
     public Animator Animator { get; private set; }
+    public Rigidbody Rigidbody { get; private set; }
 
-    public void Enter(PeacefulConstruction peacefulConstruction, Animator animator)
+    public void Enter(PeacefulConstruction peacefulConstruction, Animator animator, Rigidbody rigidbody)
     {
         if (enabled == false)
         {
             PeacefulConstruction = peacefulConstruction;
             Animator = animator;
+            Rigidbody = rigidbody;
 
             enabled = true;
 
