@@ -54,8 +54,10 @@ public class BuildingsGrid : MonoBehaviour
                     }
                 }
 
-                _flyingBuilding.transform.position = new Vector3(x, 0, y);
-                Debug.Log(x + "" + y);
+                if(_flyingBuilding != null)
+                {
+                    _flyingBuilding.transform.position = new Vector3(x, 0, y);
+                }
             }
         }
     }

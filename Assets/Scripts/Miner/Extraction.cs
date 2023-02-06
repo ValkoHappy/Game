@@ -26,7 +26,10 @@ public class Extraction : MonoBehaviour
         {
             StopCoroutine(_extract);
         }
-        _extract = StartCoroutine(Extract());
+        if(_moneyContainer != null)
+        {
+            _extract = StartCoroutine(Extract());
+        }
     }
 
     private IEnumerator Extract()
