@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6755059516262583601}
   - component: {fileID: 1286061396890146125}
-  m_Layer: 0
+  - component: {fileID: 4834233936895676452}
+  m_Layer: 8
   m_Name: Fence
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +47,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _size: {x: 1, y: 1}
+--- !u!114 &4834233936895676452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4924790092110237511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb77a1c872215946adb0c56b7480bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 10
+  fencePostLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1001 &437394779502664319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53,6 +70,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6755059516262583601}
     m_Modifications:
+    - target: {fileID: 624355420301765259, guid: f87e82da6eb1a54489e5942619c1efe7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 992860693887912616, guid: f87e82da6eb1a54489e5942619c1efe7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2916027498115344060, guid: f87e82da6eb1a54489e5942619c1efe7, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6320243847716077948, guid: f87e82da6eb1a54489e5942619c1efe7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -100,6 +129,10 @@ PrefabInstance:
     - target: {fileID: 6700745911452523462, guid: f87e82da6eb1a54489e5942619c1efe7, type: 3}
       propertyPath: m_Name
       value: 'fence 1 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700745911452523462, guid: f87e82da6eb1a54489e5942619c1efe7, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f87e82da6eb1a54489e5942619c1efe7, type: 3}
