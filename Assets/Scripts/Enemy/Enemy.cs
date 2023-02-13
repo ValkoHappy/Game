@@ -17,6 +17,25 @@ public class Enemy : MonoBehaviour
 
     private PeacefulConstruction _targetConstruction;
 
+    public EnemyState CurrentState => _currentState;
+    public EnemyState BrokenState => _brokenState;
+
+    private void OnEnable()
+    {
+        _healthContainer.Died += OnEnemyDied;
+    }
+
+    private void OnDisable()
+    {
+        _healthContainer.Died += OnEnemyDied;
+    }
+
+    private void OnEnemyDied()
+    {
+        enabled = false;
+        _rigidbody.constraints = RigidbodyConstraints.None;
+    }
+
     private void Awake()
     {
         _buildings = GetComponent<FoundBuildings>();
@@ -68,10 +87,16 @@ public class Enemy : MonoBehaviour
             _currentState.Enter(_targetConstruction, _animator, _rigidbody);
     }
 
-    //public void ApplyDamage(Rigidbody attachedBody, float force)
-    //{
-    //    Vector3 direction = (transform.position - attachedBody.position);
-    //    direction.y = 0;
-    //    _rigidbody.AddForce(direction.normalized * force, ForceMode.Impulse);
-    //}
+    public void ApplayDamage(Rigidbody rigidbody, int damage, int force)
+    {
+        if (_currentState != _brokenState)
+        {
+            _healthContainer.TakeDamage(damage);
+            if(_healthContainer.Health <= 0)
+            {
+                Transit(_brokenState);
+                _brokenState.ApplyDamage(rigidbody, force);
+            }
+        }
+    }
 }

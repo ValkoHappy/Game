@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(HealthContainer), typeof(BoxCollider))]
-public class EnemyCollision : MonoBehaviour
+public class EnemyCollision : MonoBehaviour, IDamageable
 {
     private bool _isAlive;
     private Enemy _enemy;
@@ -51,5 +51,15 @@ public class EnemyCollision : MonoBehaviour
     {
         _healthContainer.TakeDamage((int)damage);
         //_enemy.ApplyDamage();
+    }
+
+    public bool ApplayDamage(Rigidbody rigidbody, int damage, int force)
+    {
+        if (_enemy.CurrentState != _enemy.BrokenState)
+        {
+            _enemy.ApplayDamage(rigidbody, damage, force);
+            return true;
+        }
+        return false;
     }
 }

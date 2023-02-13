@@ -10,13 +10,6 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Vector2Int _spawnPoint;
     [SerializeField] private Transform _conteiner;
 
-    public PeacefulConstruction[] Constructions { get; private set; }
-
-    private void Awake()
-    {
-        Constructions = FindObjectsOfType<PeacefulConstruction>();
-    }
-
     public void StartSpawn()
     {
         StartCoroutine(Spawn());

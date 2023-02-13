@@ -9,7 +9,15 @@ public class BrokenState : EnemyState
 
     private void Update()
     {
+        
+    }
+
+    public void ApplyDamage(Rigidbody attachedBody, float force)
+    {
         //Animator.SetTrigger("");
+        Vector3 direction = (transform.position - attachedBody.position);
+        direction.y = 0;
+        Rigidbody.AddForce(direction.normalized * force, ForceMode.Impulse);
         Died?.Invoke();
     }
 }

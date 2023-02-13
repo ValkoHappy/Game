@@ -5,12 +5,17 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private int _damage;
+    [SerializeField] private int _force;
     [SerializeField] private float _speed;
     [SerializeField] private float _yOffSet;
 
     private Vector3 _targetEnemy;
+    private Rigidbody _rigidbody;
 
-    public int Damage => _damage;
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
@@ -30,14 +35,17 @@ public class Bullet : MonoBehaviour
     public void Seek(Transform transform)
     {
         _targetEnemy = transform.position;
+        _targetEnemy.y = transform.position.y + _yOffSet;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent(out EnemyCollision enemy))
         {
-            enemy.ApplyDamage(_damage);
-            Destroy(gameObject);
+            if(enemy.ApplayDamage(_rigidbody, _damage, _force))
+            {
+                Destroy(gameObject);
+            }
         }
         if (other.TryGetComponent(out Ground ground))
         {
