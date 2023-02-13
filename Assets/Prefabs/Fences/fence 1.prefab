@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2647658019136789895}
   - component: {fileID: 5467164623098518748}
   - component: {fileID: 2867954524311999250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder.066
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1858402050984576275}
   - component: {fileID: 4883901704111324329}
   - component: {fileID: 1482927533464833479}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder.068
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 7631984495411731208}
   - component: {fileID: 2401605190814111609}
   - component: {fileID: 2236973460204990640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder.067
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,8 @@ GameObject:
   - component: {fileID: 1537834493431049988}
   - component: {fileID: 8760232460246089300}
   - component: {fileID: 7515152290696190450}
-  m_Layer: 0
+  - component: {fileID: 8136369502271582438}
+  m_Layer: 8
   m_Name: fence 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,3 +325,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9972228, y: 1.494001, z: 0.25947}
   m_Center: {x: 0.8844952, y: 0.7616915, z: -0.0018196106}
+--- !u!114 &8136369502271582438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6700745911452523462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb77a1c872215946adb0c56b7480bf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _distanceToCheck: 2
+  _thresholdAngle: 30

@@ -791,7 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9709eec226425ef4e9d17c36ba87aac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 8374883127855858956, guid: 2b604ab3ddffd99489308cc39ba93394, type: 3}
+  _bullet: {fileID: 6180547932860481158, guid: 2b604ab3ddffd99489308cc39ba93394, type: 3}
   _shootPoint:
   - {fileID: 22356744550172035}
   _waitForSecounds: 1
