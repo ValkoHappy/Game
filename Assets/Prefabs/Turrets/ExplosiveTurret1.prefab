@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 258898433375689119}
   m_Layer: 0
   m_Name: ExplosiveTurret1
-  m_TagString: Untagged
+  m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

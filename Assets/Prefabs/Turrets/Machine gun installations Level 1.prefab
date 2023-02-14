@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 5387095762091309883}
   m_Layer: 0
   m_Name: Machine gun installations Level 1
-  m_TagString: Untagged
+  m_TagString: target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
