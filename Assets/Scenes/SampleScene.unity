@@ -13651,7 +13651,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _templateEnemy: {fileID: 1305874152407787249, guid: cd3240ae89b778a4eb6731f9e4a12668, type: 3}
-  _spawnCount: 30
+  _spawnCount: 3
   _spawnDelay: 0.1
   _spawnPoint: {x: -20, y: 20}
   _conteiner: {fileID: 246482034}
@@ -15197,7 +15197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _templateEnemy: {fileID: 1305874152407787249, guid: cd3240ae89b778a4eb6731f9e4a12668, type: 3}
-  _spawnCount: 30
+  _spawnCount: 3
   _spawnDelay: 0.1
   _spawnPoint: {x: -20, y: 20}
   _conteiner: {fileID: 246482034}
@@ -18957,7 +18957,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 459968, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 459968, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
       propertyPath: m_LocalPosition.x
@@ -19005,11 +19005,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11455738, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
       propertyPath: limitX
-      value: 70
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 11455738, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
       propertyPath: limitY
-      value: 40
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 11455738, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
       propertyPath: lastTab
@@ -38141,7 +38141,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1604954688
 PrefabInstance:

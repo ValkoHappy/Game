@@ -947,7 +947,7 @@ Animator:
   m_GameObject: {fileID: 6611605807533283448}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4d40b52ba1511b84b956295bb642a479, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 339acc72d7327444ba1baefb9687a27e, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1035,6 +1035,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 6611605807533283434}
+  _numberOfAnimations: 3
+  _nameAnimation: Run
 --- !u!114 &6611605807533283433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1049,6 +1051,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 7821345651773666049}
+  _numberOfAnimations: 3
+  _nameAnimation: Attack
   _attackForce: 1
   _attackDelay: 1.5
 --- !u!114 &4543646122339591945
@@ -1064,6 +1068,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitions: []
+  _numberOfAnimations: 2
+  _nameAnimation: 
 --- !u!114 &6611605807533283434
 MonoBehaviour:
   m_ObjectHideFlags: 0

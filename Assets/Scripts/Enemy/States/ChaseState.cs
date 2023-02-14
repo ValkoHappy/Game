@@ -18,6 +18,8 @@ public class ChaseState : EnemyState
     private void OnEnable()
     {
         _agent.enabled = true;
+        int randomAnimation = Random.Range(0, 3);
+        Animator.SetInteger("Run", randomAnimation);
     }
 
     private void OnDisable()

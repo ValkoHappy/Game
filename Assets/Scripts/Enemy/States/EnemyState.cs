@@ -5,11 +5,14 @@ using UnityEngine;
 public class EnemyState : MonoBehaviour
 {
     [SerializeField] private EnemyTransition[] _transitions;
-
+    [SerializeField] private int _numberOfAnimations;
+    [SerializeField] private string _nameAnimation;
     public EnemyTransition[] Transitions => _transitions;
     public PeacefulConstruction PeacefulConstruction { get; private set; }
     public Animator Animator { get; private set; }
     public Rigidbody Rigidbody { get; private set; }
+
+    public int NumberOfAnimations => _numberOfAnimations;
 
     public void Enter(PeacefulConstruction peacefulConstruction, Animator animator, Rigidbody rigidbody)
     {
@@ -18,6 +21,7 @@ public class EnemyState : MonoBehaviour
             PeacefulConstruction = peacefulConstruction;
             Animator = animator;
             Rigidbody = rigidbody;
+            _numberOfAnimations = Animator.parameters.Length;
 
             enabled = true;
 
@@ -53,5 +57,11 @@ public class EnemyState : MonoBehaviour
         }
 
         enabled = false;
+    }
+
+    public void SetAnimation()
+    {
+        int randomAnimation = Random.Range(0, _numberOfAnimations);
+        Animator.SetInteger(_nameAnimation, randomAnimation);
     }
 }
