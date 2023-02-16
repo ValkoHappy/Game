@@ -23,8 +23,8 @@ public class ShootTurret : MonoBehaviour
     }
 
     public void StartShoot()
-    {  
-        if(_turret.TargetEnemy != null && _isShoot == true)
+    {
+        if (_turret.TargetEnemy != null && _isShoot == true && _turret.Construction.IsAlive())
         {
             _isShoott = false;
             if (_shoot != null)
@@ -32,6 +32,13 @@ public class ShootTurret : MonoBehaviour
                 StopCoroutine(_shoot);
             }
             _shoot = StartCoroutine(Shoot());
+        }
+        else
+        {
+            if (_shoot != null)
+            {
+                StopCoroutine(_shoot);
+            }
         }
     }
 
@@ -70,9 +77,12 @@ public class ShootTurret : MonoBehaviour
         {
             if (enemy != null)
             {
-                _isShoot = true;
-                if (_isShoott) 
-                    StartShoot();
+                if (_turret.Construction.IsAlive())
+                {
+                    _isShoot = true;
+                    if (_isShoott)
+                        StartShoot();
+                }
             }
         }
     }

@@ -1036,6 +1036,7 @@ MonoBehaviour:
   _transitions:
   - {fileID: 6611605807533283434}
   _numberOfAnimations: 3
+  _nameStateMachinAnimation: Run 0
   _nameAnimation: Run
 --- !u!114 &6611605807533283433
 MonoBehaviour:
@@ -1052,6 +1053,7 @@ MonoBehaviour:
   _transitions:
   - {fileID: 7821345651773666049}
   _numberOfAnimations: 3
+  _nameStateMachinAnimation: Attack 0
   _nameAnimation: Attack
   _attackForce: 1
   _attackDelay: 1.5
@@ -1069,7 +1071,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions: []
   _numberOfAnimations: 2
-  _nameAnimation: 
+  _nameStateMachinAnimation: Die 0
+  _nameAnimation: Die
 --- !u!114 &6611605807533283434
 MonoBehaviour:
   m_ObjectHideFlags: 0

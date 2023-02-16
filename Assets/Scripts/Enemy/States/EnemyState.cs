@@ -6,6 +6,7 @@ public class EnemyState : MonoBehaviour
 {
     [SerializeField] private EnemyTransition[] _transitions;
     [SerializeField] private int _numberOfAnimations;
+    [SerializeField] private string _nameStateMachinAnimation;
     [SerializeField] private string _nameAnimation;
     public EnemyTransition[] Transitions => _transitions;
     public PeacefulConstruction PeacefulConstruction { get; private set; }
@@ -61,6 +62,7 @@ public class EnemyState : MonoBehaviour
 
     public void SetAnimation()
     {
+        Animator.SetTrigger(_nameStateMachinAnimation);
         int randomAnimation = Random.Range(0, _numberOfAnimations);
         Animator.SetInteger(_nameAnimation, randomAnimation);
     }

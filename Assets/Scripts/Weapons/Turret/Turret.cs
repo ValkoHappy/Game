@@ -10,6 +10,8 @@ public class Turret : MonoBehaviour
     private ShootTurret _shootTurret;
     private List<EnemyCollision> _enemies;
     private PeacefulConstruction _construction;
+
+    public PeacefulConstruction Construction => _construction;
     public EnemyCollision TargetEnemy { get; private set; }
 
     private void Awake()
@@ -39,13 +41,17 @@ public class Turret : MonoBehaviour
 
             foreach (var target in _enemies)
             {
-                float distanceToEnemy = Vector3.Distance(transform.position, target.transform.position);
-
-                if (distanceToEnemy < shortestDistance)
+                if (target.IsAlive() && target != null) 
                 {
-                    shortestDistance = distanceToEnemy;
-                    nearestEnemy = target;
+                    float distanceToEnemy = Vector3.Distance(transform.position, target.transform.position);
+
+                    if (distanceToEnemy < shortestDistance)
+                    {
+                        shortestDistance = distanceToEnemy;
+                        nearestEnemy = target;
+                    }
                 }
+                
             }
 
             if (nearestEnemy != null && nearestEnemy.IsAlive())
