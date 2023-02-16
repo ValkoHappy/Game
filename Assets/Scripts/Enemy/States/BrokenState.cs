@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class BrokenState : EnemyState
 {
-    public float fadeTime = 3.0f;
+    [SerializeField] private float fadeTime = 3.0f;
 
     public event UnityAction Died;
 

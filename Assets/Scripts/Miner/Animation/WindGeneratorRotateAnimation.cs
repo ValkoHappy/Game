@@ -7,6 +7,6 @@ public class WindGeneratorRotateAnimation : MinerAnimation
 {
     public override void OnDeliveryBuilding()
     {
-        transform.DORotate(new Vector3(0, 0, 360), Duration, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1);
+        transform.DOLocalRotate(new Vector3(0, 0, 360), Duration, RotateMode.FastBeyond360).SetEase(Ease.Linear).SetLoops(-1);
     }
 }

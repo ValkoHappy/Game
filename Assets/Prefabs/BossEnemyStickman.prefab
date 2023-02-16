@@ -914,7 +914,7 @@ GameObject:
   - component: {fileID: 7821345651773666049}
   - component: {fileID: 3888545941431544330}
   m_Layer: 3
-  m_Name: EnemyStickman
+  m_Name: BossEnemyStickman
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1055,7 +1055,7 @@ MonoBehaviour:
   _numberOfAnimations: 3
   _nameStateMachinAnimation: Attack 0
   _nameAnimation: Attack
-  _attackForce: 1
+  _attackForce: 3
   _attackDelay: 1.5
 --- !u!114 &4543646122339591945
 MonoBehaviour:
@@ -1268,7 +1268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 1
+  _health: 5
 --- !u!1 &6611605807533283452
 GameObject:
   m_ObjectHideFlags: 0
