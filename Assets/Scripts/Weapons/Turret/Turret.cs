@@ -33,6 +33,10 @@ public class Turret : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             _partToRotate.rotation = Quaternion.Slerp(_partToRotate.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
         }
+        else if(TargetEnemy != null && TargetEnemy.IsAlive() == false)
+        {
+                _partToRotate.rotation = Quaternion.Slerp(_partToRotate.rotation, Quaternion.LookRotation(new Vector3(0,0,0)), Time.deltaTime * _rotationSpeed);
+        }
 
         if (_enemies.Count > 0)
         {
