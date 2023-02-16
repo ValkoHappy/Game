@@ -10,6 +10,7 @@ public class LobbyCameraAnimation : MonoBehaviour
     [SerializeField] private float _duration;
 
     private RTS_Camera rTS_Camera;
+    float time = 0;
 
     private void Awake()
     {
@@ -18,13 +19,22 @@ public class LobbyCameraAnimation : MonoBehaviour
 
     private void Start()
     {
-        rTS_Camera.enabled= false;
+        rTS_Camera.enabled = false;
         RotationCamera();
+    }
+
+    private void Update()
+    {
+        if(rTS_Camera.enabled == false)
+        {
+            time += Time.deltaTime;
+            if (time >= _duration)
+                rTS_Camera.enabled = true;
+        }
     }
 
     public void RotationCamera()
     {
-        transform.DOPath(_waypoints, _duration, PathType.Linear).SetOptions(true);
-        rTS_Camera.enabled = true;
+        transform.DOLocalPath(_waypoints, _duration, PathType.Linear);
     }
 }

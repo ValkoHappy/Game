@@ -28,11 +28,11 @@ public class Building : MonoBehaviour
     {
         if (available)
         {
-            SetColor(Color.green);
+            SetColor(new Color(0, 1, 0, 0.3f));
         }
         else
         {
-            SetColor(Color.red);
+            SetColor(new Color(1, 0, 0, 0.3f));
         }
     }
 
