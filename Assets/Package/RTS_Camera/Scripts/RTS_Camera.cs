@@ -175,7 +175,10 @@ namespace RTS_Cam
         private void Update()
         {
             if (!useFixedUpdate)
+            {
                 CameraUpdate();
+            }
+                
         }
 
         private void FixedUpdate()
