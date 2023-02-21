@@ -1,40 +1,88 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Fence : MonoBehaviour
 {
-    //[SerializeField] private float _distanceToCheck = 2f; // The distance at which to check for existing fences
-    //[SerializeField] private float _thresholdAngle = 30f; // The maximum angle difference between two fences for them to be considered connected
+    //[SerializeField] private float rotationSpeed;
+    //[SerializeField] private GameObject baseBoard; // the board that represents the base of the fence
+    //[SerializeField] private GameObject[] boards; // an array of all the fence boards
+
+    //private FenceCollision targetFence;
+    //private List<FenceCollision> fences;
+
+    //private void Start()
+    //{
+    //    fences = new List<FenceCollision>();
+    //}
 
     //private void Update()
     //{
-    //    // Check for existing fences and adjust this fence's rotation to match
-    //    Vector3 forward = transform.forward;
-    //    Collider[] hits = Physics.OverlapSphere(transform.position, _distanceToCheck);
-    //    foreach (Collider hit in hits)
+    //    if (targetFence != null)
     //    {
-    //        Fence otherFence = hit.GetComponent<Fence>();
-    //        if (otherFence == null || otherFence == this) continue;
+    //        Vector3 direction = targetFence.transform.position - baseBoard.transform.position;
+    //        Quaternion lookRotation = Quaternion.LookRotation(direction);
+    //        baseBoard.transform.rotation = Quaternion.Slerp(baseBoard.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
+    //    }
+    //}
 
-    //        Vector3 otherForward = otherFence.transform.forward;
-    //        float angle = Vector3.Angle(forward, otherForward);
-    //        if (angle < _thresholdAngle)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    FenceCollision fence = other.GetComponent<FenceCollision>();
+
+    //    if (fence != null)
+    //    {
+    //        fences.Add(fence);
+    //        SetTargetFence();
+    //    }
+    //}
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    FenceCollision fence = other.GetComponent<FenceCollision>();
+
+    //    if (fence != null)
+    //    {
+    //        fences.Remove(fence);
+    //        SetTargetFence();
+    //    }
+    //}
+
+    //private void SetTargetFence()
+    //{
+    //    if (fences.Count > 0)
+    //    {
+    //        float shortestDistance = float.MaxValue;
+    //        FenceCollision nearestFence = null;
+
+    //        foreach (var fence in fences)
     //        {
-    //            transform.rotation = Quaternion.LookRotation(otherForward);
-    //            break;
+    //            if (fence != null)
+    //            {
+    //                float distanceToFence = Vector3.Distance(baseBoard.transform.position, fence.transform.position);
+
+    //                if (distanceToFence < shortestDistance)
+    //                {
+    //                    shortestDistance = distanceToFence;
+    //                    nearestFence = fence;
+    //                }
+    //            }
+    //        }
+
+    //        if (nearestFence != null)
+    //        {
+    //            targetFence = nearestFence;
+    //        }
+    //        else
+    //        {
+    //            targetFence = null;
     //        }
     //    }
-
-    //    // If no existing fences were found, remove all but one column of the fence
-    //    if (transform.childCount > 1)
+    //    else
     //    {
-    //        Transform column = transform.GetChild(0);
-    //        for (int i = transform.childCount - 1; i > 0; i--)
-    //        {
-    //            Destroy(transform.GetChild(i).gameObject);
-    //        }
-    //        column.localPosition = Vector3.zero;
+    //        targetFence = null;
     //    }
     //}
 }
+
+
+

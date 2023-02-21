@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(HealthContainer), typeof(BoxCollider))]
+[RequireComponent(typeof(HealthContainer) /*typeof(BoxCollider)*/)]
 public class PeacefulConstruction : MonoBehaviour
 {
     public event UnityAction<PeacefulConstruction> Died;
