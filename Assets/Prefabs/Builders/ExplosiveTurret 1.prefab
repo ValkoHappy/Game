@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4281226740534289331}
   - component: {fileID: 7890604239668544683}
+  - component: {fileID: 8974067917039699084}
   m_Layer: 0
   m_Name: ExplosiveTurret 1
   m_TagString: target
@@ -46,6 +47,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _size: {x: 1, y: 1}
+--- !u!114 &8974067917039699084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192229615108014349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f62aef7495472e43a2e60949851f5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _label: "\u043F\u0443\u0448\u0430\u0447\u043A\u0430"
+  _price: 20
+  _icon: {fileID: 0}
+  _isBuyed: 0
 --- !u!1001 &7737010437314647067
 PrefabInstance:
   m_ObjectHideFlags: 0

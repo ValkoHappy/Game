@@ -795,6 +795,7 @@ MonoBehaviour:
   _shootPoint:
   - {fileID: 22356744550172035}
   _waitForSecounds: 1
+  _particleShoot: {fileID: 19809874, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}
 --- !u!114 &3235370129602854259
 MonoBehaviour:
   m_ObjectHideFlags: 0

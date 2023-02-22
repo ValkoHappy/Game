@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6755059516262583601}
   - component: {fileID: 1286061396890146125}
+  - component: {fileID: 1302338927222909172}
   m_Layer: 8
   m_Name: Fence
   m_TagString: target
@@ -46,6 +47,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _size: {x: 1, y: 1}
+--- !u!114 &1302338927222909172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4924790092110237511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f62aef7495472e43a2e60949851f5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _label: 
+  _price: 0
+  _icon: {fileID: 0}
+  _isBuyed: 0
 --- !u!1001 &437394779502664319
 PrefabInstance:
   m_ObjectHideFlags: 0

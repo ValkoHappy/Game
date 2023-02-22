@@ -8,6 +8,7 @@ public class ShootTurret : MonoBehaviour
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform[] _shootPoint;
     [SerializeField] private float _waitForSecounds;
+    [SerializeField] private ParticleSystem _particleShoot;
 
     private Turret _turret;
     private RecoilAnimation _recoilAnimation;
@@ -55,6 +56,9 @@ public class ShootTurret : MonoBehaviour
     public void CreateBullet(Transform shootPoint)
     {
         Bullet bullet = Instantiate(_bullet, shootPoint.position, Quaternion.identity);
+        _particleShoot.transform.position = shootPoint.position;
+        _particleShoot.Play();
+        Instantiate(_particleShoot, shootPoint.position, Quaternion.identity);
         bullet.Seek(_turret.TargetEnemy.transform);
     }
 

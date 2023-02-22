@@ -2387,6 +2387,7 @@ MonoBehaviour:
   - {fileID: 9015936730077058747}
   - {fileID: 9015936731686733926}
   _waitForSecounds: 0.5
+  _particleShoot: {fileID: 19809874, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}
 --- !u!135 &9015936730533883223
 SphereCollider:
   m_ObjectHideFlags: 0
