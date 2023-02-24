@@ -6,6 +6,9 @@ using UnityEngine.Events;
 [RequireComponent(typeof(HealthContainer) /*typeof(BoxCollider)*/)]
 public class PeacefulConstruction : MonoBehaviour
 {
+    [SerializeField] private float _bounceForce;
+    [SerializeField] private float _bounceRadius;
+
     public event UnityAction<PeacefulConstruction> Died;
 
     public event UnityAction Damaged;
@@ -48,6 +51,17 @@ public class PeacefulConstruction : MonoBehaviour
     {
         //enabled = false;
         //Destroy(gameObject);
+        Break();
         Died?.Invoke(this);
+    }
+
+    private void Break()
+    {
+        BuildingDetail[] buildingDetails = GetComponentsInChildren<BuildingDetail>();
+
+        foreach (var detail in buildingDetails)
+        {
+            detail.Bounce(_bounceForce, transform.position, _bounceRadius);
+        }
     }
 }

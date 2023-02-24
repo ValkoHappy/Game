@@ -6,7 +6,8 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Enemy _templateEnemy;
     [SerializeField] private Enemy _templateMiniBossEnemy;
-    [SerializeField] private int _spawnCount;
+    [SerializeField] private int _spawnEnemyCount;
+    [SerializeField] private int _spawnMiniBossEnemyCount;
     [SerializeField] private float _spawnDelay;
     [SerializeField] private Vector2Int _spawnPoint;
     [SerializeField] private Transform _conteiner;
@@ -28,21 +29,17 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator Spawn()
     {
-        if (_spawnCount > 0)
+        if (_spawnEnemyCount > 0)
         {
-            numderRundom = Random.Range(1, 100);
-            if (number <= numderRundom)
-            {
-                Instantiate(_templateMiniBossEnemy, SpawnPosition(), Quaternion.identity, _conteiner);
-            }
-            else if(number >= numderRundom)
-            {
-                Instantiate(_templateEnemy, SpawnPosition(), Quaternion.identity, _conteiner);
-            }
-            numderRundom = 0;
-            _spawnCount--;
-            yield return new WaitForSeconds(_spawnDelay);
+            Instantiate(_templateEnemy, SpawnPosition(), Quaternion.identity, _conteiner);
+            _spawnEnemyCount--;
         }
+        if (_spawnMiniBossEnemyCount > 0)
+        {
+            Instantiate(_templateMiniBossEnemy, SpawnPosition(), Quaternion.identity, _conteiner);
+            _spawnMiniBossEnemyCount--;
+        }
+        yield return new WaitForSeconds(_spawnDelay);
 
         StartSpawn();
     }

@@ -9,10 +9,12 @@ public class Building : MonoBehaviour
 
     private Renderer[] _renderers;
     private Color[] _originalColors;
+    private bool _isBuilding;
 
     public event UnityAction DeliveryBuilding;
 
     public Vector2Int TileSize => _size;
+    public bool IsBuilding => _isBuilding;
 
     private void Awake()
     {
@@ -29,10 +31,12 @@ public class Building : MonoBehaviour
         if (available)
         {
             SetColor(new Color(0, 1, 0, 0.3f));
+            _isBuilding = true;
         }
         else
         {
             SetColor(new Color(1, 0, 0, 0.3f));
+            _isBuilding = false;
         }
     }
 

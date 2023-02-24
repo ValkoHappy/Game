@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private int _force;
     [SerializeField] private float _speed;
     [SerializeField] private float _yOffSet;
+    [SerializeField] private ParticleSystem _particle;
 
     private Vector3 _targetEnemy;
     private Rigidbody _rigidbody;
@@ -44,6 +45,12 @@ public class Bullet : MonoBehaviour
         {
             if(enemy.ApplayDamage(_rigidbody, _damage, _force))
             {
+                if(_particle!= null)
+                {
+                    _particle.transform.position = transform.position;
+                    _particle.Play();
+                }
+                Instantiate(_particle);
                 Destroy(gameObject);
             }
         }

@@ -57,7 +57,7 @@ public class ShootTurret : MonoBehaviour
     {
         Bullet bullet = Instantiate(_bullet, shootPoint.position, Quaternion.identity);
         _particleShoot.transform.position = shootPoint.position;
-        _particleShoot.Play();
+        //_particleShoot.Play();
         Instantiate(_particleShoot, shootPoint.position, Quaternion.identity);
         bullet.Seek(_turret.TargetEnemy.transform);
     }

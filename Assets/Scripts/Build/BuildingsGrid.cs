@@ -11,6 +11,7 @@ public class BuildingsGrid : MonoBehaviour
     private Building[,] _grid;
     private Building _flyingBuilding;
     private Camera _camera;
+    private bool _isBuilding;
 
     private void Awake()
     {
@@ -86,6 +87,23 @@ public class BuildingsGrid : MonoBehaviour
 
         _flyingBuilding.SetNormal();
         _flyingBuilding = null;
+    }
+
+    public void PlaceBuilding()
+    {
+        if (_flyingBuilding != null && _flyingBuilding.IsBuilding == true)
+        {
+            //PlaceFlyingBuilding(x, y);
+        }
+    }
+
+    public void RemoveBuilding()
+    {
+        if (_flyingBuilding != null && _flyingBuilding.IsBuilding == false)
+        {
+            Destroy(_flyingBuilding.gameObject);
+            _flyingBuilding = null;
+        }
     }
 
     //private void OnDrawGizmos()

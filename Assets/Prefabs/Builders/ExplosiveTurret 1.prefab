@@ -63,6 +63,7 @@ MonoBehaviour:
   _price: 20
   _icon: {fileID: 0}
   _isBuyed: 0
+  _buildingPrefab: {fileID: 7890604239668544683}
 --- !u!1001 &7737010437314647067
 PrefabInstance:
   m_ObjectHideFlags: 0

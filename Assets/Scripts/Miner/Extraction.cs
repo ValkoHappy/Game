@@ -1,7 +1,9 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PeacefulConstruction))]
 public class Extraction : MonoBehaviour
 {
     [SerializeField] private int _amountMoneyProduced;
@@ -9,10 +11,14 @@ public class Extraction : MonoBehaviour
 
     private MoneyContainer _moneyContainer;
     private Coroutine _extract;
+    private PeacefulConstruction _peacefulConstruction;
+    private MinerAnimation _minerAnimation;
 
     private void Awake()
     {
         _moneyContainer = FindObjectOfType<MoneyContainer>();
+        _peacefulConstruction = GetComponent<PeacefulConstruction>();
+        _minerAnimation = GetComponentInChildren<MinerAnimation>();
     }
 
     private void Start()
@@ -22,13 +28,17 @@ public class Extraction : MonoBehaviour
 
     private void StartExtract()
     {
-        if (_extract != null)
+        if (_moneyContainer != null && _peacefulConstruction.IsAlive())
         {
-            StopCoroutine(_extract);
-        }
-        if(_moneyContainer != null)
-        {
+            if (_extract != null)
+            {
+                StopCoroutine(_extract);
+            }
             _extract = StartCoroutine(Extract());
+        }
+        else
+        {
+            _minerAnimation.Pause();
         }
     }
 
@@ -39,6 +49,13 @@ public class Extraction : MonoBehaviour
         _moneyContainer.GetMoney(_amountMoneyProduced);
         yield return waitForSecounds;
 
-        StartExtract();
+        if (_peacefulConstruction.IsAlive())
+        {
+            StartExtract();
+        }
+        else
+        {
+            _minerAnimation.Pause();
+        }
     }
 }

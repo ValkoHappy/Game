@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BuilderView : MonoBehaviour
@@ -13,6 +14,7 @@ public class BuilderView : MonoBehaviour
     [SerializeField] private Button _sellButton;
 
     private StatsBuilding _building;
+    public event UnityAction<StatsBuilding, BuilderView> SellButtonClick;
 
     private void OnEnable()
     {
@@ -22,6 +24,14 @@ public class BuilderView : MonoBehaviour
     private void OnDisable()
     {
         _sellButton.onClick.RemoveListener(OnButtonClick);
+    }
+
+    private void TryLockItem()
+    {
+        if (_building.IsBuyed)
+        {
+            _sellButton.interactable = false;
+        }
     }
 
     public void Render(StatsBuilding building)
@@ -34,6 +44,6 @@ public class BuilderView : MonoBehaviour
 
     private void OnButtonClick()
     {
-
+        SellButtonClick?.Invoke(_building, this);
     }
 }
