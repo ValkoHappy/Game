@@ -7,6 +7,7 @@ public class Game : MonoBehaviour
 {
     [SerializeField] private MainMenuScreen _mainMenuScreen;
     [SerializeField] private ShopScreen _shopScreen;
+    [SerializeField] private SettingMenuScreen _settingMenuScreen;
 
     [SerializeField] private RTS_Camera _rTS_Camera;
     [SerializeField] private Spawner _spawner;
@@ -17,6 +18,7 @@ public class Game : MonoBehaviour
     {
         _mainMenuScreen.Close();
         _shopScreen.Close();
+        _settingMenuScreen.Close();
     }
 
     private void Update()
@@ -32,16 +34,22 @@ public class Game : MonoBehaviour
     {
         _mainMenuScreen.PlayButtonClick += OnStartGame;
         _mainMenuScreen.ShopButtonClick += OnShopScreen;
+        _mainMenuScreen.SettingButtonClick += OnSettingMenuScreen;
 
         _shopScreen.ExitButtonClick += OnMainMenuScreen;
+
+        _settingMenuScreen.ExitButtonClick += OnMainMenuScreen;
     }
 
     private void OnDisable()
     {
         _mainMenuScreen.PlayButtonClick -= OnStartGame;
-        _mainMenuScreen.ShopButtonClick += OnShopScreen;
+        _mainMenuScreen.ShopButtonClick -= OnShopScreen;
+        _mainMenuScreen.SettingButtonClick -= OnSettingMenuScreen;
 
         _shopScreen.ExitButtonClick -= OnMainMenuScreen;
+
+        _settingMenuScreen.ExitButtonClick -= OnMainMenuScreen;
     }
 
     private void OnStartGame()
@@ -59,6 +67,12 @@ public class Game : MonoBehaviour
     private void OnMainMenuScreen()
     {
         _shopScreen.Close();
+        _settingMenuScreen.Close();
         _mainMenuScreen.Open();
+    }
+
+    private void OnSettingMenuScreen()
+    {
+        _settingMenuScreen.Open();
     }
 }
