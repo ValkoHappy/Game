@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using static UnityEngine.GraphicsBuffer;
 
 namespace RTS_Cam
 {
@@ -21,6 +22,7 @@ namespace RTS_Cam
         public bool mapLimitSettingsFoldout;
         public bool targetingSettingsFoldout;
         public bool inputSettingsFoldout;
+        private bool _isTargetLocked = false;
 
 #endif
 
@@ -178,7 +180,6 @@ namespace RTS_Cam
             {
                 CameraUpdate();
             }
-                
         }
 
         private void FixedUpdate()
@@ -317,9 +318,10 @@ namespace RTS_Cam
         /// set the target
         /// </summary>
         /// <param name="target"></param>
-        public void SetTarget(Transform target)
+        public void SetTarget(Transform target, bool lockTarget = true)
         {
             targetFollow = target;
+            _isTargetLocked = lockTarget;
         }
 
         /// <summary>
