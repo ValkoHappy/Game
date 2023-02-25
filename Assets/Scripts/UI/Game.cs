@@ -11,6 +11,7 @@ public class Game : MonoBehaviour
 
     [SerializeField] private RTS_Camera _rTS_Camera;
     [SerializeField] private Spawner _spawner;
+    [SerializeField] private EnemyManager _enemyManager;
 
     private bool _isInitialLaunch = true;
 
@@ -32,6 +33,8 @@ public class Game : MonoBehaviour
 
     private void OnEnable()
     {
+        _enemyManager.AllEnemiesKilled += OnAllEnemiesKilled;
+
         _mainMenuScreen.PlayButtonClick += OnStartGame;
         _mainMenuScreen.ShopButtonClick += OnShopScreen;
         _mainMenuScreen.SettingButtonClick += OnSettingMenuScreen;
@@ -43,6 +46,8 @@ public class Game : MonoBehaviour
 
     private void OnDisable()
     {
+        _enemyManager.AllEnemiesKilled -= OnAllEnemiesKilled;
+
         _mainMenuScreen.PlayButtonClick -= OnStartGame;
         _mainMenuScreen.ShopButtonClick -= OnShopScreen;
         _mainMenuScreen.SettingButtonClick -= OnSettingMenuScreen;
@@ -52,10 +57,15 @@ public class Game : MonoBehaviour
         _settingMenuScreen.ExitButtonClick -= OnMainMenuScreen;
     }
 
+    private void OnAllEnemiesKilled()
+    {
+        _mainMenuScreen.Open();
+    }
+
     private void OnStartGame()
     {
         _mainMenuScreen.Close();
-        _spawner.StartSpawn();
+        _spawner.StartNextLevel();
     }
 
     private void OnShopScreen()

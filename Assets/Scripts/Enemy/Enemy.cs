@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking.Types;
 
 [RequireComponent(typeof(Animator), typeof(Rigidbody), typeof(FoundBuildings))]
 public class Enemy : MonoBehaviour
@@ -16,6 +17,8 @@ public class Enemy : MonoBehaviour
     private HealthContainer _healthContainer;
 
     private PeacefulConstruction _targetConstruction;
+
+    public event UnityAction<Enemy> OnDied;
 
     public EnemyState CurrentState => _currentState;
     public EnemyState BrokenState => _brokenState;
@@ -32,6 +35,7 @@ public class Enemy : MonoBehaviour
 
     private void OnEnemyDied()
     {
+        OnDied?.Invoke(this);
         enabled = false;
         _rigidbody.constraints = RigidbodyConstraints.None;
     }

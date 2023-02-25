@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class StoreTab : MonoBehaviour
 {
-    [SerializeField] private List<StatsBuilding> _buildings;
     [SerializeField] private MoneyContainer _moneyContainer;
+    [SerializeField] private BuildingsManager _buildingsManager;
+    [SerializeField] private BuildingsGrid _buildingsGrid;
+
+    [SerializeField] private List<Goods> _buildings;
     [SerializeField] private BuilderView _builderView;
     [SerializeField] private GameObject _itenContainer;
 
@@ -17,27 +20,27 @@ public class StoreTab : MonoBehaviour
         }
     }
 
-    private void AddItem(StatsBuilding building)
+    private void AddItem(Goods building)
     {
         var view = Instantiate(_builderView, _itenContainer.transform);
         view.SellButtonClick += OnSellButtonClick;
         view.Render(building);
     }
 
-    private void OnSellButtonClick(StatsBuilding statsBuilding, BuilderView builderView)
+    private void OnSellButtonClick(Goods statsBuilding, BuilderView builderView)
     {
         TrySellBuilding(statsBuilding, builderView);
     }
 
-    private void TrySellBuilding(StatsBuilding statsBuilding, BuilderView builderView)
+    private void TrySellBuilding(Goods statsBuilding, BuilderView builderView)
     {
         if (statsBuilding.Price <= _moneyContainer.Money)
         {
             _moneyContainer.BuyBuilding(statsBuilding);
             //builderView.SellButtonClick -= OnSellButtonClick;
 
-            BuildingsGrid buildingsGrid = FindObjectOfType<BuildingsGrid>();
-            buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
+            _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
+            _buildingsManager.AddBuilding(statsBuilding.BuildingPrefab.GetComponentInChildren<PeacefulConstruction>());
         }
     }
 }

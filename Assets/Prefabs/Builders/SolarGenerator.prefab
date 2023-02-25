@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9172013921156955387}
   - component: {fileID: 6777644965825404098}
-  - component: {fileID: -8214148733261222062}
   m_Layer: 0
   m_Name: SolarGenerator
   m_TagString: target
@@ -47,23 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _size: {x: 3, y: 3}
---- !u!114 &-8214148733261222062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9009138805096558829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f62aef7495472e43a2e60949851f5ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _label: gfhf
-  _price: 10
-  _icon: {fileID: 0}
-  _isBuyed: 0
-  _buildingPrefab: {fileID: 6777644965825404098}
 --- !u!1001 &5404400644154588089
 PrefabInstance:
   m_ObjectHideFlags: 0

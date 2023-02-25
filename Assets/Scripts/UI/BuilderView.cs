@@ -13,8 +13,8 @@ public class BuilderView : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private Button _sellButton;
 
-    private StatsBuilding _building;
-    public event UnityAction<StatsBuilding, BuilderView> SellButtonClick;
+    private Goods _building;
+    public event UnityAction<Goods, BuilderView> SellButtonClick;
 
     private void OnEnable()
     {
@@ -34,7 +34,7 @@ public class BuilderView : MonoBehaviour
         }
     }
 
-    public void Render(StatsBuilding building)
+    public void Render(Goods building)
     {
         _building = building;
         _label.text = building.Label;

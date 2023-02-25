@@ -16,7 +16,7 @@ public class MoneyContainer : MonoBehaviour
         MoneyChanged?.Invoke(_money);
     }
 
-    public void BuyBuilding(StatsBuilding statsBuilding)
+    public void BuyBuilding(Goods statsBuilding)
     {
         _money -= statsBuilding.Price;
     }

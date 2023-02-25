@@ -9,7 +9,7 @@ public class PeacefulConstruction : MonoBehaviour
     [SerializeField] private float _bounceForce;
     [SerializeField] private float _bounceRadius;
 
-    public event UnityAction<PeacefulConstruction> Died;
+    public event UnityAction<PeacefulConstruction> Die;
 
     public event UnityAction Damaged;
     private HealthContainer _healthContainer;
@@ -49,10 +49,10 @@ public class PeacefulConstruction : MonoBehaviour
 
     private void OnDied()
     {
-        //enabled = false;
-        //Destroy(gameObject);
+        Die?.Invoke(this);
         Break();
-        Died?.Invoke(this);
+        enabled = false;
+        //Destroy(gameObject);
     }
 
     private void Break()
