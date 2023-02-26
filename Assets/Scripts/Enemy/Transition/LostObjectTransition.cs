@@ -8,7 +8,7 @@ public class LostObjectTransition : EnemyTransition
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, PeacefulConstruction.transform.position) < _minimumLostDistance)
+        if (Vector3.Distance(transform.position, PeacefulConstruction.transform.position) > _minimumLostDistance || PeacefulConstruction.IsAlive() == false)
             NeedTransit = true;
     }
 }

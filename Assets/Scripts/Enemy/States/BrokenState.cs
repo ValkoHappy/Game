@@ -16,7 +16,6 @@ public class BrokenState : EnemyState
 
     public void ApplyDamage(Rigidbody attachedBody, float force)
     {
-        SetAnimation();
         Vector3 direction = (transform.position - attachedBody.position);
         direction.y = 0;
         Rigidbody.AddForce(direction.normalized * force, ForceMode.Impulse);

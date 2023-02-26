@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _label: "\u0421\u043E\u043B\u043D\u0435\u0447\u043D\u044B\u0439 \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440"
   _price: 0
-  _icon: {fileID: 0}
+  _icon: {fileID: 21300000, guid: 7aa18c4b362fc17419e1a4e12c80a483, type: 3}
   _isBuyed: 0
   _buildingPrefab: {fileID: 6777644965825404098, guid: 294a48603358afa458b5b62c4d901974, type: 3}
