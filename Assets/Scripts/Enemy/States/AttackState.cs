@@ -9,7 +9,7 @@ public class AttackState : EnemyState
 
     private Coroutine _attack;
 
-    private void Start()
+    private void OnEnable()
     {
         StartAttack();
     }

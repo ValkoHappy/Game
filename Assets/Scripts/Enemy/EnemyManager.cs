@@ -17,13 +17,13 @@ public class EnemyManager : MonoBehaviour
     public void AddEnemy(Enemy enemy)
     {
         _enemies.Add(enemy);
-        enemy.OnDied += OnEnemyDeath;
+        enemy.Died += OnEnemyDeath;
     }
 
     public void OnEnemyDeath(Enemy enemy)
     {
         _enemies.Remove(enemy);
-        enemy.OnDied -= OnEnemyDeath;
+        enemy.Died -= OnEnemyDeath;
 
         if (_enemies.Count <= 0)
         {

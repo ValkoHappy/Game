@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     private PeacefulConstruction _targetConstruction;
 
-    public event UnityAction<Enemy> OnDied;
+    public event UnityAction<Enemy> Died;
 
     public EnemyState CurrentState => _currentState;
     public EnemyState BrokenState => _brokenState;
@@ -30,12 +30,12 @@ public class Enemy : MonoBehaviour
 
     private void OnDisable()
     {
-        _healthContainer.Died += OnEnemyDied;
+        _healthContainer.Died -= OnEnemyDied;
     }
 
     private void OnEnemyDied()
     {
-        OnDied?.Invoke(this);
+        Died?.Invoke(this);
         enabled = false;
         _rigidbody.constraints = RigidbodyConstraints.None;
     }

@@ -39,8 +39,8 @@ public class StoreTab : MonoBehaviour
             _moneyContainer.BuyBuilding(statsBuilding);
             //builderView.SellButtonClick -= OnSellButtonClick;
 
-            _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
-            _buildingsManager.AddBuilding(statsBuilding.BuildingPrefab.GetComponentInChildren<PeacefulConstruction>());
+            Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
+            _buildingsManager.AddBuilding(building.GetComponentInChildren<PeacefulConstruction>());
         }
     }
 }

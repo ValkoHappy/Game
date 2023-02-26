@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc47c44b9f831f741b319bac2baa3166, type: 3}
   m_Name: Level 2
   m_EditorClassIdentifier: 
-  _miniEnemy: {fileID: 1305874152407787249, guid: cd3240ae89b778a4eb6731f9e4a12668, type: 3}
+  _miniEnemy: {fileID: 2554310421426300920, guid: cd3240ae89b778a4eb6731f9e4a12668, type: 3}
   _bossEnemy: {fileID: 1305874152407787249, guid: 386565cbaf6e13b448edc0691bbd62ea, type: 3}
   _miniEnemyCount: 10
   _bossEnemyCount: 2

@@ -15,6 +15,8 @@ public class PeacefulConstruction : MonoBehaviour
     private HealthContainer _healthContainer;
     private bool _isAlive;
 
+    public HealthContainer HealthContainer => _healthContainer;
+
     private void Awake()
     {
         _healthContainer = GetComponent<HealthContainer>();

@@ -19,7 +19,7 @@ public class BuildingsGrid : MonoBehaviour
         _camera = Camera.main;
     }
 
-    public void CreateBuilding(Building buildingPrefab)
+    public Building CreateBuilding(Building buildingPrefab)
     {
         if(_flyingBuilding != null)
         {
@@ -27,6 +27,7 @@ public class BuildingsGrid : MonoBehaviour
         }
 
         _flyingBuilding = Instantiate(buildingPrefab, _container);
+        return _flyingBuilding;
     }
 
     private void Update()
