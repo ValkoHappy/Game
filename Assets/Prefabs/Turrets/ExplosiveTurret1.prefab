@@ -143,8 +143,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.6556625, z: 1}
-  m_Center: {x: 0, y: 0.72873247, z: 0}
+  m_Size: {x: 1.0239564, y: 0.22316162, z: 1}
+  m_Center: {x: 0.011978626, y: 0.012481995, z: 0}
 --- !u!114 &5934197247352419641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0891a58843160c247a14c26d9da3fe50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bounceForce: 50
+  _bounceForce: 100
   _bounceRadius: 10
 --- !u!1 &1232818654375041988
 GameObject:
@@ -338,7 +338,6 @@ GameObject:
   - component: {fileID: 3013592354782835631}
   - component: {fileID: 2443375609240189110}
   - component: {fileID: 3436203175364606691}
-  - component: {fileID: 5140627031765359234}
   - component: {fileID: 1060147968}
   m_Layer: 0
   m_Name: Part to rotate
@@ -391,19 +390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a94aa76232496db49a5fdeec82fefb2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &5140627031765359234
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2189181869826523813}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &1060147968
 BoxCollider:
   m_ObjectHideFlags: 0

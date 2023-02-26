@@ -553,8 +553,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.0127516, y: 1.0938548, z: 1.997514}
-  m_Center: {x: -0.0019278526, y: 0.4530726, z: -0.007830977}
+  m_Size: {x: 2.0127516, y: 0.09602377, z: 1.997514}
+  m_Center: {x: -0.0019278526, y: -0.04584287, z: -0.007830977}
 --- !u!1 &5898920255998968221
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,6 +957,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: VENTELITOR 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc548e86c85e20d488fdbf013d742cc3, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc548e86c85e20d488fdbf013d742cc3, type: 3}
 --- !u!4 &3584575053604350839 stripped
@@ -969,20 +973,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bc548e86c85e20d488fdbf013d742cc3, type: 3}
   m_PrefabInstance: {fileID: 3905818767106313372}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8112164746002622980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4248346527365345741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6f72b08f7c92c446b51a6edfd4d51ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _duration: 5
-  _isStartAnimation: 0
 --- !u!54 &5192004928335527871
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1012,6 +1002,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.26968166, y: 0.23319167, z: 0.009999999}
   m_Center: {x: -0.000025898218, y: 0.030372903, z: 0.00000000372529}
+--- !u!114 &8112164746002622980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4248346527365345741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f72b08f7c92c446b51a6edfd4d51ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _duration: 5
+  _isStartAnimation: 0
 --- !u!114 &9178560513010400700
 MonoBehaviour:
   m_ObjectHideFlags: 0

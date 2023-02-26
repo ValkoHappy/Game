@@ -8,10 +8,13 @@ public class Game : MonoBehaviour
     [SerializeField] private MainMenuScreen _mainMenuScreen;
     [SerializeField] private ShopScreen _shopScreen;
     [SerializeField] private SettingMenuScreen _settingMenuScreen;
+    [SerializeField] private VictoryScreen _victoryScreen;
+    [SerializeField] private DefeatScreen _featScreen;
 
     [SerializeField] private RTS_Camera _rTS_Camera;
     [SerializeField] private Spawner _spawner;
     [SerializeField] private EnemyManager _enemyManager;
+    [SerializeField] private BuildingsManager _buildingsManager;
 
     private bool _isInitialLaunch = true;
 
@@ -34,6 +37,7 @@ public class Game : MonoBehaviour
     private void OnEnable()
     {
         _enemyManager.AllEnemiesKilled += OnAllEnemiesKilled;
+        _buildingsManager.AllBuildingsDestroyed += OnAllBuildingsDestroyed;
 
         _mainMenuScreen.PlayButtonClick += OnStartGame;
         _mainMenuScreen.ShopButtonClick += OnShopScreen;
@@ -42,11 +46,16 @@ public class Game : MonoBehaviour
         _shopScreen.ExitButtonClick += OnMainMenuScreen;
 
         _settingMenuScreen.ExitButtonClick += OnMainMenuScreen;
+
+        _victoryScreen.ResumeButtonClick += OnMainMenuScreen;
+
+        _featScreen.ResumeButtonClick += OnMainMenuScreen;
     }
 
     private void OnDisable()
     {
         _enemyManager.AllEnemiesKilled -= OnAllEnemiesKilled;
+        _buildingsManager.AllBuildingsDestroyed -= OnAllBuildingsDestroyed;
 
         _mainMenuScreen.PlayButtonClick -= OnStartGame;
         _mainMenuScreen.ShopButtonClick -= OnShopScreen;
@@ -55,11 +64,20 @@ public class Game : MonoBehaviour
         _shopScreen.ExitButtonClick -= OnMainMenuScreen;
 
         _settingMenuScreen.ExitButtonClick -= OnMainMenuScreen;
+
+        _victoryScreen.ResumeButtonClick -= OnMainMenuScreen;
+
+        _featScreen.ResumeButtonClick -= OnMainMenuScreen;
     }
 
     private void OnAllEnemiesKilled()
     {
-        _mainMenuScreen.Open();
+        _victoryScreen.Open();
+    }
+
+    private void OnAllBuildingsDestroyed()
+    {
+        _featScreen.Open();
     }
 
     private void OnStartGame()
@@ -78,6 +96,8 @@ public class Game : MonoBehaviour
     {
         _shopScreen.Close();
         _settingMenuScreen.Close();
+        _victoryScreen.Close();
+        _featScreen.Close();
         _mainMenuScreen.Open();
     }
 

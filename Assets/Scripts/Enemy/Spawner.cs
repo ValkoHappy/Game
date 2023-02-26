@@ -7,6 +7,11 @@ public class Spawner : MonoBehaviour
     [SerializeField] private EnemyManager _enemyManager;
     [SerializeField] private Transform _container;
     [SerializeField] private List<Level> _levels;
+    [SerializeField] private Transform[] _upPoints;
+    [SerializeField] private Transform[] _downPoints;
+    [SerializeField] private Transform[] _leftPoints;
+    [SerializeField] private Transform[] _rightPoints;
+
 
     private Coroutine _coroutine;
     private int _currentLevelIndex = -1;
@@ -38,23 +43,48 @@ public class Spawner : MonoBehaviour
     {
         while (_miniEnemiesRemaining > 0 || _bossEnemiesRemaining > 0)
         {
-            if (_miniEnemiesRemaining > 0)
-            {
-                Enemy miniEnemy = Instantiate(_currentLevel.MiniEnemy, transform.position, Quaternion.identity, _container);
-                _enemyManager.AddEnemy(miniEnemy);
-                _miniEnemiesRemaining--;
-            }
+            Transform spawnPoint = GetSpawnPoint(_currentLevel);
+            Enemy miniEnemy = Instantiate(_currentLevel.MiniEnemy, spawnPoint.position, Quaternion.identity, _container);
+            _enemyManager.AddEnemy(miniEnemy);
+            _miniEnemiesRemaining--;
+        }
 
-            if (_bossEnemiesRemaining > 0)
+        if (_bossEnemiesRemaining > 0)
             {
-                Enemy bossEnemy = Instantiate(_currentLevel.BossEnemy, transform.position, Quaternion.identity, _container);
+                Transform spawnPoint = GetSpawnPoint(_currentLevel);
+                Enemy bossEnemy = Instantiate(_currentLevel.BossEnemy, spawnPoint.position, Quaternion.identity, _container);
                 _enemyManager.AddEnemy(bossEnemy);
                 _bossEnemiesRemaining--;
             }
 
-            yield return new WaitForSeconds(_currentLevel.SpawnDelay);
-        }
+        yield return new WaitForSeconds(_currentLevel.SpawnDelay);
+    
         Debug.Log("Level complete!");
+    }
+
+    private Transform GetSpawnPoint(Level level)
+    {
+        Transform[] points = null;
+        switch (level.SpawnSide)
+        {
+            case Level.Side.Up:
+                points = _upPoints;
+                break;
+            case Level.Side.Down:
+                points = _downPoints;
+                break;
+            case Level.Side.Left:
+                points = _leftPoints;
+                break;
+            case Level.Side.Right:
+                points = _rightPoints;
+                break;
+            default:
+                points = _upPoints;
+                break;
+        }
+
+        return points[Random.Range(0, points.Length)];
     }
 }
 

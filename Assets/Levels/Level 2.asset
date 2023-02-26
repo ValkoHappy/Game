@@ -17,3 +17,4 @@ MonoBehaviour:
   _miniEnemyCount: 10
   _bossEnemyCount: 2
   _spawnDelay: 0.5
+  _spawnSide: 1
