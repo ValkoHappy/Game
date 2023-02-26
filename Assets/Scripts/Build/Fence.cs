@@ -4,8 +4,8 @@ using UnityEngine;
 public class Fence : MonoBehaviour
 {
     //[SerializeField] private float rotationSpeed;
-    //[SerializeField] private GameObject baseBoard; // the board that represents the base of the fence
-    //[SerializeField] private GameObject[] boards; // an array of all the fence boards
+    //[SerializeField] private GameObject baseBoard;
+    //[SerializeField] private GameObject[] boards;
 
     //private FenceCollision targetFence;
     //private List<FenceCollision> fences;
