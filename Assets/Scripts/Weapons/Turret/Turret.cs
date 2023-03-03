@@ -73,6 +73,7 @@ public class Turret : MonoBehaviour
             if (enemy != null && enemy.IsAlive())
             {
                 _enemies.Add(enemy);
+                _shootTurret.RestartShoot();
             }
         }
     }

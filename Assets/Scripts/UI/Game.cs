@@ -47,9 +47,9 @@ public class Game : MonoBehaviour
 
         _settingMenuScreen.ExitButtonClick += OnMainMenuScreen;
 
-        _victoryScreen.ResumeButtonClick += OnMainMenuScreen;
+        _victoryScreen.ResumeButtonClick += OnMenuAfterFightScreen;
 
-        _featScreen.ResumeButtonClick += OnMainMenuScreen;
+        _featScreen.ResumeButtonClick += OnMenuAfterFightScreen;
     }
 
     private void OnDisable()
@@ -65,9 +65,9 @@ public class Game : MonoBehaviour
 
         _settingMenuScreen.ExitButtonClick -= OnMainMenuScreen;
 
-        _victoryScreen.ResumeButtonClick -= OnMainMenuScreen;
+        _victoryScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
 
-        _featScreen.ResumeButtonClick -= OnMainMenuScreen;
+        _featScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
     }
 
     private void OnAllEnemiesKilled()
@@ -83,6 +83,7 @@ public class Game : MonoBehaviour
     private void OnStartGame()
     {
         _mainMenuScreen.Close();
+        _buildingsManager.OnSaveBuildings();
         _spawner.StartNextLevel();
     }
 
@@ -96,6 +97,13 @@ public class Game : MonoBehaviour
     {
         _shopScreen.Close();
         _settingMenuScreen.Close();
+        _victoryScreen.Close();
+        _featScreen.Close();
+        _mainMenuScreen.Open();
+    }
+    private void OnMenuAfterFightScreen()
+    {
+        //_buildingsManager.OnCreateSavedBuildings();
         _victoryScreen.Close();
         _featScreen.Close();
         _mainMenuScreen.Open();

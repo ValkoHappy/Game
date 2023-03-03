@@ -12,6 +12,18 @@ public class BuildingsGrid : MonoBehaviour
     private Building _flyingBuilding;
     private Camera _camera;
     private bool _isBuilding;
+    public enum BuildingMode { Movement,Insert, Delete }
+    private BuildingMode _buildingMode;
+
+    public void SetBuildingModeInsert()
+    {
+        _buildingMode = BuildingMode.Insert;
+    }
+
+    public void SetBuildingModeDelete()
+    {
+        _buildingMode = BuildingMode.Delete;
+    }
 
     private void Awake()
     {
@@ -50,15 +62,57 @@ public class BuildingsGrid : MonoBehaviour
                 else
                 {
                     _flyingBuilding.SetTransparent(true);
-                    if (Input.GetMouseButtonDown(0))
+                    //if (Input.GetMouseButtonDown(0))
+                    //{
+                    //    PlaceFlyingBuilding(x, y);
+                    //    _isBuilding = false;
+                    //}
+                    if (_buildingMode == BuildingMode.Insert || Input.GetKeyUp(KeyCode.I))
                     {
                         PlaceFlyingBuilding(x, y);
+                        _isBuilding = false;
                     }
+                    else if (_buildingMode == BuildingMode.Delete || Input.GetKeyUp(KeyCode.O))
+                    {
+                        Destroy(_flyingBuilding.gameObject);
+                        _flyingBuilding = null;
+                    }
+                    _buildingMode = BuildingMode.Movement;
                 }
 
-                if(_flyingBuilding != null)
+                //if (_flyingBuilding != null && Input.GetMouseButton(0))
+                //{
+                //    if(IsMouseOverBuilding(_flyingBuilding))
+                //    {
+                //        Vector3 positionWorld = ray.GetPoint(position);
+                //        float buildingX = Mathf.Floor(positionWorld.x) + 0.5f;
+                //        float buildingY = Mathf.Floor(positionWorld.z) + 0.5f;
+                //        _flyingBuilding.transform.position = new Vector3(buildingX, 0, buildingY);
+                //    }
+                //}
+
+                Vector3 movement = Vector3.zero;
+                if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.T))
                 {
-                    _flyingBuilding.transform.position = new Vector3(x, 0, y);
+                    movement += Vector3.forward;
+                }
+                if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.G))
+                {
+                    movement += Vector3.back;
+                }
+                if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.F))
+                {
+                    movement += Vector3.left;
+                }
+                if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.H))
+                {
+                    movement += Vector3.right;
+                }
+
+                // Move the building
+                if (_flyingBuilding != null && movement != Vector3.zero)
+                {
+                    _flyingBuilding.transform.position += movement;
                 }
             }
         }
@@ -90,32 +144,14 @@ public class BuildingsGrid : MonoBehaviour
         _flyingBuilding = null;
     }
 
-    public void PlaceBuilding()
+    private bool IsMouseOverBuilding(Building building)
     {
-        if (_flyingBuilding != null && _flyingBuilding.IsBuilding == true)
+        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
         {
-            //PlaceFlyingBuilding(x, y);
+            return hit.collider == building.GetComponentInChildren<BoxCollider>();
         }
+        return false;
     }
-
-    public void RemoveBuilding()
-    {
-        if (_flyingBuilding != null && _flyingBuilding.IsBuilding == false)
-        {
-            Destroy(_flyingBuilding.gameObject);
-            _flyingBuilding = null;
-        }
-    }
-
-    //private void OnDrawGizmos()
-    //{
-    //    for (int x = 0; x < _gridSize.x; x++)
-    //    {
-    //        for (int y = 0; y < _gridSize.y; y++)
-    //        {
-    //            Gizmos.color = new Color(0, 1, 0, 0.3f);
-    //            Gizmos.DrawCube(transform.position + new Vector3(x, 0, y), new Vector3(1, .1f, 1));
-    //        }
-    //    }
-    //}
 }
