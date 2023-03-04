@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2260194405451887584}
   - component: {fileID: 5689089065340969327}
+  - component: {fileID: 5931316572436338940}
   m_Layer: 0
   m_Name: Turret
   m_TagString: target
@@ -47,6 +48,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _size: {x: 1, y: 1}
+--- !u!114 &5931316572436338940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594440513109305114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3e627c38a0c2d46980cb2cceb7ad60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementScreen: {fileID: 6622663219436341572}
 --- !u!1001 &946530082615678553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -120,6 +134,10 @@ PrefabInstance:
     - target: {fileID: 2141724129741957164, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: m_Name
       value: MovingScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2231271739425783031, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7749558134350270633, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: m_Pivot.x
@@ -212,3 +230,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7749558134350270633, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
   m_PrefabInstance: {fileID: 4563498621373447835}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6622663219436341572 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7258853502925846495, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+  m_PrefabInstance: {fileID: 4563498621373447835}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fcbf58972b8dc47951e1fed2531612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class BuildingsManager : MonoBehaviour
 {
     [SerializeField] private Transform _container;
+    [SerializeField] private List<Building> _buildingPrefabs;
 
     private List<PeacefulConstruction> _buildings;
 
@@ -39,7 +40,7 @@ public class BuildingsManager : MonoBehaviour
 
     public void OnSaveBuildings()
     {
-        if(_preservedBuildings != null)
+        if (_preservedBuildings != null)
             _preservedBuildings.Clear();
 
         foreach (var building in _buildings)
@@ -52,30 +53,22 @@ public class BuildingsManager : MonoBehaviour
     {
         foreach (var building in _buildings)
         {
-            Destroy(building.gameObject);
+            Destroy(building.GetComponentInParent<Building>().gameObject);
         }
-
+        Debug.Log("dfdfd");
         _buildings.Clear();
 
         foreach (var building in _preservedBuildings)
         {
-            PeacefulConstruction newBuilding = Instantiate(building.gameObject, _container).GetComponent<PeacefulConstruction>();
-            _buildings.Add(newBuilding);
+            foreach (var buildingPrefab in _buildingPrefabs)
+            {
+                if(building == buildingPrefab)
+                {
+                    Building newBuilding = Instantiate(buildingPrefab, _container);
+                    _buildings.Add(newBuilding.GetComponentInChildren<PeacefulConstruction>());
+                }
+            }
         }
-
         _preservedBuildings.Clear();
     }
-
-    //private Building LoadSavedBuilding(string buildingId)
-    //{
-    //    // Load the building data for this ID from your storage
-    //    // For example, if you're using PlayerPrefs:
-    //    string buildingData = PlayerPrefs.GetString("building_" + buildingId);
-
-    //    // Create a new Building object from the loaded data
-    //    Building newBuilding = new Building();
-    //    newBuilding.Deserialize(buildingData);
-
-    //    return newBuilding;
-    //}
 }

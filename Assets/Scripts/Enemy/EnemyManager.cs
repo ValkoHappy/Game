@@ -30,4 +30,14 @@ public class EnemyManager : MonoBehaviour
             AllEnemiesKilled?.Invoke();
         }
     }
+
+    public void OnDestroyEnemies()
+    {
+        foreach (var enemy in _enemies)
+        {
+            Destroy(enemy.gameObject);
+        }
+
+        _enemies.Clear();
+    }
 }

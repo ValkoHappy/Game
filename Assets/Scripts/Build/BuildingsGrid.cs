@@ -11,19 +11,11 @@ public class BuildingsGrid : MonoBehaviour
     private Building[,] _grid;
     private Building _flyingBuilding;
     private Camera _camera;
-    private bool _isBuilding;
-    public enum BuildingMode { Movement,Insert, Delete }
     private BuildingMode _buildingMode;
+    private BuildingMoves _buildingMoves;
 
-    public void SetBuildingModeInsert()
-    {
-        _buildingMode = BuildingMode.Insert;
-    }
-
-    public void SetBuildingModeDelete()
-    {
-        _buildingMode = BuildingMode.Delete;
-    }
+    public enum BuildingMode { Movement, Insert, Delete }
+    public enum BuildingMoves { Straight, Up, Down, Left, Right }
 
     private void Awake()
     {
@@ -31,9 +23,60 @@ public class BuildingsGrid : MonoBehaviour
         _camera = Camera.main;
     }
 
+    private void Update()
+    {
+        if (_flyingBuilding != null)
+        {
+            int x = Mathf.RoundToInt(_flyingBuilding.transform.position.x);
+            int y = Mathf.RoundToInt(_flyingBuilding.transform.position.z);
+
+            if (x < 0 || y < 0 || x + _flyingBuilding.TileSize.x > _gridSize.x || y + _flyingBuilding.TileSize.y > _gridSize.y || IsPlaceTaken(x, y))
+            {
+                _flyingBuilding.SetTransparent(false);
+            }
+            else
+            {
+                _flyingBuilding.SetTransparent(true);
+                if (_buildingMode == BuildingMode.Insert || Input.GetKeyUp(KeyCode.I))
+                {
+                    PlaceFlyingBuilding(x, y);
+                }
+                else if (_buildingMode == BuildingMode.Delete || Input.GetKeyUp(KeyCode.O))
+                {
+                    Destroy(_flyingBuilding.gameObject);
+                    _flyingBuilding = null;
+                }
+                _buildingMode = BuildingMode.Movement;
+            }
+
+            Vector3 movement = Vector3.zero;
+            if (_buildingMoves == BuildingMoves.Up || Input.GetKeyUp(KeyCode.T))
+            {
+                movement += Vector3.forward;
+            }
+            if (_buildingMoves == BuildingMoves.Down || Input.GetKeyUp(KeyCode.G))
+            {
+                movement += Vector3.back;
+            }
+            if (_buildingMoves == BuildingMoves.Left || Input.GetKeyUp(KeyCode.F))
+            {
+                movement += Vector3.left;
+            }
+            if (_buildingMoves == BuildingMoves.Right || Input.GetKeyUp(KeyCode.H))
+            {
+                movement += Vector3.right;
+            }
+            if (_flyingBuilding != null && movement != Vector3.zero)
+            {
+                _flyingBuilding.transform.position += movement;
+            }
+            _buildingMoves = BuildingMoves.Straight;
+        }
+    }
+
     public Building CreateBuilding(Building buildingPrefab)
     {
-        if(_flyingBuilding != null)
+        if (_flyingBuilding != null)
         {
             Destroy(_flyingBuilding.gameObject);
         }
@@ -42,89 +85,16 @@ public class BuildingsGrid : MonoBehaviour
         return _flyingBuilding;
     }
 
-    private void Update()
-    {
-        if (_flyingBuilding != null)
-        {
-            var groundPlane = new Plane(Vector3.up, Vector3.zero);
-            Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-
-            if (groundPlane.Raycast(ray, out float position))
-            {
-                Vector3 worldPosition = ray.GetPoint(position);
-                int x = Mathf.RoundToInt(worldPosition.x);
-                int y = Mathf.RoundToInt(worldPosition.z);
-
-                if (x < 0 || y < 0 || x > _gridSize.x - _flyingBuilding.TileSize.x || y > _gridSize.y - _flyingBuilding.TileSize.y || IsPlaceTaken(x, y))
-                {
-                    _flyingBuilding.SetTransparent(false);
-                }
-                else
-                {
-                    _flyingBuilding.SetTransparent(true);
-                    //if (Input.GetMouseButtonDown(0))
-                    //{
-                    //    PlaceFlyingBuilding(x, y);
-                    //    _isBuilding = false;
-                    //}
-                    if (_buildingMode == BuildingMode.Insert || Input.GetKeyUp(KeyCode.I))
-                    {
-                        PlaceFlyingBuilding(x, y);
-                        _isBuilding = false;
-                    }
-                    else if (_buildingMode == BuildingMode.Delete || Input.GetKeyUp(KeyCode.O))
-                    {
-                        Destroy(_flyingBuilding.gameObject);
-                        _flyingBuilding = null;
-                    }
-                    _buildingMode = BuildingMode.Movement;
-                }
-
-                //if (_flyingBuilding != null && Input.GetMouseButton(0))
-                //{
-                //    if(IsMouseOverBuilding(_flyingBuilding))
-                //    {
-                //        Vector3 positionWorld = ray.GetPoint(position);
-                //        float buildingX = Mathf.Floor(positionWorld.x) + 0.5f;
-                //        float buildingY = Mathf.Floor(positionWorld.z) + 0.5f;
-                //        _flyingBuilding.transform.position = new Vector3(buildingX, 0, buildingY);
-                //    }
-                //}
-
-                Vector3 movement = Vector3.zero;
-                if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.T))
-                {
-                    movement += Vector3.forward;
-                }
-                if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.G))
-                {
-                    movement += Vector3.back;
-                }
-                if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.F))
-                {
-                    movement += Vector3.left;
-                }
-                if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.H))
-                {
-                    movement += Vector3.right;
-                }
-
-                // Move the building
-                if (_flyingBuilding != null && movement != Vector3.zero)
-                {
-                    _flyingBuilding.transform.position += movement;
-                }
-            }
-        }
-    }
     private bool IsPlaceTaken(int placeX, int placeY)
     {
         for (int i = 0; i < _flyingBuilding.TileSize.x; i++)
         {
             for (int j = 0; j < _flyingBuilding.TileSize.y; j++)
             {
-                if (_grid[placeX + i, placeY + j] != null)
+                if (placeX + i >= _gridSize.x || placeY + j >= _gridSize.y || _grid[placeX + i, placeY + j] != null)
+                {
                     return true;
+                }
             }
         }
         return false;
@@ -144,14 +114,33 @@ public class BuildingsGrid : MonoBehaviour
         _flyingBuilding = null;
     }
 
-    private bool IsMouseOverBuilding(Building building)
+    public void SetBuildingModeInsert()
     {
-        Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
-        {
-            return hit.collider == building.GetComponentInChildren<BoxCollider>();
-        }
-        return false;
+        _buildingMode = BuildingMode.Insert;
+    }
+
+    public void SetBuildingModeDelete()
+    {
+        _buildingMode = BuildingMode.Delete;
+    }
+
+    public void SetBuildingMovesUp()
+    {
+        _buildingMoves = BuildingMoves.Up;
+    }
+
+    public void SetBuildingMovesDown()
+    {
+        _buildingMoves = BuildingMoves.Down;
+    }
+
+    public void SetBuildingMovesLeft()
+    {
+        _buildingMoves = BuildingMoves.Left;
+    }
+
+    public void SetBuildingMovesRight()
+    {
+        _buildingMoves = BuildingMoves.Right;
     }
 }

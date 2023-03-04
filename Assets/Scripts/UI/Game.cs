@@ -103,7 +103,8 @@ public class Game : MonoBehaviour
     }
     private void OnMenuAfterFightScreen()
     {
-        //_buildingsManager.OnCreateSavedBuildings();
+        _enemyManager.OnDestroyEnemies();
+        _buildingsManager.OnCreateSavedBuildings();
         _victoryScreen.Close();
         _featScreen.Close();
         _mainMenuScreen.Open();

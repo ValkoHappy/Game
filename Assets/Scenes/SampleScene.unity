@@ -2523,6 +2523,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _container: {fileID: 246482034}
+  _buildingPrefabs:
+  - {fileID: 2205331701495456397, guid: a5d9c662dbdda8c4a8323b64f2087ba1, type: 3}
+  - {fileID: 7890604239668544683, guid: 1d0b08220bb846d47902d266287a0305, type: 3}
+  - {fileID: 4016082141280449998, guid: cc497483d5a76c54fbc017eeef42e491, type: 3}
+  - {fileID: 1833638821257500497, guid: 313934c235b1d67469e75d2e40258c25, type: 3}
+  - {fileID: 6777644965825404098, guid: 294a48603358afa458b5b62c4d901974, type: 3}
+  - {fileID: 2645574674400504189, guid: d06f5206a7093d54c80a762fd195e921, type: 3}
+  - {fileID: 5689089065340969327, guid: 21cc69cae8dde184bbedf1c1353bf3a7, type: 3}
 --- !u!4 &343501149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4703823074467580, guid: 81f51ec42d5c7784aa8e8d5298eddaa0, type: 3}
@@ -4986,6 +4994,10 @@ PrefabInstance:
     - target: {fileID: 120296, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
       propertyPath: m_Name
       value: RTS_Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 120296, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 459968, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 3}
       propertyPath: m_RootOrder

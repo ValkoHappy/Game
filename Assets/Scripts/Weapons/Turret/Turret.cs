@@ -84,7 +84,7 @@ public class Turret : MonoBehaviour
         {
             if (enemy != null && enemy.IsAlive() == false)
             {
-                _enemies.Remove(enemy);
+                //_enemies.Remove(enemy);
                 _shootTurret.StopShoot();
             }
         }

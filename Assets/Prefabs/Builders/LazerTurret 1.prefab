@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7355956983837648705}
   - component: {fileID: 4016082141280449998}
+  - component: {fileID: 6556437537835514532}
   m_Layer: 0
   m_Name: LazerTurret 1
   m_TagString: target
@@ -47,6 +48,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _size: {x: 1, y: 1}
+--- !u!114 &6556437537835514532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2507486313119855547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3e627c38a0c2d46980cb2cceb7ad60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementScreen: {fileID: 812909442134522209}
 --- !u!1001 &1843667538433868148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -211,3 +225,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7749558134350270633, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
   m_PrefabInstance: {fileID: 8067257661655322302}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &812909442134522209 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7258853502925846495, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+  m_PrefabInstance: {fileID: 8067257661655322302}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75fcbf58972b8dc47951e1fed2531612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

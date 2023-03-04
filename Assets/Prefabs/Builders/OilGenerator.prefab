@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4050115909143557992}
   - component: {fileID: 1833638821257500497}
+  - component: {fileID: 8008148637491687746}
   m_Layer: 0
   m_Name: OilGenerator
   m_TagString: target
@@ -47,6 +48,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _size: {x: 3, y: 3}
+--- !u!114 &8008148637491687746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214112405864594302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee3e627c38a0c2d46980cb2cceb7ad60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &594211053915126518
 PrefabInstance:
   m_ObjectHideFlags: 0

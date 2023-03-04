@@ -45,12 +45,15 @@ public class FoundBuildings : MonoBehaviour
 
         foreach (var construction in _constructions)
         {
-            float distanceToConstruction = Vector3.Distance(transform.position, construction.transform.position);
-
-            if (distanceToConstruction < shortestDistance)
+            if (construction != null)
             {
-                shortestDistance = distanceToConstruction;
-                nearestEnemy = construction;
+                float distanceToConstruction = Vector3.Distance(transform.position, construction.transform.position);
+
+                if (distanceToConstruction < shortestDistance)
+                {
+                    shortestDistance = distanceToConstruction;
+                    nearestEnemy = construction;
+                }
             }
 
             if (nearestEnemy != null && nearestEnemy.IsAlive())

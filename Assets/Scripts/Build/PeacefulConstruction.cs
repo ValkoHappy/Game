@@ -53,7 +53,7 @@ public class PeacefulConstruction : MonoBehaviour
     {
         Die?.Invoke(this);
         Break();
-        enabled = false;
+        //enabled = false;
         //Destroy(gameObject);
     }
 
