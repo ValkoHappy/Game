@@ -5,11 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class ScreenUI : MonoBehaviour
 {
-    [SerializeField] protected GameObject Panel;
+    [SerializeField] private GameObject _panel;
     private string _openAnimation = "Open";
     private string _closeAnimation = "Close";
 
     private Animator _animator;
+
+    public GameObject Panel => _panel;
 
     private void Awake()
     {
@@ -18,13 +20,13 @@ public class ScreenUI : MonoBehaviour
 
     public void Open()
     {
-        Panel.SetActive(true);
+        _panel.SetActive(true);
         //_animator.SetTrigger(_openAnimation);
     }
 
     public void Close()
     {
-        Panel.SetActive(false);
+        _panel.SetActive(false);
         //_animator.SetTrigger(_closeAnimation);
     }
 }

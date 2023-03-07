@@ -1931,6 +1931,7 @@ MonoBehaviour:
   _spawner: {fileID: 639568498}
   _enemyManager: {fileID: 323301689}
   _buildingsManager: {fileID: 323301690}
+  _buildingsGrid: {fileID: 1795091612}
 --- !u!1 &279898975
 GameObject:
   m_ObjectHideFlags: 0

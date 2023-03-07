@@ -15,6 +15,7 @@ public class Game : MonoBehaviour
     [SerializeField] private Spawner _spawner;
     [SerializeField] private EnemyManager _enemyManager;
     [SerializeField] private BuildingsManager _buildingsManager;
+    [SerializeField] private BuildingsGrid _buildingsGrid;
 
     private bool _isInitialLaunch = true;
 
@@ -50,6 +51,9 @@ public class Game : MonoBehaviour
         _victoryScreen.ResumeButtonClick += OnMenuAfterFightScreen;
 
         _featScreen.ResumeButtonClick += OnMenuAfterFightScreen;
+
+        _buildingsGrid.CreatedBuilding += OnCloseShop;
+        _buildingsGrid.DeliveredBuilding += OnOpenShop;
     }
 
     private void OnDisable()
@@ -68,6 +72,9 @@ public class Game : MonoBehaviour
         _victoryScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
 
         _featScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
+
+        _buildingsGrid.CreatedBuilding -= OnCloseShop;
+        _buildingsGrid.DeliveredBuilding -= OnOpenShop;
     }
 
     private void OnAllEnemiesKilled()
@@ -90,6 +97,16 @@ public class Game : MonoBehaviour
     private void OnShopScreen()
     {
         _mainMenuScreen.Close();
+        _shopScreen.Open();
+    }
+
+    private void OnCloseShop()
+    {
+        _shopScreen.Close();
+    }
+
+    private void OnOpenShop()
+    {
         _shopScreen.Open();
     }
 

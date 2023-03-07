@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class BuildingsGrid : MonoBehaviour
 {
@@ -10,9 +11,12 @@ public class BuildingsGrid : MonoBehaviour
 
     private Building[,] _grid;
     private Building _flyingBuilding;
-    private Camera _camera;
     private BuildingMode _buildingMode;
     private BuildingMoves _buildingMoves;
+
+    public event UnityAction CreatedBuilding;
+    public event UnityAction DeliveredBuilding;
+    public event UnityAction EditPositionBuilding;
 
     public enum BuildingMode { Movement, Insert, Delete }
     public enum BuildingMoves { Straight, Up, Down, Left, Right }
@@ -20,7 +24,6 @@ public class BuildingsGrid : MonoBehaviour
     private void Awake()
     {
         _grid = new Building[_gridSize.x, _gridSize.y];
-        _camera = Camera.main;
     }
 
     private void Update()
@@ -82,6 +85,7 @@ public class BuildingsGrid : MonoBehaviour
         }
 
         _flyingBuilding = Instantiate(buildingPrefab, _container);
+        CreatedBuilding?.Invoke();
         return _flyingBuilding;
     }
 
@@ -111,7 +115,14 @@ public class BuildingsGrid : MonoBehaviour
         }
 
         _flyingBuilding.SetNormal();
+        DeliveredBuilding?.Invoke();
         _flyingBuilding = null;
+    }
+
+    public void MoveBuilding(Building building)
+    {
+        _flyingBuilding = building;
+        EditPositionBuilding?.Invoke();
     }
 
     public void SetBuildingModeInsert()
