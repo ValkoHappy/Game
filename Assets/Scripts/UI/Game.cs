@@ -16,6 +16,7 @@ public class Game : MonoBehaviour
     [SerializeField] private EnemyManager _enemyManager;
     [SerializeField] private BuildingsManager _buildingsManager;
     [SerializeField] private BuildingsGrid _buildingsGrid;
+    [SerializeField] private StarsScore _starsScore;
 
     private bool _isInitialLaunch = true;
 
@@ -79,6 +80,7 @@ public class Game : MonoBehaviour
 
     private void OnAllEnemiesKilled()
     {
+        _starsScore.ShowStars();
         _victoryScreen.Open();
     }
 
@@ -90,8 +92,9 @@ public class Game : MonoBehaviour
     private void OnStartGame()
     {
         _mainMenuScreen.Close();
-        _buildingsManager.OnSaveBuildings();
+        //_buildingsManager.OnSaveBuildings();
         _spawner.StartNextLevel();
+        _starsScore.RemoveAllBuildingsDiedCount();
     }
 
     private void OnShopScreen()

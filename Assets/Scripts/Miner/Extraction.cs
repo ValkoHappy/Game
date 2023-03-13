@@ -3,27 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PeacefulConstruction))]
+[RequireComponent(typeof(PeacefulConstruction), typeof(Animator))]
 public class Extraction : MonoBehaviour
 {
     [SerializeField] private int _amountMoneyProduced;
     [SerializeField] private float _waitForSecounds;
 
-    private MoneyContainer _moneyContainer;
+    private GoldContainer _moneyContainer;
     private Coroutine _extract;
     private PeacefulConstruction _peacefulConstruction;
-    private MinerAnimation _minerAnimation;
+    private Animator _animator;
+    private Building _building;
+    private BuildingsGrid _buildingGrid;
 
     private void Awake()
     {
-        _moneyContainer = FindObjectOfType<MoneyContainer>();
+        _building = GetComponentInParent<Building>();
+        _moneyContainer = FindObjectOfType<GoldContainer>();
+        _buildingGrid = FindObjectOfType<BuildingsGrid>();
         _peacefulConstruction = GetComponent<PeacefulConstruction>();
-        _minerAnimation = GetComponentInChildren<MinerAnimation>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
         StartExtract();
+    }
+
+    private void OnEnable()
+    {
+        _building.DeliveryBuilding += OnExtractionAnimation;
+        _buildingGrid.EditPositionBuilding += OffExtractionAnimation;
+        _buildingGrid.DeliveredBuilding += OnExtractionAnimation;
+    }
+
+    private void OnDisable()
+    {
+        _building.DeliveryBuilding -= OnExtractionAnimation;
+        _buildingGrid.EditPositionBuilding -= OffExtractionAnimation;
+        _buildingGrid.DeliveredBuilding -= OnExtractionAnimation;
     }
 
     private void StartExtract()
@@ -38,7 +56,7 @@ public class Extraction : MonoBehaviour
         }
         else
         {
-            _minerAnimation.Pause();
+            _animator.SetTrigger("Extraction");
         }
     }
 
@@ -46,7 +64,7 @@ public class Extraction : MonoBehaviour
     {
         var waitForSecounds = new WaitForSeconds(_waitForSecounds);
 
-        _moneyContainer.GetMoney(_amountMoneyProduced);
+        _moneyContainer.GetGold(_amountMoneyProduced);
         yield return waitForSecounds;
 
         if (_peacefulConstruction.IsAlive())
@@ -55,7 +73,17 @@ public class Extraction : MonoBehaviour
         }
         else
         {
-            _minerAnimation.Pause();
+            _animator.SetTrigger("Extraction");
         }
+    }
+
+    public void OnExtractionAnimation()
+    {
+        _animator.SetTrigger("Extraction");
+    }
+
+    public void OffExtractionAnimation()
+    {
+        _animator.SetTrigger("Idle");
     }
 }

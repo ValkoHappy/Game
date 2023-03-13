@@ -7,45 +7,64 @@ using UnityEngine.Events;
 public class BuildingsManager : MonoBehaviour
 {
     [SerializeField] private Transform _container;
-    [SerializeField] private List<Building> _buildingPrefabs;
+    [SerializeField] private BuildingsGrid _buildingsGrid;
 
     private List<PeacefulConstruction> _buildings;
+    private StarsScore _starsScore;
 
-    private List<Building> _preservedBuildings;
 
     public event UnityAction AllBuildingsDestroyed;
+
+    private void Awake()
+    {
+        _starsScore = GetComponent<StarsScore>();
+    }
 
     private void Start()
     {
         _buildings = new List<PeacefulConstruction>();
-        _preservedBuildings = new List<Building>();
+    }
+
+    private void OnEnable()
+    {
+        _buildingsGrid.DestroyBuilding += OnDestroyBuilding;
+    }
+
+    private void OnDisable()
+    {
+        _buildingsGrid.DestroyBuilding -= OnDestroyBuilding;
     }
 
     public void AddBuilding(PeacefulConstruction building)
     {
         _buildings.Add(building);
+        _starsScore.AddBuildingsCount();
         building.Die += OnBuildingDeath;
     }
 
     public void OnBuildingDeath(PeacefulConstruction building)
     {
-        _buildings.Remove(building);
-        building.Die -= OnBuildingDeath;
-
+        //building.Die -= OnBuildingDeath;
+        _starsScore.AddBuildingsDiedCount();
         if (_buildings.Count <= 0)
         {
             AllBuildingsDestroyed?.Invoke();
         }
-    }
 
-    public void OnSaveBuildings()
-    {
-        if (_preservedBuildings != null)
-            _preservedBuildings.Clear();
+        bool allBuildingsDestroyed = true;
 
-        foreach (var building in _buildings)
+        foreach (var construction in _buildings)
         {
-            _preservedBuildings.Add(building.GetComponentInParent<Building>());
+            if (construction.IsAlive())
+            {
+                allBuildingsDestroyed = false;
+                break;
+            }
+        }
+        Debug.Log(allBuildingsDestroyed);
+        if (allBuildingsDestroyed)
+        {
+            AllBuildingsDestroyed?.Invoke();
         }
     }
 
@@ -53,22 +72,20 @@ public class BuildingsManager : MonoBehaviour
     {
         foreach (var building in _buildings)
         {
-            Destroy(building.GetComponentInParent<Building>().gameObject);
+            building.ResetDetails();
         }
-        Debug.Log("dfdfd");
-        _buildings.Clear();
+    }
 
-        foreach (var building in _preservedBuildings)
+    private void OnDestroyBuilding(Building building)
+    {
+        for (int i = 0; i < _buildings.Count; i++)
         {
-            foreach (var buildingPrefab in _buildingPrefabs)
+            if (_buildings[i].GetComponentInParent<Building>() == building)
             {
-                if(building == buildingPrefab)
-                {
-                    Building newBuilding = Instantiate(buildingPrefab, _container);
-                    _buildings.Add(newBuilding.GetComponentInChildren<PeacefulConstruction>());
-                }
+                _buildings.Remove(_buildings[i]);
+                _starsScore.RemoveBuildingsCount();
             }
+
         }
-        _preservedBuildings.Clear();
     }
 }

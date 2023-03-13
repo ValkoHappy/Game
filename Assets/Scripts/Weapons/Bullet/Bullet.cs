@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -8,6 +6,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private int _force;
     [SerializeField] private float _speed;
     [SerializeField] private float _yOffSet;
+    [SerializeField] private float _radius;
     [SerializeField] private ParticleSystem _particle;
 
     private Vector3 _targetEnemy;
@@ -20,7 +19,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if(_targetEnemy != null)
+        if (_targetEnemy != null)
         {
             Vector3 direction = _targetEnemy - transform.position;
             float distance = _speed * Time.deltaTime;
@@ -41,22 +40,41 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out EnemyCollision enemy))
+        if (other.TryGetComponent(out EnemyCollision enemy))
         {
-            if(enemy.ApplayDamage(_rigidbody, _damage, _force))
-            {
-                if(_particle!= null)
-                {
-                    _particle.transform.position = transform.position;
-                    _particle.Play();
-                }
-                Instantiate(_particle);
-                Destroy(gameObject);
-            }
+            ApplyDamageToEnemy(enemy);
         }
-        if (other.TryGetComponent(out Ground ground))
+    }
+
+    private void ApplyDamageToEnemy(EnemyCollision enemy)
+    {
+        if (enemy.ApplayDamage(_rigidbody, _damage, _force))
         {
+            if (_particle != null)
+            {
+                _particle.transform.position = transform.position;
+                _particle.Play();
+            }
+            Instantiate(_particle);
             Destroy(gameObject);
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent(out EnemyCollision enemy))
+        {
+            // Get all the colliders within the sphere
+            Collider[] colliders = Physics.OverlapSphere(transform.position, _radius);
+            foreach (Collider collider in colliders)
+            {
+                // Check if the collider has an EnemyCollision component
+                if (collider.TryGetComponent(out EnemyCollision enemyCollision))
+                {
+                    ApplyDamageToEnemy(enemyCollision);
+                }
+            }
+        }
+    }
 }
+

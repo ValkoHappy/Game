@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 784484919433882782}
   - component: {fileID: 1874670567758048506}
   m_Layer: 0
-  m_Name: Cube.093
+  m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 7368634813245902137}
   - component: {fileID: 2626853067860465162}
   m_Layer: 0
-  m_Name: Cube.092
+  m_Name: footing 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 2370311015739643728}
   - component: {fileID: 8977842420468954824}
   m_Layer: 0
-  m_Name: Cube.094
+  m_Name: footing 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -909,6 +909,7 @@ GameObject:
   - component: {fileID: 1025462026}
   - component: {fileID: 1025462027}
   - component: {fileID: 4591982427868202346}
+  - component: {fileID: 5310139714516565220}
   m_Layer: 0
   m_Name: OilGenerator
   m_TagString: target
@@ -974,7 +975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _amountMoneyProduced: 1
-  _waitForSecounds: 1
+  _waitForSecounds: 6
 --- !u!65 &4591982427868202346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -988,3 +989,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9968064, y: 0.12245516, z: 2.0403454}
   m_Center: {x: 0.0040677786, y: 0.0074753277, z: 0.007998347}
+--- !u!95 &5310139714516565220
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915755195599483014}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 25dde6ab8a4ffa740b6b1ebff473b7a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

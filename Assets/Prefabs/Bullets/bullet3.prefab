@@ -237,6 +237,7 @@ MonoBehaviour:
   _force: 15
   _speed: 30
   _yOffSet: 1
+  _radius: 3
   _particle: {fileID: 19848870, guid: a7c694f0877ea874fa57e033221095c3, type: 3}
 --- !u!65 &-2083587544700480207
 BoxCollider:
@@ -249,8 +250,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4830761, y: 0.7465098, z: 0.39487687}
-  m_Center: {x: -0.050098985, y: 0.035839736, z: 0.10518633}
+  m_Size: {x: 0.10187634, y: 0.09817782, z: 0.35238305}
+  m_Center: {x: 0.005097959, y: 0.0016321763, z: 0.10393582}
 --- !u!1 &3745160707556698930
 GameObject:
   m_ObjectHideFlags: 0

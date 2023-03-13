@@ -25,8 +25,7 @@ public class ShopScreen : ScreenUI
         _storeTabMainBuildings.Open();
         _storeTabWeapons.Close();
         _storeTabGenerators.Close();
-        _storeTabDecorative.Close();
-        
+        _storeTabDecorative.Close();    
     }
 
 

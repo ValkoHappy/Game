@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
+using static MoveSelection;
 
 public class BuildingsGrid : MonoBehaviour
 {
@@ -11,19 +12,18 @@ public class BuildingsGrid : MonoBehaviour
 
     private Building[,] _grid;
     private Building _flyingBuilding;
-    private BuildingMode _buildingMode;
-    private BuildingMoves _buildingMoves;
+    private MoveSelection _moveSelection;
 
     public event UnityAction CreatedBuilding;
     public event UnityAction DeliveredBuilding;
     public event UnityAction EditPositionBuilding;
+    public event UnityAction<Building> DestroyBuilding;
 
-    public enum BuildingMode { Movement, Insert, Delete }
-    public enum BuildingMoves { Straight, Up, Down, Left, Right }
 
     private void Awake()
     {
         _grid = new Building[_gridSize.x, _gridSize.y];
+        _moveSelection = GetComponent<MoveSelection>();
     }
 
     private void Update()
@@ -40,32 +40,34 @@ public class BuildingsGrid : MonoBehaviour
             else
             {
                 _flyingBuilding.SetTransparent(true);
-                if (_buildingMode == BuildingMode.Insert || Input.GetKeyUp(KeyCode.I))
+                if (_moveSelection.Mode == BuildingMode.Insert || Input.GetKeyUp(KeyCode.I))
                 {
                     PlaceFlyingBuilding(x, y);
                 }
-                else if (_buildingMode == BuildingMode.Delete || Input.GetKeyUp(KeyCode.O))
+                else if (_moveSelection.Mode == BuildingMode.Delete || Input.GetKeyUp(KeyCode.O))
                 {
+                    DestroyBuilding?.Invoke(_flyingBuilding);
                     Destroy(_flyingBuilding.gameObject);
                     _flyingBuilding = null;
+                    DeliveredBuilding?.Invoke();
                 }
-                _buildingMode = BuildingMode.Movement;
+                _moveSelection.SetBuildingModeMovement();
             }
 
             Vector3 movement = Vector3.zero;
-            if (_buildingMoves == BuildingMoves.Up || Input.GetKeyUp(KeyCode.T))
+            if (_moveSelection.Moves == BuildingMoves.Up || Input.GetKeyUp(KeyCode.T))
             {
                 movement += Vector3.forward;
             }
-            if (_buildingMoves == BuildingMoves.Down || Input.GetKeyUp(KeyCode.G))
+            if (_moveSelection.Moves == BuildingMoves.Down || Input.GetKeyUp(KeyCode.G))
             {
                 movement += Vector3.back;
             }
-            if (_buildingMoves == BuildingMoves.Left || Input.GetKeyUp(KeyCode.F))
+            if (_moveSelection.Moves == BuildingMoves.Left || Input.GetKeyUp(KeyCode.F))
             {
                 movement += Vector3.left;
             }
-            if (_buildingMoves == BuildingMoves.Right || Input.GetKeyUp(KeyCode.H))
+            if (_moveSelection.Moves == BuildingMoves.Right || Input.GetKeyUp(KeyCode.H))
             {
                 movement += Vector3.right;
             }
@@ -73,7 +75,7 @@ public class BuildingsGrid : MonoBehaviour
             {
                 _flyingBuilding.transform.position += movement;
             }
-            _buildingMoves = BuildingMoves.Straight;
+            _moveSelection.SetBuildingMovesStraight();
         }
     }
 
@@ -125,33 +127,5 @@ public class BuildingsGrid : MonoBehaviour
         EditPositionBuilding?.Invoke();
     }
 
-    public void SetBuildingModeInsert()
-    {
-        _buildingMode = BuildingMode.Insert;
-    }
 
-    public void SetBuildingModeDelete()
-    {
-        _buildingMode = BuildingMode.Delete;
-    }
-
-    public void SetBuildingMovesUp()
-    {
-        _buildingMoves = BuildingMoves.Up;
-    }
-
-    public void SetBuildingMovesDown()
-    {
-        _buildingMoves = BuildingMoves.Down;
-    }
-
-    public void SetBuildingMovesLeft()
-    {
-        _buildingMoves = BuildingMoves.Left;
-    }
-
-    public void SetBuildingMovesRight()
-    {
-        _buildingMoves = BuildingMoves.Right;
-    }
 }

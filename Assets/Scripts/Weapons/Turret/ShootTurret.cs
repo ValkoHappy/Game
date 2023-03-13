@@ -1,77 +1,81 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Turret))]
 public class ShootTurret : MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform[] _shootPoint;
-    [SerializeField] private float _waitForSecounds;
+    [SerializeField] private float _waitForSeconds;
     [SerializeField] private ParticleSystem _particleShoot;
 
+    //public LineRenderer _lineRenderer;
     private Turret _turret;
     private RecoilAnimation _recoilAnimation;
-    private Coroutine _shoot;
-    private bool _isShoot = true;
-    private bool _isShoott = true;
+    private Coroutine _shootCoroutine;
+    private bool _canShoot = true;
+    private bool _canStartShoot = true;
 
 
     private void Awake()
     {
         _turret = GetComponent<Turret>();
+        //_lineRenderer= GetComponent<LineRenderer>();
         _recoilAnimation = GetComponentInChildren<RecoilAnimation>();
     }
 
     public void StartShoot()
     {
-        if (_turret.TargetEnemy != null && _isShoot == true && _turret.Construction.IsAlive())
+        if (_turret.TargetEnemy != null && _canShoot && _turret.Construction.IsAlive())
         {
-            _isShoott = false;
-            if (_shoot != null)
+            _canStartShoot = false;
+            if (_shootCoroutine != null)
             {
-                StopCoroutine(_shoot);
+                StopCoroutine(_shootCoroutine);
             }
-            _shoot = StartCoroutine(Shoot());
+            _shootCoroutine = StartCoroutine(Shoot());
         }
         else
         {
-            if (_shoot != null)
+            if (_shootCoroutine != null)
             {
-                StopCoroutine(_shoot);
+                StopCoroutine(_shootCoroutine);
             }
         }
     }
 
     public void StopShoot()
     {
-        _isShoot = false;
+        _canShoot = false;
     }
 
     public void RestartShoot()
     {
-        _isShoot = true;
+        _canShoot = true;
     }
 
     public void CreateBullet(Transform shootPoint)
     {
         Bullet bullet = Instantiate(_bullet, shootPoint.position, Quaternion.identity);
         _particleShoot.transform.position = shootPoint.position;
-        //_particleShoot.Play();
         Instantiate(_particleShoot, shootPoint.position, Quaternion.identity);
         bullet.Seek(_turret.TargetEnemy.transform);
     }
 
     private IEnumerator Shoot()
     {
-        var waitForSecounds = new WaitForSeconds(_waitForSecounds);
+        var waitForSeconds = new WaitForSeconds(_waitForSeconds);
 
         for (int i = 0; i < _shootPoint.Length; i++)
         {
             CreateBullet(_shootPoint[i]);
+            //_lineRenderer.SetPosition(0, _shootPoint[i].position);
+            //_lineRenderer.SetPosition(1, _turret.TargetEnemy.transform.position);
         }
-        _recoilAnimation.StartRecoil(_waitForSecounds);
-        yield return waitForSecounds;
+        _recoilAnimation.StartRecoil(_waitForSeconds);
+        yield return waitForSeconds;
         StartShoot();
     }
 
@@ -83,8 +87,8 @@ public class ShootTurret : MonoBehaviour
             {
                 if (_turret.Construction.IsAlive())
                 {
-                    _isShoot = true;
-                    if (_isShoott)
+                    _canShoot = true;
+                    if (_canStartShoot)
                         StartShoot();
                 }
             }
@@ -93,12 +97,14 @@ public class ShootTurret : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.TryGetComponent(out EnemyCollision enemy))
+        if (other.TryGetComponent(out EnemyCollision enemy))
         {
             if (enemy != null)
             {
-                _isShoot = false;
+                _canShoot = false;
             }
         }
     }
 }
+
+

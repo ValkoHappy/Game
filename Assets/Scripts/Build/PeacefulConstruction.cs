@@ -14,6 +14,8 @@ public class PeacefulConstruction : MonoBehaviour
     public event UnityAction Damaged;
     private HealthContainer _healthContainer;
     private bool _isAlive;
+    private BuildingDetail[] _buildingDetails;
+    private List<Vector3> _detailPositions = new List<Vector3>();
 
     public HealthContainer HealthContainer => _healthContainer;
 
@@ -21,6 +23,12 @@ public class PeacefulConstruction : MonoBehaviour
     {
         _healthContainer = GetComponent<HealthContainer>();
     }
+
+    private void Start()
+    {
+        _buildingDetails = GetComponentsInChildren<BuildingDetail>();
+    }
+
     public bool IsAlive()
     {
         if (_healthContainer.Health <= 0)
@@ -57,13 +65,40 @@ public class PeacefulConstruction : MonoBehaviour
         //Destroy(gameObject);
     }
 
+    private struct BuildingDetailSnapshot
+    {
+        public Vector3 Position;
+        public Quaternion Rotation;
+    }
+
+    private List<BuildingDetailSnapshot> _detailSnapshots = new List<BuildingDetailSnapshot>();
+
     private void Break()
     {
-        BuildingDetail[] buildingDetails = GetComponentsInChildren<BuildingDetail>();
-
-        foreach (var detail in buildingDetails)
+        foreach (var detail in _buildingDetails)
         {
+            _detailSnapshots.Add(new BuildingDetailSnapshot()
+            {
+                Position = detail.transform.position,
+                Rotation = detail.transform.localRotation
+            });
             detail.Bounce(_bounceForce, transform.position, _bounceRadius);
         }
+    }
+
+    public void ResetDetails()
+    {
+        if (_isAlive == false)
+        {
+            for (int i = 0; i < _buildingDetails.Length; i++)
+            {
+                _buildingDetails[i].transform.position = _detailSnapshots[i].Position;
+                _buildingDetails[i].transform.localRotation = _detailSnapshots[i].Rotation;
+                _buildingDetails[i].ResetBounce();
+                _healthContainer.ResetHealth();
+            }
+
+            _detailSnapshots.Clear();
+        }     
     }
 }

@@ -14,11 +14,11 @@ public class MovementScreen : ScreenUI
     [SerializeField] private Button _leftButton;
     [SerializeField] private Button _rightButton;
 
-    private BuildingsGrid _buildingsGrid;
+    private MoveSelection _moveSelection;
 
     private void Awake()
     {
-        _buildingsGrid = FindObjectOfType<BuildingsGrid>();
+        _moveSelection = FindObjectOfType<MoveSelection>();
     }
 
     private void OnEnable()
@@ -45,35 +45,35 @@ public class MovementScreen : ScreenUI
 
     private void OnSaveButton()
     {
-        _buildingsGrid.SetBuildingModeInsert();
+        _moveSelection.SetBuildingModeInsert();
     }
     private void OnDelateButton()
     {
-        _buildingsGrid.SetBuildingModeDelete();
+        _moveSelection.SetBuildingModeDelete();
 
     }
 
     private void OnUpButton()
     {
-        _buildingsGrid.SetBuildingMovesUp();
+        _moveSelection.SetBuildingMovesUp();
 
     }
 
     private void OnDownButton()
     {
-        _buildingsGrid.SetBuildingMovesDown();
+        _moveSelection.SetBuildingMovesDown();
 
     }
 
     private void OnLeftButton()
     {
-        _buildingsGrid.SetBuildingMovesLeft();
+        _moveSelection.SetBuildingMovesLeft();
 
     }
 
     private void OnRightButton()
     {
-        _buildingsGrid.SetBuildingMovesRight();
+        _moveSelection.SetBuildingMovesRight();
 
     }
 }

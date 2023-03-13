@@ -1839,6 +1839,7 @@ GameObject:
   - component: {fileID: 6367991144216137510}
   - component: {fileID: 7490069548618163051}
   - component: {fileID: 1326551366996919263}
+  - component: {fileID: 75782528}
   m_Layer: 0
   m_Name: SolarGenerator
   m_TagString: target
@@ -1918,7 +1919,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _amountMoneyProduced: 1
-  _waitForSecounds: 1
+  _waitForSecounds: 5
+--- !u!95 &75782528
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2626372685907844116}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16abcccf62a6c3d42956caed3f0c8600, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2641300087420550342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2350,7 +2371,7 @@ GameObject:
   - component: {fileID: 8554522446906221993}
   - component: {fileID: 2520960108438170804}
   m_Layer: 0
-  m_Name: Cube.102
+  m_Name: ModularUnit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2731,7 +2752,7 @@ GameObject:
   - component: {fileID: 8696986257255626391}
   - component: {fileID: 7373485956280954851}
   m_Layer: 0
-  m_Name: Cube.108
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

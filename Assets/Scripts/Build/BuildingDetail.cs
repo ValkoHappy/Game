@@ -13,4 +13,12 @@ public class BuildingDetail : MonoBehaviour
             rigidbody.AddExplosionForce(force, center, radius);
         }
     }
+
+    public void ResetBounce()
+    {
+        if (TryGetComponent(out Rigidbody rigidbody))
+        {
+            rigidbody.isKinematic = true;
+        }
+    }
 }

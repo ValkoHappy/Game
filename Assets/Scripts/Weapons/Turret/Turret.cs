@@ -82,9 +82,9 @@ public class Turret : MonoBehaviour
     {
         if (other.TryGetComponent(out EnemyCollision enemy))
         {
-            if (enemy != null && enemy.IsAlive() == false)
+            if (enemy.IsAlive() == false)
             {
-                //_enemies.Remove(enemy);
+                _enemies.Remove(enemy);
                 _shootTurret.StopShoot();
             }
         }

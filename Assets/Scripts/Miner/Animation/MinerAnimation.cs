@@ -16,44 +16,57 @@ public abstract class MinerAnimation : MonoBehaviour
     public float Duration => _duration;
 
     private Building _building;
+    private BuildingsGrid _buildingGrid;
 
     private void Awake()
     {
+        _buildingGrid = FindObjectOfType<BuildingsGrid>();
         _building = GetComponentInParent<Building>();
     }
 
     private void Start()
     {
-        if(_isStartAnimation)
-        {
-            OnDeliveryBuilding();
-        }
-    }
-
-    private void OnEnable()
-    {
-        if (_isStartAnimation == false)
-        {
-            _building.DeliveryBuilding += OnDeliveryBuilding;
-        }
 
     }
 
-    private void OnDisable()
-    {
-        if (_isStartAnimation == false)
-        {
-            _building.DeliveryBuilding -= OnDeliveryBuilding;
-        }
-    }
+    //private void OnEnable()
+    //{
+    //    if (_isStartAnimation == false)
+    //    {
+    //        _building.DeliveryBuilding += OnDeliveryBuilding;
+    //    }
+    //    _buildingGrid.EditPositionBuilding += TurnOffAnimation;
+    //    _buildingGrid.DeliveredBuilding += TurnOnAnimation;
+
+    //}
+
+    //private void OnDisable()
+    //{
+    //    if (_isStartAnimation == false)
+    //    {
+    //        _building.DeliveryBuilding -= OnDeliveryBuilding;
+    //    }
+    //    _buildingGrid.EditPositionBuilding -= TurnOffAnimation;
+    //    _buildingGrid.DeliveredBuilding -= TurnOnAnimation;
+    //}
 
     public abstract void OnDeliveryBuilding();
 
-    public  void Pause()
+    public void Pause()
     {
         if (TweenAnimation != null)
         {
             TweenAnimation.Kill();
         }
+    }
+
+    public void TurnOffAnimation()
+    {
+        Pause();
+    }
+
+    public void TurnOnAnimation()
+    {
+        OnDeliveryBuilding();
     }
 }

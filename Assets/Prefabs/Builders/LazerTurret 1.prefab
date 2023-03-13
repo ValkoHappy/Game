@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5571363953753526479}
-  - {fileID: 324081093469560343}
+  - {fileID: 3005547326103823954}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3e627c38a0c2d46980cb2cceb7ad60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementScreen: {fileID: 812909442134522209}
+  _movementScreen: {fileID: 2280386095644311016}
   _menuScreen: {fileID: 0}
 --- !u!1001 &1843667538433868148
 PrefabInstance:
@@ -243,6 +243,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5062452008490412268, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5705712778624402777, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -361,14 +365,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
---- !u!224 &324081093469560343 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7749558134350270633, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
-  m_PrefabInstance: {fileID: 8067257661655322302}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &812909442134522209 stripped
+--- !u!114 &2280386095644311016 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7258853502925846495, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8093292935960720214, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
   m_PrefabInstance: {fileID: 8067257661655322302}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -377,3 +376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fcbf58972b8dc47951e1fed2531612, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &3005547326103823954 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5062452008490412268, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+  m_PrefabInstance: {fileID: 8067257661655322302}
+  m_PrefabAsset: {fileID: 0}

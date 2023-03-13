@@ -18,6 +18,7 @@ public class BrokenState : EnemyState
     {
         Vector3 direction = (transform.position - attachedBody.position);
         direction.y = 0;
+        Animator.SetTrigger("Die 0");
         Rigidbody.AddForce(direction.normalized * force, ForceMode.Impulse);
         StartCoroutine(FadeOut());
         Died?.Invoke();

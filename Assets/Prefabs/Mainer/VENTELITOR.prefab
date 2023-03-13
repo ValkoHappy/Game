@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 2080889797752596129}
   - component: {fileID: 6450873023558763994}
   - component: {fileID: 2405743149641035782}
+  - component: {fileID: 8992291694952150456}
   m_Layer: 0
   m_Name: VENTELITOR
   m_TagString: target
@@ -541,7 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _amountMoneyProduced: 1
-  _waitForSecounds: 1
+  _waitForSecounds: 3
 --- !u!65 &2405743149641035782
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -555,6 +556,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0127516, y: 0.09602377, z: 1.997514}
   m_Center: {x: -0.0019278526, y: -0.04584287, z: -0.007830977}
+--- !u!95 &8992291694952150456
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5714245974507219993}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1d0084bbc6ece2541b2b58389554a5f4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5898920255998968221
 GameObject:
   m_ObjectHideFlags: 0

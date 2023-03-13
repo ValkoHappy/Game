@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StoreTab : MonoBehaviour
 {
-    [SerializeField] private MoneyContainer _moneyContainer;
+    [SerializeField] private GoldContainer _moneyContainer;
     [SerializeField] private BuildingsManager _buildingsManager;
     [SerializeField] private BuildingsGrid _buildingsGrid;
 
@@ -34,7 +34,7 @@ public class StoreTab : MonoBehaviour
 
     private void TrySellBuilding(Goods statsBuilding, BuilderView builderView)
     {
-        if (statsBuilding.Price <= _moneyContainer.Money)
+        if (statsBuilding.Price <= _moneyContainer.Gold)
         {
             _moneyContainer.BuyBuilding(statsBuilding);
             //builderView.SellButtonClick -= OnSellButtonClick;
