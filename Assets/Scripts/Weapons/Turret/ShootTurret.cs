@@ -7,11 +7,11 @@ using static UnityEngine.GraphicsBuffer;
 public class ShootTurret : MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
+    [SerializeField] private bool _isLaser = false;
     [SerializeField] private Transform[] _shootPoint;
     [SerializeField] private float _waitForSeconds;
     [SerializeField] private ParticleSystem _particleShoot;
 
-    //public LineRenderer _lineRenderer;
     private Turret _turret;
     private RecoilAnimation _recoilAnimation;
     private Coroutine _shootCoroutine;
@@ -22,7 +22,6 @@ public class ShootTurret : MonoBehaviour
     private void Awake()
     {
         _turret = GetComponent<Turret>();
-        //_lineRenderer= GetComponent<LineRenderer>();
         _recoilAnimation = GetComponentInChildren<RecoilAnimation>();
     }
 
@@ -71,11 +70,10 @@ public class ShootTurret : MonoBehaviour
         for (int i = 0; i < _shootPoint.Length; i++)
         {
             CreateBullet(_shootPoint[i]);
-            //_lineRenderer.SetPosition(0, _shootPoint[i].position);
-            //_lineRenderer.SetPosition(1, _turret.TargetEnemy.transform.position);
         }
         _recoilAnimation.StartRecoil(_waitForSeconds);
         yield return waitForSeconds;
+
         StartShoot();
     }
 

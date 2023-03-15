@@ -45,10 +45,14 @@ public class BuildingsManager : MonoBehaviour
     public void OnBuildingDeath(PeacefulConstruction building)
     {
         //building.Die -= OnBuildingDeath;
-        _starsScore.AddBuildingsDiedCount();
         if (_buildings.Count <= 0)
         {
             AllBuildingsDestroyed?.Invoke();
+        }
+
+        if(building.IsAlive() ==false)
+        {
+            _starsScore.AddBuildingsDiedCount();
         }
 
         bool allBuildingsDestroyed = true;
@@ -61,7 +65,6 @@ public class BuildingsManager : MonoBehaviour
                 break;
             }
         }
-        Debug.Log(allBuildingsDestroyed);
         if (allBuildingsDestroyed)
         {
             AllBuildingsDestroyed?.Invoke();
@@ -87,5 +90,15 @@ public class BuildingsManager : MonoBehaviour
             }
 
         }
+    }
+
+    public void OnDestroyAllBuildings()
+    {
+        foreach (var building in _buildings)
+        {
+            building.Destroy();
+        }
+
+        _buildings.Clear();
     }
 }

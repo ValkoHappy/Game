@@ -231,7 +231,7 @@ MonoBehaviour:
   _speed: 30
   _yOffSet: 1
   _radius: 1
-  _particle: {fileID: 19858090, guid: f2ee009e61b1177489331d95174281b1, type: 3}
+  _particle: {fileID: 9088399641867135244, guid: f5c6918ef65783946bfad902294e12cd, type: 3}
 --- !u!54 &5586193439327126252
 Rigidbody:
   m_ObjectHideFlags: 0

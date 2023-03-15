@@ -2,39 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using RTS_Cam;
+using UnityEngine.Events;
 
 public class LobbyCameraAnimation : MonoBehaviour
 {
     [SerializeField] private Vector3[] _waypoints;
     [SerializeField] private float _duration;
 
-    private RTS_Camera rTS_Camera;
-    float time = 0;
+    private float _time = 0;
+    private bool _isPlaying = true;
 
-    private void Awake()
-    {
-        rTS_Camera = GetComponent<RTS_Camera>();
-    }
+    public event UnityAction AnimationIsFinished;
 
     private void Start()
     {
-        rTS_Camera.enabled = false;
         RotationCamera();
     }
 
     private void Update()
     {
-        if(rTS_Camera.enabled == false)
+        if (_isPlaying)
         {
-            time += Time.deltaTime;
-            if (time >= _duration)
-                rTS_Camera.enabled = true;
+            _time += Time.deltaTime;
+            if (_time >= _duration)
+            {
+                AnimationIsFinished?.Invoke();
+                _time = 0;
+                _isPlaying = false;
+            }
         }
     }
 
     public void RotationCamera()
     {
         transform.DOLocalPath(_waypoints, _duration, PathType.Linear);
+
+        AnimationIsFinished?.Invoke();
     }
+
 }

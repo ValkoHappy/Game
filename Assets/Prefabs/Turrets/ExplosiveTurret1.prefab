@@ -838,6 +838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 6180547932860481158, guid: 2b604ab3ddffd99489308cc39ba93394, type: 3}
+  _isLaser: 0
   _shootPoint:
   - {fileID: 22356744550172035}
   _waitForSeconds: 2
@@ -866,7 +867,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 12
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &958545901367315476
 MonoBehaviour:

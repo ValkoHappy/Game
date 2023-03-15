@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using static Level;
 
 public class Spawner : MonoBehaviour
@@ -15,6 +16,9 @@ public class Spawner : MonoBehaviour
     private Level _currentLevel;
     private int _miniEnemiesRemaining;
     private int _bossEnemiesRemaining;
+
+    public event UnityAction<int> LevelChanged;
+    public int Level => _currentLevelIndex +1;
 
     public void StartNextLevel()
     {
@@ -78,5 +82,10 @@ public class Spawner : MonoBehaviour
         }
 
         return points[Random.Range(0, points.Count)];
+    }
+
+    public void ShowLevel()
+    {
+        LevelChanged?.Invoke(_currentLevelIndex + 1);
     }
 }

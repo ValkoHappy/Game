@@ -1,6 +1,3 @@
-using RTS_Cam;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Game : MonoBehaviour
@@ -10,34 +7,27 @@ public class Game : MonoBehaviour
     [SerializeField] private SettingMenuScreen _settingMenuScreen;
     [SerializeField] private VictoryScreen _victoryScreen;
     [SerializeField] private DefeatScreen _featScreen;
+    [SerializeField] private MobileControllerScreen _mobileControllerScreen;
 
-    [SerializeField] private RTS_Camera _rTS_Camera;
     [SerializeField] private Spawner _spawner;
     [SerializeField] private EnemyManager _enemyManager;
     [SerializeField] private BuildingsManager _buildingsManager;
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private StarsScore _starsScore;
-
-    private bool _isInitialLaunch = true;
+    [SerializeField] private LobbyCameraAnimation _limbCameraAnimation;
 
     private void Start()
     {
         _mainMenuScreen.Close();
         _shopScreen.Close();
         _settingMenuScreen.Close();
-    }
-
-    private void Update()
-    {
-        if (_rTS_Camera.enabled == true && _isInitialLaunch == true)
-        {
-            _mainMenuScreen.Open();
-            _isInitialLaunch = false;
-        }
+        _spawner.ShowLevel();
     }
 
     private void OnEnable()
     {
+        _limbCameraAnimation.AnimationIsFinished += OnOpenMainMenu;
+
         _enemyManager.AllEnemiesKilled += OnAllEnemiesKilled;
         _buildingsManager.AllBuildingsDestroyed += OnAllBuildingsDestroyed;
 
@@ -59,6 +49,8 @@ public class Game : MonoBehaviour
 
     private void OnDisable()
     {
+        _limbCameraAnimation.AnimationIsFinished -= OnOpenMainMenu;
+
         _enemyManager.AllEnemiesKilled -= OnAllEnemiesKilled;
         _buildingsManager.AllBuildingsDestroyed -= OnAllBuildingsDestroyed;
 
@@ -82,11 +74,13 @@ public class Game : MonoBehaviour
     {
         _starsScore.ShowStars();
         _victoryScreen.Open();
+        _mobileControllerScreen.Close();
     }
 
     private void OnAllBuildingsDestroyed()
     {
         _featScreen.Open();
+        _mobileControllerScreen.Close();
     }
 
     private void OnStartGame()
@@ -94,7 +88,9 @@ public class Game : MonoBehaviour
         _mainMenuScreen.Close();
         //_buildingsManager.OnSaveBuildings();
         _spawner.StartNextLevel();
+        _starsScore.CloseStars();
         _starsScore.RemoveAllBuildingsDiedCount();
+        _mobileControllerScreen.Open();
     }
 
     private void OnShopScreen()
@@ -106,11 +102,18 @@ public class Game : MonoBehaviour
     private void OnCloseShop()
     {
         _shopScreen.Close();
+        _mobileControllerScreen.Open();
     }
 
     private void OnOpenShop()
     {
         _shopScreen.Open();
+        _mobileControllerScreen.Close();
+    }
+
+    private void OnOpenMainMenu()
+    {
+        _mainMenuScreen.Open();
     }
 
     private void OnMainMenuScreen()
@@ -123,7 +126,10 @@ public class Game : MonoBehaviour
     }
     private void OnMenuAfterFightScreen()
     {
+        _spawner.ShowLevel();
         _enemyManager.OnDestroyEnemies();
+        _buildingsGrid.RemoveGrid();
+        _buildingsManager.OnDestroyAllBuildings();
         _buildingsManager.OnCreateSavedBuildings();
         _victoryScreen.Close();
         _featScreen.Close();

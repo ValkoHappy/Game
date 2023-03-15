@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TownHall
   m_EditorClassIdentifier: 
   _label: "\u0420\u0430\u0442\u0443\u0448\u0430"
-  _price: 10
+  _price: 0
   _icon: {fileID: 21300000, guid: f4ee96064cd5d4d49a05e910571fb5bf, type: 3}
   _isBuyed: 0
   _buildingPrefab: {fileID: 2645574674400504189, guid: d06f5206a7093d54c80a762fd195e921, type: 3}

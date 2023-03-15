@@ -8,14 +8,12 @@ public class MainMenuScreen : ScreenUI
 {
     [SerializeField] private Button _playButton;
     [SerializeField] private Button _shopButton;
-    [SerializeField] private Button _inventoryButton;
     [SerializeField] private Button _questsButton;
     [SerializeField] private Button _rankingButton;
     [SerializeField] private Button _settingButton;
 
     public event UnityAction PlayButtonClick;
     public event UnityAction ShopButtonClick;
-    public event UnityAction InventoryButtonClick;
     public event UnityAction QuestsButtonClick;
     public event UnityAction RankingButtonClick;
     public event UnityAction SettingButtonClick;
@@ -24,7 +22,6 @@ public class MainMenuScreen : ScreenUI
     {
         _playButton.onClick.AddListener(OnPlayButton);
         _shopButton.onClick.AddListener(OnShopButton);
-        _inventoryButton.onClick.AddListener(OnInventoryButton);
         _questsButton.onClick.AddListener(OnQuestsButton);
         _rankingButton.onClick.AddListener(OnRankingButton);
         _settingButton.onClick.AddListener(OnSettingButton);
@@ -34,7 +31,6 @@ public class MainMenuScreen : ScreenUI
     {
         _playButton.onClick.RemoveListener(OnPlayButton);
         _shopButton.onClick.RemoveListener(OnShopButton);
-        _inventoryButton.onClick.RemoveListener(OnInventoryButton);
         _questsButton.onClick.RemoveListener(OnQuestsButton);
         _rankingButton.onClick.RemoveListener(OnRankingButton);
         _settingButton.onClick.RemoveListener(OnSettingButton);
@@ -48,11 +44,6 @@ public class MainMenuScreen : ScreenUI
     public void OnShopButton()
     {
         ShopButtonClick?.Invoke();
-    }
-
-    public void OnInventoryButton()
-    {
-        InventoryButtonClick?.Invoke();
     }
 
     public void OnQuestsButton()

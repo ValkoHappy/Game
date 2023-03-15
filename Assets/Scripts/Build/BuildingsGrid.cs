@@ -26,6 +26,10 @@ public class BuildingsGrid : MonoBehaviour
         _moveSelection = GetComponent<MoveSelection>();
     }
 
+    private void Start()
+    {
+    }
+
     private void Update()
     {
         if (_flyingBuilding != null)
@@ -127,5 +131,8 @@ public class BuildingsGrid : MonoBehaviour
         EditPositionBuilding?.Invoke();
     }
 
-
+    public void RemoveGrid()
+    {
+        _grid = new Building[_gridSize.x, _gridSize.y];
+    }
 }

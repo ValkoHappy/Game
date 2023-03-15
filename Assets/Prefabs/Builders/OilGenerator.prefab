@@ -63,7 +63,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementScreen: {fileID: 8906535271633546378}
-  _menuScreen: {fileID: 5346459125069798777}
 --- !u!95 &4092082711946091764
 Animator:
   serializedVersion: 4
@@ -215,7 +214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2569969112920853611, guid: ba4c32ded37cac44f87434685cafea03, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2569969112920853612, guid: ba4c32ded37cac44f87434685cafea03, type: 3}
       propertyPath: m_Pivot.x
@@ -312,17 +311,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2569969112920853612, guid: ba4c32ded37cac44f87434685cafea03, type: 3}
   m_PrefabInstance: {fileID: 2046813966043717499}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5346459125069798777 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6221105279597429250, guid: ba4c32ded37cac44f87434685cafea03, type: 3}
-  m_PrefabInstance: {fileID: 2046813966043717499}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d36b12012f06b64ba7ab63ad2f527fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7303515321117071570
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,12 +11,10 @@ public class ShopScreen : ScreenUI
     [SerializeField] private Button _storeTabMainBuildingsButton;
     [SerializeField] private Button _storeTabWeaponsButton;
     [SerializeField] private Button _storeTabGeneratorsButton;
-    [SerializeField] private Button _storeTabDecorativeButton;
 
     [SerializeField] private ScreenUI _storeTabMainBuildings;
     [SerializeField] private ScreenUI _storeTabWeapons;
     [SerializeField] private ScreenUI _storeTabGenerators;
-    [SerializeField] private ScreenUI _storeTabDecorative;
 
     public event UnityAction ExitButtonClick;
 
@@ -24,8 +22,7 @@ public class ShopScreen : ScreenUI
     {
         _storeTabMainBuildings.Open();
         _storeTabWeapons.Close();
-        _storeTabGenerators.Close();
-        _storeTabDecorative.Close();    
+        _storeTabGenerators.Close();    
     }
 
 
@@ -36,7 +33,6 @@ public class ShopScreen : ScreenUI
         _storeTabMainBuildingsButton.onClick.AddListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.AddListener(OnStoreTabWeapons);
         _storeTabGeneratorsButton.onClick.AddListener(OnStoreTabGenerators);
-        _storeTabDecorativeButton.onClick.AddListener(OnStoreTabDecorative);
 
     }
 
@@ -47,7 +43,6 @@ public class ShopScreen : ScreenUI
         _storeTabMainBuildingsButton.onClick.RemoveListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.RemoveListener(OnStoreTabWeapons);
         _storeTabGeneratorsButton.onClick.RemoveListener(OnStoreTabGenerators);
-        _storeTabDecorativeButton.onClick.RemoveListener(OnStoreTabDecorative);
     }
 
     public void OnExitButton()
@@ -60,7 +55,6 @@ public class ShopScreen : ScreenUI
         _storeTabMainBuildings.Open();
         _storeTabWeapons.Close();
         _storeTabGenerators.Close();
-        _storeTabDecorative.Close();
     }
 
     private void OnStoreTabWeapons()
@@ -68,7 +62,6 @@ public class ShopScreen : ScreenUI
         _storeTabMainBuildings.Close();
         _storeTabWeapons.Open();
         _storeTabGenerators.Close();
-        _storeTabDecorative.Close();
     }
 
     private void OnStoreTabGenerators()
@@ -76,14 +69,5 @@ public class ShopScreen : ScreenUI
         _storeTabMainBuildings.Close();
         _storeTabWeapons.Close();
         _storeTabGenerators.Open();
-        _storeTabDecorative.Close();
-    }
-
-    private void OnStoreTabDecorative()
-    {
-        _storeTabMainBuildings.Close();
-        _storeTabWeapons.Close();
-        _storeTabGenerators.Close();
-        _storeTabDecorative.Open();
     }
 }

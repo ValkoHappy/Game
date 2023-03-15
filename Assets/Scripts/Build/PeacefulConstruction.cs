@@ -101,4 +101,9 @@ public class PeacefulConstruction : MonoBehaviour
             _detailSnapshots.Clear();
         }     
     }
+
+    public void Destroy()
+    {
+        Destroy(this.GetComponentInParent<Building>().gameObject);
+    }
 }

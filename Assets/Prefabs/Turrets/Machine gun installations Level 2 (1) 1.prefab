@@ -770,7 +770,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9709eec226425ef4e9d17c36ba87aac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 4395150195568702347, guid: 05a0351ef5da1054b930d0d8b55ce0ab, type: 3}
+  _bullet: {fileID: 3304229111058280170, guid: 6e27c47632436e84685f4abc808de76c, type: 3}
+  _isLaser: 0
   _shootPoint:
   - {fileID: 5388518269924201210}
   _waitForSeconds: 1.5
@@ -786,7 +787,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 12
+  m_Radius: 16
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5388518271078800968
 Rigidbody:
