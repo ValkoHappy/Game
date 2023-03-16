@@ -1,88 +1,72 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Fence : MonoBehaviour
 {
-    //[SerializeField] private float rotationSpeed;
-    //[SerializeField] private GameObject baseBoard;
-    //[SerializeField] private GameObject[] boards;
+    [SerializeField] private float _radius;
+    [SerializeField] private GameObject _boardPrefab;
+    [SerializeField] private float _boardWidth = 0.1f;
 
-    //private FenceCollision targetFence;
-    //private List<FenceCollision> fences;
+    private GameObject _board;
+    private Fence _otherFence;
+    private Vector3 _boardStartPosition;
+    private Vector3 _boardEndPosition;
+    private bool _isDrawingBoard;
 
-    //private void Start()
-    //{
-    //    fences = new List<FenceCollision>();
-    //}
+    private void Update()
+    {
+        if (!_isDrawingBoard)
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, _radius);
 
-    //private void Update()
-    //{
-    //    if (targetFence != null)
-    //    {
-    //        Vector3 direction = targetFence.transform.position - baseBoard.transform.position;
-    //        Quaternion lookRotation = Quaternion.LookRotation(direction);
-    //        baseBoard.transform.rotation = Quaternion.Slerp(baseBoard.transform.rotation, lookRotation, Time.deltaTime * rotationSpeed);
-    //    }
-    //}
+            foreach (Collider collider in colliders)
+            {
+                Fence otherFence = collider.GetComponent<Fence>();
+                if (otherFence != null && otherFence != this)
+                {
+                    _otherFence = otherFence;
+                    DrawBoard();
+                    break;
+                }
+            }
+        }
+        else
+        {
+            UpdateBoard();
+        }
+    }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    FenceCollision fence = other.GetComponent<FenceCollision>();
+    private void DrawBoard()
+    {
+        _boardStartPosition = transform.position;
+        _boardEndPosition = _otherFence.transform.position;
+        Vector3 boardScale = new Vector3(_boardWidth, Vector3.Distance(_boardStartPosition, _boardEndPosition), 1f);
 
-    //    if (fence != null)
-    //    {
-    //        fences.Add(fence);
-    //        SetTargetFence();
-    //    }
-    //}
+        _board = Instantiate(_boardPrefab, _boardStartPosition, Quaternion.identity);
+        _board.transform.up = _boardEndPosition - _boardStartPosition;
+        _board.transform.localScale = boardScale;
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    FenceCollision fence = other.GetComponent<FenceCollision>();
+        _isDrawingBoard = true;
+    }
 
-    //    if (fence != null)
-    //    {
-    //        fences.Remove(fence);
-    //        SetTargetFence();
-    //    }
-    //}
+    private void UpdateBoard()
+    {
+        if (_otherFence == null)
+        {
+            DestroyBoard();
+            return;
+        }
 
-    //private void SetTargetFence()
-    //{
-    //    if (fences.Count > 0)
-    //    {
-    //        float shortestDistance = float.MaxValue;
-    //        FenceCollision nearestFence = null;
+        _boardEndPosition = _otherFence.transform.position;
+        Vector3 boardScale = new Vector3(_boardWidth, Vector3.Distance(_boardStartPosition, _boardEndPosition), 1f);
+        _board.transform.up = _boardEndPosition - _boardStartPosition;
+        _board.transform.localScale = boardScale;
+    }
 
-    //        foreach (var fence in fences)
-    //        {
-    //            if (fence != null)
-    //            {
-    //                float distanceToFence = Vector3.Distance(baseBoard.transform.position, fence.transform.position);
-
-    //                if (distanceToFence < shortestDistance)
-    //                {
-    //                    shortestDistance = distanceToFence;
-    //                    nearestFence = fence;
-    //                }
-    //            }
-    //        }
-
-    //        if (nearestFence != null)
-    //        {
-    //            targetFence = nearestFence;
-    //        }
-    //        else
-    //        {
-    //            targetFence = null;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        targetFence = null;
-    //    }
-    //}
+    private void DestroyBoard()
+    {
+        Destroy(_board);
+        _isDrawingBoard = false;
+    }
 }
-
 
 

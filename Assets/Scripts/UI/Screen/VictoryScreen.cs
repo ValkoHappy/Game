@@ -8,6 +8,8 @@ public class VictoryScreen : ScreenUI
 {
     [SerializeField] private Button _resumeButton;
     [SerializeField] private Button _bonusButton;
+    //[SerializeField] private ParticleSystem[] _particles;
+    //[SerializeField] private Transform[] _pointsParticles;
 
     public event UnityAction ResumeButtonClick;
     public event UnityAction BonusButtonClick;
@@ -33,4 +35,15 @@ public class VictoryScreen : ScreenUI
     {
         BonusButtonClick?.Invoke();
     }
+
+    //public void OnStartEffect()
+    //{
+    //    foreach (var particl in _particles)
+    //    {
+    //        for (int i = 0; i < _pointsParticles.Length; i++)
+    //        {
+    //            Instantiate(particl, _pointsParticles[i]);
+    //        }
+    //    }
+    //}
 }

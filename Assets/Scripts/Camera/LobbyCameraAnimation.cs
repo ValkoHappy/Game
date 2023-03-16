@@ -28,6 +28,7 @@ public class LobbyCameraAnimation : MonoBehaviour
             {
                 AnimationIsFinished?.Invoke();
                 _time = 0;
+                Debug.Log("fdgfg");
                 _isPlaying = false;
             }
         }
@@ -36,8 +37,6 @@ public class LobbyCameraAnimation : MonoBehaviour
     public void RotationCamera()
     {
         transform.DOLocalPath(_waypoints, _duration, PathType.Linear);
-
-        AnimationIsFinished?.Invoke();
     }
 
 }

@@ -42,6 +42,7 @@ public class Game : MonoBehaviour
         _victoryScreen.ResumeButtonClick += OnMenuAfterFightScreen;
 
         _featScreen.ResumeButtonClick += OnMenuAfterFightScreen;
+        _featScreen.RestartButtonClick += OnReplayFight;
 
         _buildingsGrid.CreatedBuilding += OnCloseShop;
         _buildingsGrid.DeliveredBuilding += OnOpenShop;
@@ -65,6 +66,7 @@ public class Game : MonoBehaviour
         _victoryScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
 
         _featScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
+        _featScreen.RestartButtonClick -= OnReplayFight;
 
         _buildingsGrid.CreatedBuilding -= OnCloseShop;
         _buildingsGrid.DeliveredBuilding -= OnOpenShop;
@@ -74,6 +76,7 @@ public class Game : MonoBehaviour
     {
         _starsScore.ShowStars();
         _victoryScreen.Open();
+        //_victoryScreen.OnStartEffect();
         _mobileControllerScreen.Close();
     }
 
@@ -132,6 +135,14 @@ public class Game : MonoBehaviour
         _buildingsManager.OnDestroyAllBuildings();
         _buildingsManager.OnCreateSavedBuildings();
         _victoryScreen.Close();
+        _featScreen.Close();
+        _mainMenuScreen.Open();
+    }
+
+    private void OnReplayFight()
+    {
+        _enemyManager.OnDestroyEnemies();
+        _buildingsManager.OnCreateSavedBuildings();
         _featScreen.Close();
         _mainMenuScreen.Open();
     }
