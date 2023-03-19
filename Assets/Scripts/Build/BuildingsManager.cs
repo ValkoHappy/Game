@@ -14,6 +14,8 @@ public class BuildingsManager : MonoBehaviour
 
 
     public event UnityAction AllBuildingsDestroyed;
+    public event UnityAction TownHallNotBuilt;
+    public event UnityAction PurchaseCancelled;
 
     private void Awake()
     {
@@ -85,6 +87,8 @@ public class BuildingsManager : MonoBehaviour
         {
             if (_buildings[i].GetComponentInParent<Building>() == building)
             {
+                PurchaseCancelled?.Invoke();
+                Debug.Log(PurchaseCancelled);
                 _buildings.Remove(_buildings[i]);
                 _starsScore.RemoveBuildingsCount();
             }
@@ -100,5 +104,18 @@ public class BuildingsManager : MonoBehaviour
         }
 
         _buildings.Clear();
+    }
+
+    public bool IsTownHallBuilt()
+    {
+        foreach (var building in _buildings)
+        {
+            if (building.CompareTag("TownHall"))
+            {
+                return true;
+            }
+        }
+        TownHallNotBuilt?.Invoke();
+        return false;
     }
 }

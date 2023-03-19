@@ -33,10 +33,11 @@ public class Turret : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             _partToRotate.rotation = Quaternion.Slerp(_partToRotate.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
         }
-        //else if (TargetEnemy != null && TargetEnemy.IsAlive() == false && _construction.IsAlive())
-        //{
-        //        _partToRotate.rotation = Quaternion.Slerp(_partToRotate.rotation, Quaternion.LookRotation(new Vector3(0,0,0)), Time.deltaTime * _rotationSpeed);
-        //}
+
+        if (TargetEnemy == null && _construction.IsAlive() && _partToRotate.rotation != Quaternion.Euler(new Vector3(0, 0, 0)))
+        {
+            _partToRotate.rotation = Quaternion.Slerp(_partToRotate.rotation, Quaternion.LookRotation(new Vector3(0, 0, 0)), Time.deltaTime * _rotationSpeed);
+        }
 
         if (_enemies.Count > 0)
         {
@@ -45,7 +46,7 @@ public class Turret : MonoBehaviour
 
             foreach (var target in _enemies)
             {
-                if (target.IsAlive() && target != null) 
+                if (target.IsAlive() && target != null)
                 {
                     float distanceToEnemy = Vector3.Distance(transform.position, target.transform.position);
 
@@ -55,7 +56,7 @@ public class Turret : MonoBehaviour
                         nearestEnemy = target;
                     }
                 }
-                
+
             }
 
             if (nearestEnemy != null && nearestEnemy.IsAlive())
@@ -73,7 +74,6 @@ public class Turret : MonoBehaviour
             if (enemy != null && enemy.IsAlive())
             {
                 _enemies.Add(enemy);
-                _shootTurret.RestartShoot();
             }
         }
     }
@@ -85,7 +85,7 @@ public class Turret : MonoBehaviour
             if (enemy.IsAlive() == false)
             {
                 _enemies.Remove(enemy);
-                _shootTurret.StopShoot();
+                _shootTurret.StopShoot();    
             }
         }
     }

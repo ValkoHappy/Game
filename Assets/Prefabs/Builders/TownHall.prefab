@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 590621438089451002}
   m_Layer: 0
   m_Name: TownHall
-  m_TagString: target
+  m_TagString: TownHall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,6 +92,10 @@ PrefabInstance:
     - target: {fileID: 4182750088401877166, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460492036807711757, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4566984162621771917, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: m_RootOrder
@@ -324,7 +328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2250523190449560798, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
       propertyPath: m_TagString
-      value: target
+      value: TownHall
       objectReference: {fileID: 0}
     - target: {fileID: 2890597643511997318, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
       propertyPath: m_Layer

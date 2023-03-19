@@ -16,7 +16,7 @@ public class ShootTurret : MonoBehaviour
     private RecoilAnimation _recoilAnimation;
     private Coroutine _shootCoroutine;
     private bool _canShoot = true;
-    private bool _canStartShoot = true;
+    public bool _canShooting = false;
 
 
     private void Awake()
@@ -25,23 +25,31 @@ public class ShootTurret : MonoBehaviour
         _recoilAnimation = GetComponentInChildren<RecoilAnimation>();
     }
 
+    private void Update()
+    {
+        if (_canShoot)
+        {
+            if (_canShooting == false)
+            {
+                StartShoot();
+            }
+        }
+
+        if (_turret.TargetEnemy == null)
+        {
+            _canShooting = false;
+        }
+    }
+
     public void StartShoot()
     {
         if (_turret.TargetEnemy != null && _canShoot && _turret.Construction.IsAlive())
         {
-            _canStartShoot = false;
             if (_shootCoroutine != null)
             {
                 StopCoroutine(_shootCoroutine);
             }
             _shootCoroutine = StartCoroutine(Shoot());
-        }
-        else
-        {
-            if (_shootCoroutine != null)
-            {
-                StopCoroutine(_shootCoroutine);
-            }
         }
     }
 
@@ -57,23 +65,23 @@ public class ShootTurret : MonoBehaviour
 
     public void CreateBullet(Transform shootPoint)
     {
-        Bullet bullet = Instantiate(_bullet, shootPoint.position, Quaternion.identity);
+        Bullet bullet = Instantiate(_bullet, shootPoint.position, shootPoint.rotation);
         _particleShoot.transform.position = shootPoint.position;
         Instantiate(_particleShoot, shootPoint.position, Quaternion.identity);
-        bullet.Seek(_turret.TargetEnemy.transform);
+        bullet.transform.LookAt(_turret.TargetEnemy.transform);
     }
 
     private IEnumerator Shoot()
     {
         var waitForSeconds = new WaitForSeconds(_waitForSeconds);
-
-        for (int i = 0; i < _shootPoint.Length; i++)
-        {
-            CreateBullet(_shootPoint[i]);
-        }
-        _recoilAnimation.StartRecoil(_waitForSeconds);
+        _canShooting = true;
+            for (int i = 0; i < _shootPoint.Length; i++)
+            {
+                CreateBullet(_shootPoint[i]);
+            }
+            _recoilAnimation.StartRecoil(_waitForSeconds);
         yield return waitForSeconds;
-
+        _canShooting = false;
         StartShoot();
     }
 
@@ -86,8 +94,6 @@ public class ShootTurret : MonoBehaviour
                 if (_turret.Construction.IsAlive())
                 {
                     _canShoot = true;
-                    if (_canStartShoot)
-                        StartShoot();
                 }
             }
         }
@@ -104,5 +110,6 @@ public class ShootTurret : MonoBehaviour
         }
     }
 }
+
 
 

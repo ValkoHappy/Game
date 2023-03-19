@@ -28,7 +28,6 @@ public class LobbyCameraAnimation : MonoBehaviour
             {
                 AnimationIsFinished?.Invoke();
                 _time = 0;
-                Debug.Log("fdgfg");
                 _isPlaying = false;
             }
         }

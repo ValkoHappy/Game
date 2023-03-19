@@ -15,6 +15,7 @@ public class Game : MonoBehaviour
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private StarsScore _starsScore;
     [SerializeField] private LobbyCameraAnimation _limbCameraAnimation;
+    [SerializeField] private AlertScreen _alertScreen;
 
     private void Start()
     {
@@ -88,12 +89,19 @@ public class Game : MonoBehaviour
 
     private void OnStartGame()
     {
-        _mainMenuScreen.Close();
-        //_buildingsManager.OnSaveBuildings();
-        _spawner.StartNextLevel();
-        _starsScore.CloseStars();
-        _starsScore.RemoveAllBuildingsDiedCount();
-        _mobileControllerScreen.Open();
+        if (_buildingsManager.IsTownHallBuilt())
+        {
+            _mainMenuScreen.Close();
+            //_buildingsManager.OnSaveBuildings();
+            _spawner.StartNextLevel();
+            _starsScore.CloseStars();
+            _starsScore.RemoveAllBuildingsDiedCount();
+            _mobileControllerScreen.Open();
+        }
+        else
+        {
+            _alertScreen.Open();
+        }
     }
 
     private void OnShopScreen()
@@ -131,9 +139,9 @@ public class Game : MonoBehaviour
     {
         _spawner.ShowLevel();
         _enemyManager.OnDestroyEnemies();
-        _buildingsGrid.RemoveGrid();
         _buildingsManager.OnDestroyAllBuildings();
         _buildingsManager.OnCreateSavedBuildings();
+        _buildingsGrid.RemoveGrid();
         _victoryScreen.Close();
         _featScreen.Close();
         _mainMenuScreen.Open();

@@ -26,11 +26,11 @@ public class StarsScore : MonoBehaviour
         {
             _stars[2].SetActive(true);
         }
-        if (_buildingsStars >= 60)
+        if (_buildingsStars >= 80)
         {
             _stars[3].SetActive(true);
         }
-        if (_buildingsStars >= 90)
+        if (_buildingsStars == 100)
         {
             _stars[4].SetActive(true);
         }

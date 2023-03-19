@@ -9,6 +9,8 @@ public class EnemyManager : MonoBehaviour
 
     public event UnityAction AllEnemiesKilled;
 
+    public int DeadEnemiesCount { get; private set; }
+
     private void Start()
     {
         _enemies = new List<Enemy>();
@@ -23,6 +25,7 @@ public class EnemyManager : MonoBehaviour
     public void OnEnemyDeath(Enemy enemy)
     {
         _enemies.Remove(enemy);
+        DeadEnemiesCount++;
         enemy.Died -= OnEnemyDeath;
 
         if (_enemies.Count <= 0)

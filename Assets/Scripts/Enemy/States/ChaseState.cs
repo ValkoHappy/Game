@@ -17,11 +17,13 @@ public class ChaseState : EnemyState
 
     private void OnEnable()
     {
+        Animator.SetFloat("run 0", 0.01f);
         _agent.enabled = true;
     }
 
     private void OnDisable()
     {
+        Animator.SetFloat("run 0", 0);
         _agent.enabled = false;
     }
 
@@ -31,7 +33,6 @@ public class ChaseState : EnemyState
         if (_targetConstruction != null)
         {
             _agent.SetDestination(_targetConstruction.transform.position);
-            Animator.SetTrigger("Run 0");
         }
     }
 }

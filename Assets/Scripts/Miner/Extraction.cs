@@ -12,6 +12,7 @@ public class Extraction : MonoBehaviour
     private GoldContainer _moneyContainer;
     private Coroutine _extract;
     private PeacefulConstruction _peacefulConstruction;
+    private HealthContainer _healthContainer;
     private Animator _animator;
     private Building _building;
     private BuildingsGrid _buildingGrid;
@@ -22,26 +23,28 @@ public class Extraction : MonoBehaviour
         _moneyContainer = FindObjectOfType<GoldContainer>();
         _buildingGrid = FindObjectOfType<BuildingsGrid>();
         _peacefulConstruction = GetComponent<PeacefulConstruction>();
+        _healthContainer = GetComponent<HealthContainer>();
         _animator = GetComponent<Animator>();
-    }
-
-    private void Start()
-    {
-        StartExtract();
     }
 
     private void OnEnable()
     {
         _building.DeliveryBuilding += OnExtractionAnimation;
-        _buildingGrid.EditPositionBuilding += OffExtractionAnimation;
+        _buildingGrid.EditPositionBuilding += OnOffExtractionAnimation;
         _buildingGrid.DeliveredBuilding += OnExtractionAnimation;
+        _buildingGrid.DeliveredBuilding += StartExtract;
+        _peacefulConstruction.OffAnimation += OnOffExtractionAnimation;
+        _healthContainer.Died += OnOffExtractionAnimation;
     }
 
     private void OnDisable()
     {
         _building.DeliveryBuilding -= OnExtractionAnimation;
-        _buildingGrid.EditPositionBuilding -= OffExtractionAnimation;
+        _buildingGrid.EditPositionBuilding -= OnOffExtractionAnimation;
         _buildingGrid.DeliveredBuilding -= OnExtractionAnimation;
+        _buildingGrid.DeliveredBuilding -= StartExtract;
+        _peacefulConstruction.OffAnimation -= OnOffExtractionAnimation;
+        _healthContainer.Died -= OnOffExtractionAnimation;
     }
 
     private void StartExtract()
@@ -52,11 +55,12 @@ public class Extraction : MonoBehaviour
             {
                 StopCoroutine(_extract);
             }
+            OnExtractionAnimation();
             _extract = StartCoroutine(Extract());
         }
         else
         {
-            _animator.SetTrigger("Extraction");
+            OnOffExtractionAnimation();
         }
     }
 
@@ -73,7 +77,7 @@ public class Extraction : MonoBehaviour
         }
         else
         {
-            _animator.SetTrigger("Extraction");
+            OnOffExtractionAnimation();
         }
     }
 
@@ -82,7 +86,7 @@ public class Extraction : MonoBehaviour
         _animator.SetTrigger("Extraction");
     }
 
-    public void OffExtractionAnimation()
+    public void OnOffExtractionAnimation()
     {
         _animator.SetTrigger("Idle");
     }

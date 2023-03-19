@@ -10,6 +10,7 @@ public class PeacefulConstruction : MonoBehaviour
     [SerializeField] private float _bounceRadius;
 
     public event UnityAction<PeacefulConstruction> Die;
+    public event UnityAction OffAnimation;
 
     public event UnityAction Damaged;
     private HealthContainer _healthContainer;

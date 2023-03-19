@@ -7,11 +7,14 @@ using static MoveSelection;
 
 public class BuildingsGrid : MonoBehaviour
 {
+    [SerializeField] private BuildingsManager _buildingsManager;
+
     [SerializeField] private Vector2Int _gridSize;
     [SerializeField] private Transform _container;
 
     private Building[,] _grid;
     private Building _flyingBuilding;
+
     private MoveSelection _moveSelection;
 
     public event UnityAction CreatedBuilding;
@@ -24,10 +27,6 @@ public class BuildingsGrid : MonoBehaviour
     {
         _grid = new Building[_gridSize.x, _gridSize.y];
         _moveSelection = GetComponent<MoveSelection>();
-    }
-
-    private void Start()
-    {
     }
 
     private void Update()

@@ -17,26 +17,13 @@ public class Bullet : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if (_targetEnemy != null)
-        {
-            Vector3 direction = _targetEnemy - transform.position;
-            float distance = _speed * Time.deltaTime;
-            transform.Translate(direction * distance, Space.World);
-            transform.LookAt(_targetEnemy);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Vector3 direction = transform.forward;
+        _rigidbody.velocity = direction.normalized * _speed;
+        Destroy(gameObject, 3);
     }
 
-    public void Seek(Transform transform)
-    {
-        _targetEnemy = transform.position;
-        _targetEnemy.y = transform.position.y + _yOffSet;
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -64,11 +51,9 @@ public class Bullet : MonoBehaviour
     {
         if (other.TryGetComponent(out EnemyCollision enemy))
         {
-            // Get all the colliders within the sphere
             Collider[] colliders = Physics.OverlapSphere(transform.position, _radius);
             foreach (Collider collider in colliders)
             {
-                // Check if the collider has an EnemyCollision component
                 if (collider.TryGetComponent(out EnemyCollision enemyCollision))
                 {
                     ApplyDamageToEnemy(enemyCollision);

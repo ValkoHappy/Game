@@ -10,7 +10,19 @@ public class StoreTab : MonoBehaviour
 
     [SerializeField] private List<Goods> _buildings;
     [SerializeField] private BuilderView _builderView;
-    [SerializeField] private GameObject _itenContainer;
+    [SerializeField] private Transform _itenContainer;
+
+    private int _priceGoods = 0;
+
+    private void OnEnable()
+    {
+        _buildingsManager.PurchaseCancelled += OnPurchaseCancelled;
+    }
+
+    private void OnDisable()
+    {
+        _buildingsManager.PurchaseCancelled -= OnPurchaseCancelled;
+    }
 
     private void Start()
     {
@@ -22,7 +34,7 @@ public class StoreTab : MonoBehaviour
 
     private void AddItem(Goods building)
     {
-        var view = Instantiate(_builderView, _itenContainer.transform);
+        var view = Instantiate(_builderView, _itenContainer);
         view.SellButtonClick += OnSellButtonClick;
         view.Render(building);
     }
@@ -36,11 +48,18 @@ public class StoreTab : MonoBehaviour
     {
         if (statsBuilding.Price <= _moneyContainer.Gold)
         {
+
+            _priceGoods = statsBuilding.Price;
             _moneyContainer.BuyBuilding(statsBuilding);
             //builderView.SellButtonClick -= OnSellButtonClick;
 
             Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
             _buildingsManager.AddBuilding(building.GetComponentInChildren<PeacefulConstruction>());
         }
+    }
+
+    private void OnPurchaseCancelled()
+    {
+        _moneyContainer.GetGold(_priceGoods);
     }
 }
