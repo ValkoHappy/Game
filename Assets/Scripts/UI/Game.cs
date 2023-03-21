@@ -16,6 +16,7 @@ public class Game : MonoBehaviour
     [SerializeField] private StarsScore _starsScore;
     [SerializeField] private LobbyCameraAnimation _limbCameraAnimation;
     [SerializeField] private AlertScreen _alertScreen;
+    [SerializeField] private LevelReward _levelReward;
 
     private void Start()
     {
@@ -76,6 +77,7 @@ public class Game : MonoBehaviour
     private void OnAllEnemiesKilled()
     {
         _starsScore.ShowStars();
+        _levelReward.CalculateReward();
         _victoryScreen.Open();
         //_victoryScreen.OnStartEffect();
         _mobileControllerScreen.Close();
@@ -138,6 +140,7 @@ public class Game : MonoBehaviour
     private void OnMenuAfterFightScreen()
     {
         _spawner.ShowLevel();
+        _levelReward.GetReward();
         _enemyManager.OnDestroyEnemies();
         _buildingsManager.OnDestroyAllBuildings();
         _buildingsManager.OnCreateSavedBuildings();

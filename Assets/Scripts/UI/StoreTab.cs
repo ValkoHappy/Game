@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class StoreTab : MonoBehaviour
 {
-    [SerializeField] private GoldContainer _moneyContainer;
+    [SerializeField] private GoldContainer _goldContainer;
+    [SerializeField] private CrystalsContainer _crystalsContainer; 
     [SerializeField] private BuildingsManager _buildingsManager;
     [SerializeField] private BuildingsGrid _buildingsGrid;
 
     [SerializeField] private List<Goods> _buildings;
-    [SerializeField] private BuilderView _builderView;
+    [SerializeField] private BuilderView _builderViewGold;
+    [SerializeField] private BuilderView _builderViewCrystals;
     [SerializeField] private Transform _itenContainer;
 
     private int _priceGoods = 0;
@@ -34,9 +36,20 @@ public class StoreTab : MonoBehaviour
 
     private void AddItem(Goods building)
     {
-        var view = Instantiate(_builderView, _itenContainer);
-        view.SellButtonClick += OnSellButtonClick;
-        view.Render(building);
+        if (building.IsSoldForCrystals)
+        {
+            var view = Instantiate(_builderViewCrystals, _itenContainer);
+            view.SellButtonClick += OnSellButtonClick;
+            view.Render(building);
+        }
+        else 
+        {
+            var view = Instantiate(_builderViewGold, _itenContainer);
+            view.SellButtonClick += OnSellButtonClick;
+            view.Render(building);
+        }
+
+
     }
 
     private void OnSellButtonClick(Goods statsBuilding, BuilderView builderView)
@@ -46,20 +59,37 @@ public class StoreTab : MonoBehaviour
 
     private void TrySellBuilding(Goods statsBuilding, BuilderView builderView)
     {
-        if (statsBuilding.Price <= _moneyContainer.Gold)
+        _priceGoods = statsBuilding.Price;
+        if (statsBuilding.IsSoldForCrystals)
         {
-
-            _priceGoods = statsBuilding.Price;
-            _moneyContainer.BuyBuilding(statsBuilding);
-            //builderView.SellButtonClick -= OnSellButtonClick;
-
-            Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
-            _buildingsManager.AddBuilding(building.GetComponentInChildren<PeacefulConstruction>());
+            if (statsBuilding.Price <= _crystalsContainer.Crystals)
+            {
+                _crystalsContainer.BuyBuilding(statsBuilding);
+            }
+            else
+            {
+                return;
+            }
         }
+        else
+        {
+            if (statsBuilding.Price <= _goldContainer.Gold)
+            {
+                _goldContainer.BuyBuilding(statsBuilding);
+            }
+            else
+            {
+                return;
+            }
+        }
+        //builderView.SellButtonClick -= OnSellButtonClick;
+
+        Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
+        _buildingsManager.AddBuilding(building.GetComponentInChildren<PeacefulConstruction>());
     }
 
     private void OnPurchaseCancelled()
     {
-        _moneyContainer.GetGold(_priceGoods);
+        _goldContainer.GetGold(_priceGoods);
     }
 }

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: LaserTurret
   m_EditorClassIdentifier: 
   _label: "\u041B\u0430\u0437\u0435\u0440\u043D\u0430\u044F \u0442\u0443\u0440\u0435\u043B\u044C"
-  _price: 10
+  _price: 125
   _icon: {fileID: 21300000, guid: 3671c13102fbdae4c9416013b96f9c4e, type: 3}
+  _isSoldForCrystals: 0
   _isBuyed: 0
   _buildingPrefab: {fileID: 4016082141280449998, guid: cc497483d5a76c54fbc017eeef42e491, type: 3}

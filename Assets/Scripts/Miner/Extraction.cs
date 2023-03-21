@@ -34,6 +34,7 @@ public class Extraction : MonoBehaviour
         _buildingGrid.DeliveredBuilding += OnExtractionAnimation;
         _buildingGrid.DeliveredBuilding += StartExtract;
         _peacefulConstruction.OffAnimation += OnOffExtractionAnimation;
+        _peacefulConstruction.BuildingRestored += StartExtract;
         _healthContainer.Died += OnOffExtractionAnimation;
     }
 
@@ -44,6 +45,7 @@ public class Extraction : MonoBehaviour
         _buildingGrid.DeliveredBuilding -= OnExtractionAnimation;
         _buildingGrid.DeliveredBuilding -= StartExtract;
         _peacefulConstruction.OffAnimation -= OnOffExtractionAnimation;
+        _peacefulConstruction.BuildingRestored -= StartExtract;
         _healthContainer.Died -= OnOffExtractionAnimation;
     }
 

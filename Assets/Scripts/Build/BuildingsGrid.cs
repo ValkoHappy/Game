@@ -14,6 +14,8 @@ public class BuildingsGrid : MonoBehaviour
 
     private Building[,] _grid;
     private Building _flyingBuilding;
+    private Camera _camera;
+    private bool _isBuildingSelected = false;
 
     private MoveSelection _moveSelection;
 
@@ -27,6 +29,7 @@ public class BuildingsGrid : MonoBehaviour
     {
         _grid = new Building[_gridSize.x, _gridSize.y];
         _moveSelection = GetComponent<MoveSelection>();
+        _camera = Camera.main;
     }
 
     private void Update()
@@ -43,11 +46,11 @@ public class BuildingsGrid : MonoBehaviour
             else
             {
                 _flyingBuilding.SetTransparent(true);
-                if (_moveSelection.Mode == BuildingMode.Insert || Input.GetKeyUp(KeyCode.I))
+                if (_moveSelection.Mode == BuildingMode.Insert)
                 {
                     PlaceFlyingBuilding(x, y);
                 }
-                else if (_moveSelection.Mode == BuildingMode.Delete || Input.GetKeyUp(KeyCode.O))
+                else if (_moveSelection.Mode == BuildingMode.Delete)
                 {
                     DestroyBuilding?.Invoke(_flyingBuilding);
                     Destroy(_flyingBuilding.gameObject);
@@ -57,28 +60,43 @@ public class BuildingsGrid : MonoBehaviour
                 _moveSelection.SetBuildingModeMovement();
             }
 
-            Vector3 movement = Vector3.zero;
-            if (_moveSelection.Moves == BuildingMoves.Up || Input.GetKeyUp(KeyCode.T))
+
+            if (_isBuildingSelected && Input.GetMouseButton(0))
             {
-                movement += Vector3.forward;
+                Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.collider.gameObject == _flyingBuilding.gameObject)
+                    {
+                        Vector3 newPosition = new Vector3(hit.point.x, _flyingBuilding.transform.position.y, hit.point.z);
+                        _flyingBuilding.transform.position = newPosition;
+                    }
+                }
             }
-            if (_moveSelection.Moves == BuildingMoves.Down || Input.GetKeyUp(KeyCode.G))
-            {
-                movement += Vector3.back;
-            }
-            if (_moveSelection.Moves == BuildingMoves.Left || Input.GetKeyUp(KeyCode.F))
-            {
-                movement += Vector3.left;
-            }
-            if (_moveSelection.Moves == BuildingMoves.Right || Input.GetKeyUp(KeyCode.H))
-            {
-                movement += Vector3.right;
-            }
-            if (_flyingBuilding != null && movement != Vector3.zero)
-            {
-                _flyingBuilding.transform.position += movement;
-            }
-            _moveSelection.SetBuildingMovesStraight();
+
+            //Vector3 movement = Vector3.zero;
+            //if (_moveSelection.Moves == BuildingMoves.Up || Input.GetKeyUp(KeyCode.T))
+            //{
+            //    movement += Vector3.forward;
+            //}
+            //if (_moveSelection.Moves == BuildingMoves.Down || Input.GetKeyUp(KeyCode.G))
+            //{
+            //    movement += Vector3.back;
+            //}
+            //if (_moveSelection.Moves == BuildingMoves.Left || Input.GetKeyUp(KeyCode.F))
+            //{
+            //    movement += Vector3.left;
+            //}
+            //if (_moveSelection.Moves == BuildingMoves.Right || Input.GetKeyUp(KeyCode.H))
+            //{
+            //    movement += Vector3.right;
+            //}
+            //if (_flyingBuilding != null && movement != Vector3.zero)
+            //{
+            //    _flyingBuilding.transform.position += movement;
+            //}
+            //_moveSelection.SetBuildingMovesStraight();
         }
     }
 
@@ -88,7 +106,7 @@ public class BuildingsGrid : MonoBehaviour
         {
             Destroy(_flyingBuilding.gameObject);
         }
-
+        _isBuildingSelected = true;
         _flyingBuilding = Instantiate(buildingPrefab, _container);
         CreatedBuilding?.Invoke();
         return _flyingBuilding;
@@ -118,7 +136,7 @@ public class BuildingsGrid : MonoBehaviour
                 _grid[placeX + i, placeY + j] = _flyingBuilding;
             }
         }
-
+        _isBuildingSelected = false;
         _flyingBuilding.SetNormal();
         DeliveredBuilding?.Invoke();
         _flyingBuilding = null;

@@ -18,6 +18,8 @@ public class PeacefulConstruction : MonoBehaviour
     private BuildingDetail[] _buildingDetails;
     private List<Vector3> _detailPositions = new List<Vector3>();
 
+    public event UnityAction BuildingRestored;
+
     public HealthContainer HealthContainer => _healthContainer;
 
     private void Awake()
@@ -97,8 +99,9 @@ public class PeacefulConstruction : MonoBehaviour
                 _buildingDetails[i].transform.localRotation = _detailSnapshots[i].Rotation;
                 _buildingDetails[i].ResetBounce();
                 _healthContainer.ResetHealth();
+                _isAlive= true;
             }
-
+            BuildingRestored?.Invoke();
             _detailSnapshots.Clear();
         }     
     }

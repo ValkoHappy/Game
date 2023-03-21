@@ -2384,12 +2384,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 4395150195568702347, guid: 05a0351ef5da1054b930d0d8b55ce0ab, type: 3}
+  _isLaser: 0
   _shootPoint:
   - {fileID: 9015936731470292448}
   - {fileID: 9015936730077058747}
   - {fileID: 9015936731686733926}
-  _waitForSecounds: 0.5
+  _waitForSeconds: 1.5
   _particleShoot: {fileID: 19809874, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}
+  _canShooting: 0
 --- !u!135 &9015936730533883223
 SphereCollider:
   m_ObjectHideFlags: 0

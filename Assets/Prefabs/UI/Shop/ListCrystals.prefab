@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5355620270328244883}
   - component: {fileID: 2936827804436264588}
   m_Layer: 5
-  m_Name: List
+  m_Name: ListCrystals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 5564071534092949961}
   - component: {fileID: 4099863072796538129}
   m_Layer: 5
-  m_Name: Icon_Gold
+  m_Name: Crystals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 35e4ceee666464b0ab5525eef8ac4e24, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0194274b6383e402a8facb4fa8c8425a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
