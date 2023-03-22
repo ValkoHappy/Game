@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 using static MoveSelection;
 
@@ -50,53 +51,38 @@ public class BuildingsGrid : MonoBehaviour
                 {
                     PlaceFlyingBuilding(x, y);
                 }
-                else if (_moveSelection.Mode == BuildingMode.Delete)
-                {
-                    DestroyBuilding?.Invoke(_flyingBuilding);
-                    Destroy(_flyingBuilding.gameObject);
-                    _flyingBuilding = null;
-                    DeliveredBuilding?.Invoke();
-                }
-                _moveSelection.SetBuildingModeMovement();
             }
+
+            if (_moveSelection.Mode == BuildingMode.Delete)
+            {
+                DestroyBuilding?.Invoke(_flyingBuilding);
+                Destroy(_flyingBuilding.gameObject);
+                _flyingBuilding = null;
+                DeliveredBuilding?.Invoke();
+            }
+            _moveSelection.SetBuildingModeMovement();
 
 
             if (_isBuildingSelected && Input.GetMouseButton(0))
             {
+                var groundPlane = new Plane(Vector3.up, Vector3.zero);
                 Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
+
+                if (EventSystem.current.IsPointerOverGameObject())
                 {
-                    if (hit.collider.gameObject == _flyingBuilding.gameObject)
-                    {
-                        Vector3 newPosition = new Vector3(hit.point.x, _flyingBuilding.transform.position.y, hit.point.z);
-                        _flyingBuilding.transform.position = newPosition;
-                    }
+                    return;
+                }
+
+                if (groundPlane.Raycast(ray, out float hit))
+                {
+                    Vector3 newPosition = ray.GetPoint(hit);
+
+                    int positionX = Mathf.RoundToInt(newPosition.x);
+                    int positionY = Mathf.RoundToInt(newPosition.z);
+
+                    _flyingBuilding.transform.position = new Vector3(positionX, 0, positionY);
                 }
             }
-
-            //Vector3 movement = Vector3.zero;
-            //if (_moveSelection.Moves == BuildingMoves.Up || Input.GetKeyUp(KeyCode.T))
-            //{
-            //    movement += Vector3.forward;
-            //}
-            //if (_moveSelection.Moves == BuildingMoves.Down || Input.GetKeyUp(KeyCode.G))
-            //{
-            //    movement += Vector3.back;
-            //}
-            //if (_moveSelection.Moves == BuildingMoves.Left || Input.GetKeyUp(KeyCode.F))
-            //{
-            //    movement += Vector3.left;
-            //}
-            //if (_moveSelection.Moves == BuildingMoves.Right || Input.GetKeyUp(KeyCode.H))
-            //{
-            //    movement += Vector3.right;
-            //}
-            //if (_flyingBuilding != null && movement != Vector3.zero)
-            //{
-            //    _flyingBuilding.transform.position += movement;
-            //}
-            //_moveSelection.SetBuildingMovesStraight();
         }
     }
 

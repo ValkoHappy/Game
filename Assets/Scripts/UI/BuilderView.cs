@@ -26,9 +26,9 @@ public class BuilderView : MonoBehaviour
         _sellButton.onClick.RemoveListener(OnButtonClick);
     }
 
-    private void TryLockItem()
+    public void TryLockItem()
     {
-        if (_building.IsBuyed)
+        if (_building.IsBuyed && _building.IsSingleProduct == false)
         {
             _sellButton.interactable = false;
         }
@@ -45,5 +45,6 @@ public class BuilderView : MonoBehaviour
     private void OnButtonClick()
     {
         SellButtonClick?.Invoke(_building, this);
+        TryLockItem();
     }
 }

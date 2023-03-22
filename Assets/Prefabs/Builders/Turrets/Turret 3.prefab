@@ -179,6 +179,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 909487568120814611}
     m_Modifications:
+    - target: {fileID: 2370128964836891984, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394636741885312280, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394636743214652275, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4460492036807711757, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: m_Name
       value: MovingScreen
@@ -265,6 +277,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4566984162621771917, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8684217856923564867, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

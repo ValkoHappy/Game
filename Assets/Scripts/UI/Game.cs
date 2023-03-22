@@ -81,6 +81,7 @@ public class Game : MonoBehaviour
         _victoryScreen.Open();
         //_victoryScreen.OnStartEffect();
         _mobileControllerScreen.Close();
+        _spawner.NextLevel();
     }
 
     private void OnAllBuildingsDestroyed()
@@ -95,7 +96,7 @@ public class Game : MonoBehaviour
         {
             _mainMenuScreen.Close();
             //_buildingsManager.OnSaveBuildings();
-            _spawner.StartNextLevel();
+            _spawner.StartLevel();
             _starsScore.CloseStars();
             _starsScore.RemoveAllBuildingsDiedCount();
             _mobileControllerScreen.Open();

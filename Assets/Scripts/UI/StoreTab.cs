@@ -82,9 +82,14 @@ public class StoreTab : MonoBehaviour
                 return;
             }
         }
-        //builderView.SellButtonClick -= OnSellButtonClick;
 
-        Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
+        //if (statsBuilding.IsSingleProduct == false)
+        //{
+        //    builderView.SellButtonClick -= OnSellButtonClick;
+        //}   
+
+
+            Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
         _buildingsManager.AddBuilding(building.GetComponentInChildren<PeacefulConstruction>());
     }
 

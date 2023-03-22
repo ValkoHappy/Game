@@ -10,19 +10,37 @@ public class Turret : MonoBehaviour
     private ShootTurret _shootTurret;
     private List<EnemyCollision> _enemies;
     private PeacefulConstruction _construction;
+    private SphereCollider _sphereCollider;
+    private BuildingsGrid _buildingsGrid;
+    private Spawner _spawner;
 
     public PeacefulConstruction Construction => _construction;
     public EnemyCollision TargetEnemy { get; private set; }
 
     private void Awake()
     {
+        _buildingsGrid = FindObjectOfType<BuildingsGrid>();
         _shootTurret = GetComponent<ShootTurret>();
         _construction = GetComponentInChildren<PeacefulConstruction>();
+        _sphereCollider = GetComponent<SphereCollider>();
+    }
+
+    private void OnEnable()
+    {
+        _buildingsGrid.DeliveredBuilding += TurnOnCollider;
+        _buildingsGrid.CreatedBuilding += TurnOffCollider;
+    }
+
+    private void OnDisable()
+    {
+        _buildingsGrid.DeliveredBuilding -= TurnOnCollider;
+        _buildingsGrid.CreatedBuilding += TurnOffCollider;
     }
 
     private void Start()
     {
         _enemies = new List<EnemyCollision>();
+        _sphereCollider.enabled = false;
     }
 
     private void Update()
@@ -88,6 +106,18 @@ public class Turret : MonoBehaviour
                 _shootTurret.StopShoot();    
             }
         }
+    }
+
+    private void TurnOnCollider()
+    {
+        if (_sphereCollider != null) 
+            _sphereCollider.enabled = true;
+    }
+
+    private void TurnOffCollider()
+    {
+        if(_sphereCollider != null )
+            _sphereCollider.enabled = false;
     }
 }
 

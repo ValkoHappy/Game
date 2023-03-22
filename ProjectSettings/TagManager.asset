@@ -8,6 +8,7 @@ TagManager:
   - target
   - "Peaceful\u0421onstruction"
   - TownHall
+  - Fence
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Bullet
   - Fence
   - Camera
-  - 
+  - Turret
   - 
   - 
   - 

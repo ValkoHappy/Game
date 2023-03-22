@@ -12,17 +12,27 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform[] _spawnPoints;
 
     private Coroutine _coroutine;
-    private int _currentLevelIndex = -1;
+    private int _currentLevelIndex = 0;
+    private int _levelIndex = 1;
     private Level _currentLevel;
     private int _miniEnemiesRemaining;
     private int _bossEnemiesRemaining;
 
     public event UnityAction<int> LevelChanged;
-    public int Level => _currentLevelIndex +1;
+    public event UnityAction LevelStarted;
+    public event UnityAction UpdateMap;
 
-    public void StartNextLevel()
+    public int Level => _levelIndex;
+
+    public void NextLevel()
     {
         _currentLevelIndex++;
+        _levelIndex++;
+        LevelStarted?.Invoke();
+    }
+
+    public void StartLevel()
+    {
         if (_currentLevelIndex >= _levels.Count)
         {
             Debug.Log("All levels completed!");
@@ -86,6 +96,15 @@ public class Spawner : MonoBehaviour
 
     public void ShowLevel()
     {
-        LevelChanged?.Invoke(_currentLevelIndex + 1);
+        LevelChanged?.Invoke(_levelIndex);
+    }
+
+    public void SwitchAnotherMap()
+    {
+        if (_currentLevelIndex >= _levels.Count)
+        {
+            UpdateMap?.Invoke();
+            
+        }
     }
 }

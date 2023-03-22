@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class Goods : ScriptableObject
     [SerializeField] private Sprite _icon;
     [SerializeField] private bool _isSoldForCrystals = false;
     [SerializeField] private bool _isBuyed = false;
+    [SerializeField] private bool _isSingleProduct = false;
     [SerializeField] private Building _buildingPrefab;
 
     public string Label => _label;
@@ -17,5 +19,6 @@ public class Goods : ScriptableObject
     public Sprite Icon => _icon;
     public bool IsSoldForCrystals => _isSoldForCrystals;
     public bool IsBuyed => _isBuyed;
+    public bool IsSingleProduct => _isSingleProduct;
     public Building BuildingPrefab => _buildingPrefab;
 }

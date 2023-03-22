@@ -17,4 +17,5 @@ MonoBehaviour:
   _icon: {fileID: 0}
   _isSoldForCrystals: 0
   _isBuyed: 0
+  _isSingleProduct: 1
   _buildingPrefab: {fileID: 5889474095779388388, guid: a094d1ea226c00e429117d6a8cfe39bc, type: 3}

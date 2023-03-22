@@ -21,6 +21,6 @@ public class GameLoader : MonoBehaviour
 
     private void OpenPlayMenu()
     {
-        Level_1.Load();
+        Map_1.Load();
     }
 }
