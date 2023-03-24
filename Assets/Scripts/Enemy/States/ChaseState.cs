@@ -17,13 +17,13 @@ public class ChaseState : EnemyState
 
     private void OnEnable()
     {
-        Animator.SetFloat("run 0", 0.01f);
+        Animator.SetFloat("Run", 0.01f);
         _agent.enabled = true;
     }
 
     private void OnDisable()
     {
-        Animator.SetFloat("run 0", 0);
+        Animator.SetFloat("Run", 0);
         _agent.enabled = false;
     }
 

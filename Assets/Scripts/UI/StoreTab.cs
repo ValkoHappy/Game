@@ -8,6 +8,7 @@ public class StoreTab : MonoBehaviour
     [SerializeField] private CrystalsContainer _crystalsContainer; 
     [SerializeField] private BuildingsManager _buildingsManager;
     [SerializeField] private BuildingsGrid _buildingsGrid;
+    [SerializeField] private LevelReward _levelReward;
 
     [SerializeField] private List<Goods> _buildings;
     [SerializeField] private BuilderView _builderViewGold;
@@ -15,6 +16,8 @@ public class StoreTab : MonoBehaviour
     [SerializeField] private Transform _itenContainer;
 
     private int _priceGoods = 0;
+    private int _goldSpent = 0;
+    private int _crystalsSpent = 0;
 
     private void OnEnable()
     {
@@ -65,6 +68,7 @@ public class StoreTab : MonoBehaviour
             if (statsBuilding.Price <= _crystalsContainer.Crystals)
             {
                 _crystalsContainer.BuyBuilding(statsBuilding);
+                _levelReward.AddCrystalsSpent(statsBuilding.Price);
             }
             else
             {
@@ -76,6 +80,7 @@ public class StoreTab : MonoBehaviour
             if (statsBuilding.Price <= _goldContainer.Gold)
             {
                 _goldContainer.BuyBuilding(statsBuilding);
+                _levelReward.AddGoldSpent(statsBuilding.Price);
             }
             else
             {

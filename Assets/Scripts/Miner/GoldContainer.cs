@@ -19,5 +19,6 @@ public class GoldContainer : MonoBehaviour
     public void BuyBuilding(Goods statsBuilding)
     {
         _gold -= statsBuilding.Price;
+        GoldChanged?.Invoke(_gold);
     }
 }

@@ -2,31 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(CanvasGroup))]
 public class ScreenUI : MonoBehaviour
 {
-    [SerializeField] private GameObject _panel;
-    private string _openAnimation = "Open";
-    private string _closeAnimation = "Close";
-
-    private Animator _animator;
-
-    public GameObject Panel => _panel;
-
+    [SerializeField] private CanvasGroup _panel;
+    public CanvasGroup Panel => _panel;
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
+        _panel = GetComponent<CanvasGroup>();
     }
 
     public void Open()
     {
-        _panel.SetActive(true);
-        //_animator.SetTrigger(_openAnimation);
+        _panel.alpha = 1;
+        _panel.blocksRaycasts = true;
     }
 
     public void Close()
     {
-        _panel.SetActive(false);
-        //_animator.SetTrigger(_closeAnimation);
+        _panel.alpha = 0;
+        _panel.blocksRaycasts = false;
     }
 }

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Turret 2
   m_EditorClassIdentifier: 
   _label: "\u0422\u0443\u0440\u0435\u043B\u044C 2"
-  _price: 200
+  _price: 350
   _icon: {fileID: 0}
   _isSoldForCrystals: 0
   _isBuyed: 0

@@ -29,7 +29,7 @@ public class AttackState : EnemyState
 
     private IEnumerator Attack()
     {
-        Animator.SetTrigger("Attack 0");
+        Animator.SetTrigger("Attack");
         var waitForSecounds = new WaitForSeconds(_attackDelay);
         PeacefulConstruction.ApplyDamage(_attackForce);
         yield return waitForSecounds;

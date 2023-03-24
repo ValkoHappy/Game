@@ -25,22 +25,12 @@ public class MovementScreen : ScreenUI
     {
         _saveButton.onClick.AddListener(OnSaveButton);
         _delateButton.onClick.AddListener(OnDelateButton);
-
-        _upButton.onClick.AddListener(OnUpButton);
-        _downButton.onClick.AddListener(OnDownButton);
-        _leftButton.onClick.AddListener(OnLeftButton);
-        _rightButton.onClick.AddListener(OnRightButton);
     }
 
     private void OnDisable()
     {
         _saveButton.onClick.RemoveListener(OnSaveButton);
         _delateButton.onClick.RemoveListener(OnDelateButton);
-
-        _upButton.onClick.RemoveListener(OnUpButton);
-        _downButton.onClick.RemoveListener(OnDownButton);
-        _leftButton.onClick.RemoveListener(OnLeftButton);
-        _rightButton.onClick.RemoveListener(OnRightButton);
     }
 
     private void OnSaveButton()
@@ -50,30 +40,5 @@ public class MovementScreen : ScreenUI
     private void OnDelateButton()
     {
         _moveSelection.SetBuildingModeDelete();
-
-    }
-
-    private void OnUpButton()
-    {
-        _moveSelection.SetBuildingMovesUp();
-
-    }
-
-    private void OnDownButton()
-    {
-        _moveSelection.SetBuildingMovesDown();
-
-    }
-
-    private void OnLeftButton()
-    {
-        _moveSelection.SetBuildingMovesLeft();
-
-    }
-
-    private void OnRightButton()
-    {
-        _moveSelection.SetBuildingMovesRight();
-
     }
 }

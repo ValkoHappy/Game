@@ -12,6 +12,8 @@ public class Level : ScriptableObject
     [SerializeField] private int _bossEnemyCount;
     [SerializeField] private float _spawnDelay;
     [SerializeField] private Side _spawnSide;
+    [SerializeField] private int _goldReward;
+    [SerializeField] private int _cristalsReward;
 
     public Enemy MiniEnemy => _miniEnemy;
     public Enemy BossEnemy => _bossEnemy;
@@ -19,6 +21,8 @@ public class Level : ScriptableObject
     public int BossEnemyCount => _bossEnemyCount;
     public float SpawnDelay => _spawnDelay;
     public Side SpawnSide => _spawnSide;
+    public int GoldReward => _goldReward;
+    public int CristalsReward => _cristalsReward;
 
     public enum Side
     {

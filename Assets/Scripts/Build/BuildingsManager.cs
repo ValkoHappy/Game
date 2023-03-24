@@ -8,19 +8,13 @@ public class BuildingsManager : MonoBehaviour
 {
     [SerializeField] private Transform _container;
     [SerializeField] private BuildingsGrid _buildingsGrid;
+    [SerializeField] private StarsScore _starsScore;
 
     private List<PeacefulConstruction> _buildings;
-    private StarsScore _starsScore;
-
-
+    
     public event UnityAction AllBuildingsDestroyed;
     public event UnityAction TownHallNotBuilt;
     public event UnityAction PurchaseCancelled;
-
-    private void Awake()
-    {
-        _starsScore = GetComponent<StarsScore>();
-    }
 
     private void Start()
     {

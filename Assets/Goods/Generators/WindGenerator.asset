@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WindGenerator
   m_EditorClassIdentifier: 
   _label: "\u0412\u0435\u0442\u0440\u044F\u043D\u043E\u0439 \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440"
-  _price: 100
+  _price: 250
   _icon: {fileID: 21300000, guid: 406167e4b4adc1f49bc17ece415a59da, type: 3}
   _isSoldForCrystals: 1
   _isBuyed: 0

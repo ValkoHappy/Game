@@ -10,6 +10,7 @@ public class ShootTurret : MonoBehaviour
     [SerializeField] private bool _isLaser = false;
     [SerializeField] private Transform[] _shootPoint;
     [SerializeField] private float _waitForSeconds;
+    [SerializeField] private int _yOffset = 1;
     [SerializeField] private ParticleSystem _particleShoot;
 
     private Turret _turret;
@@ -68,7 +69,7 @@ public class ShootTurret : MonoBehaviour
         Bullet bullet = Instantiate(_bullet, shootPoint.position, shootPoint.rotation);
         _particleShoot.transform.position = shootPoint.position;
         Instantiate(_particleShoot, shootPoint.position, Quaternion.identity);
-        bullet.transform.LookAt(_turret.TargetEnemy.transform);
+        bullet.transform.LookAt(new Vector3(_turret.TargetEnemy.transform.position.x, _turret.TargetEnemy.transform.position.y + _yOffset, _turret.TargetEnemy.transform.position.z));
     }
 
     private IEnumerator Shoot()

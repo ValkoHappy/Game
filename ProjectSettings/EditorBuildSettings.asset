@@ -8,12 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Start.unity
     guid: 2633607dde6dc354ca5e792fe30d9b7d
-  - enabled: 1
+  - enabled: 0
     path: 
-    guid: 08732c117fb2f9a47993fcddfc87d575
-  - enabled: 1
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: 
-    guid: 038410ff1a4431840a3ac3ad7af11cf3
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Map_2.unity
     guid: e7bc9cc57d214a74c915e9ca32fb1205
@@ -110,4 +110,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map_4.unity
     guid: 5e2b4f53e4be5774a9dbcbf761709fbd
+  - enabled: 1
+    path: Assets/Package/Spiders/Demo/SpidersAsset.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Package/Blink/Art/Animals/Stylized/Demo_Animals/Bear_DEMO.unity
+    guid: 2dcd9d045d59ab744bc20f767072587f
   m_configObjects: {}

@@ -22,7 +22,8 @@ public class Spawner : MonoBehaviour
     public event UnityAction LevelStarted;
     public event UnityAction UpdateMap;
 
-    public int Level => _levelIndex;
+    public Level Level => _currentLevel;
+    public int LevelIndex => _levelIndex;
 
     public void NextLevel()
     {

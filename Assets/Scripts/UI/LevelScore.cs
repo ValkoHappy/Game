@@ -10,7 +10,7 @@ public class LevelScore : MonoBehaviour
 
     private void OnEnable()
     {
-        _score.text = _spawner.Level.ToString();
+        _score.text = _spawner.LevelIndex.ToString();
         _spawner.LevelChanged += OnScoreChanged;
     }
 

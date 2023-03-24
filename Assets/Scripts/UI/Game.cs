@@ -43,8 +43,8 @@ public class Game : MonoBehaviour
 
         _victoryScreen.ResumeButtonClick += OnMenuAfterFightScreen;
 
-        _featScreen.ResumeButtonClick += OnMenuAfterFightScreen;
-        _featScreen.RestartButtonClick += OnReplayFight;
+        _featScreen.ResumeButtonClick += OnRepeatBattle;
+        _featScreen.RestartButtonClick += OnRepeatBattleForAdvertising;
 
         _buildingsGrid.CreatedBuilding += OnCloseShop;
         _buildingsGrid.DeliveredBuilding += OnOpenShop;
@@ -67,8 +67,8 @@ public class Game : MonoBehaviour
 
         _victoryScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
 
-        _featScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
-        _featScreen.RestartButtonClick -= OnReplayFight;
+        _featScreen.ResumeButtonClick -= OnRepeatBattle;
+        _featScreen.RestartButtonClick -= OnRepeatBattleForAdvertising;
 
         _buildingsGrid.CreatedBuilding -= OnCloseShop;
         _buildingsGrid.DeliveredBuilding -= OnOpenShop;
@@ -144,19 +144,28 @@ public class Game : MonoBehaviour
         _levelReward.GetReward();
         _enemyManager.OnDestroyEnemies();
         _buildingsManager.OnDestroyAllBuildings();
-        _buildingsManager.OnCreateSavedBuildings();
         _buildingsGrid.RemoveGrid();
         _victoryScreen.Close();
-        _featScreen.Close();
         _mainMenuScreen.Open();
     }
 
-    private void OnReplayFight()
+    private void OnRepeatBattleForAdvertising()
     {
+        _levelReward.GetReward();
         _enemyManager.OnDestroyEnemies();
         _buildingsManager.OnCreateSavedBuildings();
         _featScreen.Close();
         _mainMenuScreen.Open();
+    }
+
+    private void OnRepeatBattle()
+    {
+        _buildingsManager.OnDestroyAllBuildings();
+        _buildingsGrid.RemoveGrid();
+        _enemyManager.OnDestroyEnemies();
+        _featScreen.Close();
+        _mainMenuScreen.Open();
+        _levelReward.ReturnAfterLosing();
     }
 
     private void OnSettingMenuScreen()

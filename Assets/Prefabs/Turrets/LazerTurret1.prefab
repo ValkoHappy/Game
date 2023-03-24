@@ -1427,8 +1427,9 @@ MonoBehaviour:
   _isLaser: 1
   _shootPoint:
   - {fileID: 6440423284084024789}
-  _waitForSeconds: 1.5
+  _waitForSeconds: 1.2
   _particleShoot: {fileID: 4425753035019044251, guid: 3136133b56fc79948995e5023f469cc0, type: 3}
+  _canShooting: 0
 --- !u!114 &4104039269012043508
 MonoBehaviour:
   m_ObjectHideFlags: 0

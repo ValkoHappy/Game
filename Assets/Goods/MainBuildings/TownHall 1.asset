@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TownHall 1
   m_EditorClassIdentifier: 
   _label: "\u0417\u0430\u0431\u043E\u0440"
-  _price: 25
+  _price: 50
   _icon: {fileID: 0}
   _isSoldForCrystals: 0
   _isBuyed: 0

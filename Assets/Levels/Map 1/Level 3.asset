@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _miniEnemy: {fileID: 2554310421426300920, guid: cd3240ae89b778a4eb6731f9e4a12668, type: 3}
   _bossEnemy: {fileID: 1305874152407787249, guid: 386565cbaf6e13b448edc0691bbd62ea, type: 3}
-  _miniEnemyCount: 8
-  _bossEnemyCount: 5
+  _miniEnemyCount: 10
+  _bossEnemyCount: 3
   _spawnDelay: 1
   _spawnSide: 2
+  _goldReward: 250
+  _cristalsReward: 100

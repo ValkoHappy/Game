@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2569969112920853613}
   - component: {fileID: 3493429403386568716}
   - component: {fileID: 6221105279597429250}
+  - component: {fileID: 678742496595252537}
   m_Layer: 0
   m_Name: MenuConstruction
   m_TagString: target
@@ -87,7 +88,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &2569969112920853613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,10 +138,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d36b12012f06b64ba7ab63ad2f527fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _panel: {fileID: 2569969112920853611}
   _improvementsButton: {fileID: 7098711326495782193}
   _moveButton: {fileID: 8782670103034182112}
   _informationButton: {fileID: 5344474898293924973}
+--- !u!225 &678742496595252537
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2569969112920853611}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4348804648925937782
 GameObject:
   m_ObjectHideFlags: 0

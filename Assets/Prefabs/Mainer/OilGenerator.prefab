@@ -975,7 +975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _amountMoneyProduced: 1
-  _waitForSecounds: 6
+  _waitForSecounds: 2
 --- !u!65 &4591982427868202346
 BoxCollider:
   m_ObjectHideFlags: 0
