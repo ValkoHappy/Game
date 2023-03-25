@@ -33,7 +33,7 @@ public class Extraction : MonoBehaviour
         _buildingGrid.EditPositionBuilding += OnOffExtractionAnimation;
         _buildingGrid.DeliveredBuilding += OnExtractionAnimation;
         _buildingGrid.DeliveredBuilding += StartExtract;
-        _peacefulConstruction.OffAnimation += OnOffExtractionAnimation;
+        _peacefulConstruction.Died += OnOffExtractionAnimation;
         _peacefulConstruction.BuildingRestored += StartExtract;
         _healthContainer.Died += OnOffExtractionAnimation;
     }
@@ -44,7 +44,7 @@ public class Extraction : MonoBehaviour
         _buildingGrid.EditPositionBuilding -= OnOffExtractionAnimation;
         _buildingGrid.DeliveredBuilding -= OnExtractionAnimation;
         _buildingGrid.DeliveredBuilding -= StartExtract;
-        _peacefulConstruction.OffAnimation -= OnOffExtractionAnimation;
+        _peacefulConstruction.Died -= OnOffExtractionAnimation;
         _peacefulConstruction.BuildingRestored -= StartExtract;
         _healthContainer.Died -= OnOffExtractionAnimation;
     }

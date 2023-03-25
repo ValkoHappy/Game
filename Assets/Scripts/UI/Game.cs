@@ -147,11 +147,11 @@ public class Game : MonoBehaviour
         _buildingsGrid.RemoveGrid();
         _victoryScreen.Close();
         _mainMenuScreen.Open();
+        _spawner.SwitchAnotherMap();
     }
 
     private void OnRepeatBattleForAdvertising()
     {
-        _levelReward.GetReward();
         _enemyManager.OnDestroyEnemies();
         _buildingsManager.OnCreateSavedBuildings();
         _featScreen.Close();

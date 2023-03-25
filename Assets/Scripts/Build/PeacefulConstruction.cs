@@ -10,12 +10,13 @@ public class PeacefulConstruction : MonoBehaviour
     [SerializeField] private float _bounceRadius;
 
     public event UnityAction<PeacefulConstruction> Die;
-    public event UnityAction OffAnimation;
+    public event UnityAction Died;
 
     public event UnityAction Damaged;
     private HealthContainer _healthContainer;
     private bool _isAlive;
     private BuildingDetail[] _buildingDetails;
+    private Building _building;
     private List<Vector3> _detailPositions = new List<Vector3>();
 
     public event UnityAction BuildingRestored;
@@ -25,6 +26,7 @@ public class PeacefulConstruction : MonoBehaviour
     private void Awake()
     {
         _healthContainer = GetComponent<HealthContainer>();
+        _building = GetComponentInParent<Building>();
     }
 
     private void Start()
@@ -62,6 +64,7 @@ public class PeacefulConstruction : MonoBehaviour
 
     private void OnDied()
     {
+        Died?.Invoke();
         Die?.Invoke(this);
         Break();
         //enabled = false;
@@ -108,6 +111,6 @@ public class PeacefulConstruction : MonoBehaviour
 
     public void Destroy()
     {
-        Destroy(this.GetComponentInParent<Building>().gameObject);
+        Destroy(_building.gameObject);
     }
 }

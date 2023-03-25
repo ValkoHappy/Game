@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class Turret : MonoBehaviour
     private SphereCollider _sphereCollider;
     private BuildingsGrid _buildingsGrid;
     private Spawner _spawner;
+    private Coroutine _removeCoroutine;
 
     public PeacefulConstruction Construction => _construction;
     public EnemyCollision TargetEnemy { get; private set; }
@@ -29,18 +31,21 @@ public class Turret : MonoBehaviour
     {
         _buildingsGrid.DeliveredBuilding += TurnOnCollider;
         _buildingsGrid.CreatedBuilding += TurnOffCollider;
+        _construction.Died += RemoveAllEnemies;
     }
 
     private void OnDisable()
     {
         _buildingsGrid.DeliveredBuilding -= TurnOnCollider;
-        _buildingsGrid.CreatedBuilding += TurnOffCollider;
+        _buildingsGrid.CreatedBuilding -= TurnOffCollider;
+        _construction.Died -= RemoveAllEnemies;
     }
 
     private void Start()
     {
         _enemies = new List<EnemyCollision>();
         _sphereCollider.enabled = false;
+        //StartRemove();
     }
 
     private void Update()
@@ -80,7 +85,8 @@ public class Turret : MonoBehaviour
             if (nearestEnemy != null && nearestEnemy.IsAlive())
             {
                 TargetEnemy = nearestEnemy;
-                _shootTurret.RestartShoot();
+                if(TargetEnemy.IsAlive())
+                    _shootTurret.RestartShoot();
             }
         }
     }
@@ -96,16 +102,37 @@ public class Turret : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    //public void StartRemove()
+    //{
+    //    if (_removeCoroutine != null)
+    //    {
+    //        StopCoroutine(_removeCoroutine);
+    //    }
+    //    _removeCoroutine = StartCoroutine(RemoveBuilding());
+
+    //}
+
+    //private IEnumerator RemoveBuilding()
+    //{
+    //    var waitForSeconds = new WaitForSeconds(5f);
+    //    if (_enemies.Count > 0)
+    //    {
+    //        foreach (var enemy in _enemies)
+    //        {
+    //            if (enemy != null && enemy.IsAlive() == false)
+    //            {
+    //                _enemies.Remove(enemy);
+    //                _shootTurret.StopShoot();
+    //            }
+    //        }
+    //    }
+    //    yield return waitForSeconds;
+    //    StartRemove();
+    //}
+
+    private void RemoveAllEnemies()
     {
-        if (other.TryGetComponent(out EnemyCollision enemy))
-        {
-            if (enemy.IsAlive() == false)
-            {
-                _enemies.Remove(enemy);
-                _shootTurret.StopShoot();    
-            }
-        }
+        _enemies.Clear();
     }
 
     private void TurnOnCollider()

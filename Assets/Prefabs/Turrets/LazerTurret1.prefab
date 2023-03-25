@@ -821,7 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 80
 --- !u!65 &855388915994307024
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1385,7 +1385,6 @@ GameObject:
   - component: {fileID: 6108974722855211451}
   - component: {fileID: 7426833941343821937}
   - component: {fileID: 4104039269012043508}
-  - component: {fileID: 6671540490764998435}
   - component: {fileID: 5591721748925104637}
   - component: {fileID: 7939230791259275133}
   m_Layer: 0
@@ -1424,10 +1423,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 4395150195568702347, guid: 05a0351ef5da1054b930d0d8b55ce0ab, type: 3}
-  _isLaser: 1
   _shootPoint:
   - {fileID: 6440423284084024789}
-  _waitForSeconds: 1.2
+  _waitForSeconds: 1
+  _yOffset: 1
   _particleShoot: {fileID: 4425753035019044251, guid: 3136133b56fc79948995e5023f469cc0, type: 3}
   _canShooting: 0
 --- !u!114 &4104039269012043508
@@ -1444,19 +1443,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partToRotate: {fileID: 6603387706230749721}
   _rotationSpeed: 5
---- !u!114 &6671540490764998435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6885054437712218881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 100
 --- !u!135 &5591721748925104637
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -62,6 +62,7 @@ public class StarsScore : MonoBehaviour
         {
             button.LeanScale(new Vector3(0, 0, 0), 0);
         }
+        _buildingsStars = 0;
     }
 
     public void AddBuildingsCount()

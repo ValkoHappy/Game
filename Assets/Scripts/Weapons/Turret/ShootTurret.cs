@@ -7,7 +7,6 @@ using static UnityEngine.GraphicsBuffer;
 public class ShootTurret : MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
-    [SerializeField] private bool _isLaser = false;
     [SerializeField] private Transform[] _shootPoint;
     [SerializeField] private float _waitForSeconds;
     [SerializeField] private int _yOffset = 1;
@@ -76,14 +75,17 @@ public class ShootTurret : MonoBehaviour
     {
         var waitForSeconds = new WaitForSeconds(_waitForSeconds);
         _canShooting = true;
-            for (int i = 0; i < _shootPoint.Length; i++)
-            {
-                CreateBullet(_shootPoint[i]);
-            }
-            _recoilAnimation.StartRecoil(_waitForSeconds);
+        for (int i = 0; i < _shootPoint.Length; i++)
+        {
+            CreateBullet(_shootPoint[i]);
+        }
+        _recoilAnimation.StartRecoil(_waitForSeconds);
         yield return waitForSeconds;
         _canShooting = false;
-        StartShoot();
+        if (_turret.TargetEnemy.IsAlive())
+        {
+            StartShoot();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

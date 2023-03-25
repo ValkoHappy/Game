@@ -7,7 +7,14 @@ public class BrokenState : EnemyState
 {
     [SerializeField] private float fadeTime = 3.0f;
 
+    private Material enemyMaterial;
+
     public event UnityAction Died;
+
+    private void Awake()
+    {
+        enemyMaterial = GetComponentInChildren<Renderer>().material;
+    }
 
     private void Update()
     {
@@ -26,7 +33,6 @@ public class BrokenState : EnemyState
 
     private IEnumerator FadeOut()
     {
-        Material enemyMaterial = GetComponentInChildren<Renderer>().material;
         Color enemyColor = enemyMaterial.color;
         float elapsedTime = 0.0f;
 

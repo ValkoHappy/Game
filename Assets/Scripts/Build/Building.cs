@@ -10,6 +10,7 @@ public class Building : MonoBehaviour
     private Renderer[] _renderers;
     private Color[] _originalColors;
     private bool _isBuilding;
+    public PeacefulConstruction PeacefulConstruction { get; private set; }
 
     public event UnityAction DeliveryBuilding;
 
@@ -18,6 +19,7 @@ public class Building : MonoBehaviour
 
     private void Awake()
     {
+        PeacefulConstruction = GetComponentInChildren<PeacefulConstruction>();
         _renderers = GetComponentsInChildren<Renderer>();
         _originalColors = new Color[_renderers.Length];
         for (int i = 0; i < _renderers.Length; i++)

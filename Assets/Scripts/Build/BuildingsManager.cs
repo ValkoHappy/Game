@@ -86,7 +86,6 @@ public class BuildingsManager : MonoBehaviour
                 _buildings.Remove(_buildings[i]);
                 _starsScore.RemoveBuildingsCount();
             }
-
         }
     }
 

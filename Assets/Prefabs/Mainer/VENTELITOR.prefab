@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 70
 --- !u!114 &2080889797752596129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -542,7 +542,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _amountMoneyProduced: 3
-  _waitForSecounds: 2
+  _waitForSecounds: 1
 --- !u!65 &2405743149641035782
 BoxCollider:
   m_ObjectHideFlags: 0

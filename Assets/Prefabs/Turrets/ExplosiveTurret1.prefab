@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 90
 --- !u!65 &1597564210560036603
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -798,7 +798,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5864573052153573377}
   - component: {fileID: 5445353562321678543}
-  - component: {fileID: 3235370129602854259}
   - component: {fileID: 9112614114182202440}
   - component: {fileID: 958545901367315476}
   - component: {fileID: 258898433375689119}
@@ -838,24 +837,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 6180547932860481158, guid: 2b604ab3ddffd99489308cc39ba93394, type: 3}
-  _isLaser: 0
   _shootPoint:
   - {fileID: 22356744550172035}
   _waitForSeconds: 2
+  _yOffset: 1
   _particleShoot: {fileID: 19809874, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}
---- !u!114 &3235370129602854259
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6496713710709598907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 100
+  _canShooting: 0
 --- !u!135 &9112614114182202440
 SphereCollider:
   m_ObjectHideFlags: 0

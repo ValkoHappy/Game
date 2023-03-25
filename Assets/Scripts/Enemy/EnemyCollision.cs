@@ -6,7 +6,6 @@ using UnityEngine.Events;
 [RequireComponent(typeof(HealthContainer), typeof(BoxCollider))]
 public class EnemyCollision : MonoBehaviour, IDamageable
 {
-    private bool _isAlive;
     private Enemy _enemy;
     public HealthContainer _healthContainer { get; protected set; }
 
@@ -39,11 +38,11 @@ public class EnemyCollision : MonoBehaviour, IDamageable
     {
         if (_healthContainer.Health <= 0)
         {
-            return _isAlive = false;
+            return false;
         }
         else
         {
-            return _isAlive = true;
+            return true;
         }
     }
 

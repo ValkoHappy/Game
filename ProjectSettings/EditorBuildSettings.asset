@@ -8,112 +8,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Start.unity
     guid: 2633607dde6dc354ca5e792fe30d9b7d
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/Map_2.unity
-    guid: e7bc9cc57d214a74c915e9ca32fb1205
   - enabled: 1
     path: Assets/Scenes/Map_1.unity
     guid: 633518ed2a70e5e41b4a072f45746f97
   - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/PathBezier.unity
-    guid: 173c35c3d8996463384732672075da90
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/PathBezier2d.unity
-    guid: 363f43ea320c54cd7ade42f54f59c232
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/TestingUnitTests.unity
-    guid: 22e1e363584e94ef6a9661ede1f4e358
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/GeneralBasics2d.unity
-    guid: db7afcf97d5f646b9986f7e84ca1ac68
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/GeneralAdvancedTechniques.unity
-    guid: ed31b9589883b4d19a6bc0f50d57edec
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/GeneralSimpleUi.unity
-    guid: 7534096fc06e2452687df015b87d7cfa
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Archived/TestingPunch.unity
-    guid: 6cd53863374404f7b8e101f758cc46e7
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/TestingZLegacyExt.unity
-    guid: 0bd7a031b280f4530b42f2591cf98025
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/GeneralEasingTypes.unity
-    guid: 721616f4ed65645df9e1919c91909eb8
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/PathSplinePerformance.unity
-    guid: 924b0d7269de44f8398015b04e7ba081
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/PathSplineEndless.unity
-    guid: 2a7ce2e628c14472a9fb2af42917d270
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/GeneralEvents.unity
-    guid: 7e603302e334b4bd0bef351e0f1e050c
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/GeneralCameraShake.unity
-    guid: a99971c1311c6405d8d2897f3f42ad32
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/PathSplineTrack.unity
-    guid: 0e3bee443b13540cc845f5476188d8b1
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Archived/TestingRigidbodyCS.unity
-    guid: 85c5a0f0e397a4579b42c67c6dce87ef
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/LogoCinematic.unity
-    guid: 68ea271dda32c4c209e4419b091b2288
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/TestingZLegacy.unity
-    guid: 9d3c1732ee5ca4e86bf2497c4404c656
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/GeneralBasic.unity
-    guid: 733435822951d4505bbf44759df1613d
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Archived/OldGUIExamplesCS.unity
-    guid: ec27881ee9cf54018ac9bd5706c2fdab
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/Following.unity
-    guid: ae5e9d334639a484786a9badbf5b387a
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/GeneralUISpace.unity
-    guid: 698925ae1198741f09200bbe0cbbff86
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/PathSplines.unity
-    guid: f7851b12d34d54ef0bc16d6d34318d75
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/PathSpline2d.unity
-    guid: b5daea63c1cc14d709cb8f5dc7d19173
-  - enabled: 1
-    path: Assets/Package/LeanTween/Examples/Scenes/GeneralSequencer.unity
-    guid: 28ab900ace00b47e39ad8fef65f3170a
+    path: Assets/Scenes/Map_2.unity
+    guid: e7bc9cc57d214a74c915e9ca32fb1205
   - enabled: 1
     path: Assets/Scenes/Map_3.unity
     guid: 13448f480a396e843a165b16d1cdac29
   - enabled: 1
-    path: Assets/Package/SimpleSky/_Demo/SimpleSky_Demo.unity
-    guid: 3e3c2fd638fedb74b80ab284a7e4267e
-  - enabled: 1
-    path: Assets/Package/Runemark Studio/Freebies/PolyDesert Mobile/DesertScene_mobile.unity
-    guid: 045c131302019b040929a92b606ec3aa
-  - enabled: 1
-    path: Assets/Package/Runemark Studio/Freebies/Polygon Desert Pack/DesertScene.unity
-    guid: 53f5a0914b195b74abc2fb43a9e2ce22
-  - enabled: 1
-    path: Assets/Package/Snowy_Low_Poly_Trees/DemoScene.unity
-    guid: cb9d7c2651d547a478a42e14850a45da
-  - enabled: 1
     path: Assets/Scenes/Map_4.unity
     guid: 5e2b4f53e4be5774a9dbcbf761709fbd
-  - enabled: 1
-    path: Assets/Package/Spiders/Demo/SpidersAsset.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Package/Blink/Art/Animals/Stylized/Demo_Animals/Bear_DEMO.unity
-    guid: 2dcd9d045d59ab744bc20f767072587f
   m_configObjects: {}

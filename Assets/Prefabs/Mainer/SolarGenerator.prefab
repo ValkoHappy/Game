@@ -1878,7 +1878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 60
 --- !u!65 &6367991144216137510
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1918,7 +1918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1be987cb6ad244d8381dd1b674bcd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _amountMoneyProduced: 2
+  _amountMoneyProduced: 4
   _waitForSecounds: 2
 --- !u!95 &75782528
 Animator:

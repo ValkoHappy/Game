@@ -9,7 +9,6 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private ParticleSystem _particle;
 
-    private Vector3 _targetEnemy;
     private Rigidbody _rigidbody;
 
     private void Awake()
@@ -51,12 +50,15 @@ public class Bullet : MonoBehaviour
     {
         if (other.TryGetComponent(out EnemyCollision enemy))
         {
-            Collider[] colliders = Physics.OverlapSphere(transform.position, _radius);
-            foreach (Collider collider in colliders)
+            if(enemy != null)
             {
-                if (collider.TryGetComponent(out EnemyCollision enemyCollision))
+                Collider[] colliders = Physics.OverlapSphere(transform.position, _radius);
+                foreach (Collider collider in colliders)
                 {
-                    ApplyDamageToEnemy(enemyCollision);
+                    if (collider.TryGetComponent(out EnemyCollision enemyCollision))
+                    {
+                        ApplyDamageToEnemy(enemyCollision);
+                    }
                 }
             }
         }

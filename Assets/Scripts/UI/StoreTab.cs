@@ -16,8 +16,7 @@ public class StoreTab : MonoBehaviour
     [SerializeField] private Transform _itenContainer;
 
     private int _priceGoods = 0;
-    private int _goldSpent = 0;
-    private int _crystalsSpent = 0;
+    private bool _isSoldForCrystalsGoods;
 
     private void OnEnable()
     {
@@ -69,6 +68,7 @@ public class StoreTab : MonoBehaviour
             {
                 _crystalsContainer.BuyBuilding(statsBuilding);
                 _levelReward.AddCrystalsSpent(statsBuilding.Price);
+                _isSoldForCrystalsGoods = true;
             }
             else
             {
@@ -81,6 +81,7 @@ public class StoreTab : MonoBehaviour
             {
                 _goldContainer.BuyBuilding(statsBuilding);
                 _levelReward.AddGoldSpent(statsBuilding.Price);
+                _isSoldForCrystalsGoods = false;
             }
             else
             {
@@ -95,11 +96,18 @@ public class StoreTab : MonoBehaviour
 
 
             Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
-        _buildingsManager.AddBuilding(building.GetComponentInChildren<PeacefulConstruction>());
+        _buildingsManager.AddBuilding(building.PeacefulConstruction);
     }
 
     private void OnPurchaseCancelled()
     {
-        _goldContainer.GetGold(_priceGoods);
+        if (_isSoldForCrystalsGoods)
+        {
+            _crystalsContainer.GetCrystals(_priceGoods);
+        }
+        else
+        {
+            _goldContainer.GetGold(_priceGoods);
+        }
     }
 }

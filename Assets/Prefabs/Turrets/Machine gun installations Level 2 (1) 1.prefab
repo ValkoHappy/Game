@@ -771,10 +771,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 3304229111058280170, guid: 6e27c47632436e84685f4abc808de76c, type: 3}
-  _isLaser: 0
   _shootPoint:
   - {fileID: 5388518269924201210}
   _waitForSeconds: 1.5
+  _yOffset: 1
   _particleShoot: {fileID: 19809874, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}
   _canShooting: 0
 --- !u!135 &5388518271078800971
@@ -867,7 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 75
 --- !u!114 &1915336236145404258
 MonoBehaviour:
   m_ObjectHideFlags: 0

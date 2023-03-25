@@ -50,4 +50,10 @@ public class LevelReward : MonoBehaviour
         _crystalsSpent = 0;
         _goldSpent = 0;
     }
+
+    public void ClearContainerSpent()
+    {
+        _crystalsSpent = 0;
+        _goldSpent = 0;
+    }
 }
