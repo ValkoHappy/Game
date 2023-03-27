@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private EnemyManager _enemyManager;
+    [SerializeField] private SceneNext _sceneManage;
     [SerializeField] private Transform _container;
     [SerializeField] private List<Level> _levels;
     [SerializeField] private Transform[] _spawnPoints;
@@ -20,16 +21,21 @@ public class Spawner : MonoBehaviour
 
     public event UnityAction<int> LevelChanged;
     public event UnityAction LevelStarted;
-    public event UnityAction UpdateMap;
+    public event UnityAction ÑurrentLevelExceedsCount;
 
     public Level Level => _currentLevel;
+    public int CurrentLevelIndex => _currentLevelIndex;
     public int LevelIndex => _levelIndex;
+
 
     public void NextLevel()
     {
-        _currentLevelIndex++;
-        _levelIndex++;
-        LevelStarted?.Invoke();
+        if (_currentLevelIndex < _levels.Count)
+        {
+            _currentLevelIndex++;
+            _levelIndex++;
+            LevelStarted?.Invoke();
+        }
     }
 
     public void StartLevel()
@@ -104,7 +110,27 @@ public class Spawner : MonoBehaviour
     {
         if (_currentLevelIndex >= _levels.Count)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            _sceneManage.NextScene();
         }
+    }
+
+    public void ChecForMaximumLevel()
+    {
+        if (_currentLevelIndex >= _levels.Count)
+        {
+            _sceneManage.ShowScene();
+            ÑurrentLevelExceedsCount?.Invoke();
+        }
+    }
+
+
+    public void InitCurrentLevel(int currentLevel)
+    {
+        _currentLevelIndex = currentLevel;
+    }
+
+    public void InitLevel(int currentLevel)
+    {
+        _levelIndex = currentLevel + 1;
     }
 }

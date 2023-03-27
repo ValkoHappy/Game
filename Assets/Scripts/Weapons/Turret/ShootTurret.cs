@@ -39,6 +39,15 @@ public class ShootTurret : MonoBehaviour
         {
             _canShooting = false;
         }
+
+        if (_turret.TargetEnemy != null && _turret.TargetEnemy.IsAlive())
+        {
+            RestartShoot();
+        }
+        else
+        {
+            StopShoot();
+        }
     }
 
     public void StartShoot()
@@ -88,30 +97,33 @@ public class ShootTurret : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out EnemyCollision enemy))
-        {
-            if (enemy != null)
-            {
-                if (_turret.Construction.IsAlive())
-                {
-                    _canShoot = true;
-                }
-            }
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.TryGetComponent(out EnemyCollision enemy))
+    //    {
+    //        if (enemy != null)
+    //        {
+    //            if (_turret.TargetEnemy != null && _turret.TargetEnemy.IsAlive())
+    //            {
+    //                _canShoot = true;
+    //            }
+    //        }
+    //    }
+    //}
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent(out EnemyCollision enemy))
-        {
-            if (enemy != null)
-            {
-                _canShoot = false;
-            }
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.TryGetComponent(out EnemyCollision enemy))
+    //    {
+    //        if (enemy != null)
+    //        {
+    //            if (_turret.TargetEnemy != null && _turret.TargetEnemy.IsAlive() == false)
+    //            {
+    //                _canShoot = false;
+    //            }
+    //        }
+    //    }
+    //}
 }
 
 

@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class EnemyCollision : MonoBehaviour, IDamageable
 {
     private Enemy _enemy;
+    private bool _isAlive;
     public HealthContainer _healthContainer { get; protected set; }
 
     public event UnityAction<EnemyCollision> Died;
@@ -30,7 +31,7 @@ public class EnemyCollision : MonoBehaviour, IDamageable
     protected void OnDied()
     {
         enabled = false;
-
+        _isAlive = false;
         Died?.Invoke(this);
     }
 
@@ -38,11 +39,11 @@ public class EnemyCollision : MonoBehaviour, IDamageable
     {
         if (_healthContainer.Health <= 0)
         {
-            return false;
+            return _isAlive = false;
         }
         else
         {
-            return true;
+            return _isAlive = true;
         }
     }
 

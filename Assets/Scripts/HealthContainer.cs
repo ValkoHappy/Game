@@ -10,9 +10,12 @@ public class HealthContainer : MonoBehaviour
     private int _maxHealth;
     public int Health => _health;
     public event UnityAction<int> HealthChanged;
+    public event UnityAction MaxHealthChanged;
     public event UnityAction Died;
 
-    private void Start()
+    public int MaxHealth => _maxHealth;
+
+    private void Awake()
     {
         _maxHealth = _health;
     }
@@ -33,5 +36,6 @@ public class HealthContainer : MonoBehaviour
     public void ResetHealth()
     {
         _health = _maxHealth;
+        MaxHealthChanged?.Invoke();
     }
 }

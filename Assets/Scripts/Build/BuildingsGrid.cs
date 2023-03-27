@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class BuildingsGrid : MonoBehaviour
 
     [SerializeField] private Vector2Int _gridSize;
     [SerializeField] private Transform _container;
+    [SerializeField] private Building _towerHall;
 
     private Building[,] _grid;
     private Building _flyingBuilding;
@@ -31,6 +33,11 @@ public class BuildingsGrid : MonoBehaviour
         _grid = new Building[_gridSize.x, _gridSize.y];
         _moveSelection = GetComponent<MoveSelection>();
         _camera = Camera.main;
+    }
+
+    private void Start()
+    {
+        CreateTowerHall();
     }
 
     private void Update()
@@ -56,6 +63,7 @@ public class BuildingsGrid : MonoBehaviour
             if (_moveSelection.Mode == BuildingMode.Delete)
             {
                 DestroyBuilding?.Invoke(_flyingBuilding);
+                Debug.Log(DestroyBuilding);
                 Destroy(_flyingBuilding.gameObject);
                 _flyingBuilding = null;
                 DeliveredBuilding?.Invoke();
@@ -95,6 +103,7 @@ public class BuildingsGrid : MonoBehaviour
         _isBuildingSelected = true;
         _flyingBuilding = Instantiate(buildingPrefab, _container);
         CreatedBuilding?.Invoke();
+        _flyingBuilding.Create();
         return _flyingBuilding;
     }
 
@@ -137,5 +146,23 @@ public class BuildingsGrid : MonoBehaviour
     public void RemoveGrid()
     {
         _grid = new Building[_gridSize.x, _gridSize.y];
+    }
+
+    public void CreateTowerHall()
+    {
+        Building building = _flyingBuilding = Instantiate(_towerHall, _container);
+        int placeX = Mathf.RoundToInt(_flyingBuilding.transform.position.x);
+        int placeY = Mathf.RoundToInt(_flyingBuilding.transform.position.z);
+
+        for (int i = 0; i < _flyingBuilding.TileSize.x; i++)
+        {
+            for (int j = 0; j < _flyingBuilding.TileSize.y; j++)
+            {
+                _grid[placeX + i, placeY + j] = _flyingBuilding;
+            }
+        }
+
+        _flyingBuilding = null;
+        _buildingsManager.AddBuilding(building.PeacefulConstruction);
     }
 }

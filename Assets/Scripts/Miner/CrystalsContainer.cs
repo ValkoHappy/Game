@@ -21,4 +21,9 @@ public class CrystalsContainer : MonoBehaviour
         _crystals -= statsBuilding.Price;
         CrystalsChanged?.Invoke(_crystals);
     }
+
+    public void InitCrystals(int crystals)
+    {
+        _crystals = crystals;
+    }
 }

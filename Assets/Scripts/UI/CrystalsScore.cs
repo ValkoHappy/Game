@@ -8,6 +8,11 @@ public class CrystalsScore : MonoBehaviour
     [SerializeField] private CrystalsContainer _crystalsContainer;
     [SerializeField] private TMP_Text _score;
 
+    private void Start()
+    {
+        _score.text = _crystalsContainer.Crystals.ToString();
+    }
+
     private void OnEnable()
     {
         _score.text = _crystalsContainer.Crystals.ToString();

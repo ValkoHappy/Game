@@ -8,6 +8,11 @@ public class GoldScore : MonoBehaviour
     [SerializeField] private GoldContainer _goldContainer;
     [SerializeField] private TMP_Text _score;
 
+    private void Start()
+    {
+        _score.text = _goldContainer.Gold.ToString();
+    }
+
     private void OnEnable()
     {
         _score.text = _goldContainer.Gold.ToString();

@@ -16,7 +16,7 @@ public class BuildingsManager : MonoBehaviour
     public event UnityAction TownHallNotBuilt;
     public event UnityAction PurchaseCancelled;
 
-    private void Start()
+    private void Awake()
     {
         _buildings = new List<PeacefulConstruction>();
     }

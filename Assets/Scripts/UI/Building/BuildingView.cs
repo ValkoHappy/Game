@@ -20,6 +20,7 @@ public class BuildingView : MonoBehaviour
 
     private void OnEnable()
     {
+        _building.CreateBuilding += OnOpen;
         _building.DeliveryBuilding += OnClose;
 
         _buildingGrid.EditPositionBuilding += OnEditPositionBuilding;
@@ -27,6 +28,7 @@ public class BuildingView : MonoBehaviour
 
     private void OnDisable()
     {
+        _building.CreateBuilding -= OnOpen;
         _building.DeliveryBuilding -= OnClose;
 
         _buildingGrid.EditPositionBuilding -= OnEditPositionBuilding;
@@ -37,6 +39,10 @@ public class BuildingView : MonoBehaviour
         _buildingsViewManager.OpenMenu(_movementScreen);
     }
 
+    private void OnOpen()
+    {
+        _movementScreen.Open();
+    }
     private void OnClose()
     {
         _movementScreen.Close();

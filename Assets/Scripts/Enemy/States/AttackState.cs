@@ -14,6 +14,14 @@ public class AttackState : EnemyState
         StartAttack();
     }
 
+    private void OnDisable()
+    {
+        if (_attack != null)
+        {
+            StopCoroutine(_attack);
+        }
+    }
+
     private void Update()
     {
     }

@@ -13,6 +13,7 @@ public class Building : MonoBehaviour
     public PeacefulConstruction PeacefulConstruction { get; private set; }
 
     public event UnityAction DeliveryBuilding;
+    public event UnityAction CreateBuilding;
 
     public Vector2Int TileSize => _size;
     public bool IsBuilding => _isBuilding;
@@ -40,6 +41,11 @@ public class Building : MonoBehaviour
             SetColor(new Color(1, 0, 0, 0.3f));
             _isBuilding = false;
         }
+    }
+
+    public void Create()
+    {
+        CreateBuilding?.Invoke();
     }
 
     public void SetNormal()

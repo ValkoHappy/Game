@@ -21,4 +21,9 @@ public class GoldContainer : MonoBehaviour
         _gold -= statsBuilding.Price;
         GoldChanged?.Invoke(_gold);
     }
+
+    public void InitGold(int gold)
+    {
+        _gold = gold;
+    }
 }
