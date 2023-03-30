@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,7 +12,6 @@ public class PeacefulConstruction : MonoBehaviour
 
     public event UnityAction<PeacefulConstruction> Die;
     public event UnityAction Died;
-
     public event UnityAction Damaged;
     private HealthContainer _healthContainer;
     private bool _isAlive;
@@ -22,6 +22,7 @@ public class PeacefulConstruction : MonoBehaviour
     public event UnityAction BuildingRestored;
 
     public HealthContainer HealthContainer => _healthContainer;
+    public Building Building => _building;
 
     private void Awake()
     {
@@ -94,19 +95,19 @@ public class PeacefulConstruction : MonoBehaviour
 
     public void ResetDetails()
     {
-        if (_isAlive == false)
+        for (int i = 0; i < _buildingDetails.Length; i++)
         {
-            for (int i = 0; i < _buildingDetails.Length; i++)
+            if(_detailSnapshots.Count > 0)
             {
                 _buildingDetails[i].transform.position = _detailSnapshots[i].Position;
                 _buildingDetails[i].transform.localRotation = _detailSnapshots[i].Rotation;
                 _buildingDetails[i].ResetBounce();
-                _healthContainer.ResetHealth();
-                _isAlive= true;
             }
-            BuildingRestored?.Invoke();
-            _detailSnapshots.Clear();
-        }     
+            _healthContainer.ResetHealth();
+            _isAlive = true;
+        }
+        BuildingRestored?.Invoke();
+        _detailSnapshots.Clear();
     }
 
     public void Destroy()

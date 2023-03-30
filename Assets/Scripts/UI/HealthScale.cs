@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthScale : MonoBehaviour
+public class HealthScale : ScreenUI
 {
     [SerializeField] private HealthContainer _healthContainer;
+    [SerializeField] private PeacefulConstruction _peacefulConstruction;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private Slider _slider;
 
@@ -22,12 +23,16 @@ public class HealthScale : MonoBehaviour
     {
         _healthContainer.HealthChanged += ChangeHealth;
         _healthContainer.MaxHealthChanged += OnMaxHealthChanged;
+
+        _peacefulConstruction.BuildingRestored += OnMaxHealthChanged;
     }
 
     private void OnDisable()
     {
         _healthContainer.HealthChanged -= ChangeHealth;
         _healthContainer.MaxHealthChanged -= OnMaxHealthChanged;
+
+        _peacefulConstruction.BuildingRestored -= OnMaxHealthChanged;
     }
 
     private void ChangeHealth(int health)
@@ -40,8 +45,9 @@ public class HealthScale : MonoBehaviour
             _canvasGroup.alpha = 0;
     }
 
-    private void OnMaxHealthChanged()
+    public void OnMaxHealthChanged()
     {
+        Debug.Log("fdgdf");
         _slider.value = _slider.maxValue;
         _canvasGroup.alpha = 0;
     }

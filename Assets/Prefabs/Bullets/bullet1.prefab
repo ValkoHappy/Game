@@ -227,8 +227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _force: 20
-  _speed: 50
+  _force: 50
+  _speed: 40
   _yOffSet: 1
   _radius: 1
   _particle: {fileID: 9088399641867135244, guid: f5c6918ef65783946bfad902294e12cd, type: 3}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5689089065340969327}
   - component: {fileID: 5931316572436338940}
   - component: {fileID: 2862085684978367579}
+  - component: {fileID: -3873642929191617247}
   m_Layer: 0
   m_Name: Turret 1
   m_TagString: target
@@ -76,6 +77,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1176167, y: 1.8266397, z: 1.4185152}
   m_Center: {x: 1.0700288, y: 0.8175247, z: 1.1164286}
+--- !u!208 &-3873642929191617247
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594440513109305114}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 1, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 1, y: 1, z: 1}
+  m_TimeToStationary: 0.5
 --- !u!1001 &946530082615678553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -223,6 +240,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1708663270038454075 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1915336236145404258, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+  m_PrefabInstance: {fileID: 946530082615678553}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0891a58843160c247a14c26d9da3fe50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &5180578596961241119 stripped
@@ -442,6 +470,10 @@ PrefabInstance:
       propertyPath: _healthContainer
       value: 
       objectReference: {fileID: 984192380448466484}
+    - target: {fileID: 2632820826197489230, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: _peacefulConstruction
+      value: 
+      objectReference: {fileID: 1708663270038454075}
     - target: {fileID: 3805934668694385921, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1

@@ -85,11 +85,12 @@ public class Extraction : MonoBehaviour
 
     public void OnExtractionAnimation()
     {
+        _animator.enabled = true;
         _animator.SetTrigger("Extraction");
     }
 
     public void OnOffExtractionAnimation()
     {
-        _animator.SetTrigger("Idle");
+        _animator.enabled = false;
     }
 }

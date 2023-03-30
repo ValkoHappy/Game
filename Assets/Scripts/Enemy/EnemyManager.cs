@@ -11,7 +11,7 @@ public class EnemyManager : MonoBehaviour
 
     public int DeadEnemiesCount { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
         _enemies = new List<Enemy>();
     }
@@ -20,6 +20,7 @@ public class EnemyManager : MonoBehaviour
     {
         _enemies.Add(enemy);
         enemy.Died += OnEnemyDeath;
+        enemy.enabled = false;
     }
 
     public void OnEnemyDeath(Enemy enemy)
@@ -42,5 +43,21 @@ public class EnemyManager : MonoBehaviour
         }
 
         _enemies.Clear();
+    }
+
+    public void OffEnemies()
+    {
+        foreach (var enemy in _enemies)
+        {
+            enemy.enabled = false;
+        }
+    }
+
+    public void OnEnemies()
+    {
+        foreach (var enemy in _enemies)
+        {
+            enemy.enabled = true;
+        }
     }
 }

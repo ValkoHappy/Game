@@ -20,12 +20,14 @@ public class StoreTab : MonoBehaviour
 
     private void OnEnable()
     {
-        _buildingsManager.PurchaseCancelled += OnPurchaseCancelled;
+        _buildingsGrid.DeliveredBuilding += OnCanceliedPurchase;
+        _buildingsGrid.RemoveBuilding += OnPurchaseCancelled;
     }
 
     private void OnDisable()
     {
-        _buildingsManager.PurchaseCancelled -= OnPurchaseCancelled;
+        _buildingsGrid.DeliveredBuilding -= OnCanceliedPurchase;
+        _buildingsGrid.RemoveBuilding -= OnPurchaseCancelled;
     }
 
     private void Start()
@@ -64,10 +66,11 @@ public class StoreTab : MonoBehaviour
         _priceGoods = statsBuilding.Price;
         if (statsBuilding.IsSoldForCrystals)
         {
+
             if (statsBuilding.Price <= _crystalsContainer.Crystals)
             {
                 _crystalsContainer.BuyBuilding(statsBuilding);
-                _levelReward.AddCrystalsSpent(statsBuilding.Price);
+                //_levelReward.AddCrystalsSpent(statsBuilding.Price);
                 _isSoldForCrystalsGoods = true;
             }
             else
@@ -80,7 +83,7 @@ public class StoreTab : MonoBehaviour
             if (statsBuilding.Price <= _goldContainer.Gold)
             {
                 _goldContainer.BuyBuilding(statsBuilding);
-                _levelReward.AddGoldSpent(statsBuilding.Price);
+                //_levelReward.AddGoldSpent(statsBuilding.Price);
                 _isSoldForCrystalsGoods = false;
             }
             else
@@ -89,13 +92,7 @@ public class StoreTab : MonoBehaviour
             }
         }
 
-        //if (statsBuilding.IsSingleProduct == false)
-        //{
-        //    builderView.SellButtonClick -= OnSellButtonClick;
-        //}   
-
-
-            Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
+        Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
         _buildingsManager.AddBuilding(building.PeacefulConstruction);
     }
 
@@ -104,10 +101,28 @@ public class StoreTab : MonoBehaviour
         if (_isSoldForCrystalsGoods)
         {
             _crystalsContainer.GetCrystals(_priceGoods);
+            Debug.Log(_priceGoods);
+            _priceGoods = 0;
         }
         else
         {
             _goldContainer.GetGold(_priceGoods);
+            Debug.Log(_priceGoods);
+            _priceGoods = 0;
+        }
+    }
+
+    private void OnCanceliedPurchase()
+    {
+        if (_isSoldForCrystalsGoods)
+        {
+            _levelReward.AddCrystalsSpent(_priceGoods);
+            _priceGoods = 0;
+        }
+        else
+        {
+            _levelReward.AddGoldSpent(_priceGoods);
+            _priceGoods = 0;
         }
     }
 }

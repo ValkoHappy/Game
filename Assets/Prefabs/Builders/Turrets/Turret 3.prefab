@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 909487568120814611}
   - component: {fileID: 6715219528986676892}
   - component: {fileID: 4725032707510630159}
+  - component: {fileID: -8385787680894234324}
   m_Layer: 0
   m_Name: Turret 3
   m_TagString: target
@@ -61,6 +62,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementScreen: {fileID: 3627416135570924848}
+--- !u!208 &-8385787680894234324
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5208092448015927529}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.25, y: 1, z: 0.25}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 1, y: 1, z: 1}
+  m_TimeToStationary: 0.5
 --- !u!1001 &3212818161678389608
 PrefabInstance:
   m_ObjectHideFlags: 0

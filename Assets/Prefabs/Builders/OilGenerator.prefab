@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4050115909143557992}
   - component: {fileID: 1833638821257500497}
   - component: {fileID: 8008148637491687746}
+  - component: {fileID: -3048099742558628682}
   m_Layer: 0
   m_Name: OilGenerator
   m_TagString: target
@@ -62,6 +63,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementScreen: {fileID: 8906535271633546378}
+--- !u!208 &-3048099742558628682
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214112405864594302}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 1, y: 1, z: 1}
+  m_TimeToStationary: 0.5
 --- !u!1001 &594211053915126518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,6 +196,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
+--- !u!114 &594211053729478140 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1025462026, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
+  m_PrefabInstance: {fileID: 594211053915126518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0891a58843160c247a14c26d9da3fe50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &594211053729478143 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1025462025, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
@@ -290,6 +318,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6994924340402463159, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
 --- !u!224 &6501618529520420959 stripped
@@ -319,6 +351,10 @@ PrefabInstance:
       propertyPath: _healthContainer
       value: 
       objectReference: {fileID: 594211053729478143}
+    - target: {fileID: 2632820826197489230, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: _peacefulConstruction
+      value: 
+      objectReference: {fileID: 594211053729478140}
     - target: {fileID: 3805934668694385921, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1

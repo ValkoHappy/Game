@@ -9,6 +9,7 @@ public class MobileController : MonoBehaviour
 
     private void Awake()
     {
+        _cameraMover = FindObjectOfType<CameraMover>();
         _joystick = GetComponent<Joystick>();
     }
 

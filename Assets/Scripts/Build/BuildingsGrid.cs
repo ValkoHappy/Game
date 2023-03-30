@@ -26,6 +26,7 @@ public class BuildingsGrid : MonoBehaviour
     public event UnityAction DeliveredBuilding;
     public event UnityAction EditPositionBuilding;
     public event UnityAction<Building> DestroyBuilding;
+    public event UnityAction RemoveBuilding;
 
 
     private void Awake()
@@ -57,16 +58,16 @@ public class BuildingsGrid : MonoBehaviour
                 if (_moveSelection.Mode == BuildingMode.Insert)
                 {
                     PlaceFlyingBuilding(x, y);
+                    DeliveredBuilding?.Invoke();
                 }
             }
 
             if (_moveSelection.Mode == BuildingMode.Delete)
             {
                 DestroyBuilding?.Invoke(_flyingBuilding);
-                Debug.Log(DestroyBuilding);
                 Destroy(_flyingBuilding.gameObject);
                 _flyingBuilding = null;
-                DeliveredBuilding?.Invoke();
+                RemoveBuilding?.Invoke();
             }
             _moveSelection.SetBuildingModeMovement();
 

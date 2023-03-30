@@ -23,10 +23,11 @@ public class BrokenState : EnemyState
 
     public void ApplyDamage(Rigidbody attachedBody, float force)
     {
-        Vector3 direction = (transform.position - attachedBody.position);
-        direction.y = 0;
+        Vector3 impactDirection = (attachedBody.position - transform.position).normalized;
+        Vector3 oppositeDirection = -impactDirection;
+
         Animator.SetTrigger("Die");
-        Rigidbody.AddForce(direction.normalized * force, ForceMode.Impulse);
+        Rigidbody.AddForce(oppositeDirection * force, ForceMode.Impulse);
         StartCoroutine(FadeOut());
         Died?.Invoke();
     }

@@ -14,7 +14,7 @@ public class BuildingsManager : MonoBehaviour
     
     public event UnityAction AllBuildingsDestroyed;
     public event UnityAction TownHallNotBuilt;
-    public event UnityAction PurchaseCancelled;
+    //public event UnityAction PurchaseCancelled;
 
     private void Awake()
     {
@@ -34,7 +34,8 @@ public class BuildingsManager : MonoBehaviour
     public void AddBuilding(PeacefulConstruction building)
     {
         _buildings.Add(building);
-        _starsScore.AddBuildingsCount();
+        if(building.tag != "Fence")
+            _starsScore.AddBuildingsCount();
         building.Die += OnBuildingDeath;
     }
 
@@ -79,10 +80,9 @@ public class BuildingsManager : MonoBehaviour
     {
         for (int i = 0; i < _buildings.Count; i++)
         {
-            if (_buildings[i].GetComponentInParent<Building>() == building)
+            if (_buildings[i].Building == building)
             {
-                PurchaseCancelled?.Invoke();
-                Debug.Log(PurchaseCancelled);
+                //PurchaseCancelled?.Invoke();
                 _buildings.Remove(_buildings[i]);
                 _starsScore.RemoveBuildingsCount();
             }

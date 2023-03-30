@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 765859525624998862}
   m_Layer: 0
   m_Name: TownHall 1
-  m_TagString: target
+  m_TagString: TownHall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,8 +246,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.9487873, y: 0.17881614, z: 2.0242004}
-  m_Center: {x: -0.004732549, y: -0.026978506, z: 0.032465696}
+  m_Size: {x: 1.9487873, y: 1.9983914, z: 2.0242004}
+  m_Center: {x: -0.004732549, y: 0.8295413, z: -0}
 --- !u!1 &2890597643511997318
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +261,6 @@ GameObject:
   - component: {fileID: 677837663351409282}
   - component: {fileID: 504721646828686226}
   - component: {fileID: 6136251587403058996}
-  - component: {fileID: 4149077522881282237}
   m_Layer: 0
   m_Name: Cube.019
   m_TagString: Untagged
@@ -363,18 +362,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.010000003, y: 0.01, z: 0.009961536}
   m_Center: {x: 0, y: -5.551115e-17, z: 0}
---- !u!114 &4149077522881282237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2890597643511997318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a94aa76232496db49a5fdeec82fefb2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3276650191605551696
 GameObject:
   m_ObjectHideFlags: 0

@@ -114,13 +114,15 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public void ChecForMaximumLevel()
+    public bool ChecForMaximumLevel()
     {
         if (_currentLevelIndex >= _levels.Count)
         {
             _sceneManage.ShowScene();
             ÑurrentLevelExceedsCount?.Invoke();
+            return true;
         }
+        return false;
     }
 
 
@@ -131,6 +133,6 @@ public class Spawner : MonoBehaviour
 
     public void InitLevel(int currentLevel)
     {
-        _levelIndex = currentLevel + 1;
+        _levelIndex = currentLevel;
     }
 }

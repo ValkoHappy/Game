@@ -1,3 +1,4 @@
+using IJunior.TypedScenes;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,7 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyState _firstState;
     [SerializeField] private BrokenState _brokenState;
 
-    private FoundBuildings _buildings;
+    private FoundBuildings _foundBuildings;
     private EnemyState _currentState;
     private Animator _animator;
     private Rigidbody _rigidbody;
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        _buildings = GetComponent<FoundBuildings>();
+        _foundBuildings = GetComponent<FoundBuildings>();
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
         _targetConstruction = FindObjectOfType<PeacefulConstruction>();
@@ -55,13 +56,13 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         _currentState = _firstState;
-        _targetConstruction = _buildings.TargetConstruction;
+        _targetConstruction = _foundBuildings.TargetConstruction;
         _currentState.Enter(_targetConstruction, _animator, _rigidbody);
     }
 
     private void Update()
     {
-        _targetConstruction = _buildings.TargetConstruction;
+        _targetConstruction = _foundBuildings.TargetConstruction;
 
         foreach (var transition in _currentState.Transitions)
         {

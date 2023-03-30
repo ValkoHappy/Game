@@ -8,8 +8,8 @@ public class Game : MonoBehaviour
     [SerializeField] private VictoryScreen _victoryScreen;
     [SerializeField] private DefeatScreen _featScreen;
     [SerializeField] private MobileControllerScreen _mobileControllerDownScreen;
-    [SerializeField] private MobileControllerScreen _mobileControllerUpScreen;
     [SerializeField] private SwitchingScreen _switchingScreen;
+    [SerializeField] private ButtleScreen _buttleScreen;
 
     [SerializeField] private Spawner _spawner;
     [SerializeField] private EnemyManager _enemyManager;
@@ -19,6 +19,7 @@ public class Game : MonoBehaviour
     [SerializeField] private LobbyCameraAnimation _limbCameraAnimation;
     [SerializeField] private LevelReward _levelReward;
     [SerializeField] private SaveSystem _saveSystem;
+    [SerializeField] private YandexAds _yandexAds;
 
     private void Awake()
     {
@@ -31,6 +32,8 @@ public class Game : MonoBehaviour
         _shopScreen.Close();
         _settingMenuScreen.Close();
         _spawner.ShowLevel();
+        _spawner.StartLevel();
+
     }
 
     private void OnEnable()
@@ -54,13 +57,16 @@ public class Game : MonoBehaviour
         _featScreen.RestartButtonClick += OnRepeatBattleForAdvertising;
 
         _buildingsGrid.CreatedBuilding += OnCloseShop;
+        _buildingsGrid.RemoveBuilding += OnOpenShop;
         _buildingsGrid.DeliveredBuilding += OnOpenShop;
 
         _spawner.LevelStarted += _levelReward.ClearContainerSpent;
 
         _spawner.ÑurrentLevelExceedsCount += OnSwitchingScreen;
 
-        _switchingScreen.SwitchingButtonClick += _spawner.SwitchAnotherMap;
+        _switchingScreen.SwitchingButtonClick += OnSwitchAnotherMap;
+
+        _buttleScreen.ExitButtonClick += ExitOfFight;
     }
 
     private void OnDisable()
@@ -84,13 +90,16 @@ public class Game : MonoBehaviour
         _featScreen.RestartButtonClick -= OnRepeatBattleForAdvertising;
 
         _buildingsGrid.CreatedBuilding -= OnCloseShop;
+        _buildingsGrid.RemoveBuilding -= OnOpenShop;
         _buildingsGrid.DeliveredBuilding -= OnOpenShop;
 
         _spawner.LevelStarted -= _levelReward.ClearContainerSpent;
 
         _spawner.ÑurrentLevelExceedsCount -= OnSwitchingScreen;
 
-        _switchingScreen.SwitchingButtonClick -= _spawner.SwitchAnotherMap;
+        _switchingScreen.SwitchingButtonClick -= OnSwitchAnotherMap;
+
+        _buttleScreen.ExitButtonClick -= ExitOfFight;
     }
 
     private void OnAllEnemiesKilled()
@@ -102,43 +111,43 @@ public class Game : MonoBehaviour
         //_victoryScreen.OnStartEffect();
         _mobileControllerDownScreen.Open();
         _spawner.NextLevel();
+        _buttleScreen.Close();
     }
 
     private void OnAllBuildingsDestroyed()
     {
         _featScreen.Open();
         _mobileControllerDownScreen.Open();
+        //_yandexAds.ShowInterstitial();
+        _buttleScreen.Close();
     }
 
     private void OnStartGame()
     {
-            _mainMenuScreen.Close();
-            //_buildingsManager.OnSaveBuildings();
-            _spawner.StartLevel();
-            _starsScore.CloseStars();
-            _starsScore.RemoveAllBuildingsDiedCount();
+        _mainMenuScreen.Close();
+        _enemyManager.OnEnemies();
+        _starsScore.CloseStars();
+        _starsScore.RemoveAllBuildingsDiedCount();
         _mobileControllerDownScreen.Open();
+        _buttleScreen.Open();
     }
 
     private void OnShopScreen()
     {
         _mainMenuScreen.Close();
         _shopScreen.Open();
-        _mobileControllerUpScreen.Open();
         _mobileControllerDownScreen.Close();
     }
 
     private void OnCloseShop()
     {
         _shopScreen.Close();
-        _mobileControllerUpScreen.Close();
         _mobileControllerDownScreen.Open();
     }
 
     private void OnOpenShop()
     {
         _shopScreen.Open();
-        _mobileControllerUpScreen.Open();
         _mobileControllerDownScreen.Close();
     }
 
@@ -155,9 +164,21 @@ public class Game : MonoBehaviour
         _victoryScreen.Close();
         _featScreen.Close();
         _mainMenuScreen.Open();
-        _mobileControllerUpScreen.Close();
         _mobileControllerDownScreen.Open();
+
+        //_yandexAds.ShowInterstitial();
     }
+
+    private void ExitOfFight()
+    {
+        _enemyManager.OnDestroyEnemies();
+        _buildingsManager.OnCreateSavedBuildings();
+        _buttleScreen.Close();
+        _mainMenuScreen.Open();
+        _mobileControllerDownScreen.Open();
+        _spawner.StartLevel();
+    }
+
     private void OnMenuAfterFightScreen()
     {
         _spawner.ShowLevel();
@@ -167,18 +188,22 @@ public class Game : MonoBehaviour
         _victoryScreen.Close();
         _mainMenuScreen.Open();
         _buildingsGrid.CreateTowerHall();
-        _spawner.ChecForMaximumLevel();
         _saveSystem.Save();
+        if (_spawner.ChecForMaximumLevel())
+            _saveSystem.ResetLevel();
         _mobileControllerDownScreen.Open();
+        _spawner.StartLevel();
     }
 
     private void OnRepeatBattleForAdvertising()
     {
+        //_yandexAds.ShowRewardAd();
         _enemyManager.OnDestroyEnemies();
         _buildingsManager.OnCreateSavedBuildings();
         _featScreen.Close();
         _mainMenuScreen.Open();
         _mobileControllerDownScreen.Open();
+        _spawner.StartLevel();
     }
 
     private void OnRepeatBattle()
@@ -191,6 +216,7 @@ public class Game : MonoBehaviour
         _buildingsGrid.CreateTowerHall();
         _levelReward.ReturnAfterLosing();
         _mobileControllerDownScreen.Open();
+        _spawner.StartLevel();
     }
 
     private void OnSettingMenuScreen()
@@ -200,7 +226,12 @@ public class Game : MonoBehaviour
 
     private void OnSwitchingScreen()
     {
-        _saveSystem.ResetLevel();
         _switchingScreen.Open();
+    }
+
+    private void OnSwitchAnotherMap()
+    {
+        _switchingScreen.Close();
+        _spawner.SwitchAnotherMap();
     }
 }
