@@ -73,7 +73,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3865745499594000244, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
       propertyPath: _health
-      value: 160
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: -1731110320586710811, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
       propertyPath: _bounceForce

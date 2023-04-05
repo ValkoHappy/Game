@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2849991702816143196}
   - component: {fileID: 2837345541942088800}
   - component: {fileID: 2632820826197489230}
+  - component: {fileID: 7871517048932229881}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -127,9 +128,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7b631bce729194d87523e6f498fd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _panel: {fileID: 0}
   _healthContainer: {fileID: 0}
+  _peacefulConstruction: {fileID: 0}
   _canvasGroup: {fileID: 2837345541942088800}
   _slider: {fileID: 5505526060473822203}
+--- !u!95 &7871517048932229881
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7504485808419801275}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &9091582263899847613
 PrefabInstance:
   m_ObjectHideFlags: 0

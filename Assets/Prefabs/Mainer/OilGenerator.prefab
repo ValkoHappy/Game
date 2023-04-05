@@ -947,7 +947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 50
+  _health: 40
 --- !u!114 &1025462026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -975,7 +975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _amountMoneyProduced: 1
-  _waitForSecounds: 3
+  _waitForSecounds: 1
 --- !u!65 &4591982427868202346
 BoxCollider:
   m_ObjectHideFlags: 0

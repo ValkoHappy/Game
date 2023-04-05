@@ -41,7 +41,7 @@ public class BuildingsManager : MonoBehaviour
 
     public void OnBuildingDeath(PeacefulConstruction building)
     {
-        //building.Die -= OnBuildingDeath;
+        building.Die -= OnBuildingDeath;
         if (_buildings.Count <= 0)
         {
             AllBuildingsDestroyed?.Invoke();
@@ -49,7 +49,8 @@ public class BuildingsManager : MonoBehaviour
 
         if(building.IsAlive() ==false)
         {
-            _starsScore.AddBuildingsDiedCount();
+            if (building.tag != "Fence")
+                _starsScore.AddBuildingsDiedCount();
         }
 
         bool allBuildingsDestroyed = true;

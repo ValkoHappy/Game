@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6088243310155275162}
   m_Layer: 0
   m_Name: WindGenerator
-  m_TagString: target
+  m_TagString: Wind
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,6 +204,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7798741198616176167}
     m_Modifications:
+    - target: {fileID: 1091481686354397533, guid: 7c9a1639b07af95478014a50fee69780, type: 3}
+      propertyPath: _health
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1269675930139366265, guid: 7c9a1639b07af95478014a50fee69780, type: 3}
       propertyPath: m_Layer
       value: 0

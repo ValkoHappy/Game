@@ -17,6 +17,8 @@ public class Extraction : MonoBehaviour
     private Building _building;
     private BuildingsGrid _buildingGrid;
 
+    public int AmountMoneyProduced => _amountMoneyProduced;
+
     private void Awake()
     {
         _building = GetComponentInParent<Building>();

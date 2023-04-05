@@ -20,9 +20,7 @@ public class ShopScreen : ScreenUI
 
     private void Start()
     {
-        _storeTabMainBuildings.Open();
-        _storeTabWeapons.Close();
-        _storeTabGenerators.Close();    
+        _storeTabMainBuildings.Open();   
     }
 
 
@@ -53,21 +51,30 @@ public class ShopScreen : ScreenUI
     private void OnStoreTabMainBuildings()
     {
         _storeTabMainBuildings.Open();
+        _storeTabMainBuildings.Panel.alpha = 1;
         _storeTabWeapons.Close();
+        _storeTabWeapons.Panel.alpha = 0;
         _storeTabGenerators.Close();
+        _storeTabGenerators.Panel.alpha = 0;
     }
 
     private void OnStoreTabWeapons()
     {
         _storeTabMainBuildings.Close();
+        _storeTabMainBuildings.Panel.alpha = 0;
         _storeTabWeapons.Open();
+        _storeTabWeapons.Panel.alpha = 1;
         _storeTabGenerators.Close();
+        _storeTabGenerators.Panel.alpha = 0;
     }
 
     private void OnStoreTabGenerators()
     {
         _storeTabMainBuildings.Close();
+        _storeTabMainBuildings.Panel.alpha = 0;
         _storeTabWeapons.Close();
+        _storeTabWeapons.Panel.alpha = 0;
         _storeTabGenerators.Open();
+        _storeTabGenerators.Panel.alpha = 1;
     }
 }

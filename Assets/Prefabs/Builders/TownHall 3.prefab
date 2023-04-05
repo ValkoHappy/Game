@@ -250,6 +250,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TownHall 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6823024153543087712, guid: 9e8f67659323374489226e89c191e285, type: 3}
+      propertyPath: _health
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e8f67659323374489226e89c191e285, type: 3}
 --- !u!114 &3216843524413941575 stripped

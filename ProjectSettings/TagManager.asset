@@ -9,6 +9,9 @@ TagManager:
   - "Peaceful\u0421onstruction"
   - TownHall
   - Fence
+  - Oil
+  - Wind
+  - Solar
   layers:
   - Default
   - TransparentFX

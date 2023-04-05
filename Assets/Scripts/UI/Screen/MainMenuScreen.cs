@@ -8,32 +8,32 @@ public class MainMenuScreen : ScreenUI
 {
     [SerializeField] private Button _playButton;
     [SerializeField] private Button _shopButton;
-    [SerializeField] private Button _questsButton;
     [SerializeField] private Button _rankingButton;
     [SerializeField] private Button _settingButton;
+    [SerializeField] private Button _findSpawnEnemiesButton;
 
     public event UnityAction PlayButtonClick;
     public event UnityAction ShopButtonClick;
-    public event UnityAction QuestsButtonClick;
     public event UnityAction RankingButtonClick;
     public event UnityAction SettingButtonClick;
+    public event UnityAction FindSpawnEnemiesButtonClick;
 
     private void OnEnable()
     {
         _playButton.onClick.AddListener(OnPlayButton);
         _shopButton.onClick.AddListener(OnShopButton);
-        _questsButton.onClick.AddListener(OnQuestsButton);
         _rankingButton.onClick.AddListener(OnRankingButton);
         _settingButton.onClick.AddListener(OnSettingButton);
+        _findSpawnEnemiesButton.onClick.AddListener(OnFindSpawnEnemiesButton);
     }
 
     private void OnDisable()
     {
         _playButton.onClick.RemoveListener(OnPlayButton);
         _shopButton.onClick.RemoveListener(OnShopButton);
-        _questsButton.onClick.RemoveListener(OnQuestsButton);
         _rankingButton.onClick.RemoveListener(OnRankingButton);
         _settingButton.onClick.RemoveListener(OnSettingButton);
+        _findSpawnEnemiesButton.onClick.AddListener(OnFindSpawnEnemiesButton);
     }
 
     public void OnPlayButton()
@@ -46,11 +46,6 @@ public class MainMenuScreen : ScreenUI
         ShopButtonClick?.Invoke();
     }
 
-    public void OnQuestsButton()
-    {
-        QuestsButtonClick?.Invoke();
-    }
-
     public void OnRankingButton()
     {
         RankingButtonClick?.Invoke();
@@ -59,5 +54,10 @@ public class MainMenuScreen : ScreenUI
     public void OnSettingButton()
     {
         SettingButtonClick?.Invoke();
+    }
+
+    public void OnFindSpawnEnemiesButton()
+    {
+        FindSpawnEnemiesButtonClick?.Invoke();
     }
 }

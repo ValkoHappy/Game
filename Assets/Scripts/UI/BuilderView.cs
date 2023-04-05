@@ -1,3 +1,4 @@
+using Lean.Localization;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,6 +13,7 @@ public class BuilderView : MonoBehaviour
     [SerializeField] private TMP_Text _price;
     [SerializeField] private Image _icon;
     [SerializeField] private Button _sellButton;
+    [SerializeField] private LeanLocalizedTextMeshProUGUI _leanLocalized;
 
     private Goods _building;
     public event UnityAction<Goods, BuilderView> SellButtonClick;

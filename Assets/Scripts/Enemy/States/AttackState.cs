@@ -11,7 +11,8 @@ public class AttackState : EnemyState
 
     private void OnEnable()
     {
-        StartAttack();
+        if(enabled)
+            StartAttack();
     }
 
     private void OnDisable()

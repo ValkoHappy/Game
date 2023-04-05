@@ -7,9 +7,6 @@ public class StarsScore : MonoBehaviour
 {
     [SerializeField] private GameObject[] _stars;
     [SerializeField] private GameObject[] _rewards;
-    [SerializeField] private GameObject _panelText;
-    [SerializeField] private GameObject[] _buttons;
-    [SerializeField] private GameObject _ground;
 
     private float _buildingsCount;
     private float _buildingsDiedCount;
@@ -18,8 +15,6 @@ public class StarsScore : MonoBehaviour
     public void ShowStars()
     {
         _buildingsStars = 100 - (_buildingsDiedCount / _buildingsCount * 100);
-        LeanTween.alpha(_ground, 170, .3f);
-        LeanTween.scale(_panelText, new Vector3(1f, 1f, 1f), 2f).setEase(LeanTweenType.easeOutElastic);
         if (_buildingsStars >= 1)
         {
             LeanTween.scale(_stars[0], new Vector3(1f, 1f, 1f), 2f).setDelay(.1f).setEase(LeanTweenType.easeOutElastic);
@@ -42,14 +37,10 @@ public class StarsScore : MonoBehaviour
         }
         LeanTween.scale(_rewards[0], new Vector3(1f, 1f, 1f), 2f).setDelay(.6f).setEase(LeanTweenType.easeOutElastic);
         LeanTween.scale(_rewards[1], new Vector3(1f, 1f, 1f), 2f).setDelay(.7f).setEase(LeanTweenType.easeOutElastic);
-        LeanTween.scale(_buttons[0], new Vector3(1f, 1f, 1f), 2f).setDelay(.8f).setEase(LeanTweenType.easeOutElastic);
-        LeanTween.scale(_buttons[1], new Vector3(1f, 1f, 1f), 2f).setDelay(.9f).setEase(LeanTweenType.easeOutElastic);
     }
 
     public void CloseStars()
     {
-        LeanTween.alpha(_ground, 0, 0);
-        _panelText.LeanScale(new Vector3(0, 0, 0), 0);
         foreach (var star in _stars)
         {
             star.LeanScale(new Vector3(0, 0, 0), 0);
@@ -57,10 +48,6 @@ public class StarsScore : MonoBehaviour
         foreach (var reward in _rewards)
         {
             reward.LeanScale(new Vector3(0, 0, 0), 0);
-        }
-        foreach (var button in _buttons)
-        {
-            button.LeanScale(new Vector3(0, 0, 0), 0);
         }
         _buildingsStars = 0;
     }

@@ -26,6 +26,7 @@ public class BuildingsGrid : MonoBehaviour
     public event UnityAction DeliveredBuilding;
     public event UnityAction EditPositionBuilding;
     public event UnityAction<Building> DestroyBuilding;
+    public event UnityAction<Building> ExtrationBuilding;
     public event UnityAction RemoveBuilding;
 
 
@@ -134,6 +135,7 @@ public class BuildingsGrid : MonoBehaviour
         }
         _isBuildingSelected = false;
         _flyingBuilding.SetNormal();
+        ExtrationBuilding?.Invoke(_flyingBuilding);
         DeliveredBuilding?.Invoke();
         _flyingBuilding = null;
     }

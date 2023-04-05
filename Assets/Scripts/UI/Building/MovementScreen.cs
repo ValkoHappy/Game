@@ -9,16 +9,16 @@ public class MovementScreen : ScreenUI
     [SerializeField] private Button _saveButton;
     [SerializeField] private Button _delateButton;
 
-    [SerializeField] private Button _upButton;
-    [SerializeField] private Button _downButton;
-    [SerializeField] private Button _leftButton;
-    [SerializeField] private Button _rightButton;
-
     private MoveSelection _moveSelection;
 
     private void Awake()
     {
         _moveSelection = FindObjectOfType<MoveSelection>();
+    }
+
+    private void Start()
+    {
+        Open();
     }
 
     private void OnEnable()
@@ -36,9 +36,11 @@ public class MovementScreen : ScreenUI
     private void OnSaveButton()
     {
         _moveSelection.SetBuildingModeInsert();
+        Close();
     }
     private void OnDelateButton()
     {
         _moveSelection.SetBuildingModeDelete();
+        Close();
     }
 }

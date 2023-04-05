@@ -20,6 +20,8 @@ public class Game : MonoBehaviour
     [SerializeField] private LevelReward _levelReward;
     [SerializeField] private SaveSystem _saveSystem;
     [SerializeField] private YandexAds _yandexAds;
+    [SerializeField] private GroundAudio _groundAudio;
+    [SerializeField] private MovingCameraSpawnEnemies _movingCameraSpawnEnemies;
 
     private void Awake()
     {
@@ -28,17 +30,16 @@ public class Game : MonoBehaviour
 
     private void Start()
     {
-        _mainMenuScreen.Close();
-        _shopScreen.Close();
-        _settingMenuScreen.Close();
         _spawner.ShowLevel();
         _spawner.StartLevel();
+        _groundAudio.OnÑalmClip();
 
     }
 
     private void OnEnable()
     {
         _limbCameraAnimation.AnimationIsFinished += OnOpenMainMenu;
+        _limbCameraAnimation.AnimationIsFinished += _movingCameraSpawnEnemies.RotationCamera;
 
         _enemyManager.AllEnemiesKilled += OnAllEnemiesKilled;
         _buildingsManager.AllBuildingsDestroyed += OnAllBuildingsDestroyed;
@@ -46,10 +47,11 @@ public class Game : MonoBehaviour
         _mainMenuScreen.PlayButtonClick += OnStartGame;
         _mainMenuScreen.ShopButtonClick += OnShopScreen;
         _mainMenuScreen.SettingButtonClick += OnSettingMenuScreen;
+        _mainMenuScreen.FindSpawnEnemiesButtonClick += _movingCameraSpawnEnemies.RotationCamera;
 
-        _shopScreen.ExitButtonClick += OnMainMenuScreen;
+        _shopScreen.ExitButtonClick += OnMainMenuScreenAfterShop;
 
-        _settingMenuScreen.ExitButtonClick += OnMainMenuScreen;
+        _settingMenuScreen.ExitButtonClick +=  _settingMenuScreen.Close;
 
         _victoryScreen.ResumeButtonClick += OnMenuAfterFightScreen;
 
@@ -67,11 +69,13 @@ public class Game : MonoBehaviour
         _switchingScreen.SwitchingButtonClick += OnSwitchAnotherMap;
 
         _buttleScreen.ExitButtonClick += ExitOfFight;
+        _buttleScreen.SettingsButtonClick += OnSettingMenuScreen;
     }
 
     private void OnDisable()
     {
         _limbCameraAnimation.AnimationIsFinished -= OnOpenMainMenu;
+        _limbCameraAnimation.AnimationIsFinished -= _movingCameraSpawnEnemies.RotationCamera;
 
         _enemyManager.AllEnemiesKilled -= OnAllEnemiesKilled;
         _buildingsManager.AllBuildingsDestroyed -= OnAllBuildingsDestroyed;
@@ -79,10 +83,11 @@ public class Game : MonoBehaviour
         _mainMenuScreen.PlayButtonClick -= OnStartGame;
         _mainMenuScreen.ShopButtonClick -= OnShopScreen;
         _mainMenuScreen.SettingButtonClick -= OnSettingMenuScreen;
+        _mainMenuScreen.FindSpawnEnemiesButtonClick -= _movingCameraSpawnEnemies.RotationCamera;
 
-        _shopScreen.ExitButtonClick -= OnMainMenuScreen;
+        _shopScreen.ExitButtonClick -= OnMainMenuScreenAfterShop;
 
-        _settingMenuScreen.ExitButtonClick -= OnMainMenuScreen;
+        _settingMenuScreen.ExitButtonClick -= _settingMenuScreen.Close;
 
         _victoryScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
 
@@ -100,6 +105,7 @@ public class Game : MonoBehaviour
         _switchingScreen.SwitchingButtonClick -= OnSwitchAnotherMap;
 
         _buttleScreen.ExitButtonClick -= ExitOfFight;
+        _buttleScreen.SettingsButtonClick -= OnSettingMenuScreen;
     }
 
     private void OnAllEnemiesKilled()
@@ -109,17 +115,17 @@ public class Game : MonoBehaviour
         _levelReward.GetReward();
         _victoryScreen.Open();
         //_victoryScreen.OnStartEffect();
-        _mobileControllerDownScreen.Open();
         _spawner.NextLevel();
         _buttleScreen.Close();
+        _groundAudio.OnÑalmClip();
     }
 
     private void OnAllBuildingsDestroyed()
     {
         _featScreen.Open();
-        _mobileControllerDownScreen.Open();
-        //_yandexAds.ShowInterstitial();
         _buttleScreen.Close();
+        _groundAudio.OnÑalmClip();
+        //_yandexAds.ShowInterstitial();
     }
 
     private void OnStartGame()
@@ -128,8 +134,9 @@ public class Game : MonoBehaviour
         _enemyManager.OnEnemies();
         _starsScore.CloseStars();
         _starsScore.RemoveAllBuildingsDiedCount();
-        _mobileControllerDownScreen.Open();
+        //_mobileControllerDownScreen.Open();
         _buttleScreen.Open();
+        _groundAudio.OnFightClip();
     }
 
     private void OnShopScreen()
@@ -147,8 +154,8 @@ public class Game : MonoBehaviour
 
     private void OnOpenShop()
     {
-        _shopScreen.Open();
         _mobileControllerDownScreen.Close();
+        _shopScreen.Open();
     }
 
     private void OnOpenMainMenu()
@@ -157,16 +164,11 @@ public class Game : MonoBehaviour
         _mobileControllerDownScreen.Open();
     }
 
-    private void OnMainMenuScreen()
+    private void OnMainMenuScreenAfterShop()
     {
         _shopScreen.Close();
-        _settingMenuScreen.Close();
-        _victoryScreen.Close();
-        _featScreen.Close();
         _mainMenuScreen.Open();
         _mobileControllerDownScreen.Open();
-
-        //_yandexAds.ShowInterstitial();
     }
 
     private void ExitOfFight()
@@ -175,8 +177,8 @@ public class Game : MonoBehaviour
         _buildingsManager.OnCreateSavedBuildings();
         _buttleScreen.Close();
         _mainMenuScreen.Open();
-        _mobileControllerDownScreen.Open();
         _spawner.StartLevel();
+        _groundAudio.OnÑalmClip();
     }
 
     private void OnMenuAfterFightScreen()
@@ -191,18 +193,17 @@ public class Game : MonoBehaviour
         _saveSystem.Save();
         if (_spawner.ChecForMaximumLevel())
             _saveSystem.ResetLevel();
-        _mobileControllerDownScreen.Open();
         _spawner.StartLevel();
+        _movingCameraSpawnEnemies.RotationCamera();
     }
 
     private void OnRepeatBattleForAdvertising()
     {
-        //_yandexAds.ShowRewardAd();
+        _yandexAds.ShowRewardAd();
         _enemyManager.OnDestroyEnemies();
         _buildingsManager.OnCreateSavedBuildings();
         _featScreen.Close();
         _mainMenuScreen.Open();
-        _mobileControllerDownScreen.Open();
         _spawner.StartLevel();
     }
 
@@ -215,7 +216,6 @@ public class Game : MonoBehaviour
         _mainMenuScreen.Open();
         _buildingsGrid.CreateTowerHall();
         _levelReward.ReturnAfterLosing();
-        _mobileControllerDownScreen.Open();
         _spawner.StartLevel();
     }
 

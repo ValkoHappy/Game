@@ -12,12 +12,13 @@ public class GameLoader : MonoBehaviour
     [SerializeField] private SaveSystem _saveSystem;
     [SerializeField] private SettingMenuScreen _settingMenuScreen;
     [SerializeField] private SceneNext _sceneNext;
-    [SerializeField] private YandexAds _yandexAds;
+
+    private const string Map = "Map";
 
     private void Awake()
     {
         _saveSystem.LoadScene();
-        if (PlayerPrefs.HasKey("Map"))
+        if (PlayerPrefs.HasKey(Map))
         {
             _continueButton.gameObject.SetActive(true);
         }

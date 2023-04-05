@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3647992220036375810}
   m_Layer: 0
   m_Name: SolarGenerator
-  m_TagString: target
+  m_TagString: Solar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -486,6 +486,10 @@ PrefabInstance:
     - target: {fileID: 5694068133894500077, guid: bf275bf4203523247927ac53ee51ce88, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6515540360049293296, guid: bf275bf4203523247927ac53ee51ce88, type: 3}
+      propertyPath: _health
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 6666336575163565019, guid: bf275bf4203523247927ac53ee51ce88, type: 3}
       propertyPath: m_Layer
