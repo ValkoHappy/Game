@@ -18,5 +18,5 @@ MonoBehaviour:
   _bossEnemyCount: 10
   _spawnDelay: 1
   _spawnSide: 3
-  _goldReward: 300
-  _cristalsReward: 225
+  _goldReward: 400
+  _cristalsReward: 180

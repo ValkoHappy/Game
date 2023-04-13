@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,11 +8,10 @@ public class BuildingsManager : MonoBehaviour
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private StarsScore _starsScore;
 
+    private const string _fence = "Fence";
     private List<PeacefulConstruction> _buildings;
     
     public event UnityAction AllBuildingsDestroyed;
-    public event UnityAction TownHallNotBuilt;
-    //public event UnityAction PurchaseCancelled;
 
     private void Awake()
     {
@@ -34,7 +31,7 @@ public class BuildingsManager : MonoBehaviour
     public void AddBuilding(PeacefulConstruction building)
     {
         _buildings.Add(building);
-        if(building.tag != "Fence")
+        if(building.tag != _fence)
             _starsScore.AddBuildingsCount();
         building.Die += OnBuildingDeath;
     }
@@ -49,7 +46,7 @@ public class BuildingsManager : MonoBehaviour
 
         if(building.IsAlive() ==false)
         {
-            if (building.tag != "Fence")
+            if (building.tag != _fence)
                 _starsScore.AddBuildingsDiedCount();
         }
 
@@ -83,7 +80,6 @@ public class BuildingsManager : MonoBehaviour
         {
             if (_buildings[i].Building == building)
             {
-                //PurchaseCancelled?.Invoke();
                 _buildings.Remove(_buildings[i]);
                 _starsScore.RemoveBuildingsCount();
             }
@@ -98,18 +94,5 @@ public class BuildingsManager : MonoBehaviour
         }
 
         _buildings.Clear();
-    }
-
-    public bool IsTownHallBuilt()
-    {
-        foreach (var building in _buildings)
-        {
-            if (building.CompareTag("TownHall"))
-            {
-                return true;
-            }
-        }
-        TownHallNotBuilt?.Invoke();
-        return false;
     }
 }

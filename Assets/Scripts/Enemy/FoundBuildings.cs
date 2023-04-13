@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class FoundBuildings : MonoBehaviour
 {
     private PeacefulConstruction _targetConstruction;
-
     private Coroutine _removeCoroutine;
+    private Coroutine _sortCoroutine;
 
     public PeacefulConstruction TargetConstruction => _targetConstruction;
 
@@ -16,15 +14,18 @@ public class FoundBuildings : MonoBehaviour
 
     private void Start()
     {
-        //StartRemove();
+        StartSortConstructions();
     }
 
-    private void Update()
+    public void StartSortConstructions()
     {
-        if (_constructions.Count > 0)
-            SortEnemies();
+        if (_sortCoroutine != null)
+        {
+            StopCoroutine(_sortCoroutine);
+        }
+        _sortCoroutine = StartCoroutine(SortConstructions());
     }
-  
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -37,33 +38,39 @@ public class FoundBuildings : MonoBehaviour
         }
     }
 
-    private void SortEnemies()
+    private IEnumerator SortConstructions()
     {
-        float shortestDistance = Mathf.Infinity;
-        PeacefulConstruction nearestEnemy = null;
-
-        foreach (var construction in _constructions)
+        var waitForSeconds = new WaitForSeconds(1f);
+        if (_constructions.Count > 0)
         {
-            if (construction != null && construction.IsAlive())
-            {
-                float distanceToConstruction = Vector3.Distance(transform.position, construction.transform.position);
+            float shortestDistance = Mathf.Infinity;
+            PeacefulConstruction nearestEnemy = null;
 
-                if (distanceToConstruction < shortestDistance)
+            foreach (var construction in _constructions)
+            {
+                if (construction != null && construction.IsAlive())
                 {
-                    shortestDistance = distanceToConstruction;
-                    nearestEnemy = construction;
+                    float distanceToConstruction = Vector3.Distance(transform.position, construction.transform.position);
+
+                    if (distanceToConstruction < shortestDistance)
+                    {
+                        shortestDistance = distanceToConstruction;
+                        nearestEnemy = construction;
+                    }
+                }
+                else if (construction.IsAlive() == false)
+                {
+                    nearestEnemy = null;
+                }
+
+                if (nearestEnemy != null && nearestEnemy.IsAlive())
+                {
+                    _targetConstruction = nearestEnemy;
                 }
             }
-            else if(construction.IsAlive() == false)
-            {
-                nearestEnemy = null;
-            }
-
-            if (nearestEnemy != null && nearestEnemy.IsAlive())
-            {
-                _targetConstruction = nearestEnemy;
-            }
         }
+        yield return waitForSeconds;
+        StartSortConstructions();
     }
 
     public void StartRemove()

@@ -22,6 +22,7 @@ public class Game : MonoBehaviour
     [SerializeField] private YandexAds _yandexAds;
     [SerializeField] private GroundAudio _groundAudio;
     [SerializeField] private MovingCameraSpawnEnemies _movingCameraSpawnEnemies;
+    [SerializeField] private TrainingScreen _trainingScreen;
 
     private void Awake()
     {
@@ -39,7 +40,7 @@ public class Game : MonoBehaviour
     private void OnEnable()
     {
         _limbCameraAnimation.AnimationIsFinished += OnOpenMainMenu;
-        _limbCameraAnimation.AnimationIsFinished += _movingCameraSpawnEnemies.RotationCamera;
+        _limbCameraAnimation.AnimationIsFinished += MovingCamera;
 
         _enemyManager.AllEnemiesKilled += OnAllEnemiesKilled;
         _buildingsManager.AllBuildingsDestroyed += OnAllBuildingsDestroyed;
@@ -47,12 +48,15 @@ public class Game : MonoBehaviour
         _mainMenuScreen.PlayButtonClick += OnStartGame;
         _mainMenuScreen.ShopButtonClick += OnShopScreen;
         _mainMenuScreen.SettingButtonClick += OnSettingMenuScreen;
-        _mainMenuScreen.FindSpawnEnemiesButtonClick += _movingCameraSpawnEnemies.RotationCamera;
+        _mainMenuScreen.FindSpawnEnemiesButtonClick += MovingCamera;
 
         _shopScreen.ExitButtonClick += OnMainMenuScreenAfterShop;
 
         _settingMenuScreen.ExitButtonClick +=  _settingMenuScreen.Close;
 
+        _victoryScreen.ResumeButtonClick += —ontinueAfterWinning;
+        _victoryScreen.BonusButtonClick += —ontinueAfterWinningForAdvertising;
+        _victoryScreen.BonusButtonClick += OnMenuAfterFightScreen;
         _victoryScreen.ResumeButtonClick += OnMenuAfterFightScreen;
 
         _featScreen.ResumeButtonClick += OnRepeatBattle;
@@ -75,7 +79,7 @@ public class Game : MonoBehaviour
     private void OnDisable()
     {
         _limbCameraAnimation.AnimationIsFinished -= OnOpenMainMenu;
-        _limbCameraAnimation.AnimationIsFinished -= _movingCameraSpawnEnemies.RotationCamera;
+        _limbCameraAnimation.AnimationIsFinished -= MovingCamera;
 
         _enemyManager.AllEnemiesKilled -= OnAllEnemiesKilled;
         _buildingsManager.AllBuildingsDestroyed -= OnAllBuildingsDestroyed;
@@ -83,12 +87,15 @@ public class Game : MonoBehaviour
         _mainMenuScreen.PlayButtonClick -= OnStartGame;
         _mainMenuScreen.ShopButtonClick -= OnShopScreen;
         _mainMenuScreen.SettingButtonClick -= OnSettingMenuScreen;
-        _mainMenuScreen.FindSpawnEnemiesButtonClick -= _movingCameraSpawnEnemies.RotationCamera;
+        _mainMenuScreen.FindSpawnEnemiesButtonClick -= MovingCamera;
 
         _shopScreen.ExitButtonClick -= OnMainMenuScreenAfterShop;
 
         _settingMenuScreen.ExitButtonClick -= _settingMenuScreen.Close;
 
+        _victoryScreen.ResumeButtonClick -= —ontinueAfterWinning;
+        _victoryScreen.BonusButtonClick -= —ontinueAfterWinningForAdvertising;
+        _victoryScreen.BonusButtonClick -= OnMenuAfterFightScreen;
         _victoryScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
 
         _featScreen.ResumeButtonClick -= OnRepeatBattle;
@@ -112,7 +119,6 @@ public class Game : MonoBehaviour
     {
         _starsScore.ShowStars();
         _levelReward.CalculateReward();
-        _levelReward.GetReward();
         _victoryScreen.Open();
         //_victoryScreen.OnStartEffect();
         _spawner.NextLevel();
@@ -125,7 +131,7 @@ public class Game : MonoBehaviour
         _featScreen.Open();
         _buttleScreen.Close();
         _groundAudio.On—almClip();
-        //_yandexAds.ShowInterstitial();
+        _yandexAds.ShowInterstitial();
     }
 
     private void OnStartGame()
@@ -195,6 +201,18 @@ public class Game : MonoBehaviour
             _saveSystem.ResetLevel();
         _spawner.StartLevel();
         _movingCameraSpawnEnemies.RotationCamera();
+        if (_trainingScreen != null)
+            _trainingScreen.OpenEndTutorialWindow();
+    }
+
+    private void —ontinueAfterWinning()
+    {
+        _levelReward.GetReward();
+    }
+
+    private void —ontinueAfterWinningForAdvertising()
+    {
+        _levelReward.GetDoubleReward();
     }
 
     private void OnRepeatBattleForAdvertising()
@@ -233,5 +251,10 @@ public class Game : MonoBehaviour
     {
         _switchingScreen.Close();
         _spawner.SwitchAnotherMap();
+    }
+
+    private void MovingCamera()
+    {
+        _movingCameraSpawnEnemies.RotationCamera();
     }
 }

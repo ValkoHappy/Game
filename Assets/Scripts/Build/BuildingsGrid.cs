@@ -1,10 +1,6 @@
-using Agava.YandexGames;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 using static MoveSelection;
 
 public class BuildingsGrid : MonoBehaviour
@@ -19,14 +15,14 @@ public class BuildingsGrid : MonoBehaviour
     private Building _flyingBuilding;
     private Camera _camera;
     private bool _isBuildingSelected = false;
+    private bool _isBuild;
 
     private MoveSelection _moveSelection;
 
     public event UnityAction CreatedBuilding;
     public event UnityAction DeliveredBuilding;
-    public event UnityAction EditPositionBuilding;
     public event UnityAction<Building> DestroyBuilding;
-    public event UnityAction<Building> ExtrationBuilding;
+    public event UnityAction<Building> BuildingSupplied;
     public event UnityAction RemoveBuilding;
 
 
@@ -52,14 +48,15 @@ public class BuildingsGrid : MonoBehaviour
             if (x < 0 || y < 0 || x + _flyingBuilding.TileSize.x > _gridSize.x || y + _flyingBuilding.TileSize.y > _gridSize.y || IsPlaceTaken(x, y))
             {
                 _flyingBuilding.SetTransparent(false);
+                _isBuild = false;
             }
             else
             {
                 _flyingBuilding.SetTransparent(true);
-                if (_moveSelection.Mode == BuildingMode.Insert)
+                _isBuild = true;
+                if (_moveSelection.Mode == BuildingMode.Insert && _isBuild)
                 {
                     PlaceFlyingBuilding(x, y);
-                    DeliveredBuilding?.Invoke();
                 }
             }
 
@@ -71,7 +68,6 @@ public class BuildingsGrid : MonoBehaviour
                 RemoveBuilding?.Invoke();
             }
             _moveSelection.SetBuildingModeMovement();
-
 
             if (_isBuildingSelected && Input.GetMouseButton(0))
             {
@@ -135,15 +131,9 @@ public class BuildingsGrid : MonoBehaviour
         }
         _isBuildingSelected = false;
         _flyingBuilding.SetNormal();
-        ExtrationBuilding?.Invoke(_flyingBuilding);
+        BuildingSupplied?.Invoke(_flyingBuilding);
         DeliveredBuilding?.Invoke();
         _flyingBuilding = null;
-    }
-
-    public void MoveBuilding(Building building)
-    {
-        _flyingBuilding = building;
-        EditPositionBuilding?.Invoke();
     }
 
     public void RemoveGrid()

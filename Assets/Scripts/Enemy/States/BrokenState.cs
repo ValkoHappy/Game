@@ -8,7 +8,7 @@ public class BrokenState : EnemyState
     [SerializeField] private float fadeTime = 3.0f;
 
     private Material enemyMaterial;
-
+    private const string _die = "Die";
     public event UnityAction Died;
 
     private void Awake()
@@ -26,7 +26,7 @@ public class BrokenState : EnemyState
         Vector3 impactDirection = (attachedBody.position - transform.position).normalized;
         Vector3 oppositeDirection = -impactDirection;
 
-        Animator.SetTrigger("Die");
+        Animator.SetTrigger(_die);
         Rigidbody.AddForce(oppositeDirection * force, ForceMode.Impulse);
         StartCoroutine(FadeOut());
         Died?.Invoke();

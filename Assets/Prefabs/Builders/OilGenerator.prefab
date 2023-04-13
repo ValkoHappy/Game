@@ -194,7 +194,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8915755195599483014, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
+      propertyPath: m_TagString
+      value: Oil
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8857306475806494337, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
 --- !u!114 &594211053729478140 stripped
 MonoBehaviour:
@@ -355,6 +360,10 @@ PrefabInstance:
       propertyPath: _peacefulConstruction
       value: 
       objectReference: {fileID: 594211053729478140}
+    - target: {fileID: 2837345541942088800, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3805934668694385921, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
@@ -453,6 +462,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7683910814672389179, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

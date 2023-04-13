@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c73c3d731f664699ca1b43767519f, type: 3}
   m_Name: RocketTurret
   m_EditorClassIdentifier: 
-  _label: "\u0420\u0430\u043A\u0435\u0442\u043D\u0430\u044F \u0442\u0443\u0440\u0435\u043B\u044C"
-  _price: 275
-  _icon: {fileID: 21300000, guid: 952d016a254cb6c4d87538c95b78f996, type: 3}
+  _label: "\u0420\u0430\u043A\u0435\u0442\u043D\u0430\u044F \u0442\u0443\u0440\u0435\u043B\u044C
+    1"
+  _price: 250
+  _icon: {fileID: 21300000, guid: 116929374efd5f947b1c406591f82983, type: 3}
   _isSoldForCrystals: 0
   _isBuyed: 0
   _isSingleProduct: 1

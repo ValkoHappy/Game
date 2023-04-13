@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,7 +15,6 @@ public class PeacefulConstruction : MonoBehaviour
     private bool _isAlive;
     private BuildingDetail[] _buildingDetails;
     private Building _building;
-    private List<Vector3> _detailPositions = new List<Vector3>();
 
     public event UnityAction BuildingRestored;
 
@@ -68,8 +65,6 @@ public class PeacefulConstruction : MonoBehaviour
         Died?.Invoke();
         Die?.Invoke(this);
         Break();
-        //enabled = false;
-        //Destroy(gameObject);
     }
 
     private struct BuildingDetailSnapshot

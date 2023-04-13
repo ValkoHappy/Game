@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Turret))]
 public class ShootTurret : MonoBehaviour
@@ -13,6 +11,7 @@ public class ShootTurret : MonoBehaviour
     [SerializeField] private ParticleSystem _particleShoot;
 
     private Turret _turret;
+    private EnemyManager _enemyManager;
     private RecoilAnimation _recoilAnimation;
     private Coroutine _shootCoroutine;
     private bool _canShoot = true;
@@ -21,32 +20,40 @@ public class ShootTurret : MonoBehaviour
 
     private void Awake()
     {
+        _enemyManager = FindObjectOfType<EnemyManager>();
         _turret = GetComponent<Turret>();
         _recoilAnimation = GetComponentInChildren<RecoilAnimation>();
     }
 
     private void Update()
     {
-        if (_canShoot)
+        if (_enemyManager.IsAttackBegun)
         {
-            if (_canShooting == false)
+            if (_canShoot)
             {
-                StartShoot();
+                if (_canShooting == false)
+                {
+                    StartShoot();
+                }
             }
-        }
 
-        if (_turret.TargetEnemy == null)
-        {
-            _canShooting = false;
-        }
+            if (_turret.TargetEnemy == null)
+            {
+                _canShooting = false;
+            }
 
-        if (_turret.TargetEnemy != null && _turret.TargetEnemy.IsAlive())
-        {
-            RestartShoot();
+            if (_turret.TargetEnemy != null && _turret.TargetEnemy.IsAlive())
+            {
+                RestartShoot();
+            }
+            else
+            {
+                StopShoot();
+            }
         }
         else
         {
-            StopShoot();
+            _canShoot = false;
         }
     }
 
@@ -96,34 +103,6 @@ public class ShootTurret : MonoBehaviour
             StartShoot();
         }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.TryGetComponent(out EnemyCollision enemy))
-    //    {
-    //        if (enemy != null)
-    //        {
-    //            if (_turret.TargetEnemy != null && _turret.TargetEnemy.IsAlive())
-    //            {
-    //                _canShoot = true;
-    //            }
-    //        }
-    //    }
-    //}
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.TryGetComponent(out EnemyCollision enemy))
-    //    {
-    //        if (enemy != null)
-    //        {
-    //            if (_turret.TargetEnemy != null && _turret.TargetEnemy.IsAlive() == false)
-    //            {
-    //                _canShoot = false;
-    //            }
-    //        }
-    //    }
-    //}
 }
 
 

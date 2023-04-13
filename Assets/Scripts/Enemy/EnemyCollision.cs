@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -47,11 +45,11 @@ public class EnemyCollision : MonoBehaviour, IDamageable
         }
     }
 
-    public void ApplyDamage(float damage)
-    {
-        _healthContainer.TakeDamage((int)damage);
-        //_enemy.ApplyDamage();
-    }
+    //public void ApplyDamage(float damage)
+    //{
+    //    _healthContainer.TakeDamage((int)damage);
+    //    //_enemy.ApplyDamage();
+    //}
 
     public bool ApplayDamage(Rigidbody rigidbody, int damage, int force)
     {

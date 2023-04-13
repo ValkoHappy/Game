@@ -36,11 +36,11 @@ public class MovementScreen : ScreenUI
     private void OnSaveButton()
     {
         _moveSelection.SetBuildingModeInsert();
-        Close();
+        //Close();
     }
     private void OnDelateButton()
     {
         _moveSelection.SetBuildingModeDelete();
-        Close();
+        //Close();
     }
 }

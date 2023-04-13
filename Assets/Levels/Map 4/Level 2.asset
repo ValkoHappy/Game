@@ -19,4 +19,4 @@ MonoBehaviour:
   _spawnDelay: 0
   _spawnSide: 2
   _goldReward: 1025
-  _cristalsReward: 900
+  _cristalsReward: 545

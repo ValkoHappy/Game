@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -14280677289107911}
   m_Layer: 0
   m_Name: Turret 2
-  m_TagString: target
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -327,6 +327,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
 --- !u!224 &6579963392989353337 stripped
@@ -391,7 +399,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4003681586960472197, guid: 9a0782bc7a158a142a02112ea5a267c9, type: 3}
       propertyPath: _waitForSeconds
-      value: 1
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497607483092316789, guid: 9a0782bc7a158a142a02112ea5a267c9, type: 3}
+      propertyPath: _health
+      value: 115
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a0782bc7a158a142a02112ea5a267c9, type: 3}

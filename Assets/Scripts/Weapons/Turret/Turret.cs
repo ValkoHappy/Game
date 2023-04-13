@@ -13,8 +13,8 @@ public class Turret : MonoBehaviour
     private PeacefulConstruction _construction;
     private SphereCollider _sphereCollider;
     private BuildingsGrid _buildingsGrid;
-    private Spawner _spawner;
-    private Coroutine _removeCoroutine;
+    private EnemyManager _enemyManager;
+    private Coroutine _sortCoroutine;
 
     public PeacefulConstruction Construction => _construction;
     public EnemyCollision TargetEnemy { get; private set; }
@@ -25,6 +25,7 @@ public class Turret : MonoBehaviour
         _shootTurret = GetComponent<ShootTurret>();
         _construction = GetComponentInChildren<PeacefulConstruction>();
         _sphereCollider = GetComponent<SphereCollider>();
+        _enemyManager= FindObjectOfType<EnemyManager>();
     }
 
     private void OnEnable()
@@ -45,12 +46,12 @@ public class Turret : MonoBehaviour
     {
         _enemies = new List<EnemyCollision>();
         _sphereCollider.enabled = false;
-        //StartRemove();
+        StartSortEnemies();
     }
 
     private void Update()
     {
-        if (TargetEnemy != null && TargetEnemy.IsAlive() && _construction.IsAlive())
+        if (_enemyManager.IsAttackBegun && TargetEnemy != null && TargetEnemy.IsAlive() && _construction.IsAlive())
         {
             Vector3 direction = TargetEnemy.transform.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
@@ -61,7 +62,20 @@ public class Turret : MonoBehaviour
         {
             _partToRotate.rotation = Quaternion.Slerp(_partToRotate.rotation, Quaternion.LookRotation(new Vector3(0, 0, 0)), Time.deltaTime * _rotationSpeed);
         }
+    }
 
+    public void StartSortEnemies()
+    {
+        if (_sortCoroutine != null)
+        {
+            StopCoroutine(_sortCoroutine);
+        }
+        _sortCoroutine = StartCoroutine(SortEnemies());
+    }
+
+    private IEnumerator SortEnemies()
+    {
+        var waitForSeconds = new WaitForSeconds(0.5f);
         if (_enemies.Count > 0)
         {
             float shortestDistance = Mathf.Infinity;
@@ -85,10 +99,12 @@ public class Turret : MonoBehaviour
             if (nearestEnemy != null && nearestEnemy.IsAlive())
             {
                 TargetEnemy = nearestEnemy;
-                if(TargetEnemy.IsAlive())
+                if (TargetEnemy.IsAlive())
                     _shootTurret.RestartShoot();
             }
         }
+        yield return waitForSeconds;
+        StartSortEnemies();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -101,34 +117,6 @@ public class Turret : MonoBehaviour
             }
         }
     }
-
-    //public void StartRemove()
-    //{
-    //    if (_removeCoroutine != null)
-    //    {
-    //        StopCoroutine(_removeCoroutine);
-    //    }
-    //    _removeCoroutine = StartCoroutine(RemoveBuilding());
-
-    //}
-
-    //private IEnumerator RemoveBuilding()
-    //{
-    //    var waitForSeconds = new WaitForSeconds(5f);
-    //    if (_enemies.Count > 0)
-    //    {
-    //        foreach (var enemy in _enemies)
-    //        {
-    //            if (enemy != null && enemy.IsAlive() == false)
-    //            {
-    //                _enemies.Remove(enemy);
-    //                _shootTurret.StopShoot();
-    //            }
-    //        }
-    //    }
-    //    yield return waitForSeconds;
-    //    StartRemove();
-    //}
 
     private void RemoveAllEnemies()
     {

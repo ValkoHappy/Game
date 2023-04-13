@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using IJunior.TypedScenes;
 
 public class GameLoader : MonoBehaviour
 {
@@ -13,12 +10,12 @@ public class GameLoader : MonoBehaviour
     [SerializeField] private SettingMenuScreen _settingMenuScreen;
     [SerializeField] private SceneNext _sceneNext;
 
-    private const string Map = "Map";
+    private const string _map = "Map";
 
     private void Awake()
     {
         _saveSystem.LoadScene();
-        if (PlayerPrefs.HasKey(Map))
+        if (PlayerPrefs.HasKey(_map))
         {
             _continueButton.gameObject.SetActive(true);
         }

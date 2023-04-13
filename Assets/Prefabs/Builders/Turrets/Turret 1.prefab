@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 2260194405451887584}
   - component: {fileID: 5689089065340969327}
   - component: {fileID: 5931316572436338940}
-  - component: {fileID: 2862085684978367579}
   - component: {fileID: -3873642929191617247}
   m_Layer: 0
   m_Name: Turret 1
-  m_TagString: target
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,19 +63,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementScreen: {fileID: 2420085602113866435}
---- !u!65 &2862085684978367579
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6594440513109305114}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.1176167, y: 1.8266397, z: 1.4185152}
-  m_Center: {x: 1.0700288, y: 0.8175247, z: 1.1164286}
 --- !u!208 &-3873642929191617247
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -572,6 +558,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7683910814672389179, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

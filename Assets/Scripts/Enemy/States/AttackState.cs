@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackState : EnemyState
@@ -7,7 +6,8 @@ public class AttackState : EnemyState
     [SerializeField] private float _attackForce;
     [SerializeField] private float _attackDelay;
 
-    private Coroutine _attack;
+    private Coroutine _attackCoroutine;
+    private const string _attack = "Attack";
 
     private void OnEnable()
     {
@@ -17,9 +17,9 @@ public class AttackState : EnemyState
 
     private void OnDisable()
     {
-        if (_attack != null)
+        if (_attackCoroutine != null)
         {
-            StopCoroutine(_attack);
+            StopCoroutine(_attackCoroutine);
         }
     }
 
@@ -29,16 +29,16 @@ public class AttackState : EnemyState
 
     private void StartAttack()
     {
-        if (_attack != null)
+        if (_attackCoroutine != null)
         {
-            StopCoroutine(_attack);
+            StopCoroutine(_attackCoroutine);
         }
-        _attack = StartCoroutine(Attack());
+        _attackCoroutine = StartCoroutine(Attack());
     }
 
     private IEnumerator Attack()
     {
-        Animator.SetTrigger("Attack");
+        Animator.SetTrigger(_attack);
         var waitForSecounds = new WaitForSeconds(_attackDelay);
         PeacefulConstruction.ApplyDamage(_attackForce);
         yield return waitForSecounds;

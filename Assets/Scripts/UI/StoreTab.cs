@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StoreTab : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class StoreTab : MonoBehaviour
     [SerializeField] private BuildingsManager _buildingsManager;
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private LevelReward _levelReward;
+    [SerializeField] private TrainingScreen _trainingScreen;
 
     [SerializeField] private List<Goods> _buildings;
     [SerializeField] private BuilderView _builderViewGold;
@@ -18,21 +21,48 @@ public class StoreTab : MonoBehaviour
     private int _priceGoods = 0;
     private bool _isSoldForCrystalsGoods;
 
+
     private void OnEnable()
     {
         _buildingsGrid.DeliveredBuilding += OnCanceliedPurchase;
         _buildingsGrid.RemoveBuilding += OnPurchaseCancelled;
+
+        if (_trainingScreen != null)
+        {
+            _trainingScreen.TutorialFinished += AddMissingItems;
+        }
     }
 
     private void OnDisable()
     {
         _buildingsGrid.DeliveredBuilding -= OnCanceliedPurchase;
         _buildingsGrid.RemoveBuilding -= OnPurchaseCancelled;
+
+        if (_trainingScreen != null)
+        {
+            _trainingScreen.TutorialFinished -= AddMissingItems;
+        }
     }
 
     private void Start()
     {
-        for (int i = 0; i < _buildings.Count; i++)
+        int level = PlayerPrefs.GetInt("CurrentLevel");
+        if (level == 0)
+        {
+            AddItem(_buildings[0]);
+        }
+        else
+        {
+            for (int i = 0; i < _buildings.Count; i++)
+            {
+                AddItem(_buildings[i]);
+            }
+        }
+    }
+
+    public void AddMissingItems()
+    {
+        for (int i = 1; i < _buildings.Count; i++)
         {
             AddItem(_buildings[i]);
         }

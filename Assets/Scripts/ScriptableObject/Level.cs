@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "new Level", menuName = "Level", order = 51)]

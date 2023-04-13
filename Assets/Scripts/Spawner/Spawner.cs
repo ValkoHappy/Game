@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.SceneManagement;
 
 public class Spawner : MonoBehaviour
 {
@@ -19,8 +18,10 @@ public class Spawner : MonoBehaviour
     private int _miniEnemiesRemaining;
     private int _bossEnemiesRemaining;
 
+
     public event UnityAction<int> LevelChanged;
     public event UnityAction LevelStarted;
+    public event UnityAction LevelCreated;
     public event UnityAction ÑurrentLevelExceedsCount;
 
     public Level Level => _currentLevel;
@@ -45,7 +46,6 @@ public class Spawner : MonoBehaviour
             Debug.Log("All levels completed!");
             return;
         }
-
         _currentLevel = _levels[_currentLevelIndex];
         _miniEnemiesRemaining = _currentLevel.MiniEnemyCount;
         _bossEnemiesRemaining = _currentLevel.BossEnemyCount;
@@ -54,6 +54,7 @@ public class Spawner : MonoBehaviour
         {
             StopCoroutine(_coroutine);
         }
+        LevelCreated?.Invoke();
         _coroutine = StartCoroutine(SpawnEnemies());
     }
 

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,14 +13,16 @@ public class IndicatorReceivedCurrency : MonoBehaviour
 
     private void OnEnable()
     {
-        _buildingsGrid.ExtrationBuilding += AddAmountCurrent;
+        _buildingsGrid.BuildingSupplied += AddAmountCurrent;
         _spawner.LevelStarted += RemoveAllAmountCurrent;
+        _spawner.LevelCreated += RemoveAllAmountCurrent;
     }
 
     private void OnDisable()
     {
-        _buildingsGrid.ExtrationBuilding -= AddAmountCurrent;
+        _buildingsGrid.BuildingSupplied -= AddAmountCurrent;
         _spawner.LevelStarted -= RemoveAllAmountCurrent;
+        _spawner.LevelCreated += RemoveAllAmountCurrent;
     }
 
     private void AddAmountCurrent(Building building)

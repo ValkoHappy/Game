@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3848421543173986978}
   - component: {fileID: 3848421543173986983}
   - component: {fileID: 3848421543173986976}
-  - component: {fileID: 3848421543173986982}
   - component: {fileID: 3848421543173986980}
   - component: {fileID: 3848421543173987035}
   - component: {fileID: 3848421543173987034}
@@ -31,7 +30,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3848421543173986989}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -92,18 +91,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _crystals: 0
---- !u!114 &3848421543173986982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3848421543173986989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 082d5560979e1a94eafb4d7e46569214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3848421543173986980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +107,7 @@ MonoBehaviour:
   _goldContainer: {fileID: 3848421543173986983}
   _crystalsContainer: {fileID: 3848421543173986976}
   _spawner: {fileID: 0}
+  _yandexAds: {fileID: 0}
 --- !u!114 &3848421543173987035
 MonoBehaviour:
   m_ObjectHideFlags: 0

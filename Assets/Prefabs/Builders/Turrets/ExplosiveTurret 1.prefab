@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 4281226740534289331}
   - component: {fileID: 7890604239668544683}
   - component: {fileID: 947421087726755751}
-  - component: {fileID: 1841099707731514206}
   - component: {fileID: -8489150716911843758}
   m_Layer: 0
   m_Name: ExplosiveTurret 1
-  m_TagString: target
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,19 +63,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementScreen: {fileID: 209659500106499677}
---- !u!65 &1841099707731514206
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1192229615108014349}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2, y: 0.1, z: 2}
-  m_Center: {x: 0.5, y: 0, z: 0.5}
 --- !u!208 &-8489150716911843758
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -431,6 +417,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7683910814672389179, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

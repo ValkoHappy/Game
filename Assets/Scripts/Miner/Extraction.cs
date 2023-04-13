@@ -1,6 +1,4 @@
-using DG.Tweening;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PeacefulConstruction), typeof(Animator))]
@@ -16,6 +14,7 @@ public class Extraction : MonoBehaviour
     private Animator _animator;
     private Building _building;
     private BuildingsGrid _buildingGrid;
+    private const string _extraction = "Extraction";
 
     public int AmountMoneyProduced => _amountMoneyProduced;
 
@@ -32,7 +31,6 @@ public class Extraction : MonoBehaviour
     private void OnEnable()
     {
         _building.DeliveryBuilding += OnExtractionAnimation;
-        _buildingGrid.EditPositionBuilding += OnOffExtractionAnimation;
         _buildingGrid.DeliveredBuilding += OnExtractionAnimation;
         _buildingGrid.DeliveredBuilding += StartExtract;
         _peacefulConstruction.Died += OnOffExtractionAnimation;
@@ -43,7 +41,6 @@ public class Extraction : MonoBehaviour
     private void OnDisable()
     {
         _building.DeliveryBuilding -= OnExtractionAnimation;
-        _buildingGrid.EditPositionBuilding -= OnOffExtractionAnimation;
         _buildingGrid.DeliveredBuilding -= OnExtractionAnimation;
         _buildingGrid.DeliveredBuilding -= StartExtract;
         _peacefulConstruction.Died -= OnOffExtractionAnimation;
@@ -88,7 +85,7 @@ public class Extraction : MonoBehaviour
     public void OnExtractionAnimation()
     {
         _animator.enabled = true;
-        _animator.SetTrigger("Extraction");
+        _animator.SetTrigger(_extraction);
     }
 
     public void OnOffExtractionAnimation()

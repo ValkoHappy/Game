@@ -489,7 +489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6515540360049293296, guid: bf275bf4203523247927ac53ee51ce88, type: 3}
       propertyPath: _health
-      value: 45
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6666336575163565019, guid: bf275bf4203523247927ac53ee51ce88, type: 3}
       propertyPath: m_Layer
@@ -523,7 +523,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6983129499210085574, guid: bf275bf4203523247927ac53ee51ce88, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bf275bf4203523247927ac53ee51ce88, type: 3}
 --- !u!114 &1255256003567193161 stripped
 MonoBehaviour:
@@ -665,6 +666,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7683910814672389179, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

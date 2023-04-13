@@ -12,6 +12,7 @@ TagManager:
   - Oil
   - Wind
   - Solar
+  - Turret
   layers:
   - Default
   - TransparentFX

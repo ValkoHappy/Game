@@ -6,13 +6,16 @@ using UnityEngine.UI;
 
 public class ShopScreen : ScreenUI
 {
-    [SerializeField] private Button _exitButton;
+    [SerializeField] private LevelReward _levelReward;
 
-    [SerializeField] private Button _storeTabMainBuildingsButton;
+    [SerializeField] private Button _exitButton;
+    [SerializeField] private Button _advertisingButton;
+
+    [SerializeField] private Button _storeTabFencesButton;
     [SerializeField] private Button _storeTabWeaponsButton;
     [SerializeField] private Button _storeTabGeneratorsButton;
 
-    [SerializeField] private ScreenUI _storeTabMainBuildings;
+    [SerializeField] private ScreenUI _storeTabFences;
     [SerializeField] private ScreenUI _storeTabWeapons;
     [SerializeField] private ScreenUI _storeTabGenerators;
 
@@ -20,15 +23,16 @@ public class ShopScreen : ScreenUI
 
     private void Start()
     {
-        _storeTabMainBuildings.Open();   
+        _storeTabWeapons.Open();   
     }
 
 
     private void OnEnable()
     {
         _exitButton.onClick.AddListener(OnExitButton);
+        _advertisingButton.onClick.AddListener(GetCrystalsForAdvertising);
 
-        _storeTabMainBuildingsButton.onClick.AddListener(OnStoreTabMainBuildings);
+        _storeTabFencesButton.onClick.AddListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.AddListener(OnStoreTabWeapons);
         _storeTabGeneratorsButton.onClick.AddListener(OnStoreTabGenerators);
 
@@ -37,8 +41,9 @@ public class ShopScreen : ScreenUI
     private void OnDisable()
     {
         _exitButton.onClick.RemoveListener(OnExitButton);
+        _advertisingButton.onClick.RemoveListener(GetCrystalsForAdvertising);
 
-        _storeTabMainBuildingsButton.onClick.RemoveListener(OnStoreTabMainBuildings);
+        _storeTabFencesButton.onClick.RemoveListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.RemoveListener(OnStoreTabWeapons);
         _storeTabGeneratorsButton.onClick.RemoveListener(OnStoreTabGenerators);
     }
@@ -50,8 +55,8 @@ public class ShopScreen : ScreenUI
 
     private void OnStoreTabMainBuildings()
     {
-        _storeTabMainBuildings.Open();
-        _storeTabMainBuildings.Panel.alpha = 1;
+        _storeTabFences.Open();
+        _storeTabFences.Panel.alpha = 1;
         _storeTabWeapons.Close();
         _storeTabWeapons.Panel.alpha = 0;
         _storeTabGenerators.Close();
@@ -60,8 +65,8 @@ public class ShopScreen : ScreenUI
 
     private void OnStoreTabWeapons()
     {
-        _storeTabMainBuildings.Close();
-        _storeTabMainBuildings.Panel.alpha = 0;
+        _storeTabFences.Close();
+        _storeTabFences.Panel.alpha = 0;
         _storeTabWeapons.Open();
         _storeTabWeapons.Panel.alpha = 1;
         _storeTabGenerators.Close();
@@ -70,11 +75,50 @@ public class ShopScreen : ScreenUI
 
     private void OnStoreTabGenerators()
     {
-        _storeTabMainBuildings.Close();
-        _storeTabMainBuildings.Panel.alpha = 0;
+        _storeTabFences.Close();
+        _storeTabFences.Panel.alpha = 0;
         _storeTabWeapons.Close();
         _storeTabWeapons.Panel.alpha = 0;
         _storeTabGenerators.Open();
         _storeTabGenerators.Panel.alpha = 1;
+    }
+
+    private void GetCrystalsForAdvertising()
+    {
+        _levelReward.GetCrystalsForAdvertising();
+    }
+
+    public void TurnOffAllButton()
+    {
+        _exitButton.enabled = false;
+        _advertisingButton.enabled = false;
+        _storeTabFencesButton.enabled = false;
+        _storeTabWeaponsButton.enabled = false;
+        _storeTabGeneratorsButton.enabled = false;
+    }
+
+    public void EnabletGeneratorsButton()
+    {
+        _storeTabGeneratorsButton.enabled = true;
+    }
+
+    public void EnabletFencesButton()
+    {
+        _storeTabGeneratorsButton.enabled = false;
+        _storeTabFencesButton.enabled = true;
+    }
+    public void EnabletExitButton()
+    {
+        _storeTabFencesButton.enabled = false;
+        _exitButton.enabled = true;
+    }
+
+    public void EnabletAllButton()
+    {
+        _exitButton.enabled = true;
+        _advertisingButton.enabled = true;
+        _storeTabFencesButton.enabled = true;
+        _storeTabWeaponsButton.enabled = true;
+        _storeTabGeneratorsButton.enabled = true;
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,6 +5,10 @@ using UnityEngine.Events;
 public class EnemyManager : MonoBehaviour
 {
     private List<Enemy> _enemies;
+
+    private bool _isAttackBegun = false;
+
+    public bool IsAttackBegun => _isAttackBegun;
 
     public event UnityAction AllEnemiesKilled;
 
@@ -21,6 +24,7 @@ public class EnemyManager : MonoBehaviour
         _enemies.Add(enemy);
         enemy.Died += OnEnemyDeath;
         enemy.enabled = false;
+        _isAttackBegun = false;
     }
 
     public void OnEnemyDeath(Enemy enemy)
@@ -45,19 +49,12 @@ public class EnemyManager : MonoBehaviour
         _enemies.Clear();
     }
 
-    public void OffEnemies()
-    {
-        foreach (var enemy in _enemies)
-        {
-            enemy.enabled = false;
-        }
-    }
-
     public void OnEnemies()
     {
         foreach (var enemy in _enemies)
         {
             enemy.enabled = true;
+            _isAttackBegun = true;
         }
     }
 }
