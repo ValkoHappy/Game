@@ -46,8 +46,8 @@ public class StoreTab : MonoBehaviour
 
     private void Start()
     {
-        int level = PlayerPrefs.GetInt("CurrentLevel");
-        if (level == 0)
+        int level = PlayerPrefs.GetInt("Level");
+        if (level <= 1)
         {
             AddItem(_buildings[0]);
         }
@@ -82,8 +82,6 @@ public class StoreTab : MonoBehaviour
             view.SellButtonClick += OnSellButtonClick;
             view.Render(building);
         }
-
-
     }
 
     private void OnSellButtonClick(Goods statsBuilding, BuilderView builderView)

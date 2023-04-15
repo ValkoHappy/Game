@@ -86,6 +86,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6755059516262583601}
     m_Modifications:
+    - target: {fileID: 3920417545245233639, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+      propertyPath: _goods
+      value: 
+      objectReference: {fileID: 11400000, guid: 45e8493e553288b4bb6ddeed1f575ead, type: 2}
+    - target: {fileID: 3920417545245233639, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+      propertyPath: _healthContainer
+      value: 
+      objectReference: {fileID: 2028560391437289241}
     - target: {fileID: 4460492036807711757, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: m_Name
       value: MovingScreen

@@ -10,6 +10,7 @@ public class MovementScreen : ScreenUI
     [SerializeField] private Button _delateButton;
 
     private MoveSelection _moveSelection;
+    public event UnityAction ChoiceMade;
 
     private void Awake()
     {
@@ -36,11 +37,11 @@ public class MovementScreen : ScreenUI
     private void OnSaveButton()
     {
         _moveSelection.SetBuildingModeInsert();
-        //Close();
+        ChoiceMade?.Invoke();
     }
     private void OnDelateButton()
     {
         _moveSelection.SetBuildingModeDelete();
-        //Close();
+        ChoiceMade?.Invoke();
     }
 }

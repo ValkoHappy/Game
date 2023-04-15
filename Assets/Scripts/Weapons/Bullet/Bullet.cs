@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private ParticleSystem _particle;
 
     private Rigidbody _rigidbody;
+    
+    public int Damage => _damage;
 
     private void Awake()
     {

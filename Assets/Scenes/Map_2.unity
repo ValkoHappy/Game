@@ -468,6 +468,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4630278680922556, guid: be44d0243648ece459799ac0d5d4a2a6, type: 3}
   m_PrefabInstance: {fileID: 2043019805}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &90564798 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3537982764355514471, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 708061051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a6056089bb79c498a1dc1857bcc42e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &94607444
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3025,6 +3036,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be44d0243648ece459799ac0d5d4a2a6, type: 3}
+--- !u!114 &543053700 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7948894335306280920, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 708061051}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &549700577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4561,6 +4583,18 @@ PrefabInstance:
       propertyPath: _spawner
       value: 
       objectReference: {fileID: 2085013849}
+    - target: {fileID: 6595076029611978518, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _levelReward
+      value: 
+      objectReference: {fileID: 1758313936}
+    - target: {fileID: 6595076029611978518, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _storeTabFences
+      value: 
+      objectReference: {fileID: 90564798}
+    - target: {fileID: 6595076029611978518, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _storeTabFencesButton
+      value: 
+      objectReference: {fileID: 543053700}
     - target: {fileID: 6795776316077077980, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

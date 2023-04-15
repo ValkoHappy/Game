@@ -16,14 +16,12 @@ public class TrainingScreen : MonoBehaviour
     [SerializeField] private GameObject _panel1;
     [SerializeField] private Button _button1;
 
-    [SerializeField] private GameObject _panel2;
-    [SerializeField] private Button _button2;
-
     [SerializeField] private GameObject _panel3;
     [SerializeField] private Button _shopButton;
     [SerializeField] private Image _indicator1;
 
     [SerializeField] private GameObject _panel4;
+    [SerializeField] private GameObject _indicators;
     [SerializeField] private Button _button4;
 
     [SerializeField] private GameObject _panel5;
@@ -55,8 +53,8 @@ public class TrainingScreen : MonoBehaviour
 
     private void Start()
     {
-        int level = PlayerPrefs.GetInt("CurrentLevel");
-        if (level == 0)
+        int level = PlayerPrefs.GetInt("Level");
+        if (level <= 1)
         {
             _mainMenuScreen.TurnOffAllButton();
             _shopScreen.TurnOffAllButton();
@@ -74,9 +72,8 @@ public class TrainingScreen : MonoBehaviour
         _cameraSpawnEnemies.AnimationIsFinished += OpenWindow1;
 
         _button1.onClick.AddListener(OnOpenFollowingWindow2);
-        _button2.onClick.AddListener(OnOpenFollowingWindow3);
         _shopButton.onClick.AddListener(OnOpenFollowingWindow4);
-        _button4.onClick.AddListener(OnCloseFollowingWindow4);
+        _button4.onClick.AddListener(OnOpenIndicator5);
         _button6.onClick.AddListener(CloseEndTutorialWindow);
 
         _buildingGrid.CreatedBuilding += OnCloseIndicator1;
@@ -96,9 +93,8 @@ public class TrainingScreen : MonoBehaviour
         _cameraSpawnEnemies.AnimationIsFinished -= OpenWindow1;
 
         _button1.onClick.RemoveListener(OnOpenFollowingWindow2);
-        _button2.onClick.RemoveListener(OnOpenFollowingWindow3);
         _shopButton.onClick.RemoveListener(OnOpenFollowingWindow4);
-        _button4.onClick.RemoveListener(OnCloseFollowingWindow4);
+        _button4.onClick.RemoveListener(OnOpenIndicator5);
         _button6.onClick.RemoveListener(CloseEndTutorialWindow);
 
         _buildingGrid.CreatedBuilding -= OnCloseIndicator1;
@@ -144,15 +140,15 @@ public class TrainingScreen : MonoBehaviour
         gameObject.SetActive(false);    
     }
 
+    //private void OnOpenFollowingWindow2()
+    //{
+    //    _panel1.SetActive(false);
+    //    _panel2.SetActive(true);
+    //}
+
     private void OnOpenFollowingWindow2()
     {
         _panel1.SetActive(false);
-        _panel2.SetActive(true);
-    }
-
-    private void OnOpenFollowingWindow3()
-    {
-        _panel2.SetActive(false);
         _panel3.SetActive(true);
         _indicator1.gameObject.SetActive(true);
         _mainMenuScreen.EnabletShopButton();
@@ -164,16 +160,16 @@ public class TrainingScreen : MonoBehaviour
         {
             _indicator1.gameObject.SetActive(false);
             _panel3.SetActive(false);
-            _panel4.SetActive(true);
+            _indicator2.SetActive(true);
             isHowMuchProducedByGenerators = false;
         }
     }
 
-    private void OnCloseFollowingWindow4()
-    {
-        _panel4.SetActive(false);
-        _indicator2.SetActive(true);
-    }
+    //private void OnCloseFollowingWindow4()
+    //{
+    //    _panel4.SetActive(false);
+    //    _indicator2.SetActive(true);
+    //}
 
     private void OnCloseIndicator1()
     {
@@ -199,8 +195,9 @@ public class TrainingScreen : MonoBehaviour
         }
         else if (building.tag == "Fence")
         {
-            _shopScreen.EnabletExitButton();
-            _indicator5.SetActive(true);
+            _panel4.SetActive(true);
+            _indicators.SetActive(true);
+            //_indicator5.SetActive(true);
         }
     }
 
@@ -214,6 +211,14 @@ public class TrainingScreen : MonoBehaviour
     {
         _indicator4.SetActive(false);
         _indicator2.SetActive(true);
+    }
+
+    private void OnOpenIndicator5()
+    {
+        _shopScreen.EnabletExitButton();
+        _indicator5.SetActive(true);
+        _panel4.SetActive(false);
+        _indicators.SetActive(false);
     }
 
     private void OnCloseIndicator5()

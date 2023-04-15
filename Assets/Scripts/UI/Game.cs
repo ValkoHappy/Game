@@ -131,7 +131,6 @@ public class Game : MonoBehaviour
         _featScreen.Open();
         _buttleScreen.Close();
         _groundAudio.On—almClip();
-        _yandexAds.ShowInterstitial();
     }
 
     private void OnStartGame()
@@ -185,6 +184,7 @@ public class Game : MonoBehaviour
         _mainMenuScreen.Open();
         _spawner.StartLevel();
         _groundAudio.On—almClip();
+        _yandexAds.ShowInterstitial();
     }
 
     private void OnMenuAfterFightScreen()
