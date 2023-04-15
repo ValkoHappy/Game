@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementScreen: {fileID: 209659500106499677}
+  "_building\u0421haracteristics": {fileID: 3044943594710721506}
 --- !u!208 &-8489150716911843758
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -492,6 +493,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4566984162621771917, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
   m_PrefabInstance: {fileID: 2029380626428752389}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3044943594710721506 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3920417545245233639, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+  m_PrefabInstance: {fileID: 2029380626428752389}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3993e5018678e4f4cb0ae954f4c98619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7353736002219480904
 PrefabInstance:
   m_ObjectHideFlags: 0

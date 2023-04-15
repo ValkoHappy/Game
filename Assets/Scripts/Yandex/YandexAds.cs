@@ -11,12 +11,16 @@ public class YandexAds : MonoBehaviour
 {
     public void ShowInterstitial()
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
         InterstitialAd.Show(OnAdOpen, OnIterstitialAddClose);
+#endif
     }
 
     public void ShowRewardAd()
     {
+#if UNITY_WEBGL && !UNITY_EDITOR
         VideoAd.Show(OnAdOpen, OnAdClose);
+#endif
     }
 
     public void OnAdOpen()

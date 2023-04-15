@@ -9,6 +9,7 @@ public class GameLoader : MonoBehaviour
     [SerializeField] private SaveSystem _saveSystem;
     [SerializeField] private SettingMenuScreen _settingMenuScreen;
     [SerializeField] private SceneNext _sceneNext;
+    [SerializeField] private YandexAds _yandexAds;
 
     private const string _map = "Map";
 
@@ -53,6 +54,7 @@ public class GameLoader : MonoBehaviour
 
     private void OpenPlayMenu()
     {
+        _yandexAds.ShowInterstitial();
         _sceneNext.OpenScene();
     }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 using static MoveSelection;
 
 public class BuildingsGrid : MonoBehaviour
@@ -86,6 +87,9 @@ public class BuildingsGrid : MonoBehaviour
                     int positionX = Mathf.RoundToInt(newPosition.x);
                     int positionY = Mathf.RoundToInt(newPosition.z);
 
+                    positionX = Mathf.Clamp(positionX, 0, _gridSize.x - _flyingBuilding.TileSize.x);
+                    positionY = Mathf.Clamp(positionY, 0, _gridSize.y - _flyingBuilding.TileSize.y);
+
                     _flyingBuilding.transform.position = new Vector3(positionX, 0, positionY);
                 }
             }
@@ -143,7 +147,8 @@ public class BuildingsGrid : MonoBehaviour
 
     public void CreateTowerHall()
     {
-        Building building = _flyingBuilding = Instantiate(_towerHall, _container);
+        _flyingBuilding = Instantiate(_towerHall, _container);
+        _buildingsManager.AddBuilding(_flyingBuilding.PeacefulConstruction);
         int placeX = Mathf.RoundToInt(_flyingBuilding.transform.position.x);
         int placeY = Mathf.RoundToInt(_flyingBuilding.transform.position.z);
 
@@ -154,8 +159,6 @@ public class BuildingsGrid : MonoBehaviour
                 _grid[placeX + i, placeY + j] = _flyingBuilding;
             }
         }
-
         _flyingBuilding = null;
-        _buildingsManager.AddBuilding(building.PeacefulConstruction);
     }
 }

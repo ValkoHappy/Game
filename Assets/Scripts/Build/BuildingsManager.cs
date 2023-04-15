@@ -39,6 +39,7 @@ public class BuildingsManager : MonoBehaviour
     public void OnBuildingDeath(PeacefulConstruction building)
     {
         building.Die -= OnBuildingDeath;
+
         if (_buildings.Count <= 0)
         {
             AllBuildingsDestroyed?.Invoke();
@@ -60,6 +61,7 @@ public class BuildingsManager : MonoBehaviour
                 break;
             }
         }
+
         if (allBuildingsDestroyed)
         {
             AllBuildingsDestroyed?.Invoke();
@@ -71,6 +73,7 @@ public class BuildingsManager : MonoBehaviour
         foreach (var building in _buildings)
         {
             building.ResetDetails();
+            building.Die += OnBuildingDeath;
         }
     }
 

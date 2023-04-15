@@ -58,7 +58,7 @@ public class SaveSystem : MonoBehaviour
     {
         PlayerPrefs.SetInt(_currentLevel, 0);
         PlayerPrefs.SetInt(_level, 1);
-        PlayerPrefs.SetInt(_gold, 175);
+        PlayerPrefs.SetInt(_gold, 10000); //175
         PlayerPrefs.SetInt(_crystals, 75);
         PlayerPrefs.SetInt(_map, 1);
     }

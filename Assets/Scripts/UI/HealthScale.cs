@@ -47,7 +47,6 @@ public class HealthScale : ScreenUI
 
     public void OnMaxHealthChanged()
     {
-        Debug.Log("fdgdf");
         _slider.value = _slider.maxValue;
         _canvasGroup.alpha = 0;
     }

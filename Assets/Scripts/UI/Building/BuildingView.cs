@@ -3,6 +3,7 @@ using UnityEngine;
 public class BuildingView : MonoBehaviour
 {
     [SerializeField] private MovementScreen _movementScreen;
+    [SerializeField] private Building—haracteristics _building—haracteristics;
 
     private Building _building;
 
@@ -30,6 +31,7 @@ public class BuildingView : MonoBehaviour
     }
     private void OnClose()
     {
+        _building—haracteristics.CloseRadiusAttack();
         _movementScreen.Close();
         _movementScreen.Panel.alpha = 0f;
     }

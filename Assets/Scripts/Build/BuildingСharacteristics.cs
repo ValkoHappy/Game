@@ -1,13 +1,9 @@
-using Microsoft.Unity.VisualStudio.Editor;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 public class BuildingСharacteristics : MonoBehaviour
 {
-    [SerializeField] private MovementScreen _movementScreen;
     [SerializeField] private HealthContainer _healthContainer;
     [SerializeField] private ShootTurret _shootTurret;
     [SerializeField] private Extraction _extraction;
@@ -50,17 +46,7 @@ public class BuildingСharacteristics : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        _movementScreen.ChoiceMade += OnCloseRadiusAttack;
-    }
-
-    private void OnDisable()
-    {
-        _movementScreen.ChoiceMade -= OnCloseRadiusAttack;
-    }
-
-    private void OnCloseRadiusAttack()
+    public void CloseRadiusAttack()
     {
         if (_shootTurret != null)
         {
