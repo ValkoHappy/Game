@@ -129,13 +129,11 @@ public class StoreTab : MonoBehaviour
         if (_isSoldForCrystalsGoods)
         {
             _crystalsContainer.GetCrystals(_priceGoods);
-            Debug.Log(_priceGoods);
             _priceGoods = 0;
         }
         else
         {
             _goldContainer.GetGold(_priceGoods);
-            Debug.Log(_priceGoods);
             _priceGoods = 0;
         }
     }

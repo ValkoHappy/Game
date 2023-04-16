@@ -33,6 +33,7 @@ public class TrainingScreen : MonoBehaviour
     [SerializeField] private GameObject _indicator3;
     [SerializeField] private GameObject _indicator4;
     [SerializeField] private GameObject _indicator5;
+    [SerializeField] private GameObject _indicator6;
 
     [SerializeField] private Button _exitShopButton;
     [SerializeField] private Button _buttleButton;
@@ -225,6 +226,7 @@ public class TrainingScreen : MonoBehaviour
     {
         _indicator5.SetActive(false);
         _panel5.SetActive(true);
+        _indicator6.SetActive(true);
         _mainMenuScreen.EnabletButtleButton();
         _buttleExitButton.gameObject.SetActive(false);
     }
@@ -232,5 +234,6 @@ public class TrainingScreen : MonoBehaviour
     private void OnCloseFollowingWindow5()
     {
         _panel5.SetActive(false);
+        _indicator6.SetActive(false);
     }
 }

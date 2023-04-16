@@ -42,15 +42,14 @@ public class BuildingСharacteristics : MonoBehaviour
         {
             _damageIcon.SetActive(false);
             _attackDelayIcon.SetActive(false);
-            _radiusAttack.SetActive(false);
+            if(_radiusAttack != null )
+                _radiusAttack.SetActive(false);
         }
     }
 
     public void CloseRadiusAttack()
     {
-        if (_shootTurret != null)
-        {
+        if (_radiusAttack != null)
             _radiusAttack.SetActive(false);
-        }
     }
 }
