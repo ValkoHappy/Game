@@ -8,13 +8,13 @@ public class MainMenuScreen : ScreenUI
 {
     [SerializeField] private Button _playButton;
     [SerializeField] private Button _shopButton;
-    [SerializeField] private Button _rankingButton;
+    [SerializeField] private Button _leaderboardButton;
     [SerializeField] private Button _settingButton;
     [SerializeField] private Button _findSpawnEnemiesButton;
 
     public event UnityAction PlayButtonClick;
     public event UnityAction ShopButtonClick;
-    public event UnityAction RankingButtonClick;
+    public event UnityAction LeaderboardButtonClick;
     public event UnityAction SettingButtonClick;
     public event UnityAction FindSpawnEnemiesButtonClick;
 
@@ -22,7 +22,7 @@ public class MainMenuScreen : ScreenUI
     {
         _playButton.onClick.AddListener(OnPlayButton);
         _shopButton.onClick.AddListener(OnShopButton);
-        _rankingButton.onClick.AddListener(OnRankingButton);
+        _leaderboardButton.onClick.AddListener(OnLeaderboardButton);
         _settingButton.onClick.AddListener(OnSettingButton);
         _findSpawnEnemiesButton.onClick.AddListener(OnFindSpawnEnemiesButton);
     }
@@ -31,7 +31,7 @@ public class MainMenuScreen : ScreenUI
     {
         _playButton.onClick.RemoveListener(OnPlayButton);
         _shopButton.onClick.RemoveListener(OnShopButton);
-        _rankingButton.onClick.RemoveListener(OnRankingButton);
+        _leaderboardButton.onClick.RemoveListener(OnLeaderboardButton);
         _settingButton.onClick.RemoveListener(OnSettingButton);
         _findSpawnEnemiesButton.onClick.AddListener(OnFindSpawnEnemiesButton);
     }
@@ -46,9 +46,9 @@ public class MainMenuScreen : ScreenUI
         ShopButtonClick?.Invoke();
     }
 
-    public void OnRankingButton()
+    public void OnLeaderboardButton()
     {
-        RankingButtonClick?.Invoke();
+        LeaderboardButtonClick?.Invoke();
     }
 
     public void OnSettingButton()
@@ -65,7 +65,7 @@ public class MainMenuScreen : ScreenUI
     {
         _playButton.enabled = false;
         _shopButton.enabled = false;
-        _rankingButton.enabled = false;
+        _leaderboardButton.enabled = false;
         _settingButton.enabled = false;
         _findSpawnEnemiesButton.enabled = false;
     }
@@ -85,7 +85,7 @@ public class MainMenuScreen : ScreenUI
     {
         _playButton.enabled = true;
         _shopButton.enabled = true;
-        _rankingButton.enabled = true;
+        _leaderboardButton.enabled = true;
         _settingButton.enabled = true;
         _findSpawnEnemiesButton.enabled = true;
     }

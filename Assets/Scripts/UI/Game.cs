@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Game : MonoBehaviour
@@ -10,6 +11,7 @@ public class Game : MonoBehaviour
     [SerializeField] private MobileControllerScreen _mobileControllerDownScreen;
     [SerializeField] private SwitchingScreen _switchingScreen;
     [SerializeField] private ButtleScreen _buttleScreen;
+    [SerializeField] private LeaderboardScreen _leaderboardScreen;
 
     [SerializeField] private Spawner _spawner;
     [SerializeField] private EnemyManager _enemyManager;
@@ -49,6 +51,7 @@ public class Game : MonoBehaviour
         _mainMenuScreen.ShopButtonClick += OnShopScreen;
         _mainMenuScreen.SettingButtonClick += OnSettingMenuScreen;
         _mainMenuScreen.FindSpawnEnemiesButtonClick += MovingCamera;
+        _mainMenuScreen.LeaderboardButtonClick += OnOpenLeaderboardScreen;
 
         _shopScreen.ExitButtonClick += OnMainMenuScreenAfterShop;
 
@@ -88,6 +91,7 @@ public class Game : MonoBehaviour
         _mainMenuScreen.ShopButtonClick -= OnShopScreen;
         _mainMenuScreen.SettingButtonClick -= OnSettingMenuScreen;
         _mainMenuScreen.FindSpawnEnemiesButtonClick -= MovingCamera;
+        _mainMenuScreen.LeaderboardButtonClick -= OnOpenLeaderboardScreen;
 
         _shopScreen.ExitButtonClick -= OnMainMenuScreenAfterShop;
 
@@ -256,5 +260,11 @@ public class Game : MonoBehaviour
     private void MovingCamera()
     {
         _movingCameraSpawnEnemies.RotationCamera();
+    }
+
+    private void OnOpenLeaderboardScreen()
+    {
+        _leaderboardScreen.OpenAuthorizationPanel();
+
     }
 }

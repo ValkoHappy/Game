@@ -21,6 +21,7 @@ public class TrainingScreen : MonoBehaviour
     [SerializeField] private Image _indicator1;
 
     [SerializeField] private GameObject _panel4;
+    [SerializeField] private GameObject _shopPanel;
     [SerializeField] private GameObject _indicators;
     [SerializeField] private Button _button4;
 
@@ -197,6 +198,8 @@ public class TrainingScreen : MonoBehaviour
         else if (building.tag == "Fence")
         {
             _panel4.SetActive(true);
+            _shopPanel.SetActive(false);
+            _exitShopButton.gameObject.SetActive(false);
             _indicators.SetActive(true);
             //_indicator5.SetActive(true);
         }
@@ -219,6 +222,8 @@ public class TrainingScreen : MonoBehaviour
         _shopScreen.EnabletExitButton();
         _indicator5.SetActive(true);
         _panel4.SetActive(false);
+        _shopPanel.SetActive(true);
+        _exitShopButton.gameObject.SetActive(true);
         _indicators.SetActive(false);
     }
 
