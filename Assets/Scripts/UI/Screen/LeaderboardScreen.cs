@@ -45,7 +45,7 @@ public class LeaderboardScreen : ScreenUI
     {
         Open();
 #if UNITY_WEBGL && !UNITY_EDITOR
-        if (PlayerAccount.IsAuthorized)
+        if (!PlayerAccount.IsAuthorized)
 #endif
         {
             _authorizationPanel.SetActive(true);
@@ -58,7 +58,6 @@ public class LeaderboardScreen : ScreenUI
             _leaderboardPanel.SetActive(true);
         }
 #endif
-
     }
 
     private void OpenLeaderboardPanel()

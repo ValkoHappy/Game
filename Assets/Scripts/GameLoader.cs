@@ -81,10 +81,6 @@ public class GameLoader : MonoBehaviour
 
     private void OpenLeaderboardScreen()
     {
-        _leaderboardScreen.Open();
-#if UNITY_WEBGL && !UNITY_EDITOR
-        _leaderboardScreen.SetLeaderboardScore();
-        _leaderboardScreen.OpenYandexLeaderboard();
-#endif
+        _leaderboardScreen.OpenAuthorizationPanel();
     }
 }
