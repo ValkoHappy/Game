@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c73c3d731f664699ca1b43767519f, type: 3}
   m_Name: LaserTurret 2
   m_EditorClassIdentifier: 
-  _label: "\u041B\u0430\u0437\u0435\u0440\u043D\u0430\u044F \u0442\u0443\u0440\u0435\u043B\u044C
-    2"
+  _label: Laser turret 2
   _price: 330
   _icon: {fileID: 21300000, guid: 8732d1b36587b2e46ac4756e37201a11, type: 3}
   _isSoldForCrystals: 0

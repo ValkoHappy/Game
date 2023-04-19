@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c73c3d731f664699ca1b43767519f, type: 3}
   m_Name: SolarGenerator
   m_EditorClassIdentifier: 
-  _label: "\u0421\u043E\u043B\u043D\u0435\u0447\u043D\u044B\u0439 \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440"
+  _label: Solar generator
   _price: 140
   _icon: {fileID: 21300000, guid: d13043452ec19a8478d096bf1bcbff0d, type: 3}
   _isSoldForCrystals: 1

@@ -1,3 +1,4 @@
+using Lean.Localization;
 using TMPro;
 using UnityEngine;
 
@@ -19,9 +20,26 @@ public class BuildingСharacteristics : MonoBehaviour
     [SerializeField] private GameObject _extractionsIcon;
     [SerializeField] private GameObject _radiusAttack;
 
+    public Localization _localization;
+
+    private void Awake()
+    {
+        _localization = FindObjectOfType<Localization>();
+    }
+
+    private void OnEnable()
+    {
+        _localization.LanguageChanged += GetTranslationText;
+    }
+
+    private void OnDisable()
+    {
+        _localization.LanguageChanged -= GetTranslationText;
+    }
+
     private void Start()
     {
-        _labelText.text = _goods.Label;
+        GetTranslationText();
 
         if (_healthContainer != null)
             _healthText.text = _healthContainer.Health.ToString();
@@ -51,5 +69,10 @@ public class BuildingСharacteristics : MonoBehaviour
     {
         if (_radiusAttack != null)
             _radiusAttack.SetActive(false);
+    }
+
+    private void GetTranslationText()
+    {
+        _labelText.text = LeanLocalization.GetTranslationText(_goods.Label);
     }
 }

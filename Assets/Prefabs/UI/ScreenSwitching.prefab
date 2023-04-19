@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 601039847}
   - component: {fileID: 601039848}
+  - component: {fileID: 2054506890}
   m_Layer: 5
   m_Name: Container
   m_TagString: Untagged
@@ -32,10 +33,10 @@ RectTransform:
   m_Father: {fileID: 2588900546475140311}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.24125001}
-  m_AnchorMax: {x: 1, y: 0.5787501}
-  m_AnchoredPosition: {x: 0.00024414062, y: 0}
-  m_SizeDelta: {x: -211.81, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -72}
+  m_SizeDelta: {x: 0, y: 270}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &601039848
 MonoBehaviour:
@@ -55,14 +56,28 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: 10
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &2054506890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601039846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
 --- !u!1 &509261707207253623
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +145,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -157,7 +172,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.85
+  m_fontSize: 60
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -477,6 +492,7 @@ GameObject:
   - component: {fileID: 6780818688399213651}
   - component: {fileID: 3671818365505446761}
   - component: {fileID: 7446235390211336199}
+  - component: {fileID: 1204821031}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -532,13 +548,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0422\u044B \u043F\u0440\u043E\u0448\u0451\u043B \u043F\u0435\u0440\u0432\u0443\u044E
-    \u043A\u0430\u0440\u0442\u0443, \u0432\u043F\u0435\u0440\u0435\u0434\u0438 \u0442\u0435\u0431\u044F
-    \u0436\u0434\u0451\u0442 \u0435\u0449\u0451 \u0442\u0440\u0438.\n\u041D\u0430
-    \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0435\u043C \u0443\u0440\u043E\u0432\u043D\u0435
-    \u0442\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0448\u044C \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C
-    \u043F\u043E\u043A\u0443\u043F\u0430\u0442\u044C \u043D\u043E\u0432\u044B\u0435
-    \u043F\u043E\u0441\u0442\u0440\u043E\u0439\u043A\u0438:\n"
+  m_text: 'You have passed the first map, there are three more ahead of you.
+
+    At
+    the next level you will get the opportunity to buy new buildings:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -565,7 +578,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.9
+  m_fontSize: 34.7
   m_fontSizeBase: 57
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -607,6 +620,26 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1204821031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7132870418199283240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: TextScreenSwitching 1
+  FallbackText: "\u0422\u044B \u043F\u0440\u043E\u0448\u0451\u043B \u043F\u0435\u0440\u0432\u0443\u044E
+    \u043A\u0430\u0440\u0442\u0443, \u0432\u043F\u0435\u0440\u0435\u0434\u0438 \u0442\u0435\u0431\u044F
+    \u0436\u0434\u0451\u0442 \u0435\u0449\u0451 \u0442\u0440\u0438.\n\u041D\u0430
+    \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0435\u043C \u0443\u0440\u043E\u0432\u043D\u0435
+    \u0442\u044B \u043F\u043E\u043B\u0443\u0447\u0438\u0448\u044C \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C
+    \u043F\u043E\u043A\u0443\u043F\u0430\u0442\u044C \u043D\u043E\u0432\u044B\u0435
+    \u043F\u043E\u0441\u0442\u0440\u043E\u0439\u043A\u0438:\n"
 --- !u!1 &7744288346787523924
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,7 +708,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u043E\u0437\u0434\u0440\u0430\u0432\u043B\u044F\u044E!"
+  m_text: Congratulations!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -702,7 +735,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 88.35
+  m_fontSize: 60.55
   m_fontSizeBase: 57
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -965,8 +998,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b30935bfc36cc0a40ab629a218047d7d, type: 2}
   - {fileID: 11400000, guid: 654f01431b92a764cbb77f21c78fbe58, type: 2}
   - {fileID: 11400000, guid: 31e63aba183257d41b7bd90a7f2a2794, type: 2}
-  - {fileID: 11400000, guid: ccf1fb2cb81bd704d8cd7029cb05abf3, type: 2}
-  _builderView: {fileID: -5355620270328244883, guid: 5151fb169d0714f42bd38aa568b7716a, type: 3}
+  - {fileID: 11400000, guid: 45e8493e553288b4bb6ddeed1f575ead, type: 2}
+  _builderView: {fileID: -5355620270328244883, guid: 39783a9c352152a4da99b3e7be792cbf, type: 3}
   _itenContainer: {fileID: 601039847}
 --- !u!95 &1106646730447506663
 Animator:
@@ -1028,7 +1061,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1200, y: 800}
+  m_SizeDelta: {x: 900, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6976063570142200347
 CanvasRenderer:
@@ -1058,7 +1091,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb3db5b0868bc4f348e3d3a1dfbf32a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 35d7e6588f1f34db1b9a5e62f4efdf77, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

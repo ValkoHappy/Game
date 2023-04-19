@@ -5568,7 +5568,7 @@ MonoBehaviour:
   _russianButton: {fileID: 5025875262351677584}
   _englishButton: {fileID: 6967948775978315525}
   _turkishButton: {fileID: 5025875262659208765}
-  _leanLocalization: {fileID: 0}
+  _localization: {fileID: 0}
 --- !u!225 &6967948774689079630
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5606,7 +5606,7 @@ Animator:
   m_GameObject: {fileID: 6967948774689079624}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 491e22fea28e9f445a6b0010b94b1918, type: 2}
+  m_Controller: {fileID: 9100000, guid: d1f62a8607705bf4fbb8154917d9f197, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6610,8 +6610,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -107, y: 114}
-  m_SizeDelta: {x: 650.77637, y: 180}
+  m_AnchoredPosition: {x: -100, y: 114}
+  m_SizeDelta: {x: 700, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6967948776055018963
 GameObject:
@@ -6650,8 +6650,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -107.3, y: -61.7}
-  m_SizeDelta: {x: 650.77637, y: 180}
+  m_AnchoredPosition: {x: -100, y: -61.7}
+  m_SizeDelta: {x: 700, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6967948776095981931
 GameObject:

@@ -1,5 +1,3 @@
-#pragma warning disable
-
 using System.Collections;
 using Agava.YandexGames;
 using UnityEngine;
@@ -7,31 +5,20 @@ using UnityEngine.Events;
 
 public class YandexInitialization : MonoBehaviour
 {
-    private const string LeaderboardName = "Name";
-
     [SerializeField] private Localization _localization;
 
     public event UnityAction PlayerAuthorized;
     public event UnityAction Completed;
 
+    private void Awake()
+    {
+        YandexGamesSdk.CallbackLogging = true;
+    }
+
     private IEnumerator Start()
     {
-#if !UNITY_WEBGL || UNITY_EDITOR
-        yield break;
-#endif
-
-        yield return YandexGamesSdk.Initialize(() => PlayerAccount.RequestPersonalProfileDataPermission());
-
-        Completed?.Invoke();
-
-        Leaderboard.GetPlayerEntry(LeaderboardName, (result) =>
-        {
-            if (result != null)
-                PlayerAuthorized?.Invoke();
-        });
-
-        OnInitialized();
-    }    
+        yield return YandexGamesSdk.Initialize(OnInitialized);
+    }
 
     private void OnInitialized()
     {

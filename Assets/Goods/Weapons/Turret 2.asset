@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c73c3d731f664699ca1b43767519f, type: 3}
   m_Name: Turret 2
   m_EditorClassIdentifier: 
-  _label: "\u0422\u0443\u0440\u0435\u043B\u044C 2"
+  _label: Turret 2
   _price: 240
   _icon: {fileID: 21300000, guid: 6c93a65f9cc2f9a458b48c2f851fa548, type: 3}
   _isSoldForCrystals: 0

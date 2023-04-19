@@ -1507,7 +1507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3993e5018678e4f4cb0ae954f4c98619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementScreen: {fileID: 2216073215463797848}
   _healthContainer: {fileID: 0}
   _shootTurret: {fileID: 0}
   _extraction: {fileID: 0}

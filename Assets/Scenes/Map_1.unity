@@ -235,17 +235,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4848072486756740, guid: f16d978b3d1fa984d82c01d30a1fb40a, type: 3}
   m_PrefabInstance: {fileID: 1501083867}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &182833017 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7154853738315561402, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-  m_PrefabInstance: {fileID: 1540912046}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &211232492
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +246,7 @@ GameObject:
   - component: {fileID: 211232493}
   - component: {fileID: 211232495}
   - component: {fileID: 211232494}
+  - component: {fileID: 211232496}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -304,13 +294,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041E\u0431\u0440\u0430\u0442\u0438 \u0432\u043D\u0438\u043C\u0430\u043D\u0438\u0435
-    \u043D\u0430 \u043F\u0440\u0430\u0432\u0443\u044E \u0447\u0430\u0441\u0442\u044C
-    \u044D\u043A\u0440\u0430\u043D\u0430, \u0433\u0434\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E,
-    \u0441\u043A\u043E\u043B\u044C\u043A\u043E \u0437\u043E\u043B\u043E\u0442\u0430
-    \u043F\u0440\u0438\u043D\u043E\u0441\u0438\u0442 \u043A\u0430\u0436\u0434\u044B\u0439
-    \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440, \u043A\u043E\u0442\u043E\u0440\u044B\u0439
-    \u0442\u044B \u043A\u0443\u043F\u0438\u043B.\n"
+  m_text: Pay attention to the right side of the screen, where it is indicated how
+    much gold each generator that you bought brings.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -387,6 +372,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211232492}
   m_CullTransparentMesh: 1
+--- !u!114 &211232496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211232492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: TrainingWindow 4
+  FallbackText: "\u041E\u0431\u0440\u0430\u0442\u0438 \u0432\u043D\u0438\u043C\u0430\u043D\u0438\u0435
+    \u043D\u0430 \u043F\u0440\u0430\u0432\u0443\u044E \u0447\u0430\u0441\u0442\u044C
+    \u044D\u043A\u0440\u0430\u043D\u0430, \u0433\u0434\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E,
+    \u0441\u043A\u043E\u043B\u044C\u043A\u043E \u0437\u043E\u043B\u043E\u0442\u0430
+    \u043F\u0440\u0438\u043D\u043E\u0441\u0438\u0442 \u043A\u0430\u0436\u0434\u044B\u0439
+    \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440, \u043A\u043E\u0442\u043E\u0440\u044B\u0439
+    \u0442\u044B \u043A\u0443\u043F\u0438\u043B.\n"
 --- !u!114 &218125025 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3537982764690447387, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
@@ -607,6 +612,7 @@ GameObject:
   - component: {fileID: 332078296}
   - component: {fileID: 332078298}
   - component: {fileID: 332078297}
+  - component: {fileID: 332078299}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -654,7 +660,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041E\u0411\u0423\u0427\u0415\u041D\u0418\u0415"
+  m_text: Training
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -731,6 +737,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332078295}
   m_CullTransparentMesh: 1
+--- !u!114 &332078299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332078295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Training
+  FallbackText: "\u041E\u0411\u0423\u0427\u0415\u041D\u0418\u0415"
 --- !u!1 &336167310
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,6 +762,7 @@ GameObject:
   - component: {fileID: 336167311}
   - component: {fileID: 336167313}
   - component: {fileID: 336167312}
+  - component: {fileID: 336167314}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -789,13 +810,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041C\u043E\u043B\u043E\u0434\u0435\u0446! \u0422\u044B \u0443\u0441\u043F\u0435\u0448\u043D\u043E
-    \u043F\u0440\u043E\u0448\u0435\u043B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435
-    \u0438 \u0442\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u0435\u0448\u044C
-    \u0441\u0430\u043C\u043E\u0441\u0442\u043E\u044F\u0442\u0435\u043B\u044C\u043D\u043E
-    \u0440\u0435\u0448\u0430\u0442\u044C, \u0447\u0442\u043E \u0441\u0442\u0430\u0432\u0438\u0442\u044C
-    \u0438 \u043D\u0430 \u0447\u0442\u043E \u043A\u043E\u043F\u0438\u0442\u044C \u0437\u043E\u043B\u043E\u0442\u043E.
-    \u0416\u0435\u043B\u0430\u044E \u0443\u0434\u0430\u0447\u0438 \u0432 \u0438\u0433\u0440\u0435!"
+  m_text: Well done! You have successfully completed the training and now you can
+    independently decide what to bet and what to save gold for. Good luck in the
+    game!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -872,6 +889,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 336167310}
   m_CullTransparentMesh: 1
+--- !u!114 &336167314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336167310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: TrainingWindow 6
+  FallbackText: "\u041C\u043E\u043B\u043E\u0434\u0435\u0446! \u0422\u044B \u0443\u0441\u043F\u0435\u0448\u043D\u043E
+    \u043F\u0440\u043E\u0448\u0435\u043B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435
+    \u0438 \u0442\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u0435\u0448\u044C
+    \u0441\u0430\u043C\u043E\u0441\u0442\u043E\u044F\u0442\u0435\u043B\u044C\u043D\u043E
+    \u0440\u0435\u0448\u0430\u0442\u044C, \u0447\u0442\u043E \u0441\u0442\u0430\u0432\u0438\u0442\u044C
+    \u0438 \u043D\u0430 \u0447\u0442\u043E \u043A\u043E\u043F\u0438\u0442\u044C \u0437\u043E\u043B\u043E\u0442\u043E.
+    \u0416\u0435\u043B\u0430\u044E \u0443\u0434\u0430\u0447\u0438 \u0432 \u0438\u0433\u0440\u0435!"
 --- !u!1 &426283064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,6 +1254,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &481050646 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6289164462288825225, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 1540912046}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &508252969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1298,6 +1346,7 @@ GameObject:
   - component: {fileID: 548241538}
   - component: {fileID: 548241540}
   - component: {fileID: 548241539}
+  - component: {fileID: 548241541}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -1345,7 +1394,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041E\u0411\u0423\u0427\u0415\u041D\u0418\u0415"
+  m_text: Training
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -1422,6 +1471,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548241537}
   m_CullTransparentMesh: 1
+--- !u!114 &548241541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548241537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Training
+  FallbackText: "\u041E\u0411\u0423\u0427\u0415\u041D\u0418\u0415"
 --- !u!1 &612687890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,10 +1898,26 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 5216454339256521111, guid: 580a8942055e16649bd74d0351339c73, type: 3}
   m_PrefabInstance: {fileID: 5216454338832779099}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &732050845 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3750579645206777594, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 1540912046}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &748707032 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4703823074467580, guid: 81f51ec42d5c7784aa8e8d5298eddaa0, type: 3}
   m_PrefabInstance: {fileID: 508252969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &771664980 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6496415177758140155, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 1540912046}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &830562522
 PrefabInstance:
@@ -1960,15 +2039,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac1866782f6d8f4282359e50d3784cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainMenuScreen: {fileID: 1484384283}
+  _mainMenuScreen: {fileID: 2005515056}
   _shopScreen: {fileID: 1202714319}
   _cameraSpawnEnemies: {fileID: 1221109123}
   _saveSystem: {fileID: 323301696}
   _panel1: {fileID: 2109892020}
   _button1: {fileID: 1246801787}
   _panel3: {fileID: 1515293091}
-  _shopButton: {fileID: 1847848410}
-  _indicator1: {fileID: 1710552720}
+  _shopButton: {fileID: 2140488381}
+  _indicator1: {fileID: 732050845}
   _panel4: {fileID: 2036182767}
   _shopPanel: {fileID: 2099972801}
   _indicators: {fileID: 251994230}
@@ -1980,9 +2059,9 @@ MonoBehaviour:
   _indicator3: {fileID: 243878381}
   _indicator4: {fileID: 162865041}
   _indicator5: {fileID: 1767580485}
-  _indicator6: {fileID: 1540912047}
+  _indicator6: {fileID: 771664980}
   _exitShopButton: {fileID: 471141674}
-  _buttleButton: {fileID: 182833017}
+  _buttleButton: {fileID: 481050646}
   _buttleExitButton: {fileID: 1524382633}
   _turretsShopButton: {fileID: 2013242553}
   _generationsShopButton: {fileID: 658376887}
@@ -2378,6 +2457,7 @@ GameObject:
   - component: {fileID: 1072662948}
   - component: {fileID: 1072662950}
   - component: {fileID: 1072662949}
+  - component: {fileID: 1072662951}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -2425,7 +2505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041E\u0411\u0423\u0427\u0415\u041D\u0418\u0415"
+  m_text: Training
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -2502,6 +2582,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072662947}
   m_CullTransparentMesh: 1
+--- !u!114 &1072662951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072662947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Training
+  FallbackText: "\u041E\u0411\u0423\u0427\u0415\u041D\u0418\u0415"
 --- !u!1001 &1138670274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3580,17 +3674,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1384577119}
   m_CullTransparentMesh: 1
---- !u!114 &1484384283 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3537982765048474895, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-  m_PrefabInstance: {fileID: 1540912046}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 151a8d9c54a6bf8459da43e9224e0fde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1501083867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3925,14 +4008,6 @@ PrefabInstance:
       propertyPath: _goldContainer
       value: 
       objectReference: {fileID: 323301692}
-    - target: {fileID: 3537982764132546765, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3537982764690447386, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _levelReward
       value: 
@@ -4113,10 +4188,6 @@ PrefabInstance:
       propertyPath: _crystalsContainer
       value: 
       objectReference: {fileID: 323301691}
-    - target: {fileID: 3537982765155243131, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -30
-      objectReference: {fileID: 0}
     - target: {fileID: 3629615857499588532, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _crystalsContainer
       value: 
@@ -4133,14 +4204,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5090340700182782431, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5090340701166435211, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 4854400320589650247, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _crystalsContainer
+      value: 
+      objectReference: {fileID: 323301691}
     - target: {fileID: 6188542513835017781, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4181,26 +4248,22 @@ PrefabInstance:
       propertyPath: _crystalsContainer
       value: 
       objectReference: {fileID: 323301691}
-    - target: {fileID: 6546085116467283324, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _spawner
-      value: 
-      objectReference: {fileID: 639568498}
     - target: {fileID: 6595076029611978518, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _levelReward
       value: 
       objectReference: {fileID: 323301695}
+    - target: {fileID: 6860110272230296308, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _goldContainer
+      value: 
+      objectReference: {fileID: 323301692}
     - target: {fileID: 7414885484513123929, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7726133667740473543, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _goldContainer
+    - target: {fileID: 7986256442897323855, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _spawner
       value: 
-      objectReference: {fileID: 323301692}
-    - target: {fileID: 8598206286071925620, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _crystalsContainer
-      value: 
-      objectReference: {fileID: 323301691}
+      objectReference: {fileID: 639568498}
     - target: {fileID: 8886194044974735140, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _levelReward
       value: 
@@ -4247,11 +4310,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
---- !u!1 &1540912047 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7938539372128384200, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-  m_PrefabInstance: {fileID: 1540912046}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1556844616
 GameObject:
   m_ObjectHideFlags: 0
@@ -4610,6 +4668,7 @@ GameObject:
   - component: {fileID: 1677417055}
   - component: {fileID: 1677417057}
   - component: {fileID: 1677417056}
+  - component: {fileID: 1677417058}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4657,13 +4716,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0414\u043E\u0431\u0440\u043E \u043F\u043E\u0436\u0430\u043B\u043E\u0432\u0430\u0442\u044C
-    \u0432 \u0438\u0433\u0440\u0443! \u041F\u043E\u0441\u0442\u0440\u043E\u0439 \u0431\u0430\u0437\u0443,
-    \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438 \u0442\u0443\u0440\u0435\u043B\u0438,
-    \u043E\u0433\u0440\u0430\u0436\u0434\u0435\u043D\u0438\u044F \u0438 \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440\u044B,
-    \u043D\u0430\u043A\u043E\u043F\u0438 \u0437\u043E\u043B\u043E\u0442\u043E, \u043F\u0440\u043E\u0434\u0443\u043C\u0430\u0439
-    \u0442\u0430\u043A\u0442\u0438\u043A\u0443 \u0438 \u043E\u0434\u0435\u0440\u0436\u0438
-    \u043F\u043E\u0431\u0435\u0434\u0443!"
+  m_text: Welcome to the game! Build a base, install turrets, fences and generators,
+    accumulate gold, think over tactics and win!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -4740,17 +4794,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1677417054}
   m_CullTransparentMesh: 1
---- !u!114 &1710552720 stripped
+--- !u!114 &1677417058
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 919379145, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-  m_PrefabInstance: {fileID: 1540912046}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1677417054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  translationName: TrainingWindow 1
+  FallbackText: "\u0414\u043E\u0431\u0440\u043E \u043F\u043E\u0436\u0430\u043B\u043E\u0432\u0430\u0442\u044C
+    \u0432 \u0438\u0433\u0440\u0443! \u041F\u043E\u0441\u0442\u0440\u043E\u0439 \u0431\u0430\u0437\u0443,
+    \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438 \u0442\u0443\u0440\u0435\u043B\u0438,
+    \u043E\u0433\u0440\u0430\u0436\u0434\u0435\u043D\u0438\u044F \u0438 \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440\u044B,
+    \u043D\u0430\u043A\u043E\u043F\u0438 \u0437\u043E\u043B\u043E\u0442\u043E, \u043F\u0440\u043E\u0434\u0443\u043C\u0430\u0439
+    \u0442\u0430\u043A\u0442\u0438\u043A\u0443 \u0438 \u043E\u0434\u0435\u0440\u0436\u0438
+    \u043F\u043E\u0431\u0435\u0434\u0443!"
 --- !u!1001 &1717280750
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5063,6 +5126,7 @@ GameObject:
   - component: {fileID: 1838619251}
   - component: {fileID: 1838619253}
   - component: {fileID: 1838619252}
+  - component: {fileID: 1838619254}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5110,13 +5174,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u0435\u0440\u0435\u0434 \u043F\u0435\u0440\u0432\u044B\u043C \u0431\u043E\u0435\u043C
-    \u0437\u0430\u0439\u0434\u0438 \u0432 \u043C\u0430\u0433\u0430\u0437\u0438\u043D
-    \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0438 \u043F\u0435\u0440\u0432\u0443\u044E
-    \u0442\u0443\u0440\u0435\u043B\u044C, \u043D\u0435\u0444\u0442\u044F\u043D\u043E\u0439
-    \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440 \u0438 \u043E\u0433\u0440\u0430\u0436\u0434\u0435\u043D\u0438\u0435,
-    \u0447\u0442\u043E\u0431\u044B \u0431\u044B\u0442\u044C \u0433\u043E\u0442\u043E\u0432\u044B\u043C
-    \u043A \u0431\u0438\u0442\u0432\u0435."
+  m_text: Before the first battle, go to the store and buy the first turret, an oil
+    generator and a fence to be ready for battle.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -5193,6 +5252,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838619250}
   m_CullTransparentMesh: 1
+--- !u!114 &1838619254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838619250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: TrainingWindow 3
+  FallbackText: "\u041F\u0435\u0440\u0435\u0434 \u043F\u0435\u0440\u0432\u044B\u043C
+    \u0431\u043E\u0435\u043C \u0437\u0430\u0439\u0434\u0438 \u0432 \u043C\u0430\u0433\u0430\u0437\u0438\u043D
+    \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0438 \u043F\u0435\u0440\u0432\u0443\u044E
+    \u0442\u0443\u0440\u0435\u043B\u044C, \u043D\u0435\u0444\u0442\u044F\u043D\u043E\u0439
+    \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440 \u0438 \u043E\u0433\u0440\u0430\u0436\u0434\u0435\u043D\u0438\u0435,
+    \u0447\u0442\u043E\u0431\u044B \u0431\u044B\u0442\u044C \u0433\u043E\u0442\u043E\u0432\u044B\u043C
+    \u043A \u0431\u0438\u0442\u0432\u0435."
 --- !u!1001 &1842449073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5347,17 +5426,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3d0e1c692a75b34d96fb84c9b431b64, type: 3}
---- !u!114 &1847848410 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8725960500434888078, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-  m_PrefabInstance: {fileID: 1540912046}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1877672326 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7948894335306280920, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
@@ -5380,6 +5448,7 @@ GameObject:
   - component: {fileID: 1963876433}
   - component: {fileID: 1963876435}
   - component: {fileID: 1963876434}
+  - component: {fileID: 1963876436}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -5427,7 +5496,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041E\u0411\u0423\u0427\u0415\u041D\u0418\u0415"
+  m_text: Training
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -5504,6 +5573,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963876432}
   m_CullTransparentMesh: 1
+--- !u!114 &1963876436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1963876432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Training
+  FallbackText: "\u041E\u0411\u0423\u0427\u0415\u041D\u0418\u0415"
 --- !u!1001 &1964490712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5801,6 +5884,7 @@ GameObject:
   - component: {fileID: 1994851184}
   - component: {fileID: 1994851186}
   - component: {fileID: 1994851185}
+  - component: {fileID: 1994851187}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -5848,15 +5932,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u0435\u0440\u0435\u0434 \u0431\u043E\u0435\u043C \u0441\u0430\u043C\u043E\u0435
-    \u0433\u043B\u0430\u0432\u043D\u043E\u0435 - \u043F\u0440\u043E\u0434\u0443\u043C\u0430\u0442\u044C
-    \u0442\u0430\u043A\u0442\u0438\u043A\u0443 \u0438 \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044C
-    \u0431\u0430\u043B\u0430\u043D\u0441 \u0437\u043E\u043B\u043E\u0442\u0430 \u0438
-    \u043A\u0440\u0438\u0441\u0442\u0430\u043B\u043B\u043E\u0432 \u0442\u0430\u043A,
-    \u0447\u0442\u043E\u0431\u044B \u043C\u043E\u0436\u043D\u043E \u0431\u044B\u043B\u043E
-    \u043A\u0443\u043F\u0438\u0442\u044C \u043D\u0430\u0438\u0431\u043E\u043B\u0435\u0435
-    \u0432\u044B\u0433\u043E\u0434\u043D\u044B\u0439 \u043D\u0430\u0431\u043E\u0440
-    \u0437\u0434\u0430\u043D\u0438\u0439 \u0438 \u043F\u043E\u0431\u0435\u0434\u0438\u0442\u044C."
+  m_text: Before the battle, the most important thing is to think over tactics and
+    calculate the balance of gold and crystals so that you can buy the most profitable
+    set of buildings and win.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -5883,7 +5961,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.75
+  m_fontSize: 27.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5933,11 +6011,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994851183}
   m_CullTransparentMesh: 1
+--- !u!114 &1994851187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994851183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: TrainingWindow 2
+  FallbackText: "\u041F\u0435\u0440\u0435\u0434 \u0431\u043E\u0435\u043C \u0441\u0430\u043C\u043E\u0435
+    \u0433\u043B\u0430\u0432\u043D\u043E\u0435 - \u043F\u0440\u043E\u0434\u0443\u043C\u0430\u0442\u044C
+    \u0442\u0430\u043A\u0442\u0438\u043A\u0443 \u0438 \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044C
+    \u0431\u0430\u043B\u0430\u043D\u0441 \u0437\u043E\u043B\u043E\u0442\u0430 \u0438
+    \u043A\u0440\u0438\u0441\u0442\u0430\u043B\u043B\u043E\u0432 \u0442\u0430\u043A,
+    \u0447\u0442\u043E\u0431\u044B \u043C\u043E\u0436\u043D\u043E \u0431\u044B\u043B\u043E
+    \u043A\u0443\u043F\u0438\u0442\u044C \u043D\u0430\u0438\u0431\u043E\u043B\u0435\u0435
+    \u0432\u044B\u0433\u043E\u0434\u043D\u044B\u0439 \u043D\u0430\u0431\u043E\u0440
+    \u0437\u0434\u0430\u043D\u0438\u0439 \u0438 \u043F\u043E\u0431\u0435\u0434\u0438\u0442\u044C."
 --- !u!4 &2004484088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4991001240701050, guid: b3d0e1c692a75b34d96fb84c9b431b64, type: 3}
   m_PrefabInstance: {fileID: 27005984}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2005515056 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 366424089113132860, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 1540912046}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 151a8d9c54a6bf8459da43e9224e0fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2013242553 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 88424135758855049, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
@@ -5960,6 +6071,7 @@ GameObject:
   - component: {fileID: 2025924232}
   - component: {fileID: 2025924234}
   - component: {fileID: 2025924233}
+  - component: {fileID: 2025924235}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6007,8 +6119,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0422\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u0435\u0448\u044C
-    \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C \u0431\u043E\u0439!"
+  m_text: Now you can start the fight!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -6085,6 +6196,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025924231}
   m_CullTransparentMesh: 1
+--- !u!114 &2025924235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025924231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: TrainingWindow 5
+  FallbackText: "\u0422\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u0435\u0448\u044C
+    \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C \u0431\u043E\u0439!"
 --- !u!1 &2036182767
 GameObject:
   m_ObjectHideFlags: 0
@@ -6211,6 +6337,7 @@ GameObject:
   - component: {fileID: 2061125079}
   - component: {fileID: 2061125081}
   - component: {fileID: 2061125080}
+  - component: {fileID: 2061125082}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -6258,7 +6385,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041E\u0411\u0423\u0427\u0415\u041D\u0418\u0415"
+  m_text: Training
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -6335,6 +6462,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061125078}
   m_CullTransparentMesh: 1
+--- !u!114 &2061125082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061125078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Training
+  FallbackText: "\u041E\u0411\u0423\u0427\u0415\u041D\u0418\u0415"
 --- !u!4 &2078061827 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4703823074467580, guid: 81f51ec42d5c7784aa8e8d5298eddaa0, type: 3}
@@ -6361,6 +6502,7 @@ GameObject:
   - component: {fileID: 2106319774}
   - component: {fileID: 2106319776}
   - component: {fileID: 2106319775}
+  - component: {fileID: 2106319777}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -6408,7 +6550,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041E\u0411\u0423\u0427\u0415\u041D\u0418\u0415"
+  m_text: Training
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -6485,6 +6627,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106319773}
   m_CullTransparentMesh: 1
+--- !u!114 &2106319777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2106319773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: Training
+  FallbackText: "\u041E\u0411\u0423\u0427\u0415\u041D\u0418\u0415"
 --- !u!1 &2109892020
 GameObject:
   m_ObjectHideFlags: 0
@@ -6569,6 +6725,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4991001240701050, guid: b3d0e1c692a75b34d96fb84c9b431b64, type: 3}
   m_PrefabInstance: {fileID: 1842632237}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2140488381 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5554181369448511421, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 1540912046}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2143649631
 GameObject:
   m_ObjectHideFlags: 0
@@ -6655,6 +6822,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1969234843}
     m_Modifications:
+    - target: {fileID: 601039847, guid: 4b40e53c9b14428499881fd394e2b08e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 763247828838932333, guid: 4b40e53c9b14428499881fd394e2b08e, type: 3}
       propertyPath: m_Alpha
       value: 0
@@ -6747,14 +6918,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5175333395803702183, guid: 4b40e53c9b14428499881fd394e2b08e, type: 3}
-      propertyPath: _audioSource
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6378051898233362154, guid: 4b40e53c9b14428499881fd394e2b08e, type: 3}
-      propertyPath: _buildings.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 45e8493e553288b4bb6ddeed1f575ead, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b40e53c9b14428499881fd394e2b08e, type: 3}
 --- !u!224 &974957770637006684 stripped

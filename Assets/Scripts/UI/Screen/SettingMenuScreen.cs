@@ -11,11 +11,11 @@ public class SettingMenuScreen : ScreenUI
     [SerializeField] private Button _russianButton;
     [SerializeField] private Button _englishButton;
     [SerializeField] private Button _turkishButton;
-    [SerializeField] private LeanLocalization _leanLocalization;
+    [SerializeField] private Localization _localization;
 
-    private const string ru = "Russian";
-    private const string en = "English";
-    private const string tr = "Turkish";
+    private const string ru = "ru";
+    private const string en = "en";
+    private const string tr = "tr";
 
     public event UnityAction ExitButtonClick;
 
@@ -42,16 +42,16 @@ public class SettingMenuScreen : ScreenUI
 
     private void SetLanguagesRu()
     {
-        _leanLocalization.SetCurrentLanguage(ru);
+        _localization.SetLanguage(ru);
     }
 
     private void SetLanguagesEn()
     {
-        _leanLocalization.SetCurrentLanguage(en);
+        _localization.SetLanguage(en);
     }
 
     private void SetLanguagesTr()
     {
-        _leanLocalization.SetCurrentLanguage(tr);
+        _localization.SetLanguage(tr);
     }
 }

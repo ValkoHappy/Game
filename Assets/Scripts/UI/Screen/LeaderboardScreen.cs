@@ -20,11 +20,17 @@ public class LeaderboardScreen : ScreenUI
 
     private int _playerScore = 0;
 
+    private void Start()
+    {
+        _playerScore = PlayerPrefs.GetInt("AllGold");
+    }
+
     private void OnEnable()
     {
         _exitButton1.onClick.AddListener(OnExitButton);
         _exitButton2.onClick.AddListener(OnExitButton);
         _authorizationButton.onClick.AddListener(OpenLeaderboardPanel);
+        SetLeaderboardScore();
     }
 
     private void OnDisable()
@@ -37,37 +43,39 @@ public class LeaderboardScreen : ScreenUI
     public void OnExitButton()
     {
         Close();
-        _authorizationPanel.SetActive(true);
-        _leaderboardPanel.SetActive(false);
     }
 
     public void OpenAuthorizationPanel()
     {
-        Open();
 #if UNITY_WEBGL && !UNITY_EDITOR
         if (!PlayerAccount.IsAuthorized)
 #endif
         {
+            Open();
             _authorizationPanel.SetActive(true);
             _leaderboardPanel.SetActive(false);
         }
 #if UNITY_WEBGL && !UNITY_EDITOR
         else
         {
-            _authorizationPanel.SetActive(false);
-            _leaderboardPanel.SetActive(true);
+            OpenLeaderboardPanel();
         }
 #endif
     }
 
     private void OpenLeaderboardPanel()
     {
-        _authorizationPanel.SetActive(false);
-        _leaderboardPanel.SetActive(true);
 #if UNITY_WEBGL && !UNITY_EDITOR
         SetLeaderboardScore();
         OpenYandexLeaderboard();
+
+        if (PlayerAccount.IsAuthorized)
 #endif
+        {
+            Open();
+            _authorizationPanel.SetActive(false);
+            _leaderboardPanel.SetActive(true);
+        }
     }
 
     public void OpenYandexLeaderboard()

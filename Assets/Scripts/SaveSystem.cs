@@ -1,3 +1,4 @@
+using Agava.YandexGames;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +12,7 @@ public class SaveSystem : MonoBehaviour
     private const string _currentLevel = "CurrentLevel";
     private const string _level = "Level";
     private const string _gold = "Gold";
+    private const string _allGold = "AllGold";
     private const string _crystals = "Crystals";
     private const string _map = "Map";
 
@@ -23,6 +25,7 @@ public class SaveSystem : MonoBehaviour
         PlayerPrefs.SetInt(_gold, _goldContainer.Gold);
         PlayerPrefs.SetInt(_crystals, _crystalsContainer.Crystals);
         PlayerPrefs.SetInt(_map, _sceneManage.SceneIndex);
+        PlayerPrefs.SetInt(_allGold, _goldContainer.AllGoldReceived);
     }
 
     public void Load()
@@ -31,7 +34,7 @@ public class SaveSystem : MonoBehaviour
         {
             _spawner.InitCurrentLevel(PlayerPrefs.GetInt(_currentLevel));
             _spawner.InitLevel(PlayerPrefs.GetInt(_level));
-            _goldContainer.InitGold(PlayerPrefs.GetInt(_gold));
+            _goldContainer.InitGold(PlayerPrefs.GetInt(_gold), PlayerPrefs.GetInt(_allGold));
             _crystalsContainer.InitCrystals(PlayerPrefs.GetInt(_crystals));
             _sceneManage.InitScene(PlayerPrefs.GetInt(_map));
         }
@@ -45,7 +48,6 @@ public class SaveSystem : MonoBehaviour
             _sceneManage.InitScene(PlayerPrefs.GetInt(_map));
             SaveNotFound?.Invoke();
         }
-
     }
 
     public void ResetLevel()
@@ -58,9 +60,8 @@ public class SaveSystem : MonoBehaviour
     {
         PlayerPrefs.SetInt(_currentLevel, 0);
         PlayerPrefs.SetInt(_level, 1);
-        PlayerPrefs.SetInt(_gold, 10000); //175
+        PlayerPrefs.SetInt(_gold, 175); //175
         PlayerPrefs.SetInt(_crystals, 75);
         PlayerPrefs.SetInt(_map, 1);
     }
-
 }
