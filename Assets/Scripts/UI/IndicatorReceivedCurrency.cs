@@ -6,6 +6,7 @@ public class IndicatorReceivedCurrency : MonoBehaviour
     [SerializeField] private string _extraction;
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private Spawner _spawner;
+    [SerializeField] private BuildingsManager _buildingsManager;
 
     public event UnityAction<int> OnCurrencyReceived;
 
@@ -15,14 +16,14 @@ public class IndicatorReceivedCurrency : MonoBehaviour
     {
         _buildingsGrid.BuildingSupplied += AddAmountCurrent;
         _spawner.LevelStarted += RemoveAllAmountCurrent;
-        _spawner.LevelCreated += RemoveAllAmountCurrent;
+        _buildingsManager.AllBuildingsDeleted += RemoveAllAmountCurrent;
     }
 
     private void OnDisable()
     {
         _buildingsGrid.BuildingSupplied -= AddAmountCurrent;
         _spawner.LevelStarted -= RemoveAllAmountCurrent;
-        _spawner.LevelCreated += RemoveAllAmountCurrent;
+        _buildingsManager.AllBuildingsDeleted -= RemoveAllAmountCurrent;
     }
 
     private void AddAmountCurrent(Building building)

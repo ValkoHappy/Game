@@ -1,9 +1,6 @@
 using Agava.YandexGames;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class LeaderboardScreen : ScreenUI
@@ -31,7 +28,6 @@ public class LeaderboardScreen : ScreenUI
         _exitButton1.onClick.AddListener(OnExitButton);
         _exitButton2.onClick.AddListener(OnExitButton);
         _authorizationButton.onClick.AddListener(OpenLeaderboardPanel);
-        SetLeaderboardScore();
     }
 
     private void OnDisable()

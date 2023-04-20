@@ -45,7 +45,7 @@ public class Game : MonoBehaviour
         _limbCameraAnimation.AnimationIsFinished += MovingCamera;
 
         _enemyManager.AllEnemiesKilled += OnAllEnemiesKilled;
-        _buildingsManager.AllBuildingsDestroyed += OnAllBuildingsDestroyed;
+        _buildingsManager.AllBuildingsBroked += OnAllBuildingsDestroyed;
 
         _mainMenuScreen.PlayButtonClick += OnStartGame;
         _mainMenuScreen.ShopButtonClick += OnShopScreen;
@@ -85,7 +85,7 @@ public class Game : MonoBehaviour
         _limbCameraAnimation.AnimationIsFinished -= MovingCamera;
 
         _enemyManager.AllEnemiesKilled -= OnAllEnemiesKilled;
-        _buildingsManager.AllBuildingsDestroyed -= OnAllBuildingsDestroyed;
+        _buildingsManager.AllBuildingsBroked -= OnAllBuildingsDestroyed;
 
         _mainMenuScreen.PlayButtonClick -= OnStartGame;
         _mainMenuScreen.ShopButtonClick -= OnShopScreen;
@@ -231,7 +231,7 @@ public class Game : MonoBehaviour
 
     private void OnRepeatBattle()
     {
-        _yandexAds.ShowInterstitial();
+        //_yandexAds.ShowInterstitial();
         _buildingsManager.OnDestroyAllBuildings();
         _buildingsGrid.RemoveGrid();
         _enemyManager.OnDestroyEnemies();
@@ -266,6 +266,5 @@ public class Game : MonoBehaviour
     private void OnOpenLeaderboardScreen()
     {
         _leaderboardScreen.OpenAuthorizationPanel();
-
     }
 }

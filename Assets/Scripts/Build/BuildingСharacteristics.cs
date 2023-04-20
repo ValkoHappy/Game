@@ -20,7 +20,7 @@ public class BuildingСharacteristics : MonoBehaviour
     [SerializeField] private GameObject _extractionsIcon;
     [SerializeField] private GameObject _radiusAttack;
 
-    public Localization _localization;
+    private Localization _localization;
 
     private void Awake()
     {

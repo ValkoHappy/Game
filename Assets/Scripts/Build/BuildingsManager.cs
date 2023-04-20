@@ -11,7 +11,8 @@ public class BuildingsManager : MonoBehaviour
     private const string _fence = "Fence";
     private List<PeacefulConstruction> _buildings;
     
-    public event UnityAction AllBuildingsDestroyed;
+    public event UnityAction AllBuildingsBroked;
+    public event UnityAction AllBuildingsDeleted;
 
     private void Awake()
     {
@@ -42,7 +43,7 @@ public class BuildingsManager : MonoBehaviour
 
         if (_buildings.Count <= 0)
         {
-            AllBuildingsDestroyed?.Invoke();
+            AllBuildingsBroked?.Invoke();
         }
 
         if(building.IsAlive() ==false)
@@ -64,7 +65,7 @@ public class BuildingsManager : MonoBehaviour
 
         if (allBuildingsDestroyed)
         {
-            AllBuildingsDestroyed?.Invoke();
+            AllBuildingsBroked?.Invoke();
         }
     }
 
@@ -95,7 +96,7 @@ public class BuildingsManager : MonoBehaviour
         {
             building.Destroy();
         }
-
+        AllBuildingsDeleted?.Invoke();
         _buildings.Clear();
     }
 }

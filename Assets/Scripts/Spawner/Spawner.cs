@@ -43,7 +43,6 @@ public class Spawner : MonoBehaviour
     {
         if (_currentLevelIndex >= _levels.Count)
         {
-            Debug.Log("All levels completed!");
             return;
         }
         _currentLevel = _levels[_currentLevelIndex];
@@ -78,8 +77,6 @@ public class Spawner : MonoBehaviour
         }
 
         yield return new WaitForSeconds(_currentLevel.SpawnDelay);
-
-        Debug.Log("Level complete!");
     }
 
     private Transform GetSpawnPoint()
@@ -95,7 +92,6 @@ public class Spawner : MonoBehaviour
 
         if (points.Count == 0)
         {
-            Debug.LogError($"No spawn points found for side {_currentLevel.SpawnSide}");
             return null;
         }
 
