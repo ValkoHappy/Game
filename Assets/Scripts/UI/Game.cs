@@ -231,6 +231,7 @@ public class Game : MonoBehaviour
 
     private void OnRepeatBattle()
     {
+        _yandexAds.ShowInterstitial();
         _buildingsManager.OnDestroyAllBuildings();
         _buildingsGrid.RemoveGrid();
         _enemyManager.OnDestroyEnemies();

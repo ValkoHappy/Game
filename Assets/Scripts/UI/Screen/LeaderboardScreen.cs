@@ -13,6 +13,7 @@ public class LeaderboardScreen : ScreenUI
     [SerializeField] private Button _authorizationButton;
     [SerializeField] private GameObject _authorizationPanel;
     [SerializeField] private GameObject _leaderboardPanel;
+    [SerializeField] private GameObject[] _players;
     [SerializeField] private TMP_Text[] _ranks;
     [SerializeField] private TMP_Text[] _leaderNames;
     [SerializeField] private TMP_Text[] _scoreList;
@@ -90,6 +91,7 @@ public class LeaderboardScreen : ScreenUI
             int leadersNumber = result.entries.Length >= _leaderNames.Length ? _leaderNames.Length : result.entries.Length;
             for (int i = 0; i < leadersNumber; i++)
             {
+                _players[i].SetActive(true);
                 string name = result.entries[i].player.publicName;
                 if (string.IsNullOrEmpty(name))
                     name = "Anonimus";

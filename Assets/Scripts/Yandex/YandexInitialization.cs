@@ -1,17 +1,15 @@
 using System.Collections;
 using Agava.YandexGames;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class YandexInitialization : MonoBehaviour
 {
     [SerializeField] private Localization _localization;
 
-    public event UnityAction PlayerAuthorized;
-    public event UnityAction Completed;
-
+#if UNITY_WEBGL && !UNITY_EDITOR
     private void Awake()
     {
+
         YandexGamesSdk.CallbackLogging = true;
     }
 
@@ -24,4 +22,5 @@ public class YandexInitialization : MonoBehaviour
     {
         _localization.SetLanguage(YandexGamesSdk.Environment.i18n.lang);
     }
+#endif
 }

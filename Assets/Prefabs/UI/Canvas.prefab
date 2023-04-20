@@ -5660,9 +5660,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6321b8899bf91174abc3730549fb81e4, type: 2}
   - {fileID: 11400000, guid: 976a0f03a44c03f499d65e29a3647b08, type: 2}
   - {fileID: 11400000, guid: c2ec7be55915a834d85923493b5396b0, type: 2}
-  - {fileID: 11400000, guid: b30935bfc36cc0a40ab629a218047d7d, type: 2}
-  - {fileID: 11400000, guid: 654f01431b92a764cbb77f21c78fbe58, type: 2}
-  - {fileID: 11400000, guid: 31e63aba183257d41b7bd90a7f2a2794, type: 2}
   _builderViewGold: {fileID: -5355620270328244883, guid: 5151fb169d0714f42bd38aa568b7716a, type: 3}
   _builderViewCrystals: {fileID: -5355620270328244883, guid: d1336ebb59208d040a2d04f1a2e30498, type: 3}
   _itenContainer: {fileID: 594803787307991174}
@@ -8126,7 +8123,6 @@ MonoBehaviour:
   _trainingScreen: {fileID: 0}
   _buildings:
   - {fileID: 11400000, guid: ccf1fb2cb81bd704d8cd7029cb05abf3, type: 2}
-  - {fileID: 11400000, guid: 45e8493e553288b4bb6ddeed1f575ead, type: 2}
   _builderViewGold: {fileID: -5355620270328244883, guid: 5151fb169d0714f42bd38aa568b7716a, type: 3}
   _builderViewCrystals: {fileID: -5355620270328244883, guid: d1336ebb59208d040a2d04f1a2e30498, type: 3}
   _itenContainer: {fileID: 876508616816036154}
@@ -12260,72 +12256,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3537982764866789514}
     m_Modifications:
-    - target: {fileID: 317063351, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_text
-      value: "\u0410\u0432\u0442\u043E\u0440\u0438\u0437\u0443\u0439\u0442\u0435\u0441\u044C
-        \u0434\u043B\u044F \u043F\u0440\u043E\u0441\u043C\u043E\u0442\u0440\u0430
-        \u043B\u0438\u0434\u0435\u0440\u043E\u0432"
-      objectReference: {fileID: 0}
-    - target: {fileID: 509406907, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_text
-      value: "\u041B\u0438\u0434\u0435\u0440\u0431\u043E\u0440\u0434"
-      objectReference: {fileID: 0}
-    - target: {fileID: 509406907, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_fontSize
-      value: 72
-      objectReference: {fileID: 0}
     - target: {fileID: 965650055, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 4015574553851302361}
-    - target: {fileID: 1327231356, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 758521237851838021, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 758521237851838021, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 758521237851838021, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 425
-      objectReference: {fileID: 0}
-    - target: {fileID: 758521237851838021, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -105
-      objectReference: {fileID: 0}
     - target: {fileID: 934687172172282955, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 4015574553851302361}
-    - target: {fileID: 951398327940823353, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 951398327940823353, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 951398327940823353, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 425
-      objectReference: {fileID: 0}
-    - target: {fileID: 951398327940823353, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -620.7599
-      objectReference: {fileID: 0}
-    - target: {fileID: 1554390144866896236, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_text
-      value: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1554390144866896236, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_fontSize
-      value: 61.8
-      objectReference: {fileID: 0}
     - target: {fileID: 1890914817311334299, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12414,74 +12352,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeaderboardScreen
       objectReference: {fileID: 0}
-    - target: {fileID: 2577599162896205627, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 3131847801189162125, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3677937317240096303, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3677937317240096303, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3677937317240096303, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 425
-      objectReference: {fileID: 0}
-    - target: {fileID: 3677937317240096303, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -491.81992
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765468384913675265, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765468384913675265, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765468384913675265, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 425
-      objectReference: {fileID: 0}
-    - target: {fileID: 3765468384913675265, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -362.87994
-      objectReference: {fileID: 0}
-    - target: {fileID: 3836117366165878737, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4431390642844145699, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_text
-      value: Leaderboard
-      objectReference: {fileID: 0}
-    - target: {fileID: 4431390642844145699, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_fontSize
-      value: 66.65
       objectReference: {fileID: 0}
     - target: {fileID: 5004074457921536030, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 4015574553851302361}
-    - target: {fileID: 8778838684949828901, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8778838684949828901, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8778838684949828901, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 425
-      objectReference: {fileID: 0}
-    - target: {fileID: 8778838684949828901, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -233.93997
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
 --- !u!224 &4737015163845242261 stripped
