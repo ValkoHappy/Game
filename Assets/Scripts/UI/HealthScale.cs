@@ -11,7 +11,8 @@ public class HealthScale : ScreenUI
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private Slider _slider;
 
-    private float currentVelocity;
+    private float _currentVelocity;
+    private float _maxHealthTransitionTime = 100;
 
     private void Start()
     {
@@ -23,7 +24,6 @@ public class HealthScale : ScreenUI
     {
         _healthContainer.HealthChanged += ChangeHealth;
         _healthContainer.MaxHealthChanged += OnMaxHealthChanged;
-
         _peacefulConstruction.BuildingRestored += OnMaxHealthChanged;
     }
 
@@ -31,24 +31,22 @@ public class HealthScale : ScreenUI
     {
         _healthContainer.HealthChanged -= ChangeHealth;
         _healthContainer.MaxHealthChanged -= OnMaxHealthChanged;
-
         _peacefulConstruction.BuildingRestored -= OnMaxHealthChanged;
-    }
-
-    private void ChangeHealth(int health)
-    {
-        _canvasGroup.alpha = 1;
-        float currentHealth = Mathf.SmoothDamp(_slider.value, health, ref currentVelocity, 100 * Time.deltaTime);
-        _slider.value = health;
-
-        if(_slider.value == _slider.minValue)
-            _canvasGroup.alpha = 0;
     }
 
     public void OnMaxHealthChanged()
     {
         _slider.value = _slider.maxValue;
-        _canvasGroup.alpha = 0;
+        Close();
     }
 
+    private void ChangeHealth(int health)
+    {
+        Open();
+        float currentHealth = Mathf.SmoothDamp(_slider.value, health, ref _currentVelocity, _maxHealthTransitionTime * Time.deltaTime);
+        _slider.value = health;
+
+        if(_slider.value == _slider.minValue)
+            Close();
+    }
 }
