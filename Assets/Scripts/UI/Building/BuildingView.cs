@@ -27,12 +27,11 @@ public class BuildingView : MonoBehaviour
     private void OnOpen()
     {
         _movementScreen.Open();
-        _movementScreen.Panel.alpha = 1.0f;
     }
+
     private void OnClose()
     {
         _building—haracteristics.CloseRadiusAttack();
         _movementScreen.Close();
-        _movementScreen.Panel.alpha = 0f;
     }
 }
