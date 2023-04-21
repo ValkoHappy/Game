@@ -18,7 +18,6 @@ public class Spawner : MonoBehaviour
     private int _miniEnemiesRemaining;
     private int _bossEnemiesRemaining;
 
-
     public event UnityAction<int> LevelChanged;
     public event UnityAction LevelStarted;
     public event UnityAction LevelCreated;
@@ -27,7 +26,6 @@ public class Spawner : MonoBehaviour
     public Level Level => _currentLevel;
     public int CurrentLevelIndex => _currentLevelIndex;
     public int LevelIndex => _levelIndex;
-
 
     public void NextLevel()
     {
@@ -55,47 +53,6 @@ public class Spawner : MonoBehaviour
         }
         LevelCreated?.Invoke();
         _coroutine = StartCoroutine(SpawnEnemies());
-    }
-
-    private IEnumerator SpawnEnemies()
-    {
-        while (_miniEnemiesRemaining > 0 || _bossEnemiesRemaining > 0)
-        {
-            Transform spawnPoint = GetSpawnPoint();
-            Enemy enemy = null;
-            if (_miniEnemiesRemaining > 0)
-            {
-                enemy = Instantiate(_currentLevel.MiniEnemy, spawnPoint.position, Quaternion.identity, _container);
-                _miniEnemiesRemaining--;
-            }
-            else if (_bossEnemiesRemaining > 0)
-            {
-                enemy = Instantiate(_currentLevel.BossEnemy, spawnPoint.position, Quaternion.identity, _container);
-                _bossEnemiesRemaining--;
-            }
-            _enemyManager.AddEnemy(enemy);
-        }
-
-        yield return new WaitForSeconds(_currentLevel.SpawnDelay);
-    }
-
-    private Transform GetSpawnPoint()
-    {
-        List<Transform> points = new List<Transform>();
-        foreach (Transform spawnPoint in _spawnPoints)
-        {
-            if (spawnPoint.GetComponent<SpawnPoint>().Side == _currentLevel.SpawnSide)
-            {
-                points.Add(spawnPoint);
-            }
-        }
-
-        if (points.Count == 0)
-        {
-            return null;
-        }
-
-        return points[Random.Range(0, points.Count)];
     }
 
     public void ShowLevel()
@@ -131,5 +88,44 @@ public class Spawner : MonoBehaviour
     public void InitLevel(int currentLevel)
     {
         _levelIndex = currentLevel;
+    }
+
+    private IEnumerator SpawnEnemies()
+    {
+        while (_miniEnemiesRemaining > 0 || _bossEnemiesRemaining > 0)
+        {
+            Transform spawnPoint = GetSpawnPoint();
+            Enemy enemy = null;
+            if (_miniEnemiesRemaining > 0)
+            {
+                enemy = Instantiate(_currentLevel.MiniEnemy, spawnPoint.position, Quaternion.identity, _container);
+                _miniEnemiesRemaining--;
+            }
+            else if (_bossEnemiesRemaining > 0)
+            {
+                enemy = Instantiate(_currentLevel.BossEnemy, spawnPoint.position, Quaternion.identity, _container);
+                _bossEnemiesRemaining--;
+            }
+            _enemyManager.AddEnemy(enemy);
+        }
+        yield return new WaitForSeconds(_currentLevel.SpawnDelay);
+    }
+
+    private Transform GetSpawnPoint()
+    {
+        List<Transform> points = new List<Transform>();
+        foreach (Transform spawnPoint in _spawnPoints)
+        {
+            if (spawnPoint.GetComponent<SpawnPoint>().Side == _currentLevel.SpawnSide)
+            {
+                points.Add(spawnPoint);
+            }
+        }
+
+        if (points.Count == 0)
+        {
+            return null;
+        }
+        return points[Random.Range(0, points.Count)];
     }
 }
