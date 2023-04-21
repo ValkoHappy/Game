@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,6 +14,7 @@ public class LevelReward : MonoBehaviour
     private int _goldSpent = 0;
     private int _crystalsSpent = 0;
     private int _crystalsForAdvertising = 50;
+    private int _doubleMultiplier = 2;
     public event UnityAction<int> GoldChanged;
     public event UnityAction<int> CrystalsChanged;
 
@@ -30,7 +29,7 @@ public class LevelReward : MonoBehaviour
         GoldChanged?.Invoke(_goldCount);
     }
 
-    public void GetReward()
+    public void ClaimReward()
     {
         _goldContainer.GetGold(_goldCount);
         _crystalsContainer.GetCrystals(_crystalsCount);
@@ -38,11 +37,11 @@ public class LevelReward : MonoBehaviour
         _crystalsCount = 0;
     }
 
-    public void GetDoubleReward()
+    public void ClaimDoubleReward()
     {
         _yandexAds.ShowRewardAd();
         _goldContainer.GetGold(_goldCount);
-        _crystalsContainer.GetCrystals(_crystalsCount * 2);
+        _crystalsContainer.GetCrystals(_crystalsCount * _doubleMultiplier);
         _goldCount = 0;
         _crystalsCount = 0;
     }
@@ -56,7 +55,8 @@ public class LevelReward : MonoBehaviour
     {
         _crystalsSpent += price;
     }
-    public void ReturnAfterLosing()
+
+    public void ReturnSpentResources()
     {
         _goldContainer.GetGold(_goldSpent);
         _crystalsContainer.GetCrystals(_crystalsSpent);
@@ -64,13 +64,13 @@ public class LevelReward : MonoBehaviour
         _goldSpent = 0;
     }
 
-    public void ClearContainerSpent()
+    public void ClearSpentResources()
     {
         _crystalsSpent = 0;
         _goldSpent = 0;
     }
 
-    public void GetCrystalsForAdvertising() 
+    public void ClaimCrystalsForAdvertising() 
     {
         _yandexAds.ShowRewardAd();
         _crystalsContainer.GetCrystals(_crystalsForAdvertising);
