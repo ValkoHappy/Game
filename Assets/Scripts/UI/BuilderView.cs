@@ -11,8 +11,8 @@ public class BuilderView : MonoBehaviour
     [SerializeField] private Image _icon;
     [SerializeField] private Button _sellButton;
 
-    public string _translationKey;
-    public Localization _localization;
+    private string _translationKey;
+    private Localization _localization;
     private Goods _building;
     public event UnityAction<Goods, BuilderView> SellButtonClick;
 
@@ -24,13 +24,13 @@ public class BuilderView : MonoBehaviour
     private void OnEnable()
     {
         _sellButton.onClick.AddListener(OnButtonClick);
-        _localization.LanguageChanged += GetTranslationText;
+        _localization.LanguageChanged += UpdateTranslationText;
     }
 
     private void OnDisable()
     {
         _sellButton.onClick.RemoveListener(OnButtonClick);
-        _localization.LanguageChanged -= GetTranslationText;
+        _localization.LanguageChanged -= UpdateTranslationText;
     }
 
     public void TryLockItem()
@@ -45,7 +45,7 @@ public class BuilderView : MonoBehaviour
     {
         _building = building;
         _translationKey = building.Label;
-        GetTranslationText();
+        UpdateTranslationText();
         _price.text = building.Price.ToString();
         _icon.sprite= _building.Icon;
     }
@@ -56,7 +56,7 @@ public class BuilderView : MonoBehaviour
         TryLockItem();
     }
 
-    private void GetTranslationText()
+    private void UpdateTranslationText()
     {
         _label.text = LeanLocalization.GetTranslationText(_translationKey);
     }
