@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 using static MoveSelection;
 
 public class BuildingsGrid : MonoBehaviour
@@ -25,7 +24,6 @@ public class BuildingsGrid : MonoBehaviour
     public event UnityAction<Building> DestroyBuilding;
     public event UnityAction<Building> BuildingSupplied;
     public event UnityAction RemoveBuilding;
-
 
     private void Awake()
     {
@@ -83,13 +81,10 @@ public class BuildingsGrid : MonoBehaviour
                 if (groundPlane.Raycast(ray, out float hit))
                 {
                     Vector3 newPosition = ray.GetPoint(hit);
-
                     int positionX = Mathf.RoundToInt(newPosition.x);
                     int positionY = Mathf.RoundToInt(newPosition.z);
-
                     positionX = Mathf.Clamp(positionX, 0, _gridSize.x - _flyingBuilding.TileSize.x);
                     positionY = Mathf.Clamp(positionY, 0, _gridSize.y - _flyingBuilding.TileSize.y);
-
                     _flyingBuilding.transform.position = new Vector3(positionX, 0, positionY);
                 }
             }
@@ -107,6 +102,28 @@ public class BuildingsGrid : MonoBehaviour
         CreatedBuilding?.Invoke();
         _flyingBuilding.Create();
         return _flyingBuilding;
+    }
+
+    public void RemoveGrid()
+    {
+        _grid = new Building[_gridSize.x, _gridSize.y];
+    }
+
+    public void CreateTowerHall()
+    {
+        _flyingBuilding = Instantiate(_towerHall, _container);
+        _buildingsManager.AddBuilding(_flyingBuilding.PeacefulConstruction);
+        int placeX = Mathf.RoundToInt(_flyingBuilding.transform.position.x);
+        int placeY = Mathf.RoundToInt(_flyingBuilding.transform.position.z);
+
+        for (int i = 0; i < _flyingBuilding.TileSize.x; i++)
+        {
+            for (int j = 0; j < _flyingBuilding.TileSize.y; j++)
+            {
+                _grid[placeX + i, placeY + j] = _flyingBuilding;
+            }
+        }
+        _flyingBuilding = null;
     }
 
     private bool IsPlaceTaken(int placeX, int placeY)
@@ -137,28 +154,6 @@ public class BuildingsGrid : MonoBehaviour
         _flyingBuilding.SetNormal();
         BuildingSupplied?.Invoke(_flyingBuilding);
         DeliveredBuilding?.Invoke();
-        _flyingBuilding = null;
-    }
-
-    public void RemoveGrid()
-    {
-        _grid = new Building[_gridSize.x, _gridSize.y];
-    }
-
-    public void CreateTowerHall()
-    {
-        _flyingBuilding = Instantiate(_towerHall, _container);
-        _buildingsManager.AddBuilding(_flyingBuilding.PeacefulConstruction);
-        int placeX = Mathf.RoundToInt(_flyingBuilding.transform.position.x);
-        int placeY = Mathf.RoundToInt(_flyingBuilding.transform.position.z);
-
-        for (int i = 0; i < _flyingBuilding.TileSize.x; i++)
-        {
-            for (int j = 0; j < _flyingBuilding.TileSize.y; j++)
-            {
-                _grid[placeX + i, placeY + j] = _flyingBuilding;
-            }
-        }
         _flyingBuilding = null;
     }
 }
