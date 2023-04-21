@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,7 +7,8 @@ public class BrokenState : EnemyState
     [SerializeField] private float fadeTime = 3.0f;
 
     private Material enemyMaterial;
-    private const string _die = "Die";
+    private const string Die = "Die";
+
     public event UnityAction Died;
 
     private void Awake()
@@ -16,17 +16,12 @@ public class BrokenState : EnemyState
         enemyMaterial = GetComponentInChildren<Renderer>().material;
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void ApplyDamage(Rigidbody attachedBody, float force)
     {
         Vector3 impactDirection = (attachedBody.position - transform.position).normalized;
         Vector3 oppositeDirection = -impactDirection;
 
-        Animator.SetTrigger(_die);
+        Animator.SetTrigger(Die);
         Rigidbody.AddForce(oppositeDirection * force, ForceMode.Impulse);
         StartCoroutine(FadeOut());
         Died?.Invoke();
@@ -45,7 +40,6 @@ public class BrokenState : EnemyState
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
         Destroy(gameObject);
     }
 }
