@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
@@ -9,6 +8,7 @@ public class ZoomButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     protected CameraMover _cameraMover;
     private Coroutine _zoom;
+    private bool _isZooming = false;
 
     private void Awake()
     {
@@ -17,7 +17,7 @@ public class ZoomButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if(_zoom != null)
+        if (_zoom != null)
         {
             StopCoroutine(_zoom);
             _zoom = StartCoroutine(Zoom());
@@ -31,12 +31,16 @@ public class ZoomButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         if (_zoom != null)
+        {
+            _isZooming = false;
             StopCoroutine(_zoom);
+        }
     }
 
     public virtual IEnumerator Zoom()
     {
-        while (true)
+        _isZooming = true;
+        while (_isZooming)
         {
             _cameraMover.ZoomIn();
             yield return null;
