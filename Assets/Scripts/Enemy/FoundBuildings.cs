@@ -17,6 +17,15 @@ public class FoundBuildings : MonoBehaviour
         StartSortConstructions();
     }
 
+    public void StartRemove()
+    {
+        if (_removeCoroutine != null)
+        {
+            StopCoroutine(_removeCoroutine);
+        }
+        _removeCoroutine = StartCoroutine(RemoveBuilding());
+    }
+
     public void StartSortConstructions()
     {
         if (_sortCoroutine != null)
@@ -71,16 +80,6 @@ public class FoundBuildings : MonoBehaviour
         }
         yield return waitForSeconds;
         StartSortConstructions();
-    }
-
-    public void StartRemove()
-    {
-        if (_removeCoroutine != null)
-        {
-            StopCoroutine(_removeCoroutine);
-        }
-        _removeCoroutine = StartCoroutine(RemoveBuilding());
-
     }
 
     private IEnumerator RemoveBuilding()
