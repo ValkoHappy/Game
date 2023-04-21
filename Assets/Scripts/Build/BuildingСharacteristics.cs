@@ -2,7 +2,6 @@ using Lean.Localization;
 using TMPro;
 using UnityEngine;
 
-
 public class BuildingСharacteristics : MonoBehaviour
 {
     [SerializeField] private HealthContainer _healthContainer;
