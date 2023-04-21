@@ -24,7 +24,7 @@ public class StarsScore : MonoBehaviour
             }
         }
 
-        for (int i = 2; i < _rewards.Length; i++)
+        for (int i = 0; i < _rewards.Length; i++)
         {
             LeanTween.scale(_rewards[i], new Vector3(1f, 1f, 1f), _delay).setDelay(_scaleElasticDelay * (i + 1)).setEase(LeanTweenType.easeOutElastic);
         }
