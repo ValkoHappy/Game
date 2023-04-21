@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class LevelReward : MonoBehaviour
 {
-    [SerializeField] private EnemyManager _enemyManager;
+    [SerializeField] private EnemyHandler _enemyManager;
     [SerializeField] private GoldContainer _goldContainer;
     [SerializeField] private CrystalsContainer _crystalsContainer;
     [SerializeField] private Spawner _spawner;

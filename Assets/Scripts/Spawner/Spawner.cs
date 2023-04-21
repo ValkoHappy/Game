@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private EnemyManager _enemyManager;
+    [SerializeField] private EnemyHandler _enemyManager;
     [SerializeField] private SceneNext _sceneManage;
     [SerializeField] private Transform _container;
     [SerializeField] private List<Level> _levels;

@@ -2,17 +2,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyHandler : MonoBehaviour
 {
     private List<Enemy> _enemies;
-
+    private int _deadEnemiesCount;
     private bool _isAttackBegun = false;
-
-    public bool IsAttackBegun => _isAttackBegun;
 
     public event UnityAction AllEnemiesKilled;
 
-    public int DeadEnemiesCount { get; private set; }
+    public bool IsAttackBegun => _isAttackBegun;
+    public int DeadEnemiesCount => _deadEnemiesCount;
+
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class EnemyManager : MonoBehaviour
     public void OnEnemyDeath(Enemy enemy)
     {
         _enemies.Remove(enemy);
-        DeadEnemiesCount++;
+        _deadEnemiesCount++;
         enemy.Died -= OnEnemyDeath;
 
         if (_enemies.Count <= 0)
@@ -45,7 +45,6 @@ public class EnemyManager : MonoBehaviour
         {
             Destroy(enemy.gameObject);
         }
-
         _enemies.Clear();
     }
 
