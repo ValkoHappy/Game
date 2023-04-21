@@ -85,7 +85,7 @@ public class ShopScreen : ScreenUI
 
     private void GetCrystalsForAdvertising()
     {
-        _levelReward.GetCrystalsForAdvertising();
+        _levelReward.ClaimCrystalsForAdvertising();
     }
 
     public void TurnOffAllButton()

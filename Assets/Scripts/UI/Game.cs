@@ -69,7 +69,7 @@ public class Game : MonoBehaviour
         _buildingsGrid.RemoveBuilding += OnOpenShop;
         _buildingsGrid.DeliveredBuilding += OnOpenShop;
 
-        _spawner.LevelStarted += _levelReward.ClearContainerSpent;
+        _spawner.LevelStarted += _levelReward.ClearSpentResources;
 
         _spawner.ÑurrentLevelExceedsCount += OnSwitchingScreen;
 
@@ -109,7 +109,7 @@ public class Game : MonoBehaviour
         _buildingsGrid.RemoveBuilding -= OnOpenShop;
         _buildingsGrid.DeliveredBuilding -= OnOpenShop;
 
-        _spawner.LevelStarted -= _levelReward.ClearContainerSpent;
+        _spawner.LevelStarted -= _levelReward.ClearSpentResources;
 
         _spawner.ÑurrentLevelExceedsCount -= OnSwitchingScreen;
 
@@ -211,12 +211,12 @@ public class Game : MonoBehaviour
 
     private void ÑontinueAfterWinning()
     {
-        _levelReward.GetReward();
+        _levelReward.ClaimReward();
     }
 
     private void ÑontinueAfterWinningForAdvertising()
     {
-        _levelReward.GetDoubleReward();
+        _levelReward.ClaimDoubleReward();
     }
 
     private void OnRepeatBattleForAdvertising()
@@ -238,7 +238,7 @@ public class Game : MonoBehaviour
         _featScreen.Close();
         _mainMenuScreen.Open();
         _buildingsGrid.CreateTowerHall();
-        _levelReward.ReturnAfterLosing();
+        _levelReward.ReturnSpentResources();
         _spawner.StartLevel();
     }
 
