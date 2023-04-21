@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class VictoryScreen : ScreenUI
+public class VictoryScreen : UIScreenAnimator
 {
     [SerializeField] private Button _resumeButton;
     [SerializeField] private Button _bonusButton;

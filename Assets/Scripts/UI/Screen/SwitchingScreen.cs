@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class SwitchingScreen : ScreenUI
+public class SwitchingScreen : UIScreenAnimator
 {
     [SerializeField] private Button _switchingButton;
     [SerializeField] private List<Goods> _buildings;

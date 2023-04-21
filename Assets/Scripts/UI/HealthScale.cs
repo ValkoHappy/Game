@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthScale : ScreenUI
+public class HealthScale : UIScreenAnimator
 {
     [SerializeField] private HealthContainer _healthContainer;
     [SerializeField] private PeacefulConstruction _peacefulConstruction;
@@ -37,16 +37,16 @@ public class HealthScale : ScreenUI
     public void OnMaxHealthChanged()
     {
         _slider.value = _slider.maxValue;
-        Close();
+        CloseScreen();
     }
 
     private void ChangeHealth(int health)
     {
-        Open();
+        OpenScreen();
         float currentHealth = Mathf.SmoothDamp(_slider.value, health, ref _currentVelocity, _maxHealthTransitionTime * Time.deltaTime);
         _slider.value = health;
 
         if(_slider.value == _slider.minValue)
-            Close();
+            CloseScreen();
     }
 }

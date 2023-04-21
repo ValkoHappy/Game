@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class ShopScreen : ScreenUI
+public class ShopScreen : UIScreenAnimator
 {
     [SerializeField] private LevelReward _levelReward;
 
@@ -15,15 +15,15 @@ public class ShopScreen : ScreenUI
     [SerializeField] private Button _storeTabWeaponsButton;
     [SerializeField] private Button _storeTabGeneratorsButton;
 
-    [SerializeField] private ScreenUI _storeTabFences;
-    [SerializeField] private ScreenUI _storeTabWeapons;
-    [SerializeField] private ScreenUI _storeTabGenerators;
+    [SerializeField] private UIScreenAnimator _storeTabFences;
+    [SerializeField] private UIScreenAnimator _storeTabWeapons;
+    [SerializeField] private UIScreenAnimator _storeTabGenerators;
 
     public event UnityAction ExitButtonClick;
 
     private void Start()
     {
-        _storeTabWeapons.Open();   
+        _storeTabWeapons.OpenScreen();   
     }
 
 
@@ -55,31 +55,31 @@ public class ShopScreen : ScreenUI
 
     private void OnStoreTabMainBuildings()
     {
-        _storeTabFences.Open();
+        _storeTabFences.OpenScreen();
         _storeTabFences.Panel.alpha = 1;
-        _storeTabWeapons.Close();
+        _storeTabWeapons.CloseScreen();
         _storeTabWeapons.Panel.alpha = 0;
-        _storeTabGenerators.Close();
+        _storeTabGenerators.CloseScreen();
         _storeTabGenerators.Panel.alpha = 0;
     }
 
     private void OnStoreTabWeapons()
     {
-        _storeTabFences.Close();
+        _storeTabFences.CloseScreen();
         _storeTabFences.Panel.alpha = 0;
-        _storeTabWeapons.Open();
+        _storeTabWeapons.OpenScreen();
         _storeTabWeapons.Panel.alpha = 1;
-        _storeTabGenerators.Close();
+        _storeTabGenerators.CloseScreen();
         _storeTabGenerators.Panel.alpha = 0;
     }
 
     private void OnStoreTabGenerators()
     {
-        _storeTabFences.Close();
+        _storeTabFences.CloseScreen();
         _storeTabFences.Panel.alpha = 0;
-        _storeTabWeapons.Close();
+        _storeTabWeapons.CloseScreen();
         _storeTabWeapons.Panel.alpha = 0;
-        _storeTabGenerators.Open();
+        _storeTabGenerators.OpenScreen();
         _storeTabGenerators.Panel.alpha = 1;
     }
 

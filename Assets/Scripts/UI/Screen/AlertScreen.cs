@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AlertScreen : ScreenUI
+public class AlertScreen : UIScreenAnimator
 {
     [SerializeField] private int _shutdownTime = 3;
 
@@ -14,7 +14,7 @@ public class AlertScreen : ScreenUI
 
         if(_time >= _shutdownTime)
         {
-            Close();
+            CloseScreen();
             _time = 0;
         }
     }

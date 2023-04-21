@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class MainMenuScreen : ScreenUI
+public class MainMenuScreen : UIScreenAnimator
 {
     [SerializeField] private Button _playButton;
     [SerializeField] private Button _shopButton;

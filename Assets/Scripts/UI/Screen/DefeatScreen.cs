@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class DefeatScreen : ScreenUI
+public class DefeatScreen : UIScreenAnimator
 {
     [SerializeField] private Button _resumeButton;
     [SerializeField] private Button _restartButton;

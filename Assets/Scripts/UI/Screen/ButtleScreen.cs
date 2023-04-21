@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class ButtleScreen : ScreenUI
+public class ButtleScreen : UIScreenAnimator
 {
     [SerializeField] private Button _exitButton;
     [SerializeField] private Button _settingsButton;

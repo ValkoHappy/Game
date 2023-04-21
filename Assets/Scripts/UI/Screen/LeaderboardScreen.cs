@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LeaderboardScreen : ScreenUI
+public class LeaderboardScreen : UIScreenAnimator
 {
     [SerializeField] private Button _exitButton1;
     [SerializeField] private Button _exitButton2;
@@ -39,7 +39,7 @@ public class LeaderboardScreen : ScreenUI
 
     public void OnExitButton()
     {
-        Close();
+        CloseScreen();
     }
 
     public void OpenAuthorizationPanel()
@@ -48,7 +48,7 @@ public class LeaderboardScreen : ScreenUI
         if (!PlayerAccount.IsAuthorized)
 #endif
         {
-            Open();
+            OpenScreen();
             _authorizationPanel.SetActive(true);
             _leaderboardPanel.SetActive(false);
         }
@@ -69,7 +69,7 @@ public class LeaderboardScreen : ScreenUI
         if (PlayerAccount.IsAuthorized)
 #endif
         {
-            Open();
+            OpenScreen();
             _authorizationPanel.SetActive(false);
             _leaderboardPanel.SetActive(true);
         }

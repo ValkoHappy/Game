@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class MovementScreen : ScreenUI
+public class MovementScreen : UIScreenAnimator
 {
     [SerializeField] private Button _saveButton;
     [SerializeField] private Button _delateButton;
@@ -17,7 +17,7 @@ public class MovementScreen : ScreenUI
 
     private void Start()
     {
-        Open();
+        OpenScreen();
     }
 
     private void OnEnable()
