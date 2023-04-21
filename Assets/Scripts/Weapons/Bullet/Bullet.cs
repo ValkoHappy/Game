@@ -10,9 +10,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] private ParticleSystem _particle;
 
     private Rigidbody _rigidbody;
-    
-    public int Damage => _damage;
+    private float _delayDestroy = 3;
 
+    public int Damage => _damage;
+    
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -22,9 +23,8 @@ public class Bullet : MonoBehaviour
     {
         Vector3 direction = transform.forward;
         _rigidbody.velocity = direction.normalized * _speed;
-        Destroy(gameObject, 3);
+        Destroy(gameObject, _delayDestroy);
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
