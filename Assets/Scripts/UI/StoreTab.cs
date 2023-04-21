@@ -121,7 +121,7 @@ public class StoreTab : MonoBehaviour
         }
 
         Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
-        _buildingsManager.AddBuilding(building.PeacefulConstruction);
+        _buildingsManager.AddBuilding(building._peacefulConstruction);
     }
 
     private void OnPurchaseCancelled()

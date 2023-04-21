@@ -148,7 +148,7 @@ public class BuildingsGrid : MonoBehaviour
     public void CreateTowerHall()
     {
         _flyingBuilding = Instantiate(_towerHall, _container);
-        _buildingsManager.AddBuilding(_flyingBuilding.PeacefulConstruction);
+        _buildingsManager.AddBuilding(_flyingBuilding._peacefulConstruction);
         int placeX = Mathf.RoundToInt(_flyingBuilding.transform.position.x);
         int placeY = Mathf.RoundToInt(_flyingBuilding.transform.position.z);
 
