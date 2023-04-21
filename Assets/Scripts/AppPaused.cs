@@ -1,5 +1,4 @@
 using UnityEngine;
-using Agava.YandexGames;
 using Agava.WebUtility;
 
 public class AppPaused : MonoBehaviour
