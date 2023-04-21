@@ -9,7 +9,6 @@ public class YandexInitialization : MonoBehaviour
 #if UNITY_WEBGL && !UNITY_EDITOR
     private void Awake()
     {
-
         YandexGamesSdk.CallbackLogging = true;
     }
 
