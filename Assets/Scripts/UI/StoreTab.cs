@@ -121,7 +121,7 @@ public class StoreTab : MonoBehaviour
     {
         if (_isSoldForCrystalsGoods)
         {
-            _crystalsContainer.GetCrystals(_priceGoods);
+            _crystalsContainer.AddCrystals(_priceGoods);
             _priceGoods = 0;
         }
         else

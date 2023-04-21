@@ -8,7 +8,7 @@ public class CrystalsContainer : MonoBehaviour
     public int Crystals => _crystals;
     public event UnityAction<int> CrystalsChanged;
 
-    public void GetCrystals(int value)
+    public void AddCrystals(int value)
     {
         _crystals += value;
         CrystalsChanged?.Invoke(_crystals);
