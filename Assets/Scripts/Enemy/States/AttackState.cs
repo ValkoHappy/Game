@@ -7,7 +7,7 @@ public class AttackState : EnemyState
     [SerializeField] private float _attackDelay;
 
     private Coroutine _attackCoroutine;
-    private const string _attack = "Attack";
+    private const string Attack = "Attack";
 
     private void OnEnable()
     {
@@ -23,22 +23,18 @@ public class AttackState : EnemyState
         }
     }
 
-    private void Update()
-    {
-    }
-
     private void StartAttack()
     {
         if (_attackCoroutine != null)
         {
             StopCoroutine(_attackCoroutine);
         }
-        _attackCoroutine = StartCoroutine(Attack());
+        _attackCoroutine = StartCoroutine(AttackCoroutine());
     }
 
-    private IEnumerator Attack()
+    private IEnumerator AttackCoroutine()
     {
-        Animator.SetTrigger(_attack);
+        Animator.SetTrigger(Attack);
         var waitForSecounds = new WaitForSeconds(_attackDelay);
         PeacefulConstruction.ApplyDamage(_attackForce);
         yield return waitForSecounds;
