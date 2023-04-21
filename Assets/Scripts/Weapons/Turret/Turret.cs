@@ -93,7 +93,6 @@ public class Turret : MonoBehaviour
                         nearestEnemy = target;
                     }
                 }
-
             }
 
             if (nearestEnemy != null && nearestEnemy.IsAlive())
