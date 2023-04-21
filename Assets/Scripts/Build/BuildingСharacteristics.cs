@@ -6,7 +6,7 @@ public class BuildingСharacteristics : MonoBehaviour
 {
     [SerializeField] private HealthContainer _healthContainer;
     [SerializeField] private ShootTurret _shootTurret;
-    [SerializeField] private Extraction _extraction;
+    [SerializeField] private GeneratorMining _extraction;
     [SerializeField] private Goods _goods;
 
     [SerializeField] private TMP_Text _labelText;

@@ -30,7 +30,7 @@ public class IndicatorReceivedCurrency : MonoBehaviour
     {
         if(building.tag == _extraction)
         {
-            AmountCurrencyReceived += building.GetComponentInChildren<Extraction>().AmountMoneyProduced;
+            AmountCurrencyReceived += building.GetComponentInChildren<GeneratorMining>().AmountMoneyProduced;
         }
         OnCurrencyReceived?.Invoke(AmountCurrencyReceived);
     }
