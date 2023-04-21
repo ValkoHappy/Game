@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -26,12 +24,10 @@ public class ShopScreen : UIScreenAnimator
         _storeTabWeapons.OpenScreen();   
     }
 
-
     private void OnEnable()
     {
         _exitButton.onClick.AddListener(OnExitButton);
-        _advertisingButton.onClick.AddListener(GetCrystalsForAdvertising);
-
+        _advertisingButton.onClick.AddListener(ClaimCrystalsForAdvertising);
         _storeTabFencesButton.onClick.AddListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.AddListener(OnStoreTabWeapons);
         _storeTabGeneratorsButton.onClick.AddListener(OnStoreTabGenerators);
@@ -41,8 +37,7 @@ public class ShopScreen : UIScreenAnimator
     private void OnDisable()
     {
         _exitButton.onClick.RemoveListener(OnExitButton);
-        _advertisingButton.onClick.RemoveListener(GetCrystalsForAdvertising);
-
+        _advertisingButton.onClick.RemoveListener(ClaimCrystalsForAdvertising);
         _storeTabFencesButton.onClick.RemoveListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.RemoveListener(OnStoreTabWeapons);
         _storeTabGeneratorsButton.onClick.RemoveListener(OnStoreTabGenerators);
@@ -56,34 +51,25 @@ public class ShopScreen : UIScreenAnimator
     private void OnStoreTabMainBuildings()
     {
         _storeTabFences.OpenScreen();
-        _storeTabFences.Panel.alpha = 1;
         _storeTabWeapons.CloseScreen();
-        _storeTabWeapons.Panel.alpha = 0;
         _storeTabGenerators.CloseScreen();
-        _storeTabGenerators.Panel.alpha = 0;
     }
 
     private void OnStoreTabWeapons()
     {
         _storeTabFences.CloseScreen();
-        _storeTabFences.Panel.alpha = 0;
         _storeTabWeapons.OpenScreen();
-        _storeTabWeapons.Panel.alpha = 1;
         _storeTabGenerators.CloseScreen();
-        _storeTabGenerators.Panel.alpha = 0;
     }
 
     private void OnStoreTabGenerators()
     {
         _storeTabFences.CloseScreen();
-        _storeTabFences.Panel.alpha = 0;
         _storeTabWeapons.CloseScreen();
-        _storeTabWeapons.Panel.alpha = 0;
         _storeTabGenerators.OpenScreen();
-        _storeTabGenerators.Panel.alpha = 1;
     }
 
-    private void GetCrystalsForAdvertising()
+    private void ClaimCrystalsForAdvertising()
     {
         _levelReward.ClaimCrystalsForAdvertising();
     }
