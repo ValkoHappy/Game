@@ -8,7 +8,7 @@ public class StoreTab : MonoBehaviour
 {
     [SerializeField] private GoldContainer _goldContainer;
     [SerializeField] private CrystalsContainer _crystalsContainer; 
-    [SerializeField] private BuildingsManager _buildingsManager;
+    [SerializeField] private BuildingsHandler _buildingsManager;
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private LevelReward _levelReward;
     [SerializeField] private TrainingScreen _trainingScreen;

@@ -6,7 +6,7 @@ public class IndicatorReceivedCurrency : MonoBehaviour
     [SerializeField] private string _extraction;
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private Spawner _spawner;
-    [SerializeField] private BuildingsManager _buildingsManager;
+    [SerializeField] private BuildingsHandler _buildingsManager;
 
     public event UnityAction<int> OnCurrencyReceived;
 

@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BuildingsManager : MonoBehaviour
+public class BuildingsHandler : MonoBehaviour
 {
     [SerializeField] private Transform _container;
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private StarsScore _starsScore;
 
-    private const string _fence = "Fence";
     private List<PeacefulConstruction> _buildings;
-    
+    private const string Fence = "Fence";
+
     public event UnityAction AllBuildingsBroked;
     public event UnityAction AllBuildingsDeleted;
 
@@ -32,7 +32,7 @@ public class BuildingsManager : MonoBehaviour
     public void AddBuilding(PeacefulConstruction building)
     {
         _buildings.Add(building);
-        if(building.tag != _fence)
+        if(building.tag != Fence)
             _starsScore.AddBuildingsCount();
         building.Die += OnBuildingDeath;
     }
@@ -40,7 +40,6 @@ public class BuildingsManager : MonoBehaviour
     public void OnBuildingDeath(PeacefulConstruction building)
     {
         building.Die -= OnBuildingDeath;
-
         if (_buildings.Count <= 0)
         {
             AllBuildingsBroked?.Invoke();
@@ -48,10 +47,9 @@ public class BuildingsManager : MonoBehaviour
 
         if(building.IsAlive() ==false)
         {
-            if (building.tag != _fence)
+            if (building.tag != Fence)
                 _starsScore.AddBuildingsDiedCount();
         }
-
         bool allBuildingsDestroyed = true;
 
         foreach (var construction in _buildings)
@@ -78,6 +76,16 @@ public class BuildingsManager : MonoBehaviour
         }
     }
 
+    public void OnDestroyAllBuildings()
+    {
+        foreach (var building in _buildings)
+        {
+            building.Destroy();
+        }
+        AllBuildingsDeleted?.Invoke();
+        _buildings.Clear();
+    }
+
     private void OnDestroyBuilding(Building building)
     {
         for (int i = 0; i < _buildings.Count; i++)
@@ -88,15 +96,5 @@ public class BuildingsManager : MonoBehaviour
                 _starsScore.RemoveBuildingsCount();
             }
         }
-    }
-
-    public void OnDestroyAllBuildings()
-    {
-        foreach (var building in _buildings)
-        {
-            building.Destroy();
-        }
-        AllBuildingsDeleted?.Invoke();
-        _buildings.Clear();
     }
 }

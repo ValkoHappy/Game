@@ -15,7 +15,7 @@ public class Game : MonoBehaviour
 
     [SerializeField] private Spawner _spawner;
     [SerializeField] private EnemyManager _enemyManager;
-    [SerializeField] private BuildingsManager _buildingsManager;
+    [SerializeField] private BuildingsHandler _buildingsManager;
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private StarsScore _starsScore;
     [SerializeField] private LobbyCameraAnimation _limbCameraAnimation;

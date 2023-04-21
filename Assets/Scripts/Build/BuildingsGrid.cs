@@ -6,7 +6,7 @@ using static MoveSelection;
 
 public class BuildingsGrid : MonoBehaviour
 {
-    [SerializeField] private BuildingsManager _buildingsManager;
+    [SerializeField] private BuildingsHandler _buildingsManager;
 
     [SerializeField] private Vector2Int _gridSize;
     [SerializeField] private Transform _container;
