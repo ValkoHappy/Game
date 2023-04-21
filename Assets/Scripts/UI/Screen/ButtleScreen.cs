@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class ButtleScreen : ScreenUI
+public class ButtleScreen : UIScreenAnimator
 {
     [SerializeField] private Button _exitButton;
     [SerializeField] private Button _settingsButton;

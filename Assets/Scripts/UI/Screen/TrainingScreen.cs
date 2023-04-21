@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
 
 public class TrainingScreen : MonoBehaviour
 {
@@ -47,7 +43,6 @@ public class TrainingScreen : MonoBehaviour
 
     private bool _isOpenWindow1 = true;
     private bool _isEndOfTutorial = true;
-    private bool _isButtleOfTutorial = true;
     private bool isHowMuchProducedByGenerators = true;
 
     public event UnityAction TutorialFinished;
@@ -120,7 +115,6 @@ public class TrainingScreen : MonoBehaviour
             _panel1.SetActive(true);
             _isOpenWindow1 = false;
         }
-
     }
 
     public void OpenEndTutorialWindow()

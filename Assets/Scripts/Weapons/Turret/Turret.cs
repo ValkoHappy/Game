@@ -13,7 +13,7 @@ public class Turret : MonoBehaviour
     private PeacefulConstruction _construction;
     private SphereCollider _sphereCollider;
     private BuildingsGrid _buildingsGrid;
-    private EnemyManager _enemyManager;
+    private EnemyHandler _enemyManager;
     private Coroutine _sortCoroutine;
 
     public PeacefulConstruction Construction => _construction;
@@ -25,7 +25,7 @@ public class Turret : MonoBehaviour
         _shootTurret = GetComponent<ShootTurret>();
         _construction = GetComponentInChildren<PeacefulConstruction>();
         _sphereCollider = GetComponent<SphereCollider>();
-        _enemyManager= FindObjectOfType<EnemyManager>();
+        _enemyManager= FindObjectOfType<EnemyHandler>();
     }
 
     private void OnEnable()
@@ -93,7 +93,6 @@ public class Turret : MonoBehaviour
                         nearestEnemy = target;
                     }
                 }
-
             }
 
             if (nearestEnemy != null && nearestEnemy.IsAlive())

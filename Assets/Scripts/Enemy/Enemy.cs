@@ -15,7 +15,6 @@ public class Enemy : MonoBehaviour
     private Animator _animator;
     private Rigidbody _rigidbody;
     private HealthContainer _healthContainer;
-
     private PeacefulConstruction _targetConstruction;
 
     public event UnityAction<Enemy> Died;
@@ -80,6 +79,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void ApplayDamage(Rigidbody rigidbody, int damage, int force)
+    {
+        if (_currentState != _brokenState)
+        {
+            _healthContainer.TakeDamage(damage);
+            if (_healthContainer.Health <= 0)
+            {
+                Transit(_brokenState);
+                _brokenState.ApplyDamage(rigidbody, force);
+            }
+        }
+    }
+
     private void Transit(EnemyState nextState)
     {
         if (_currentState != null)
@@ -89,18 +101,5 @@ public class Enemy : MonoBehaviour
 
         if (_currentState != null)
             _currentState.Enter(_targetConstruction, _animator, _rigidbody);
-    }
-
-    public void ApplayDamage(Rigidbody rigidbody, int damage, int force)
-    {
-        if (_currentState != _brokenState)
-        {
-            _healthContainer.TakeDamage(damage);
-            if(_healthContainer.Health <= 0)
-            {
-                Transit(_brokenState);
-                _brokenState.ApplyDamage(rigidbody, force);
-            }
-        }
     }
 }

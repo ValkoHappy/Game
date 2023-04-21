@@ -10,7 +10,7 @@ public class RangeCollider : MonoBehaviour
         _collider = GetComponent<SphereCollider>();
     }
 
-    public void GetRange(float radius)
+    public void SetRange(float radius)
     {
         _collider.radius = radius;
     }

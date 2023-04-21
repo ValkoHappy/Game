@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(PeacefulConstruction), typeof(Animator))]
-public class Extraction : MonoBehaviour
+public class GeneratorMining : MonoBehaviour
 {
     [SerializeField] private int _amountMoneyProduced;
     [SerializeField] private float _waitForSecounds;
@@ -14,7 +14,7 @@ public class Extraction : MonoBehaviour
     private Animator _animator;
     private Building _building;
     private BuildingsGrid _buildingGrid;
-    private const string _extraction = "Extraction";
+    private const string Extraction = "Extraction";
 
     public int AmountMoneyProduced => _amountMoneyProduced;
 
@@ -48,6 +48,17 @@ public class Extraction : MonoBehaviour
         _healthContainer.Died -= OnOffExtractionAnimation;
     }
 
+    public void OnExtractionAnimation()
+    {
+        _animator.enabled = true;
+        _animator.SetTrigger(Extraction);
+    }
+
+    public void OnOffExtractionAnimation()
+    {
+        _animator.enabled = false;
+    }
+
     private void StartExtract()
     {
         if (_moneyContainer != null && _peacefulConstruction.IsAlive())
@@ -68,8 +79,7 @@ public class Extraction : MonoBehaviour
     private IEnumerator Extract()
     {
         var waitForSecounds = new WaitForSeconds(_waitForSecounds);
-
-        _moneyContainer.GetGold(_amountMoneyProduced);
+        _moneyContainer.AddGold(_amountMoneyProduced);
         yield return waitForSecounds;
 
         if (_peacefulConstruction.IsAlive())
@@ -80,16 +90,5 @@ public class Extraction : MonoBehaviour
         {
             OnOffExtractionAnimation();
         }
-    }
-
-    public void OnExtractionAnimation()
-    {
-        _animator.enabled = true;
-        _animator.SetTrigger(_extraction);
-    }
-
-    public void OnOffExtractionAnimation()
-    {
-        _animator.enabled = false;
     }
 }

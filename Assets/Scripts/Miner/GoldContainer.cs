@@ -8,11 +8,12 @@ public class GoldContainer : MonoBehaviour
 
     private int _allGoldReceived;
 
-    public int Gold => _gold;
-    public int AllGoldReceived => _allGoldReceived;
     public event UnityAction<int> GoldChanged;
 
-    public void GetGold(int value)
+    public int Gold => _gold;
+    public int AllGoldReceived => _allGoldReceived;
+
+    public void AddGold(int value)
     {
         _gold += value;
         _allGoldReceived += value;

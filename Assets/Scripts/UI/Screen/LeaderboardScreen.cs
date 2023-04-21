@@ -1,12 +1,9 @@
 using Agava.YandexGames;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class LeaderboardScreen : ScreenUI
+public class LeaderboardScreen : UIScreenAnimator
 {
     [SerializeField] private Button _exitButton1;
     [SerializeField] private Button _exitButton2;
@@ -19,11 +16,12 @@ public class LeaderboardScreen : ScreenUI
     [SerializeField] private TMP_Text[] _scoreList;
     [SerializeField] private string _leaderboardName = "Coins";
 
+    private const string AllGold = "AllGold";
     private int _playerScore = 0;
 
     private void Start()
     {
-        _playerScore = PlayerPrefs.GetInt("AllGold");
+        _playerScore = PlayerPrefs.GetInt(AllGold);
     }
 
     private void OnEnable()
@@ -31,7 +29,6 @@ public class LeaderboardScreen : ScreenUI
         _exitButton1.onClick.AddListener(OnExitButton);
         _exitButton2.onClick.AddListener(OnExitButton);
         _authorizationButton.onClick.AddListener(OpenLeaderboardPanel);
-        SetLeaderboardScore();
     }
 
     private void OnDisable()
@@ -43,7 +40,7 @@ public class LeaderboardScreen : ScreenUI
 
     public void OnExitButton()
     {
-        Close();
+        CloseScreen();
     }
 
     public void OpenAuthorizationPanel()
@@ -52,7 +49,7 @@ public class LeaderboardScreen : ScreenUI
         if (!PlayerAccount.IsAuthorized)
 #endif
         {
-            Open();
+            OpenScreen();
             _authorizationPanel.SetActive(true);
             _leaderboardPanel.SetActive(false);
         }
@@ -64,21 +61,6 @@ public class LeaderboardScreen : ScreenUI
 #endif
     }
 
-    private void OpenLeaderboardPanel()
-    {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        SetLeaderboardScore();
-        OpenYandexLeaderboard();
-
-        if (PlayerAccount.IsAuthorized)
-#endif
-        {
-            Open();
-            _authorizationPanel.SetActive(false);
-            _leaderboardPanel.SetActive(true);
-        }
-    }
-
     public void OpenYandexLeaderboard()
     {
         PlayerAccount.RequestPersonalProfileDataPermission();
@@ -87,7 +69,6 @@ public class LeaderboardScreen : ScreenUI
 
         Leaderboard.GetEntries(_leaderboardName, (result) =>
         {
-
             int leadersNumber = result.entries.Length >= _leaderNames.Length ? _leaderNames.Length : result.entries.Length;
             for (int i = 0; i < leadersNumber; i++)
             {
@@ -108,6 +89,21 @@ public class LeaderboardScreen : ScreenUI
         if (YandexGamesSdk.IsInitialized)
         {
             Leaderboard.GetPlayerEntry(_leaderboardName, OnSuccessCallback);
+        }
+    }
+
+    private void OpenLeaderboardPanel()
+    {
+#if UNITY_WEBGL && !UNITY_EDITOR
+        SetLeaderboardScore();
+        OpenYandexLeaderboard();
+
+        if (PlayerAccount.IsAuthorized)
+#endif
+        {
+            OpenScreen();
+            _authorizationPanel.SetActive(false);
+            _leaderboardPanel.SetActive(true);
         }
     }
 

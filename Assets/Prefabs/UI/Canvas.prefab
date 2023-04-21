@@ -10700,6 +10700,7 @@ MonoBehaviour:
   _extraction: Wind
   _buildingsGrid: {fileID: 0}
   _spawner: {fileID: 0}
+  _buildingsManager: {fileID: 0}
 --- !u!224 &6188542513835017781 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5616292217817321525, guid: c81f89fdc0716a44caa01d9799f2acf3, type: 3}
@@ -11953,6 +11954,7 @@ MonoBehaviour:
   _extraction: Oil
   _buildingsGrid: {fileID: 0}
   _spawner: {fileID: 0}
+  _buildingsManager: {fileID: 0}
 --- !u!114 &8614261913163472924 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3799717483317846129, guid: c81f89fdc0716a44caa01d9799f2acf3, type: 3}
@@ -12249,6 +12251,7 @@ MonoBehaviour:
   _extraction: Solar
   _buildingsGrid: {fileID: 0}
   _spawner: {fileID: 0}
+  _buildingsManager: {fileID: 0}
 --- !u!1001 &6593449296509481486
 PrefabInstance:
   m_ObjectHideFlags: 0

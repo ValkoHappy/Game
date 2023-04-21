@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class StarsScore : MonoBehaviour
 {
@@ -11,32 +8,26 @@ public class StarsScore : MonoBehaviour
     private float _buildingsCount;
     private float _buildingsDiedCount;
     private float _buildingsStars;
+    private float _delay = 2f;
+    private float _scaleElasticDelay = 0.1f;
+    private int _starsThreshold = 20;
+    private int _buildingsStarsPercentage = 100;
 
     public void ShowStars()
     {
-        _buildingsStars = 100 - (_buildingsDiedCount / _buildingsCount * 100);
-        if (_buildingsStars >= 1)
+        _buildingsStars = _buildingsStarsPercentage - (_buildingsDiedCount / _buildingsCount * _buildingsStarsPercentage);
+        for (int i = 0; i < _stars.Length; i++)
         {
-            LeanTween.scale(_stars[0], new Vector3(1f, 1f, 1f), 2f).setDelay(.1f).setEase(LeanTweenType.easeOutElastic);
+            if (_buildingsStars >= (i + 1) * _starsThreshold)
+            {
+                LeanTween.scale(_stars[i], new Vector3(1f, 1f, 1f), _delay).setDelay(_scaleElasticDelay * (i + 1)).setEase(LeanTweenType.easeOutElastic);
+            }
         }
-        if (_buildingsStars >= 20)
+
+        for (int i = 0; i < _rewards.Length; i++)
         {
-            LeanTween.scale(_stars[1], new Vector3(1f, 1f, 1f), 2f).setDelay(.2f).setEase(LeanTweenType.easeOutElastic);
+            LeanTween.scale(_rewards[i], new Vector3(1f, 1f, 1f), _delay).setDelay(_scaleElasticDelay * (i + 1)).setEase(LeanTweenType.easeOutElastic);
         }
-        if(_buildingsStars >= 40) 
-        {
-            LeanTween.scale(_stars[2], new Vector3(1f, 1f, 1f), 2f).setDelay(.3f).setEase(LeanTweenType.easeOutElastic);
-        }
-        if (_buildingsStars >= 80)
-        {
-            LeanTween.scale(_stars[3], new Vector3(1f, 1f, 1f), 2f).setDelay(.4f).setEase(LeanTweenType.easeOutElastic);
-        }
-        if (_buildingsStars == 100)
-        {
-            LeanTween.scale(_stars[4], new Vector3(1f, 1f, 1f), 2f).setDelay(.5f).setEase(LeanTweenType.easeOutElastic);
-        }
-        LeanTween.scale(_rewards[0], new Vector3(1f, 1f, 1f), 2f).setDelay(.6f).setEase(LeanTweenType.easeOutElastic);
-        LeanTween.scale(_rewards[1], new Vector3(1f, 1f, 1f), 2f).setDelay(.7f).setEase(LeanTweenType.easeOutElastic);
     }
 
     public void CloseStars()
@@ -45,6 +36,7 @@ public class StarsScore : MonoBehaviour
         {
             star.LeanScale(new Vector3(0, 0, 0), 0);
         }
+
         foreach (var reward in _rewards)
         {
             reward.LeanScale(new Vector3(0, 0, 0), 0);
@@ -59,8 +51,9 @@ public class StarsScore : MonoBehaviour
 
     public void RemoveBuildingsCount()
     {
-        _buildingsCount++;
+        _buildingsCount--;
     }
+
     public void AddBuildingsDiedCount()
     {
         _buildingsDiedCount++;

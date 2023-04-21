@@ -1,11 +1,8 @@
-using Lean.Localization;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class SettingMenuScreen : ScreenUI
+public class SettingMenuScreen : UIScreenAnimator
 {
     [SerializeField] private Button _exitButton;
     [SerializeField] private Button _russianButton;

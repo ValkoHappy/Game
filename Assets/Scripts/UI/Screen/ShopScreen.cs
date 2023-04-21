@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class ShopScreen : ScreenUI
+public class ShopScreen : UIScreenAnimator
 {
     [SerializeField] private LevelReward _levelReward;
 
@@ -15,23 +13,21 @@ public class ShopScreen : ScreenUI
     [SerializeField] private Button _storeTabWeaponsButton;
     [SerializeField] private Button _storeTabGeneratorsButton;
 
-    [SerializeField] private ScreenUI _storeTabFences;
-    [SerializeField] private ScreenUI _storeTabWeapons;
-    [SerializeField] private ScreenUI _storeTabGenerators;
+    [SerializeField] private UIScreenAnimator _storeTabFences;
+    [SerializeField] private UIScreenAnimator _storeTabWeapons;
+    [SerializeField] private UIScreenAnimator _storeTabGenerators;
 
     public event UnityAction ExitButtonClick;
 
     private void Start()
     {
-        _storeTabWeapons.Open();   
+        _storeTabWeapons.OpenScreen();   
     }
-
 
     private void OnEnable()
     {
         _exitButton.onClick.AddListener(OnExitButton);
-        _advertisingButton.onClick.AddListener(GetCrystalsForAdvertising);
-
+        _advertisingButton.onClick.AddListener(ClaimCrystalsForAdvertising);
         _storeTabFencesButton.onClick.AddListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.AddListener(OnStoreTabWeapons);
         _storeTabGeneratorsButton.onClick.AddListener(OnStoreTabGenerators);
@@ -41,8 +37,7 @@ public class ShopScreen : ScreenUI
     private void OnDisable()
     {
         _exitButton.onClick.RemoveListener(OnExitButton);
-        _advertisingButton.onClick.RemoveListener(GetCrystalsForAdvertising);
-
+        _advertisingButton.onClick.RemoveListener(ClaimCrystalsForAdvertising);
         _storeTabFencesButton.onClick.RemoveListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.RemoveListener(OnStoreTabWeapons);
         _storeTabGeneratorsButton.onClick.RemoveListener(OnStoreTabGenerators);
@@ -55,37 +50,28 @@ public class ShopScreen : ScreenUI
 
     private void OnStoreTabMainBuildings()
     {
-        _storeTabFences.Open();
-        _storeTabFences.Panel.alpha = 1;
-        _storeTabWeapons.Close();
-        _storeTabWeapons.Panel.alpha = 0;
-        _storeTabGenerators.Close();
-        _storeTabGenerators.Panel.alpha = 0;
+        _storeTabFences.OpenScreen();
+        _storeTabWeapons.CloseScreen();
+        _storeTabGenerators.CloseScreen();
     }
 
     private void OnStoreTabWeapons()
     {
-        _storeTabFences.Close();
-        _storeTabFences.Panel.alpha = 0;
-        _storeTabWeapons.Open();
-        _storeTabWeapons.Panel.alpha = 1;
-        _storeTabGenerators.Close();
-        _storeTabGenerators.Panel.alpha = 0;
+        _storeTabFences.CloseScreen();
+        _storeTabWeapons.OpenScreen();
+        _storeTabGenerators.CloseScreen();
     }
 
     private void OnStoreTabGenerators()
     {
-        _storeTabFences.Close();
-        _storeTabFences.Panel.alpha = 0;
-        _storeTabWeapons.Close();
-        _storeTabWeapons.Panel.alpha = 0;
-        _storeTabGenerators.Open();
-        _storeTabGenerators.Panel.alpha = 1;
+        _storeTabFences.CloseScreen();
+        _storeTabWeapons.CloseScreen();
+        _storeTabGenerators.OpenScreen();
     }
 
-    private void GetCrystalsForAdvertising()
+    private void ClaimCrystalsForAdvertising()
     {
-        _levelReward.GetCrystalsForAdvertising();
+        _levelReward.ClaimCrystalsForAdvertising();
     }
 
     public void TurnOffAllButton()

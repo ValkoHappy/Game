@@ -27,7 +27,6 @@ public class EnemyAudio : MonoBehaviour
         {
             yield return null;
         }
-
         StartCoroutine(PlayRandomClipWithDelay());
     }
 
@@ -38,11 +37,9 @@ public class EnemyAudio : MonoBehaviour
         {
             randomIndex = GetRandomClipIndex();
         }
-
         AudioClip randomClip = _audioClips[randomIndex];
         _audioSource.clip = randomClip;
         _audioSource.Play();
-
         _lastClipIndex = randomIndex;
     }
 

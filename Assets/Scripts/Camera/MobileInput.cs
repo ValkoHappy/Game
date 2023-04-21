@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Joystick))]
-public class MobileController : MonoBehaviour
+public class MobileInput : MonoBehaviour
 {
     [SerializeField] private CameraMover _cameraMover;
 

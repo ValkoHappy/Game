@@ -1,10 +1,10 @@
 public class Zoom
 {
-    private int _zoomCount;
-    private int _minZoom;
-    private int _maxZoom;
-    private int _zOffset;
-    private int _xOffset;
+    private int _zoomCount = 0;
+    private int _minZoom = 0;
+    private int _maxZoom = 2;
+    private int _zOffset = 50;
+    private int _xOffset = 25;
     private float _left;
     private float _right;
     private float _top;
@@ -24,11 +24,6 @@ public class Zoom
         _right = rightBound;
         _top = topBound;
         _bottom = bottomBound;
-        _zoomCount = 0;
-        _minZoom = 0;
-        _maxZoom = 2;
-        _zOffset = 50;
-        _xOffset = 25;
     }
 
     public void ZoomIn()

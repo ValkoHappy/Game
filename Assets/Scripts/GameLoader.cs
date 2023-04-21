@@ -28,8 +28,6 @@ public class GameLoader : MonoBehaviour
         }
     }
 
-    
-
     private void OnEnable()
     {
         _saveSystem.SaveNotFound += OffContinueButton;
@@ -64,12 +62,12 @@ public class GameLoader : MonoBehaviour
 
     private void OpenSettingMenuScreen()
     {
-        _settingMenuScreen.Open();
+        _settingMenuScreen.OpenScreen();
     }
 
     private void CloseSettingMenuScreen()
     {
-        _settingMenuScreen.Close();
+        _settingMenuScreen.CloseScreen();
     }
 
     private void ResetPlay()

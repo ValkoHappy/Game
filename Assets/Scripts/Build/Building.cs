@@ -5,20 +5,23 @@ public class Building : MonoBehaviour
 {
     [SerializeField] private Vector2Int _size;
 
-    private Renderer[] _renderers;
+    private Color _color1 = new Color(0, 1, 0, 0.3f);
+    private Color _color2 = new Color(1, 0, 0, 0.3f);
     private Color[] _originalColors;
+    private Renderer[] _renderers;
     private bool _isBuilding;
-    public PeacefulConstruction PeacefulConstruction { get; private set; }
+    private PeacefulConstruction _peacefulConstruction;
 
     public event UnityAction DeliveryBuilding;
     public event UnityAction CreateBuilding;
 
     public Vector2Int TileSize => _size;
     public bool IsBuilding => _isBuilding;
+    public PeacefulConstruction PeacefulConstruction => _peacefulConstruction;
 
     private void Awake()
     {
-        PeacefulConstruction = GetComponentInChildren<PeacefulConstruction>();
+        _peacefulConstruction = GetComponentInChildren<PeacefulConstruction>();
         _renderers = GetComponentsInChildren<Renderer>();
         _originalColors = new Color[_renderers.Length];
         for (int i = 0; i < _renderers.Length; i++)
@@ -31,12 +34,12 @@ public class Building : MonoBehaviour
     {
         if (available)
         {
-            SetColor(new Color(0, 1, 0, 0.3f));
+            SetColor(_color1);
             _isBuilding = true;
         }
         else
         {
-            SetColor(new Color(1, 0, 0, 0.3f));
+            SetColor(_color2);
             _isBuilding = false;
         }
     }
@@ -60,18 +63,6 @@ public class Building : MonoBehaviour
         foreach (var renderer in _renderers)
         {
             renderer.material.color = color;
-        }
-    }
-
-    private void OnDrawGizmos()
-    {
-        for (int x = 0; x < _size.x; x++)
-        {
-            for (int y = 0; y < _size.y; y++)
-            {
-                Gizmos.color = new Color(0,1,0,0.3f);
-                Gizmos.DrawCube(transform.position + new Vector3(x, 0, y), new Vector3(1, .1f, 1));
-            }
         }
     }
 }
