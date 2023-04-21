@@ -28,8 +28,6 @@ public class GameLoader : MonoBehaviour
         }
     }
 
-    
-
     private void OnEnable()
     {
         _saveSystem.SaveNotFound += OffContinueButton;
