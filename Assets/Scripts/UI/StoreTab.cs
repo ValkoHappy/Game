@@ -20,7 +20,7 @@ public class StoreTab : MonoBehaviour
 
     private int _priceGoods = 0;
     private bool _isSoldForCrystalsGoods;
-
+    private const string Level = "Level";
 
     private void OnEnable()
     {
@@ -46,7 +46,7 @@ public class StoreTab : MonoBehaviour
 
     private void Start()
     {
-        int level = PlayerPrefs.GetInt("Level");
+        int level = PlayerPrefs.GetInt(Level);
         if (level <= 1)
         {
             AddItem(_buildings[0]);
@@ -94,11 +94,9 @@ public class StoreTab : MonoBehaviour
         _priceGoods = statsBuilding.Price;
         if (statsBuilding.IsSoldForCrystals)
         {
-
             if (statsBuilding.Price <= _crystalsContainer.Crystals)
             {
                 _crystalsContainer.BuyBuilding(statsBuilding);
-                //_levelReward.AddCrystalsSpent(statsBuilding.Price);
                 _isSoldForCrystalsGoods = true;
             }
             else
@@ -111,7 +109,6 @@ public class StoreTab : MonoBehaviour
             if (statsBuilding.Price <= _goldContainer.Gold)
             {
                 _goldContainer.BuyBuilding(statsBuilding);
-                //_levelReward.AddGoldSpent(statsBuilding.Price);
                 _isSoldForCrystalsGoods = false;
             }
             else
@@ -119,9 +116,8 @@ public class StoreTab : MonoBehaviour
                 return;
             }
         }
-
         Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
-        _buildingsManager.AddBuilding(building._peacefulConstruction);
+        _buildingsManager.AddBuilding(building.PeacefulConstruction);
     }
 
     private void OnPurchaseCancelled()
