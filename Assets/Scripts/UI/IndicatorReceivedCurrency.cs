@@ -26,18 +26,18 @@ public class IndicatorReceivedCurrency : MonoBehaviour
         _buildingsManager.AllBuildingsDeleted -= RemoveAllAmountCurrent;
     }
 
+    public void RemoveAllAmountCurrent()
+    {
+        AmountCurrencyReceived = 0;
+        OnCurrencyReceived?.Invoke(AmountCurrencyReceived);
+    }
+
     private void AddAmountCurrent(Building building)
     {
         if(building.tag == _extraction)
         {
             AmountCurrencyReceived += building.GetComponentInChildren<GeneratorMining>().AmountMoneyProduced;
         }
-        OnCurrencyReceived?.Invoke(AmountCurrencyReceived);
-    }
-
-    public void RemoveAllAmountCurrent()
-    {
-        AmountCurrencyReceived = 0;
         OnCurrencyReceived?.Invoke(AmountCurrencyReceived);
     }
 }
