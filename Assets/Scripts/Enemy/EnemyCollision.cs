@@ -6,9 +6,11 @@ public class EnemyCollision : MonoBehaviour, IDamageable
 {
     private Enemy _enemy;
     private bool _isAlive;
-    public HealthContainer _healthContainer { get; protected set; }
+    private HealthContainer _healthContainer;
 
     public event UnityAction<EnemyCollision> Died;
+
+    public HealthContainer HealthContainer => _healthContainer;
 
     private void Awake()
     {
@@ -26,13 +28,6 @@ public class EnemyCollision : MonoBehaviour, IDamageable
         _healthContainer.Died -= OnDied;
     }
 
-    protected void OnDied()
-    {
-        enabled = false;
-        _isAlive = false;
-        Died?.Invoke(this);
-    }
-
     public bool IsAlive()
     {
         if (_healthContainer.Health <= 0)
@@ -45,12 +40,6 @@ public class EnemyCollision : MonoBehaviour, IDamageable
         }
     }
 
-    //public void ApplyDamage(float damage)
-    //{
-    //    _healthContainer.TakeDamage((int)damage);
-    //    //_enemy.ApplyDamage();
-    //}
-
     public bool ApplayDamage(Rigidbody rigidbody, int damage, int force)
     {
         if (_enemy.CurrentState != _enemy.BrokenState)
@@ -59,5 +48,12 @@ public class EnemyCollision : MonoBehaviour, IDamageable
             return true;
         }
         return false;
+    }
+
+    protected void OnDied()
+    {
+        enabled = false;
+        _isAlive = false;
+        Died?.Invoke(this);
     }
 }
