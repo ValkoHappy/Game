@@ -79,7 +79,7 @@ public class GeneratorMining : MonoBehaviour
     private IEnumerator Extract()
     {
         var waitForSecounds = new WaitForSeconds(_waitForSecounds);
-        _moneyContainer.GetGold(_amountMoneyProduced);
+        _moneyContainer.AddGold(_amountMoneyProduced);
         yield return waitForSecounds;
 
         if (_peacefulConstruction.IsAlive())

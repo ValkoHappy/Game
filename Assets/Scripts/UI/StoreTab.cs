@@ -126,7 +126,7 @@ public class StoreTab : MonoBehaviour
         }
         else
         {
-            _goldContainer.GetGold(_priceGoods);
+            _goldContainer.AddGold(_priceGoods);
             _priceGoods = 0;
         }
     }

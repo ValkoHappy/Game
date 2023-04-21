@@ -31,7 +31,7 @@ public class LevelReward : MonoBehaviour
 
     public void ClaimReward()
     {
-        _goldContainer.GetGold(_goldCount);
+        _goldContainer.AddGold(_goldCount);
         _crystalsContainer.AddCrystals(_crystalsCount);
         _goldCount = 0;
         _crystalsCount = 0;
@@ -40,7 +40,7 @@ public class LevelReward : MonoBehaviour
     public void ClaimDoubleReward()
     {
         _yandexAds.ShowRewardAd();
-        _goldContainer.GetGold(_goldCount);
+        _goldContainer.AddGold(_goldCount);
         _crystalsContainer.AddCrystals(_crystalsCount * _doubleMultiplier);
         _goldCount = 0;
         _crystalsCount = 0;
@@ -58,7 +58,7 @@ public class LevelReward : MonoBehaviour
 
     public void ReturnSpentResources()
     {
-        _goldContainer.GetGold(_goldSpent);
+        _goldContainer.AddGold(_goldSpent);
         _crystalsContainer.AddCrystals(_crystalsSpent);
         _crystalsSpent = 0;
         _goldSpent = 0;
