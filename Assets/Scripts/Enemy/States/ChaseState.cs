@@ -7,7 +7,7 @@ public class ChaseState : EnemyState
     private FoundBuildings _foundBuildings;
     private NavMeshAgent _agent;
     private PeacefulConstruction _targetConstruction;
-    private const string _run = "Run";
+    private const string Run = "Run";
 
     private void Awake()
     {
@@ -17,13 +17,13 @@ public class ChaseState : EnemyState
 
     private void OnEnable()
     {
-        Animator.SetFloat(_run, 0.01f);
+        Animator.SetFloat(Run, 0.01f);
         _agent.enabled = true;
     }
 
     private void OnDisable()
     {
-        Animator.SetFloat(_run, 0);
+        Animator.SetFloat(Run, 0);
         _agent.enabled = false;
     }
 
