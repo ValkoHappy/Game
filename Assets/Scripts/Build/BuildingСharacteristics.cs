@@ -28,17 +28,17 @@ public class BuildingСharacteristics : MonoBehaviour
 
     private void OnEnable()
     {
-        _localization.LanguageChanged += GetTranslationText;
+        _localization.LanguageChanged += UpdateTranslationText;
     }
 
     private void OnDisable()
     {
-        _localization.LanguageChanged -= GetTranslationText;
+        _localization.LanguageChanged -= UpdateTranslationText;
     }
 
     private void Start()
     {
-        GetTranslationText();
+        UpdateTranslationText();
 
         if (_healthContainer != null)
             _healthText.text = _healthContainer.Health.ToString();
@@ -70,7 +70,7 @@ public class BuildingСharacteristics : MonoBehaviour
             _radiusAttack.SetActive(false);
     }
 
-    private void GetTranslationText()
+    private void UpdateTranslationText()
     {
         _labelText.text = LeanLocalization.GetTranslationText(_goods.Label);
     }
