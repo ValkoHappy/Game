@@ -19,22 +19,19 @@ public class CameraMover : MonoBehaviour
 
     private Camera _camera;
     private Zoom _zoomBounds;
-
-    private const string _mouseWheel = "Mouse ScrollWheel";
-
     private float _minZoom = 15f;
     private float _maxZoom = 70f;
     private float _wheelSpeedMultiplier = 3f;
 
-    public float MinZoom => _minZoom;
+    private const string MouseWheel = "Mouse ScrollWheel";
 
+    public float MinZoom => _minZoom;
     public float MaxZoom => _maxZoom;
 
     private void Awake()
     {
         _camera = GetComponent<Camera>();
         _camera.fieldOfView = _maxZoom;
-        //_camera.transform.position = _startPosition;
         _camera.transform.rotation = _startRotation;
         _zoomBounds = new(_leftBound, _rightBound, _upBound, _downBound);
     }
@@ -49,16 +46,26 @@ public class CameraMover : MonoBehaviour
         if (Input.GetKey(KeyCode.Q))
             ZoomOut();
 
-        if (Input.GetAxis(_mouseWheel) > 0)
+        if (Input.GetAxis(MouseWheel) > 0)
             ZoomIn(_wheelSpeedMultiplier);
 
-        if (Input.GetAxis(_mouseWheel) < 0)
+        if (Input.GetAxis(MouseWheel) < 0)
             ZoomOut(_wheelSpeedMultiplier);
     }
 
     public void Move(Vector3 direction)
     {
         transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(transform.position.x, _zoomBounds.Left, _zoomBounds.Right), transform.position.y, Mathf.Clamp(transform.position.z, _zoomBounds.Bottom, _zoomBounds.Top)) + direction, Time.unscaledDeltaTime * _speed);
+    }
+
+    public void ZoomIn(float multiplier = 1f)
+    {      
+        _camera.fieldOfView = Mathf.MoveTowards(_camera.fieldOfView, _minZoom, Time.unscaledDeltaTime * _zoomSpeed * multiplier);
+    }
+
+    public void ZoomOut(float multiplier = 1f)
+    {
+        _camera.fieldOfView = Mathf.MoveTowards(_camera.fieldOfView, _maxZoom, Time.unscaledDeltaTime * _zoomSpeed * multiplier);
     }
 
     private Vector3 GetDirection()
@@ -78,15 +85,5 @@ public class CameraMover : MonoBehaviour
             direction.z = -1;
 
         return direction;
-    }
-
-    public void ZoomIn(float multiplier = 1f)
-    {      
-        _camera.fieldOfView = Mathf.MoveTowards(_camera.fieldOfView, _minZoom, Time.unscaledDeltaTime * _zoomSpeed * multiplier);
-    }
-
-    public void ZoomOut(float multiplier = 1f)
-    {
-        _camera.fieldOfView = Mathf.MoveTowards(_camera.fieldOfView, _maxZoom, Time.unscaledDeltaTime * _zoomSpeed * multiplier);
     }
 }
