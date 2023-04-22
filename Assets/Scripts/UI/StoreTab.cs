@@ -8,6 +8,7 @@ public class StoreTab : MonoBehaviour
     [SerializeField] private BuildingsHandler _buildingsManager;
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private LevelReward _levelReward;
+    [SerializeField] private TrainingScreen _trainingScreen;
 
     [SerializeField] private List<Goods> _buildings;
     [SerializeField] private BuilderView _builderViewGold;
@@ -22,12 +23,16 @@ public class StoreTab : MonoBehaviour
     {
         _buildingsGrid.DeliveredBuilding += OnCanceliedPurchase;
         _buildingsGrid.RemoveBuilding += OnPurchaseCancelled;
+        if(_trainingScreen != null)
+            _trainingScreen.TrainingFinished += AddMissingItems;
     }
 
     private void OnDisable()
     {
         _buildingsGrid.DeliveredBuilding -= OnCanceliedPurchase;
         _buildingsGrid.RemoveBuilding -= OnPurchaseCancelled;
+        if (_trainingScreen != null)
+            _trainingScreen.TrainingFinished -= AddMissingItems;
     }
 
     private void Start()
