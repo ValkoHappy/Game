@@ -30,6 +30,7 @@ public class TrainingWindowUsingArrows : UIScreenAnimator
         _shopButton.onClick.AddListener(EnableAtrrowOnProduct);
         _generationsShopButton.onClick.AddListener(EnableAtrrowOnProduct);
         _fencesShopButton.onClick.AddListener(EnableAtrrowOnProduct);
+        _exitShopButton.onClick.AddListener(TurnOffAtrrowOnProduct);
         _buildingGrid.CreatedBuilding += TurnOffAtrrowOnProduct;
         _buildingGrid.BuildingSupplied += OnOpenIndicators;
         _buildingGrid.RemoveBuilding += EnableAtrrowOnProduct;
@@ -40,6 +41,7 @@ public class TrainingWindowUsingArrows : UIScreenAnimator
         _shopButton.onClick.RemoveListener(EnableAtrrowOnProduct);
         _generationsShopButton.onClick.RemoveListener(EnableAtrrowOnProduct);
         _fencesShopButton.onClick.RemoveListener(EnableAtrrowOnProduct);
+        _exitShopButton.onClick.RemoveListener(TurnOffAtrrowOnProduct);
         _buildingGrid.CreatedBuilding -= TurnOffAtrrowOnProduct;
         _buildingGrid.BuildingSupplied -= OnOpenIndicators;
         _buildingGrid.RemoveBuilding -= EnableAtrrowOnProduct;;
@@ -76,5 +78,6 @@ public class TrainingWindowUsingArrows : UIScreenAnimator
     private void TurnOffAtrrowOnProduct()
     {
         _atrrowOnProduct.SetActive(false);
+        _arrowPointingToExitButton.SetActive(false);
     }
 }
