@@ -5,7 +5,7 @@ using static MoveSelection;
 
 public class BuildingsGrid : MonoBehaviour
 {
-    [SerializeField] private BuildingsHandler _buildingsManager;
+    [SerializeField] private BuildingsHandler _buildingsHandler;
 
     [SerializeField] private Vector2Int _gridSize;
     [SerializeField] private Transform _container;
@@ -112,7 +112,7 @@ public class BuildingsGrid : MonoBehaviour
     public void CreateTowerHall()
     {
         _flyingBuilding = Instantiate(_towerHall, _container);
-        _buildingsManager.AddBuilding(_flyingBuilding.PeacefulConstruction);
+        _buildingsHandler.AddBuilding(_flyingBuilding.PeacefulConstruction);
         int placeX = Mathf.RoundToInt(_flyingBuilding.transform.position.x);
         int placeY = Mathf.RoundToInt(_flyingBuilding.transform.position.z);
 
