@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class TrainingScreen : MonoBehaviour
 {
@@ -10,12 +9,14 @@ public class TrainingScreen : MonoBehaviour
 
     private const string Level = "Level";
 
+    public event UnityAction TrainingFinished;
+
     private void Start()
     {
         int level = PlayerPrefs.GetInt(Level);
         if (level > 1)
         {
-            TurnOffTrainingScreen();
+            gameObject.SetActive(false);
         }
     }
 
@@ -33,6 +34,7 @@ public class TrainingScreen : MonoBehaviour
 
     private void TurnOffTrainingScreen()
     {
+        TrainingFinished?.Invoke();
         gameObject.SetActive(false);
     }
 }
