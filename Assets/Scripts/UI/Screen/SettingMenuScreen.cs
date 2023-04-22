@@ -32,9 +32,10 @@ public class SettingMenuScreen : UIScreenAnimator
         _turkishButton.onClick.RemoveListener(SetLanguagesTr);
     }
 
-    public void OnExitButton()
+    private void OnExitButton()
     {
         ExitButtonClick?.Invoke();
+        CloseScreen();
     }
 
     private void SetLanguagesRu()
