@@ -44,6 +44,35 @@ public class MainMenuScreen : UIScreenAnimator
         _findSpawnEnemiesButton.onClick.AddListener(OnFindSpawnEnemiesButton);
     }
 
+    public void TurnOffAllButton()
+    {
+        _playButton.enabled = false;
+        _shopButton.enabled = false;
+        _leaderboardButton.enabled = false;
+        _settingButton.enabled = false;
+        _findSpawnEnemiesButton.enabled = false;
+    }
+
+    public void EnabletShopButton()
+    {
+        _shopButton.enabled = true;
+    }
+
+    public void EnabletButtleButton()
+    {
+        _shopButton.enabled = false;
+        _playButton.enabled = true;
+    }
+
+    public void EnabletAllButton()
+    {
+        _playButton.enabled = true;
+        _shopButton.enabled = true;
+        _leaderboardButton.enabled = true;
+        _settingButton.enabled = true;
+        _findSpawnEnemiesButton.enabled = true;
+    }
+
     private void OnPlayButton()
     {
         PlayButtonClick?.Invoke();
@@ -72,34 +101,5 @@ public class MainMenuScreen : UIScreenAnimator
     {
         FindSpawnEnemiesButtonClick?.Invoke();
         _movingCameraSpawnEnemies.RotationCamera();
-    }
-
-    public void TurnOffAllButton()
-    {
-        _playButton.enabled = false;
-        _shopButton.enabled = false;
-        _leaderboardButton.enabled = false;
-        _settingButton.enabled = false;
-        _findSpawnEnemiesButton.enabled = false;
-    }
-
-    public void EnabletShopButton()
-    {
-        _shopButton.enabled = true;
-    }
-
-    public void EnabletButtleButton()
-    {
-        _shopButton.enabled = false;
-        _playButton.enabled = true;
-    }
-
-    public void EnabletAllButton()
-    {
-        _playButton.enabled = true;
-        _shopButton.enabled = true;
-        _leaderboardButton.enabled = true;
-        _settingButton.enabled = true;
-        _findSpawnEnemiesButton.enabled = true;
     }
 }
