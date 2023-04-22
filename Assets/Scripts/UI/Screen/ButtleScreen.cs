@@ -34,7 +34,7 @@ public class ButtleScreen : UIScreenAnimator
         _settingsButton.onClick.RemoveListener(OnSettingsButton);
     }
 
-    public void OnExitButton()
+    private void OnExitButton()
     {
         ExitButtonClick?.Invoke();
         _enemyHandler.OnDestroyEnemies();
@@ -44,7 +44,7 @@ public class ButtleScreen : UIScreenAnimator
         _yandexAds.ShowInterstitial();
     }
 
-    public void OnSettingsButton()
+    private void OnSettingsButton()
     {
         SettingsButtonClick?.Invoke();
     }
