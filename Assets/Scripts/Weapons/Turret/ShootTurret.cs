@@ -13,7 +13,7 @@ public class ShootTurret : MonoBehaviour
 
     private SphereCollider _sphereCollider;
     private Turret _turret;
-    private EnemyHandler _enemyManager;
+    private EnemyHandler _enemyHandler;
     private RecoilAnimation _recoilAnimation;
     private Coroutine _shootCoroutine;
     private bool _canShoot = true;
@@ -27,7 +27,7 @@ public class ShootTurret : MonoBehaviour
     private void Awake()
     {
         _sphereCollider = GetComponent<SphereCollider>();   
-        _enemyManager = FindObjectOfType<EnemyHandler>();
+        _enemyHandler = FindObjectOfType<EnemyHandler>();
         _turret = GetComponent<Turret>();
         _recoilAnimation = GetComponentInChildren<RecoilAnimation>();
     }
@@ -39,7 +39,7 @@ public class ShootTurret : MonoBehaviour
 
     private void Update()
     {
-        if (_enemyManager.IsAttackBegun)
+        if (_enemyHandler.IsAttackBegun)
         {
             if (_canShoot)
             {
