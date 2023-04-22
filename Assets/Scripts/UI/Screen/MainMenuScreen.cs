@@ -10,6 +10,12 @@ public class MainMenuScreen : UIScreenAnimator
     [SerializeField] private Button _settingButton;
     [SerializeField] private Button _findSpawnEnemiesButton;
 
+    [SerializeField] private EnemyHandler _enemyHandler;
+    [SerializeField] private StarsScore _starsScore;
+    [SerializeField] private GroundAudio _groundAudio;
+    [SerializeField] private MovingCameraSpawnEnemies _movingCameraSpawnEnemies;
+    [SerializeField] private LobbyCameraAnimation _lobbyCameraAnimation;
+
     public event UnityAction PlayButtonClick;
     public event UnityAction ShopButtonClick;
     public event UnityAction LeaderboardButtonClick;
@@ -18,6 +24,8 @@ public class MainMenuScreen : UIScreenAnimator
 
     private void OnEnable()
     {
+        _lobbyCameraAnimation.AnimationIsFinished += OpenScreen;
+
         _playButton.onClick.AddListener(OnPlayButton);
         _shopButton.onClick.AddListener(OnShopButton);
         _leaderboardButton.onClick.AddListener(OnLeaderboardButton);
@@ -27,6 +35,8 @@ public class MainMenuScreen : UIScreenAnimator
 
     private void OnDisable()
     {
+        _lobbyCameraAnimation.AnimationIsFinished -= OpenScreen;
+
         _playButton.onClick.RemoveListener(OnPlayButton);
         _shopButton.onClick.RemoveListener(OnShopButton);
         _leaderboardButton.onClick.RemoveListener(OnLeaderboardButton);
@@ -34,29 +44,34 @@ public class MainMenuScreen : UIScreenAnimator
         _findSpawnEnemiesButton.onClick.AddListener(OnFindSpawnEnemiesButton);
     }
 
-    public void OnPlayButton()
+    private void OnPlayButton()
     {
         PlayButtonClick?.Invoke();
+        _enemyHandler.OnEnemies();
+        _starsScore.CloseStars();
+        _starsScore.RemoveAllBuildingsDiedCount();
+        _groundAudio.OnFightClip();
     }
 
-    public void OnShopButton()
+    private void OnShopButton()
     {
         ShopButtonClick?.Invoke();
     }
 
-    public void OnLeaderboardButton()
+    private void OnLeaderboardButton()
     {
         LeaderboardButtonClick?.Invoke();
     }
 
-    public void OnSettingButton()
+    private void OnSettingButton()
     {
         SettingButtonClick?.Invoke();
     }
 
-    public void OnFindSpawnEnemiesButton()
+    private void OnFindSpawnEnemiesButton()
     {
         FindSpawnEnemiesButtonClick?.Invoke();
+        _movingCameraSpawnEnemies.RotationCamera();
     }
 
     public void TurnOffAllButton()
