@@ -303,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _recoilDistance: 0.05
   _recoilSpeed: 5
+  _numberOfRepetitions: 2
 --- !u!1 &597966079634504415
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,8 +1456,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0891a58843160c247a14c26d9da3fe50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bounceForce: 50
-  _bounceRadius: 10
+  _bounceForce: 10
+  _bounceRadius: 5
 --- !u!65 &3878710733641364115
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1746,7 +1747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementScreen: {fileID: 8221169365561352985}
-  "_building\u0421haracteristics": {fileID: 6538797710507280038}
+  _buildingCharacteristics: {fileID: 6538797710507280038}
 --- !u!208 &3089083966639839509
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3095,7 +3096,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3993e5018678e4f4cb0ae954f4c98619, type: 3}
+  m_Script: {fileID: 11500000, guid: ff0e8b21d307bc14cb842bd5e2b843a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8221169365561352985 stripped

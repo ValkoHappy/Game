@@ -3854,6 +3854,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795091612}
     - target: {fileID: 1372194184, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1581235579}
+    - target: {fileID: 1372194184, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsManager
       value: 
       objectReference: {fileID: 1581235579}
@@ -3866,6 +3870,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795091612}
     - target: {fileID: 1612220096, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1581235579}
+    - target: {fileID: 1612220096, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsManager
       value: 
       objectReference: {fileID: 1581235579}
@@ -3877,6 +3885,10 @@ PrefabInstance:
       propertyPath: _buildingsGrid
       value: 
       objectReference: {fileID: 1795091612}
+    - target: {fileID: 1978003099, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1581235579}
     - target: {fileID: 1978003099, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsManager
       value: 
@@ -4106,6 +4118,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 841365012}
     - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1581235579}
+    - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsManager
       value: 
       objectReference: {fileID: 1581235579}
@@ -4226,6 +4242,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 841365012}
     - target: {fileID: 3537982765008173345, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1581235579}
+    - target: {fileID: 3537982765008173345, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsManager
       value: 
       objectReference: {fileID: 1581235579}
@@ -4309,6 +4329,10 @@ PrefabInstance:
       propertyPath: _trainingScreen
       value: 
       objectReference: {fileID: 841365012}
+    - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1581235579}
     - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsManager
       value: 
@@ -7631,6 +7655,10 @@ PrefabInstance:
       propertyPath: _container
       value: 
       objectReference: {fileID: 246482034}
+    - target: {fileID: 7478831377382940522, guid: 8c05e916457f8ac4194eda8e69ac79c6, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1581235579}
     - target: {fileID: 7478831377382940522, guid: 8c05e916457f8ac4194eda8e69ac79c6, type: 3}
       propertyPath: _buildingsManager
       value: 

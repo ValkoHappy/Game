@@ -89,7 +89,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1025462026, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
       propertyPath: _bounceForce
-      value: 30
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025462026, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
+      propertyPath: _bounceRadius
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3278041391160969624, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
       propertyPath: m_Layer

@@ -498,6 +498,14 @@ PrefabInstance:
       propertyPath: _waitForSeconds
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6070999513253214987, guid: 9a0782bc7a158a142a02112ea5a267c9, type: 3}
+      propertyPath: _bounceForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6070999513253214987, guid: 9a0782bc7a158a142a02112ea5a267c9, type: 3}
+      propertyPath: _bounceRadius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6497607483092316789, guid: 9a0782bc7a158a142a02112ea5a267c9, type: 3}
       propertyPath: _health
       value: 115
