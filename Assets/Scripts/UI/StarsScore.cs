@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class StarsScore : MonoBehaviour
 {
+    [SerializeField] private EnemyHandler _enemyHandler;
+
     [SerializeField] private GameObject[] _stars;
     [SerializeField] private GameObject[] _rewards;
 
@@ -12,6 +14,16 @@ public class StarsScore : MonoBehaviour
     private float _scaleElasticDelay = 0.1f;
     private int _starsThreshold = 20;
     private int _buildingsStarsPercentage = 100;
+
+    private void OnEnable()
+    {
+        _enemyHandler.AllEnemiesKilled += ShowStars;
+    }
+
+    private void OnDisable()
+    {
+        _enemyHandler.AllEnemiesKilled -= ShowStars;
+    }
 
     public void ShowStars()
     {
