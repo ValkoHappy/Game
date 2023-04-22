@@ -4527,9 +4527,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a9454d4ab7fc624c9211b15ee2ac53f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _panel: {fileID: 0}
+  _panel: {fileID: 3537982764132546765}
   _resumeButton: {fileID: 7650675648764118578}
   _restartButton: {fileID: 3537982764104926880}
+  _yandexAds: {fileID: 0}
+  _enemyHandler: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
+  _buildingsGrid: {fileID: 0}
+  _spawner: {fileID: 0}
+  _levelReward: {fileID: 0}
 --- !u!225 &3537982764132546765
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4728,6 +4734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panel: {fileID: 3537982764255644469}
+  _lobbyCameraAnimation: {fileID: 0}
+  _buildingsGrid: {fileID: 0}
 --- !u!225 &3537982764255644469
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5407,6 +5415,13 @@ MonoBehaviour:
   _panel: {fileID: 3537982764690447386}
   _resumeButton: {fileID: 3537982763469544548}
   _bonusButton: {fileID: 3537982764772008756}
+  _spawner: {fileID: 0}
+  _enemyHandler: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
+  _buildingsGrid: {fileID: 0}
+  _saveSystem: {fileID: 0}
+  _movingCameraSpawnEnemies: {fileID: 0}
+  _levelReward: {fileID: 0}
 --- !u!225 &3537982764690447386
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5431,6 +5446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68db0f1bd4b3f5645972292037650a2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyHandler: {fileID: 0}
   _stars:
   - {fileID: 1507219697796096851}
   - {fileID: 9160187432025359487}
@@ -5821,17 +5837,6 @@ MonoBehaviour:
   _switchingScreen: {fileID: 0}
   _buttleScreen: {fileID: 4015574554372630140}
   _leaderboardScreen: {fileID: 7756827242526982558}
-  _spawner: {fileID: 0}
-  _enemyManager: {fileID: 0}
-  _buildingsManager: {fileID: 0}
-  _buildingsGrid: {fileID: 0}
-  _starsScore: {fileID: 3537982764690447387}
-  _limbCameraAnimation: {fileID: 0}
-  _levelReward: {fileID: 0}
-  _saveSystem: {fileID: 0}
-  _yandexAds: {fileID: 0}
-  _groundAudio: {fileID: 4015574553851302366}
-  _movingCameraSpawnEnemies: {fileID: 0}
   _trainingScreen: {fileID: 0}
 --- !u!114 &4015574553851302368
 MonoBehaviour:
@@ -5874,6 +5879,8 @@ MonoBehaviour:
   _audioSource: {fileID: 1734632393}
   _calmClip: {fileID: 8300000, guid: 9ea1db8d9754b88448ec5b25da62459d, type: 3}
   _fightClip: {fileID: 8300000, guid: e735c5494cd67884b9407a6c3734e2d2, type: 3}
+  _enemyHandler: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
 --- !u!82 &4015574553851302361
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6923,6 +6930,11 @@ MonoBehaviour:
   _panel: {fileID: 4015574554372630143}
   _exitButton: {fileID: 4015574555058032116}
   _settingsButton: {fileID: 4015574554572421521}
+  _enemyHandler: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
+  _spawner: {fileID: 0}
+  _groundAudio: {fileID: 4015574553851302366}
+  _yandexAds: {fileID: 0}
 --- !u!95 &3537982764377285113
 Animator:
   serializedVersion: 4
@@ -8203,6 +8215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _panel: {fileID: 6595076029611978519}
   _levelReward: {fileID: 0}
+  _buildingsGrid: {fileID: 0}
   _exitButton: {fileID: 3951950949789957941}
   _advertisingButton: {fileID: 732365046}
   _storeTabFencesButton: {fileID: 7948894335306280920}
@@ -12835,6 +12848,14 @@ PrefabInstance:
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 4015574553851302361}
+    - target: {fileID: 8137944126093825120, guid: 69d61b6788801444f9687ee76988c6a3, type: 3}
+      propertyPath: _starsScore
+      value: 
+      objectReference: {fileID: 3537982764690447387}
+    - target: {fileID: 8137944126093825120, guid: 69d61b6788801444f9687ee76988c6a3, type: 3}
+      propertyPath: _groundAudio
+      value: 
+      objectReference: {fileID: 4015574553851302366}
     - target: {fileID: 8137944126093825121, guid: 69d61b6788801444f9687ee76988c6a3, type: 3}
       propertyPath: m_Controller
       value: 
