@@ -12,6 +12,7 @@ public class MovingCameraSpawnEnemies : MonoBehaviour
     [SerializeField] private float _duration;
     [SerializeField] private float _duration2;
     [SerializeField] private Spawner _spawner;
+    [SerializeField] private LobbyCameraAnimation _animation;
 
     private float _time = 0;
     private bool _isPlaying = false;
@@ -30,6 +31,16 @@ public class MovingCameraSpawnEnemies : MonoBehaviour
                 _isPlaying = false;
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        _animation.AnimationIsFinished += RotationCamera;
+    }
+
+    private void OnDisable()
+    {
+        _animation.AnimationIsFinished -= RotationCamera;
     }
 
     public void RotationCamera()
