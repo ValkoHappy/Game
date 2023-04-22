@@ -33,7 +33,7 @@ public class DefeatScreen : UIScreenAnimator
         _restartButton.onClick.RemoveListener(OnRestartButton);
     }
 
-    public void OnResumeButton()
+    private void OnResumeButton()
     {
         ResumeButtonClick?.Invoke();
         _buildingsHandler.OnDestroyAllBuildings();
@@ -44,7 +44,7 @@ public class DefeatScreen : UIScreenAnimator
         _spawner.StartLevel();
     }
 
-    public void OnRestartButton()
+    private void OnRestartButton()
     {
         RestartButtonClick?.Invoke();
         _yandexAds.ShowRewardAd();
