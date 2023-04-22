@@ -41,11 +41,14 @@ public class SaveSystem : MonoBehaviour
     {
         if (PlayerPrefs.HasKey(Level))
         {
-            _spawner.InitCurrentLevel(PlayerPrefs.GetInt(ÑurrentLevel));
-            _spawner.InitLevel(PlayerPrefs.GetInt(Level));
-            _goldContainer.InitGold(PlayerPrefs.GetInt(Gold), PlayerPrefs.GetInt(AllGold));
-            _crystalsContainer.InitCrystals(PlayerPrefs.GetInt(Crystals));
-            _sceneManage.InitScene(PlayerPrefs.GetInt(Map));
+            if(_spawner != null)
+            {
+                _spawner.InitCurrentLevel(PlayerPrefs.GetInt(ÑurrentLevel));
+                _spawner.InitLevel(PlayerPrefs.GetInt(Level));
+                _goldContainer.InitGold(PlayerPrefs.GetInt(Gold), PlayerPrefs.GetInt(AllGold));
+                _crystalsContainer.InitCrystals(PlayerPrefs.GetInt(Crystals));
+                _sceneManage.InitScene(PlayerPrefs.GetInt(Map));
+            }
         }
     }
 
