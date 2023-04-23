@@ -10,15 +10,19 @@ public class SwitchingScreen : UIScreenAnimator
     [SerializeField] private BuilderView _builderView;
     [SerializeField] private Transform _itenContainer;
 
+    [SerializeField] private Spawner _spawner;
+
     public event UnityAction SwitchingButtonClick;
 
     private void OnEnable()
     {
+        _spawner.ÑurrentLevelExceedsCount += OpenScreen;
         _switchingButton.onClick.AddListener(OnSwitchingButton);
     }
 
     private void OnDisable()
     {
+        _spawner.ÑurrentLevelExceedsCount -= OpenScreen;
         _switchingButton.onClick.RemoveListener(OnSwitchingButton);
     }
 
@@ -33,6 +37,8 @@ public class SwitchingScreen : UIScreenAnimator
     public void OnSwitchingButton()
     {
         SwitchingButtonClick?.Invoke();
+        _spawner.SwitchAnotherMap();
+        CloseScreen();
     }
 
     private void AddItem(Goods building)

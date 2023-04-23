@@ -22,6 +22,11 @@ public class SaveSystem : MonoBehaviour
 
     public event UnityAction SaveNotFound;
 
+    private void Awake()
+    {
+        Load();
+    }
+
     public void Save()
     {
         PlayerPrefs.SetInt(ÑurrentLevel, _spawner.CurrentLevelIndex);

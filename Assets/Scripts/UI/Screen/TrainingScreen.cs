@@ -136,12 +136,6 @@ public class TrainingScreen : MonoBehaviour
         gameObject.SetActive(false);    
     }
 
-    //private void OnOpenFollowingWindow2()
-    //{
-    //    _panel1.SetActive(false);
-    //    _panel2.SetActive(true);
-    //}
-
     private void OnOpenFollowingWindow2()
     {
         _panel1.SetActive(false);
@@ -160,12 +154,6 @@ public class TrainingScreen : MonoBehaviour
             isHowMuchProducedByGenerators = false;
         }
     }
-
-    //private void OnCloseFollowingWindow4()
-    //{
-    //    _panel4.SetActive(false);
-    //    _indicator2.SetActive(true);
-    //}
 
     private void OnCloseIndicator1()
     {

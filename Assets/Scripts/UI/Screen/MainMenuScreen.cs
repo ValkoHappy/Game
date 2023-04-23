@@ -10,6 +10,12 @@ public class MainMenuScreen : UIScreenAnimator
     [SerializeField] private Button _settingButton;
     [SerializeField] private Button _findSpawnEnemiesButton;
 
+    [SerializeField] private EnemyHandler _enemyHandler;
+    [SerializeField] private StarsScore _starsScore;
+    [SerializeField] private GroundAudio _groundAudio;
+    [SerializeField] private MovingCameraSpawnEnemies _movingCameraSpawnEnemies;
+    [SerializeField] private LobbyCameraAnimation _lobbyCameraAnimation;
+
     public event UnityAction PlayButtonClick;
     public event UnityAction ShopButtonClick;
     public event UnityAction LeaderboardButtonClick;
@@ -18,6 +24,8 @@ public class MainMenuScreen : UIScreenAnimator
 
     private void OnEnable()
     {
+        _lobbyCameraAnimation.AnimationIsFinished += OpenScreen;
+
         _playButton.onClick.AddListener(OnPlayButton);
         _shopButton.onClick.AddListener(OnShopButton);
         _leaderboardButton.onClick.AddListener(OnLeaderboardButton);
@@ -27,36 +35,13 @@ public class MainMenuScreen : UIScreenAnimator
 
     private void OnDisable()
     {
+        _lobbyCameraAnimation.AnimationIsFinished -= OpenScreen;
+
         _playButton.onClick.RemoveListener(OnPlayButton);
         _shopButton.onClick.RemoveListener(OnShopButton);
         _leaderboardButton.onClick.RemoveListener(OnLeaderboardButton);
         _settingButton.onClick.RemoveListener(OnSettingButton);
         _findSpawnEnemiesButton.onClick.AddListener(OnFindSpawnEnemiesButton);
-    }
-
-    public void OnPlayButton()
-    {
-        PlayButtonClick?.Invoke();
-    }
-
-    public void OnShopButton()
-    {
-        ShopButtonClick?.Invoke();
-    }
-
-    public void OnLeaderboardButton()
-    {
-        LeaderboardButtonClick?.Invoke();
-    }
-
-    public void OnSettingButton()
-    {
-        SettingButtonClick?.Invoke();
-    }
-
-    public void OnFindSpawnEnemiesButton()
-    {
-        FindSpawnEnemiesButtonClick?.Invoke();
     }
 
     public void TurnOffAllButton()
@@ -86,5 +71,35 @@ public class MainMenuScreen : UIScreenAnimator
         _leaderboardButton.enabled = true;
         _settingButton.enabled = true;
         _findSpawnEnemiesButton.enabled = true;
+    }
+
+    private void OnPlayButton()
+    {
+        PlayButtonClick?.Invoke();
+        _enemyHandler.OnEnemies();
+        _starsScore.CloseStars();
+        _starsScore.RemoveAllBuildingsDiedCount();
+        _groundAudio.OnFightClip();
+    }
+
+    private void OnShopButton()
+    {
+        ShopButtonClick?.Invoke();
+    }
+
+    private void OnLeaderboardButton()
+    {
+        LeaderboardButtonClick?.Invoke();
+    }
+
+    private void OnSettingButton()
+    {
+        SettingButtonClick?.Invoke();
+    }
+
+    private void OnFindSpawnEnemiesButton()
+    {
+        FindSpawnEnemiesButtonClick?.Invoke();
+        _movingCameraSpawnEnemies.RotationCamera();
     }
 }

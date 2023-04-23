@@ -6,6 +6,26 @@ public class GroundAudio : MonoBehaviour
     [SerializeField] private AudioClip _calmClip;
     [SerializeField] private AudioClip _fightClip;
 
+    [SerializeField] private EnemyHandler _enemyHandler;
+    [SerializeField] private BuildingsHandler _buildingsHandler;
+
+    private void Start()
+    {
+        OnÑalmClip();
+    }
+
+    private void OnEnable()
+    {
+        _enemyHandler.AllEnemiesKilled += OnÑalmClip;
+        _buildingsHandler.AllBuildingsBroked += OnÑalmClip;
+    }
+
+    private void OnDisable()
+    {
+        _enemyHandler.AllEnemiesKilled -= OnÑalmClip;
+        _buildingsHandler.AllBuildingsBroked -= OnÑalmClip;
+    }
+
     public void OnÑalmClip()
     { 
         _audioSource.clip = _calmClip;
