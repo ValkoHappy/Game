@@ -546,6 +546,10 @@ PrefabInstance:
       value: ExplosiveTurret 3
       objectReference: {fileID: 0}
     - target: {fileID: 5872539845551113575, guid: 70bdcacccd584a54eb3233e02c10c79d, type: 3}
+      propertyPath: _yOffset
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872539845551113575, guid: 70bdcacccd584a54eb3233e02c10c79d, type: 3}
       propertyPath: _radiusAttack
       value: 13
       objectReference: {fileID: 0}

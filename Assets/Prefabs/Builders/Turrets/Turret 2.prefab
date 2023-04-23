@@ -491,6 +491,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4003681586960472197, guid: 9a0782bc7a158a142a02112ea5a267c9, type: 3}
+      propertyPath: _yOffset
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4003681586960472197, guid: 9a0782bc7a158a142a02112ea5a267c9, type: 3}
       propertyPath: _radiusAttack
       value: 12
       objectReference: {fileID: 0}

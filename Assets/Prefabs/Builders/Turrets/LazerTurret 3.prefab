@@ -2605,7 +2605,7 @@ MonoBehaviour:
   - {fileID: 599145266171639940}
   _waitForSeconds: 2
   _radiusAttack: 14
-  _yOffset: 1
+  _yOffset: 0.5
   _particleShoot: {fileID: 4425753035019044251, guid: 3136133b56fc79948995e5023f469cc0, type: 3}
   _canShooting: 0
 --- !u!135 &1377215608646574865
