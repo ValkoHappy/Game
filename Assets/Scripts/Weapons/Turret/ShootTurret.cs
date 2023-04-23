@@ -1,14 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Turret), typeof(SphereCollider))]
+//[RequireComponent(typeof(Turret), typeof(SphereCollider))]
 public class ShootTurret : MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform[] _shootPoint;
     [SerializeField] private float _waitForSeconds;
     [SerializeField] private float _radiusAttack;
-    [SerializeField] private int _yOffset = 1;
+    [SerializeField] private float _yOffset = 1;
     [SerializeField] private ParticleSystem _particleShoot;
 
     private SphereCollider _sphereCollider;

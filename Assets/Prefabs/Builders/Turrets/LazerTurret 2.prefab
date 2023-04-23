@@ -362,6 +362,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6994924340402463159, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7907062529473311681, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -466,6 +470,10 @@ PrefabInstance:
       propertyPath: _bullet
       value: 
       objectReference: {fileID: 4395150195568702347, guid: 05a0351ef5da1054b930d0d8b55ce0ab, type: 3}
+    - target: {fileID: 1858499970407579933, guid: f788d6c8aa5564c498f084c1d308220d, type: 3}
+      propertyPath: _yOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1858499970407579933, guid: f788d6c8aa5564c498f084c1d308220d, type: 3}
       propertyPath: _radiusAttack
       value: 11

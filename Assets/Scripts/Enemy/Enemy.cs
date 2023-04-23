@@ -32,13 +32,6 @@ public class Enemy : MonoBehaviour
         _healthContainer.Died -= OnEnemyDied;
     }
 
-    private void OnEnemyDied()
-    {
-        Died?.Invoke(this);
-        enabled = false;
-        _rigidbody.constraints = RigidbodyConstraints.None;
-    }
-
     private void Awake()
     {
         _foundBuildings = GetComponent<FoundBuildings>();
@@ -53,6 +46,7 @@ public class Enemy : MonoBehaviour
         _currentState = _firstState;
         _targetConstruction = _foundBuildings.TargetConstruction;
         _currentState.Enter(_targetConstruction, _animator, _rigidbody);
+        _brokenState.Enter(_targetConstruction, _animator, _rigidbody);
     }
 
     private void Update()
@@ -90,6 +84,13 @@ public class Enemy : MonoBehaviour
                 _brokenState.ApplyDamage(rigidbody, force);
             }
         }
+    }
+
+    private void OnEnemyDied()
+    {
+        Died?.Invoke(this);
+        //enabled = false;
+        _rigidbody.constraints = RigidbodyConstraints.None;
     }
 
     private void Transit(EnemyState nextState)

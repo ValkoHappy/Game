@@ -19,10 +19,9 @@ public class BrokenState : EnemyState
     public void ApplyDamage(Rigidbody attachedBody, float force)
     {
         Vector3 impactDirection = (attachedBody.position - transform.position).normalized;
-        Vector3 oppositeDirection = -impactDirection;
 
         Animator.SetTrigger(Die);
-        Rigidbody.AddForce(oppositeDirection * force, ForceMode.Impulse);
+        Rigidbody.AddForce(impactDirection * force, ForceMode.Impulse);
         StartCoroutine(FadeOut());
         Died?.Invoke();
     }
@@ -40,6 +39,6 @@ public class BrokenState : EnemyState
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        Destroy(gameObject);
+        Destroy(gameObject, fadeTime);
     }
 }

@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _force: 50
+  _force: 30
   _speed: 40
   _yOffSet: 1
   _radius: 1
