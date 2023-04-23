@@ -4088,6 +4088,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeaderboardScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 3131847801189162125, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5004074457921536030, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
       propertyPath: _audioSource
       value: 
