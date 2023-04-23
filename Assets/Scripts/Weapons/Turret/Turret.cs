@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ShootTurret), typeof(SphereCollider))]
+//[RequireComponent(typeof(ShootTurret), typeof(SphereCollider))]
 public class Turret : MonoBehaviour
 {
     [SerializeField] private Transform _partToRotate;
