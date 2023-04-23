@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementScreen: {fileID: 7886882347981501450}
-  "_building\u0421haracteristics": {fileID: 5033574749541454261}
+  _buildingCharacteristics: {fileID: 5033574749541454261}
 --- !u!208 &6088243310155275162
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -224,6 +224,14 @@ PrefabInstance:
     - target: {fileID: 1269675930139366265, guid: 7c9a1639b07af95478014a50fee69780, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080889797752596129, guid: 7c9a1639b07af95478014a50fee69780, type: 3}
+      propertyPath: _bounceForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080889797752596129, guid: 7c9a1639b07af95478014a50fee69780, type: 3}
+      propertyPath: _bounceRadius
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2310827511520566368, guid: 7c9a1639b07af95478014a50fee69780, type: 3}
       propertyPath: m_Layer
@@ -631,7 +639,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3993e5018678e4f4cb0ae954f4c98619, type: 3}
+  m_Script: {fileID: 11500000, guid: ff0e8b21d307bc14cb842bd5e2b843a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &5536024048529674463 stripped

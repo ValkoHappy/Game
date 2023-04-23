@@ -5,7 +5,7 @@ public class StoreTab : MonoBehaviour
 {
     [SerializeField] private GoldContainer _goldContainer;
     [SerializeField] private CrystalsContainer _crystalsContainer; 
-    [SerializeField] private BuildingsHandler _buildingsManager;
+    [SerializeField] private BuildingsHandler _buildingsHandler;
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private LevelReward _levelReward;
     [SerializeField] private TrainingScreen _trainingScreen;
@@ -23,22 +23,16 @@ public class StoreTab : MonoBehaviour
     {
         _buildingsGrid.DeliveredBuilding += OnCanceliedPurchase;
         _buildingsGrid.RemoveBuilding += OnPurchaseCancelled;
-
-        if (_trainingScreen != null)
-        {
-            _trainingScreen.TutorialFinished += AddMissingItems;
-        }
+        if(_trainingScreen != null)
+            _trainingScreen.TrainingFinished += AddMissingItems;
     }
 
     private void OnDisable()
     {
         _buildingsGrid.DeliveredBuilding -= OnCanceliedPurchase;
         _buildingsGrid.RemoveBuilding -= OnPurchaseCancelled;
-
         if (_trainingScreen != null)
-        {
-            _trainingScreen.TutorialFinished -= AddMissingItems;
-        }
+            _trainingScreen.TrainingFinished -= AddMissingItems;
     }
 
     private void Start()
@@ -114,7 +108,7 @@ public class StoreTab : MonoBehaviour
             }
         }
         Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
-        _buildingsManager.AddBuilding(building.PeacefulConstruction);
+        _buildingsHandler.AddBuilding(building.PeacefulConstruction);
     }
 
     private void OnPurchaseCancelled()

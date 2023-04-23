@@ -11,7 +11,6 @@ public class Game : MonoBehaviour
     [SerializeField] private SwitchingScreen _switchingScreen;
     [SerializeField] private ButtleScreen _buttleScreen;
     [SerializeField] private LeaderboardScreen _leaderboardScreen;
-    [SerializeField] private TrainingScreen _trainingScreen;
 
     private void OnEnable()
     {
@@ -19,15 +18,11 @@ public class Game : MonoBehaviour
         _mainMenuScreen.ShopButtonClick += OnShopScreen;
         _mainMenuScreen.SettingButtonClick += OnSettingMenuScreen;
         _mainMenuScreen.LeaderboardButtonClick += OnOpenLeaderboardScreen;
-
         _shopScreen.ExitButtonClick += OnMainMenuScreenAfterShop;
-
         _victoryScreen.BonusButtonClick += OnMenuAfterFightScreen;
         _victoryScreen.ResumeButtonClick += OnMenuAfterFightScreen;
-
         _featScreen.ResumeButtonClick += OnRepeatBattle;
         _featScreen.RestartButtonClick += OnRepeatBattleForAdvertising;
-
         _buttleScreen.ExitButtonClick += ExitOfFight;
         _buttleScreen.SettingsButtonClick += OnSettingMenuScreen;
     }
@@ -37,17 +32,12 @@ public class Game : MonoBehaviour
         _mainMenuScreen.PlayButtonClick -= OnStartGame;
         _mainMenuScreen.ShopButtonClick -= OnShopScreen;
         _mainMenuScreen.SettingButtonClick -= OnSettingMenuScreen;
-
         _mainMenuScreen.LeaderboardButtonClick -= OnOpenLeaderboardScreen;
-
         _shopScreen.ExitButtonClick -= OnMainMenuScreenAfterShop;
-
         _victoryScreen.BonusButtonClick -= OnMenuAfterFightScreen;
         _victoryScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
-
         _featScreen.ResumeButtonClick -= OnRepeatBattle;
         _featScreen.RestartButtonClick -= OnRepeatBattleForAdvertising;
-
         _buttleScreen.ExitButtonClick -= ExitOfFight;
         _buttleScreen.SettingsButtonClick -= OnSettingMenuScreen;
     }
@@ -82,8 +72,6 @@ public class Game : MonoBehaviour
     {
         _victoryScreen.CloseScreen();
         _mainMenuScreen.OpenScreen();
-        if (_trainingScreen != null)
-            _trainingScreen.OpenEndTutorialWindow();
     }
 
     private void OnRepeatBattleForAdvertising()

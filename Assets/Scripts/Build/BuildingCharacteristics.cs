@@ -2,7 +2,7 @@ using Lean.Localization;
 using TMPro;
 using UnityEngine;
 
-public class BuildingСharacteristics : MonoBehaviour
+public class BuildingCharacteristics : MonoBehaviour
 {
     [SerializeField] private HealthContainer _healthContainer;
     [SerializeField] private ShootTurret _shootTurret;
