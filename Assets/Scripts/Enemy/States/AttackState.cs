@@ -6,8 +6,8 @@ public class AttackState : EnemyState
     [SerializeField] private float _attackForce;
     [SerializeField] private float _attackDelay;
 
-    private Coroutine _attackCoroutine;
     private const string Attack = "Attack";
+    private Coroutine _attackCoroutine;
 
     private void OnEnable()
     {
