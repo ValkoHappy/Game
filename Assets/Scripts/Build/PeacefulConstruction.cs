@@ -8,15 +8,15 @@ public class PeacefulConstruction : MonoBehaviour
     [SerializeField] private float _bounceForce;
     [SerializeField] private float _bounceRadius;
 
-    public event UnityAction<PeacefulConstruction> Die;
-    public event UnityAction Died;
-    public event UnityAction Damaged;
     private HealthContainer _healthContainer;
     private bool _isAlive;
     private BuildingDetail[] _buildingDetails;
     private Building _building;
     private List<BuildingDetailSnapshot> _detailSnapshots = new List<BuildingDetailSnapshot>();
 
+    public event UnityAction<PeacefulConstruction> Die;
+    public event UnityAction Died;
+    public event UnityAction Damaged;
     public event UnityAction BuildingRestored;
 
     public HealthContainer HealthContainer => _healthContainer;
