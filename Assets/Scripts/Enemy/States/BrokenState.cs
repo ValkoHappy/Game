@@ -6,8 +6,8 @@ public class BrokenState : EnemyState
 {
     [SerializeField] private float fadeTime = 3.0f;
 
-    private Material enemyMaterial;
     private const string Die = "Die";
+    private Material enemyMaterial;
 
     public event UnityAction Died;
 
