@@ -8,8 +8,9 @@ public class BuildingsHandler : MonoBehaviour
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private StarsScore _starsScore;
 
-    private List<PeacefulConstruction> _buildings;
     private const string Fence = "Fence";
+
+    private List<PeacefulConstruction> _buildings;
 
     public event UnityAction AllBuildingsBroked;
     public event UnityAction AllBuildingsDeleted;
