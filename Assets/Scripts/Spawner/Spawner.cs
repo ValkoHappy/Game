@@ -21,7 +21,7 @@ public class Spawner : MonoBehaviour
     public event UnityAction<int> LevelChanged;
     public event UnityAction LevelStarted;
     public event UnityAction LevelCreated;
-    public event UnityAction ÑurrentLevelExceedsCount;
+    public event UnityAction CurrentLevelExceedsCount;
 
     public Level Level => _currentLevel;
     public int CurrentLevelIndex => _currentLevelIndex;
@@ -73,7 +73,7 @@ public class Spawner : MonoBehaviour
         if (_currentLevelIndex >= _levels.Count)
         {
             _sceneManage.ShowScene();
-            ÑurrentLevelExceedsCount?.Invoke();
+            CurrentLevelExceedsCount?.Invoke();
             return true;
         }
         return false;
