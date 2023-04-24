@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementScreen: {fileID: 1477650609991252178}
-  "_building\u0421haracteristics": {fileID: 4334898551019396461}
+  _buildingCharacteristics: {fileID: 4334898551019396461}
 --- !u!208 &3935946625391806889
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -286,7 +286,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3993e5018678e4f4cb0ae954f4c98619, type: 3}
+  m_Script: {fileID: 11500000, guid: ff0e8b21d307bc14cb842bd5e2b843a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6439592563024216328
@@ -533,9 +533,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3099166224947964919}
     m_Modifications:
+    - target: {fileID: 2747656787552222891, guid: 70bdcacccd584a54eb3233e02c10c79d, type: 3}
+      propertyPath: _bounceForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747656787552222891, guid: 70bdcacccd584a54eb3233e02c10c79d, type: 3}
+      propertyPath: _bounceRadius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3646223307139310547, guid: 70bdcacccd584a54eb3233e02c10c79d, type: 3}
       propertyPath: m_Name
       value: ExplosiveTurret 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872539845551113575, guid: 70bdcacccd584a54eb3233e02c10c79d, type: 3}
+      propertyPath: _yOffset
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5872539845551113575, guid: 70bdcacccd584a54eb3233e02c10c79d, type: 3}
       propertyPath: _radiusAttack

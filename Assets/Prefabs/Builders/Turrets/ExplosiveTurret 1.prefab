@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementScreen: {fileID: 209659500106499677}
-  "_building\u0421haracteristics": {fileID: 3044943594710721506}
+  _buildingCharacteristics: {fileID: 3044943594710721506}
 --- !u!208 &-8489150716911843758
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -501,7 +501,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3993e5018678e4f4cb0ae954f4c98619, type: 3}
+  m_Script: {fileID: 11500000, guid: ff0e8b21d307bc14cb842bd5e2b843a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7353736002219480904
@@ -674,6 +674,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5445353562321678543, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
+      propertyPath: _yOffset
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5445353562321678543, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: _radiusAttack
       value: 8
       objectReference: {fileID: 0}
@@ -724,6 +728,14 @@ PrefabInstance:
     - target: {fileID: 5864573052153573377, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934197247352419641, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
+      propertyPath: _bounceForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934197247352419641, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
+      propertyPath: _bounceRadius
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6336602543664410021, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer

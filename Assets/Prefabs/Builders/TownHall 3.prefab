@@ -183,6 +183,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
 --- !u!225 &287888701963096103 stripped
@@ -202,6 +210,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2645574674400504186}
     m_Modifications:
+    - target: {fileID: 2653119802343844833, guid: 9e8f67659323374489226e89c191e285, type: 3}
+      propertyPath: _bounceForce
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2653119802343844833, guid: 9e8f67659323374489226e89c191e285, type: 3}
+      propertyPath: _bounceRadius
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3894370225920540062, guid: 9e8f67659323374489226e89c191e285, type: 3}
       propertyPath: m_RootOrder
       value: 0

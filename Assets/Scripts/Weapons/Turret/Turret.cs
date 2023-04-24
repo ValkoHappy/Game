@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ShootTurret), typeof(SphereCollider))]
+//[RequireComponent(typeof(ShootTurret), typeof(SphereCollider))]
 public class Turret : MonoBehaviour
 {
     [SerializeField] private Transform _partToRotate;
@@ -13,7 +13,7 @@ public class Turret : MonoBehaviour
     private PeacefulConstruction _construction;
     private SphereCollider _sphereCollider;
     private BuildingsGrid _buildingsGrid;
-    private EnemyHandler _enemyManager;
+    private EnemyHandler _enemyHandler;
     private Coroutine _sortCoroutine;
 
     public PeacefulConstruction Construction => _construction;
@@ -25,7 +25,7 @@ public class Turret : MonoBehaviour
         _shootTurret = GetComponent<ShootTurret>();
         _construction = GetComponentInChildren<PeacefulConstruction>();
         _sphereCollider = GetComponent<SphereCollider>();
-        _enemyManager= FindObjectOfType<EnemyHandler>();
+        _enemyHandler= FindObjectOfType<EnemyHandler>();
     }
 
     private void OnEnable()
@@ -51,7 +51,7 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        if (_enemyManager.IsAttackBegun && TargetEnemy != null && TargetEnemy.IsAlive() && _construction.IsAlive())
+        if (_enemyHandler.IsAttackBegun && TargetEnemy != null && TargetEnemy.IsAlive() && _construction.IsAlive())
         {
             Vector3 direction = TargetEnemy.transform.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);

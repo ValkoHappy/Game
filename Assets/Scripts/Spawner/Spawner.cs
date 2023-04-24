@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private EnemyHandler _enemyManager;
+    [SerializeField] private EnemyHandler _enemyHandler;
     [SerializeField] private SceneNext _sceneManage;
     [SerializeField] private Transform _container;
     [SerializeField] private List<Level> _levels;
@@ -26,6 +26,22 @@ public class Spawner : MonoBehaviour
     public Level Level => _currentLevel;
     public int CurrentLevelIndex => _currentLevelIndex;
     public int LevelIndex => _levelIndex;
+
+    private void Start()
+    {
+        ShowLevel();
+        StartLevel();
+    }
+
+    private void OnEnable()
+    {
+        _enemyHandler.AllEnemiesKilled += NextLevel;
+    }
+
+    private void OnDisable()
+    {
+        _enemyHandler.AllEnemiesKilled -= NextLevel;
+    }
 
     public void NextLevel()
     {
@@ -79,7 +95,6 @@ public class Spawner : MonoBehaviour
         return false;
     }
 
-
     public void InitCurrentLevel(int currentLevel)
     {
         _currentLevelIndex = currentLevel;
@@ -106,7 +121,7 @@ public class Spawner : MonoBehaviour
                 enemy = Instantiate(_currentLevel.BossEnemy, spawnPoint.position, Quaternion.identity, _container);
                 _bossEnemiesRemaining--;
             }
-            _enemyManager.AddEnemy(enemy);
+            _enemyHandler.AddEnemy(enemy);
         }
         yield return new WaitForSeconds(_currentLevel.SpawnDelay);
     }

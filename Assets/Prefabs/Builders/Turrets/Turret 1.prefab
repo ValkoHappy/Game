@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementScreen: {fileID: 2420085602113866435}
-  "_building\u0421haracteristics": {fileID: 665639035716235132}
+  _buildingCharacteristics: {fileID: 665639035716235132}
 --- !u!208 &-3873642929191617247
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -88,41 +88,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2260194405451887584}
     m_Modifications:
-    - target: {fileID: 903426056187224828, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2364325018608397033, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2460111145850522175, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3332377059864595402, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3339321643284393164, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3958434797680617346, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4656580392110199494, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5388518269924201211, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5388518270265399207, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
+    - target: {fileID: 4174721718177150930, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5388518271078800966, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
       propertyPath: m_RootOrder
@@ -172,56 +140,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Machine gun installations Level 2 (1) 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5388518271078800969, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5388518271078800969, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_TagString
-      value: target
-      objectReference: {fileID: 0}
-    - target: {fileID: 5388518271078800970, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: _radiusAttack
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5388518271078800971, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5388518271078800971, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496971399204812427, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496971399204812427, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_TagString
-      value: target
-      objectReference: {fileID: 0}
-    - target: {fileID: 7171299012260471794, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7228738476257019354, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344656812750019110, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8085357450343580101, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8387525618543357132, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8436481162425632109, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+    - target: {fileID: 7015785247484862122, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: _shootPoint.Array.data[0]
+      value: 
+      objectReference: {fileID: 5180578598105351331}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
 --- !u!114 &984192380448466484 stripped
 MonoBehaviour:
@@ -245,9 +168,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0891a58843160c247a14c26d9da3fe50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5180578596961241107 stripped
+--- !u!4 &5180578596961241119 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5388518271078800966, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+  m_PrefabInstance: {fileID: 946530082615678553}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5180578598105351331 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5388518269924201210, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+  m_PrefabInstance: {fileID: 946530082615678553}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7818200139591682291 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5388518271078800970, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7015785247484862122, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
   m_PrefabInstance: {fileID: 946530082615678553}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -256,11 +189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9709eec226425ef4e9d17c36ba87aac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &5180578596961241119 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5388518271078800966, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
-  m_PrefabInstance: {fileID: 946530082615678553}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3476637399422010070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -268,6 +196,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2260194405451887584}
     m_Modifications:
+    - target: {fileID: 4424281977232863559, guid: caabbc3cfb567244590da35ae0d8e445, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424281977232863559, guid: caabbc3cfb567244590da35ae0d8e445, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424281977232863559, guid: caabbc3cfb567244590da35ae0d8e445, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 7197374417401403789, guid: caabbc3cfb567244590da35ae0d8e445, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -450,7 +390,7 @@ PrefabInstance:
     - target: {fileID: 3920417545245233639, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: _shootTurret
       value: 
-      objectReference: {fileID: 5180578596961241107}
+      objectReference: {fileID: 7818200139591682291}
     - target: {fileID: 3920417545245233639, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: _radiusAttack
       value: 
@@ -654,7 +594,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3993e5018678e4f4cb0ae954f4c98619, type: 3}
+  m_Script: {fileID: 11500000, guid: ff0e8b21d307bc14cb842bd5e2b843a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2420085602113866435 stripped

@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class LevelReward : MonoBehaviour
 {
-    [SerializeField] private EnemyHandler _enemyManager;
+    [SerializeField] private EnemyHandler _enemyHandler;
     [SerializeField] private GoldContainer _goldContainer;
     [SerializeField] private CrystalsContainer _crystalsContainer;
     [SerializeField] private Spawner _spawner;
@@ -20,6 +20,18 @@ public class LevelReward : MonoBehaviour
 
     public int CrystalsCount => _crystalsCount;
     public int GoldCount => _goldCount;
+
+    private void OnEnable()
+    {
+        _spawner.LevelStarted += ClearSpentResources;
+        _enemyHandler.AllEnemiesKilled += CalculateReward;
+    }
+
+    private void OnDisable()
+    {
+        _spawner.LevelStarted -= ClearSpentResources;
+        _enemyHandler.AllEnemiesKilled -= CalculateReward;
+    }
 
     public void CalculateReward()
     {

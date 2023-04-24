@@ -1,19 +1,19 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Turret), typeof(SphereCollider))]
+//[RequireComponent(typeof(Turret), typeof(SphereCollider))]
 public class ShootTurret : MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform[] _shootPoint;
     [SerializeField] private float _waitForSeconds;
     [SerializeField] private float _radiusAttack;
-    [SerializeField] private int _yOffset = 1;
+    [SerializeField] private float _yOffset = 1;
     [SerializeField] private ParticleSystem _particleShoot;
 
     private SphereCollider _sphereCollider;
     private Turret _turret;
-    private EnemyHandler _enemyManager;
+    private EnemyHandler _enemyHandler;
     private RecoilAnimation _recoilAnimation;
     private Coroutine _shootCoroutine;
     private bool _canShoot = true;
@@ -27,7 +27,7 @@ public class ShootTurret : MonoBehaviour
     private void Awake()
     {
         _sphereCollider = GetComponent<SphereCollider>();   
-        _enemyManager = FindObjectOfType<EnemyHandler>();
+        _enemyHandler = FindObjectOfType<EnemyHandler>();
         _turret = GetComponent<Turret>();
         _recoilAnimation = GetComponentInChildren<RecoilAnimation>();
     }
@@ -39,7 +39,7 @@ public class ShootTurret : MonoBehaviour
 
     private void Update()
     {
-        if (_enemyManager.IsAttackBegun)
+        if (_enemyHandler.IsAttackBegun)
         {
             if (_canShoot)
             {

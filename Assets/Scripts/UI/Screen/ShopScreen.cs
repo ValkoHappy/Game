@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class ShopScreen : UIScreenAnimator
 {
     [SerializeField] private LevelReward _levelReward;
+    [SerializeField] private BuildingsGrid _buildingsGrid;
 
     [SerializeField] private Button _exitButton;
     [SerializeField] private Button _advertisingButton;
@@ -26,6 +27,10 @@ public class ShopScreen : UIScreenAnimator
 
     private void OnEnable()
     {
+        _buildingsGrid.CreatedBuilding += CloseScreen;
+        _buildingsGrid.RemoveBuilding += OpenScreen;
+        _buildingsGrid.DeliveredBuilding += OpenScreen;
+
         _exitButton.onClick.AddListener(OnExitButton);
         _advertisingButton.onClick.AddListener(ClaimCrystalsForAdvertising);
         _storeTabFencesButton.onClick.AddListener(OnStoreTabMainBuildings);
@@ -36,42 +41,15 @@ public class ShopScreen : UIScreenAnimator
 
     private void OnDisable()
     {
+        _buildingsGrid.CreatedBuilding -= CloseScreen;
+        _buildingsGrid.RemoveBuilding -= OpenScreen;
+        _buildingsGrid.DeliveredBuilding -= OpenScreen;
+
         _exitButton.onClick.RemoveListener(OnExitButton);
         _advertisingButton.onClick.RemoveListener(ClaimCrystalsForAdvertising);
         _storeTabFencesButton.onClick.RemoveListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.RemoveListener(OnStoreTabWeapons);
         _storeTabGeneratorsButton.onClick.RemoveListener(OnStoreTabGenerators);
-    }
-
-    public void OnExitButton()
-    {
-        ExitButtonClick?.Invoke();
-    }
-
-    private void OnStoreTabMainBuildings()
-    {
-        _storeTabFences.OpenScreen();
-        _storeTabWeapons.CloseScreen();
-        _storeTabGenerators.CloseScreen();
-    }
-
-    private void OnStoreTabWeapons()
-    {
-        _storeTabFences.CloseScreen();
-        _storeTabWeapons.OpenScreen();
-        _storeTabGenerators.CloseScreen();
-    }
-
-    private void OnStoreTabGenerators()
-    {
-        _storeTabFences.CloseScreen();
-        _storeTabWeapons.CloseScreen();
-        _storeTabGenerators.OpenScreen();
-    }
-
-    private void ClaimCrystalsForAdvertising()
-    {
-        _levelReward.ClaimCrystalsForAdvertising();
     }
 
     public void TurnOffAllButton()
@@ -106,5 +84,36 @@ public class ShopScreen : UIScreenAnimator
         _storeTabFencesButton.enabled = true;
         _storeTabWeaponsButton.enabled = true;
         _storeTabGeneratorsButton.enabled = true;
+    }
+
+    private void OnExitButton()
+    {
+        ExitButtonClick?.Invoke();
+    }
+
+    private void OnStoreTabMainBuildings()
+    {
+        _storeTabFences.OpenScreen();
+        _storeTabWeapons.CloseScreen();
+        _storeTabGenerators.CloseScreen();
+    }
+
+    private void OnStoreTabWeapons()
+    {
+        _storeTabFences.CloseScreen();
+        _storeTabWeapons.OpenScreen();
+        _storeTabGenerators.CloseScreen();
+    }
+
+    private void OnStoreTabGenerators()
+    {
+        _storeTabFences.CloseScreen();
+        _storeTabWeapons.CloseScreen();
+        _storeTabGenerators.OpenScreen();
+    }
+
+    private void ClaimCrystalsForAdvertising()
+    {
+        _levelReward.ClaimCrystalsForAdvertising();
     }
 }
