@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Game : MonoBehaviour
@@ -71,7 +70,7 @@ public class Game : MonoBehaviour
 
         _spawner.LevelStarted += _levelReward.ClearSpentResources;
 
-        _spawner.ÑurrentLevelExceedsCount += OnSwitchingScreen;
+        _spawner.CurrentLevelExceedsCount += OnSwitchingScreen;
 
         _switchingScreen.SwitchingButtonClick += OnSwitchAnotherMap;
 
@@ -111,7 +110,7 @@ public class Game : MonoBehaviour
 
         _spawner.LevelStarted -= _levelReward.ClearSpentResources;
 
-        _spawner.ÑurrentLevelExceedsCount -= OnSwitchingScreen;
+        _spawner.CurrentLevelExceedsCount -= OnSwitchingScreen;
 
         _switchingScreen.SwitchingButtonClick -= OnSwitchAnotherMap;
 
