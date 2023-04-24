@@ -5,9 +5,10 @@ public class UIScreenAnimator : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _panel;
 
-    private Animator _animator;
     private const string Open = "Open";
     private const string Close = "Close";
+
+    private Animator _animator;
 
     public CanvasGroup Panel => _panel;
 
