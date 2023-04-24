@@ -14,6 +14,7 @@ public class VictoryScreen : UIScreenAnimator
     [SerializeField] private SaveSystem _saveSystem;
     [SerializeField] private MovingCameraSpawnEnemies _movingCameraSpawnEnemies;
     [SerializeField] private LevelReward _levelReward;
+    [SerializeField] private StarsScore _starsScore;
 
     public event UnityAction ResumeButtonClick;
     public event UnityAction BonusButtonClick;
@@ -50,6 +51,7 @@ public class VictoryScreen : UIScreenAnimator
 
     private void OnMenuAfterFightScreen()
     {
+        _starsScore.RemoveAllBuildingsCount();
         _spawner.ShowLevel();
         _enemyHandler.OnDestroyEnemies();
         _buildingsHandler.OnDestroyAllBuildings();

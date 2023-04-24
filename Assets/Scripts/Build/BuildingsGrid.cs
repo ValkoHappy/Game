@@ -10,6 +10,7 @@ public class BuildingsGrid : MonoBehaviour
     [SerializeField] private Vector2Int _gridSize;
     [SerializeField] private Transform _container;
     [SerializeField] private Building _towerHall;
+    [SerializeField] private StarsScore _starsScore;
 
     private Building[,] _grid;
     private Building _flyingBuilding;
@@ -154,6 +155,7 @@ public class BuildingsGrid : MonoBehaviour
         _flyingBuilding.SetNormal();
         BuildingSupplied?.Invoke(_flyingBuilding);
         DeliveredBuilding?.Invoke();
+        _starsScore.AddBuildingsCount();
         _flyingBuilding = null;
     }
 }

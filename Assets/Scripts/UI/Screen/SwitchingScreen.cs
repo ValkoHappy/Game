@@ -16,13 +16,13 @@ public class SwitchingScreen : UIScreenAnimator
 
     private void OnEnable()
     {
-        _spawner.ÑurrentLevelExceedsCount += OpenScreen;
+        _spawner.CurrentLevelExceedsCount += OpenScreen;
         _switchingButton.onClick.AddListener(OnSwitchingButton);
     }
 
     private void OnDisable()
     {
-        _spawner.ÑurrentLevelExceedsCount -= OpenScreen;
+        _spawner.CurrentLevelExceedsCount -= OpenScreen;
         _switchingButton.onClick.RemoveListener(OnSwitchingButton);
     }
 

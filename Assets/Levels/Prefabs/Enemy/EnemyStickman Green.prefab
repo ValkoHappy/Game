@@ -818,7 +818,7 @@ GameObject:
   - component: {fileID: 2287197608566648624}
   - component: {fileID: 331926868884220675}
   m_Layer: 3
-  m_Name: EnemyStickman Black
+  m_Name: EnemyStickman Green
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -968,7 +968,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitions: []
-  fadeTime: 5
+  fadeTime: 3
+  _particleDied: {fileID: 5985634496115995770, guid: 8b90072a93790fc46919e7e135802d3b, type: 3}
 --- !u!114 &7686793710171740515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,7 +1068,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6e08be412ac02d84b99c03ff69952d3c, type: 2}
+  - {fileID: 2100000, guid: 7ff4280d8b6cc0145b64662f959be064, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

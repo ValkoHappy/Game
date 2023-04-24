@@ -54,6 +54,7 @@ public class StarsScore : MonoBehaviour
             reward.LeanScale(new Vector3(0, 0, 0), 0);
         }
         _buildingsStars = 0;
+        _buildingsDiedCount = 0;
     }
 
     public void AddBuildingsCount()
@@ -64,6 +65,11 @@ public class StarsScore : MonoBehaviour
     public void RemoveBuildingsCount()
     {
         _buildingsCount--;
+    }
+
+    public void RemoveAllBuildingsCount()
+    {
+        _buildingsCount = 0;
     }
 
     public void AddBuildingsDiedCount()

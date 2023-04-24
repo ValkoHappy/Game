@@ -22,7 +22,8 @@ public class Game : MonoBehaviour
         _victoryScreen.BonusButtonClick += OnMenuAfterFightScreen;
         _victoryScreen.ResumeButtonClick += OnMenuAfterFightScreen;
         _featScreen.ResumeButtonClick += OnRepeatBattle;
-        _featScreen.RestartButtonClick += OnRepeatBattleForAdvertising;
+        _featScreen.RestartButtonClick += OnRepeatBattleForAdvertising;p;
+
         _buttleScreen.ExitButtonClick += ExitOfFight;
         _buttleScreen.SettingsButtonClick += OnSettingMenuScreen;
     }
@@ -38,6 +39,7 @@ public class Game : MonoBehaviour
         _victoryScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
         _featScreen.ResumeButtonClick -= OnRepeatBattle;
         _featScreen.RestartButtonClick -= OnRepeatBattleForAdvertising;
+
         _buttleScreen.ExitButtonClick -= ExitOfFight;
         _buttleScreen.SettingsButtonClick -= OnSettingMenuScreen;
     }

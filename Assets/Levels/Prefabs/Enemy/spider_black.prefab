@@ -1060,7 +1060,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5016069454412659434}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.011146049, y: 0.019112134, z: 0.016233027}
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
+  _health: 12
 --- !u!114 &8664769350552124902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1104,7 +1104,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioClips: []
   _audioMixerGroup: {fileID: -4155269728023372470, guid: 45c7e6910b2bbd047b831aa8a6a7df56, type: 2}
-  _audioSource: {fileID: 3334183330394320370}
 --- !u!82 &3334183330394320370
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1828,7 +1827,7 @@ Animator:
   m_GameObject: {fileID: 8209571889942569780}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a96ff394aa19efb4bbcd55446aefd7db, type: 2}
-  m_Controller: {fileID: 9100000, guid: b2c358c332b7f064794d25dc828b5c8f, type: 2}
+  m_Controller: {fileID: 9100000, guid: fe754793982e28e44a357067ac393cdf, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1930,7 +1929,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 360140769644615029}
-  _attackForce: 3
+  _attackForce: 6
   _attackDelay: 1
 --- !u!114 &1522533624145026117
 MonoBehaviour:
@@ -1945,7 +1944,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitions: []
-  fadeTime: 5
+  fadeTime: 3
+  _particleDied: {fileID: 5985634496115995770, guid: 8b90072a93790fc46919e7e135802d3b, type: 3}
 --- !u!114 &8209571889942569766
 MonoBehaviour:
   m_ObjectHideFlags: 0

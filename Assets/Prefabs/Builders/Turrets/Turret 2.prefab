@@ -500,7 +500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4003681586960472197, guid: 9a0782bc7a158a142a02112ea5a267c9, type: 3}
       propertyPath: _waitForSeconds
-      value: 2.5
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 6070999513253214987, guid: 9a0782bc7a158a142a02112ea5a267c9, type: 3}
       propertyPath: _bounceForce

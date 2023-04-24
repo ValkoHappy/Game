@@ -11,12 +11,10 @@ public class Spawner : MonoBehaviour
     [SerializeField] private List<Level> _levels;
     [SerializeField] private Transform[] _spawnPoints;
 
-    private Coroutine _coroutine;
     private int _currentLevelIndex = 0;
     private int _levelIndex = 1;
     private Level _currentLevel;
-    private int _miniEnemiesRemaining;
-    private int _bossEnemiesRemaining;
+    private EnemyCount[] _enemyCounts;
 
     public event UnityAction<int> LevelChanged;
     public event UnityAction LevelStarted;
@@ -60,15 +58,9 @@ public class Spawner : MonoBehaviour
             return;
         }
         _currentLevel = _levels[_currentLevelIndex];
-        _miniEnemiesRemaining = _currentLevel.MiniEnemyCount;
-        _bossEnemiesRemaining = _currentLevel.BossEnemyCount;
+        _enemyCounts = _currentLevel.EnemyCounts;
 
-        if (_coroutine != null)
-        {
-            StopCoroutine(_coroutine);
-        }
-        LevelCreated?.Invoke();
-        _coroutine = StartCoroutine(SpawnEnemies());
+        SpawnEnemies();
     }
 
     public void ShowLevel()
@@ -105,25 +97,22 @@ public class Spawner : MonoBehaviour
         _levelIndex = currentLevel;
     }
 
-    private IEnumerator SpawnEnemies()
+    private void SpawnEnemies()
     {
-        while (_miniEnemiesRemaining > 0 || _bossEnemiesRemaining > 0)
+        foreach (var enemy in _enemyCounts)
         {
-            Transform spawnPoint = GetSpawnPoint();
-            Enemy enemy = null;
-            if (_miniEnemiesRemaining > 0)
+            Transform spawnPoint;
+            Enemy enemyCurrent = null;
+            int countEnemies = enemy.Count;
+            while (countEnemies > 0)
             {
-                enemy = Instantiate(_currentLevel.MiniEnemy, spawnPoint.position, Quaternion.identity, _container);
-                _miniEnemiesRemaining--;
+                spawnPoint = GetSpawnPoint();
+                enemyCurrent = Instantiate(enemy.Enemy, spawnPoint.position, Quaternion.identity, _container);
+                _enemyHandler.AddEnemy(enemyCurrent);
+                enemyCurrent = null;
+                countEnemies--;
             }
-            else if (_bossEnemiesRemaining > 0)
-            {
-                enemy = Instantiate(_currentLevel.BossEnemy, spawnPoint.position, Quaternion.identity, _container);
-                _bossEnemiesRemaining--;
-            }
-            _enemyHandler.AddEnemy(enemy);
         }
-        yield return new WaitForSeconds(_currentLevel.SpawnDelay);
     }
 
     private Transform GetSpawnPoint()

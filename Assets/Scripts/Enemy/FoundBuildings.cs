@@ -49,7 +49,7 @@ public class FoundBuildings : MonoBehaviour
 
     private IEnumerator SortConstructions()
     {
-        var waitForSeconds = new WaitForSeconds(1f);
+        var waitForSeconds = new WaitForSeconds(0.5f);
         if (_constructions.Count > 0)
         {
             float shortestDistance = Mathf.Infinity;

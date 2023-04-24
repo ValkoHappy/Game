@@ -1517,9 +1517,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1227253975}
     - target: {fileID: 2475971937453301208, guid: caee9e96ae538e24880ba62467fb4625, type: 3}
+      propertyPath: _enemyHandler
+      value: 
+      objectReference: {fileID: 1227253982}
+    - target: {fileID: 2475971937453301208, guid: caee9e96ae538e24880ba62467fb4625, type: 3}
       propertyPath: _enemyManager
       value: 
-      objectReference: {fileID: 1227253981}
+      objectReference: {fileID: 0}
     - target: {fileID: 2475971937453301208, guid: caee9e96ae538e24880ba62467fb4625, type: 3}
       propertyPath: _levels.Array.size
       value: 10
@@ -3047,6 +3051,10 @@ PrefabInstance:
       propertyPath: _buildingsGrid
       value: 
       objectReference: {fileID: 1938384107}
+    - target: {fileID: 1372194184, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
     - target: {fileID: 1612220096, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _spawner
       value: 
@@ -3055,6 +3063,10 @@ PrefabInstance:
       propertyPath: _buildingsGrid
       value: 
       objectReference: {fileID: 1938384107}
+    - target: {fileID: 1612220096, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
     - target: {fileID: 1978003099, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _spawner
       value: 
@@ -3063,6 +3075,22 @@ PrefabInstance:
       propertyPath: _buildingsGrid
       value: 
       objectReference: {fileID: 1938384107}
+    - target: {fileID: 1978003099, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
+    - target: {fileID: 366424089113132860, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _enemyHandler
+      value: 
+      objectReference: {fileID: 1227253982}
+    - target: {fileID: 366424089113132860, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _lobbyCameraAnimation
+      value: 
+      objectReference: {fileID: 714900932}
+    - target: {fileID: 366424089113132860, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _movingCameraSpawnEnemies
+      value: 
+      objectReference: {fileID: 714900930}
     - target: {fileID: 594803787307991174, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -3211,6 +3239,70 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3537982764132546767, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _spawner
+      value: 
+      objectReference: {fileID: 1097840903}
+    - target: {fileID: 3537982764132546767, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _yandexAds
+      value: 
+      objectReference: {fileID: 714900929}
+    - target: {fileID: 3537982764132546767, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _levelReward
+      value: 
+      objectReference: {fileID: 1227253977}
+    - target: {fileID: 3537982764132546767, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _enemyHandler
+      value: 
+      objectReference: {fileID: 1227253982}
+    - target: {fileID: 3537982764132546767, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsGrid
+      value: 
+      objectReference: {fileID: 1938384107}
+    - target: {fileID: 3537982764132546767, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
+    - target: {fileID: 3537982764255644468, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsGrid
+      value: 
+      objectReference: {fileID: 1938384107}
+    - target: {fileID: 3537982764255644468, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _lobbyCameraAnimation
+      value: 
+      objectReference: {fileID: 714900932}
+    - target: {fileID: 3537982764690447387, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _enemyHandler
+      value: 
+      objectReference: {fileID: 1227253982}
+    - target: {fileID: 3537982764690447461, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _spawner
+      value: 
+      objectReference: {fileID: 1097840903}
+    - target: {fileID: 3537982764690447461, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _saveSystem
+      value: 
+      objectReference: {fileID: 1227253976}
+    - target: {fileID: 3537982764690447461, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _levelReward
+      value: 
+      objectReference: {fileID: 1227253977}
+    - target: {fileID: 3537982764690447461, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _enemyHandler
+      value: 
+      objectReference: {fileID: 1227253982}
+    - target: {fileID: 3537982764690447461, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsGrid
+      value: 
+      objectReference: {fileID: 1938384107}
+    - target: {fileID: 3537982764690447461, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
+    - target: {fileID: 3537982764690447461, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _movingCameraSpawnEnemies
+      value: 
+      objectReference: {fileID: 714900930}
     - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _levelReward
       value: 
@@ -3224,9 +3316,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1227253980}
     - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
+    - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsManager
       value: 
-      objectReference: {fileID: 1227253982}
+      objectReference: {fileID: 0}
     - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _crystalsContainer
       value: 
@@ -3350,7 +3446,7 @@ PrefabInstance:
     - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _enemyManager
       value: 
-      objectReference: {fileID: 1227253981}
+      objectReference: {fileID: 0}
     - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsGrid
       value: 
@@ -3362,7 +3458,7 @@ PrefabInstance:
     - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsManager
       value: 
-      objectReference: {fileID: 1227253982}
+      objectReference: {fileID: 0}
     - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _limbCameraAnimation
       value: 
@@ -3392,9 +3488,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1227253980}
     - target: {fileID: 3537982765008173345, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
+    - target: {fileID: 3537982765008173345, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsManager
       value: 
-      objectReference: {fileID: 1227253982}
+      objectReference: {fileID: 0}
     - target: {fileID: 3537982765008173345, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _crystalsContainer
       value: 
@@ -3411,6 +3511,30 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 714900935}
+    - target: {fileID: 4015574553851302366, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _enemyHandler
+      value: 
+      objectReference: {fileID: 1227253982}
+    - target: {fileID: 4015574553851302366, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
+    - target: {fileID: 4015574554372630140, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _spawner
+      value: 
+      objectReference: {fileID: 1097840903}
+    - target: {fileID: 4015574554372630140, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _yandexAds
+      value: 
+      objectReference: {fileID: 714900929}
+    - target: {fileID: 4015574554372630140, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _enemyHandler
+      value: 
+      objectReference: {fileID: 1227253982}
+    - target: {fileID: 4015574554372630140, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
     - target: {fileID: 4687634384337178671, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3476,9 +3600,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1227253980}
     - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
+    - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsManager
       value: 
-      objectReference: {fileID: 1227253982}
+      objectReference: {fileID: 0}
     - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _crystalsContainer
       value: 
@@ -3488,6 +3616,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildings.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 45e8493e553288b4bb6ddeed1f575ead, type: 2}
+    - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildings.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 7150e20fc5418994f8795d2fd89be667, type: 2}
@@ -3495,6 +3627,14 @@ PrefabInstance:
       propertyPath: _spawner
       value: 
       objectReference: {fileID: 1097840903}
+    - target: {fileID: 6595076029611978518, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _levelReward
+      value: 
+      objectReference: {fileID: 1227253977}
+    - target: {fileID: 6595076029611978518, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsGrid
+      value: 
+      objectReference: {fileID: 1938384107}
     - target: {fileID: 6795776316077077980, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3527,6 +3667,10 @@ PrefabInstance:
       propertyPath: _spawner
       value: 
       objectReference: {fileID: 1097840903}
+    - target: {fileID: 8139743717738737283, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8598206286071925620, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _crystalsContainer
       value: 
@@ -6214,6 +6358,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6378051898233362154, guid: 4b40e53c9b14428499881fd394e2b08e, type: 3}
+      propertyPath: _spawner
+      value: 
+      objectReference: {fileID: 1097840903}
     - target: {fileID: 7446235390211336199, guid: 4b40e53c9b14428499881fd394e2b08e, type: 3}
       propertyPath: m_text
       value: "\u041C\u043E\u043B\u043E\u0434\u0435\u0446 \u0442\u044B \u043F\u0440\u043E\u0448\u0451\u043B
@@ -6692,6 +6840,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2054782740}
     m_Modifications:
+    - target: {fileID: 1581235579, guid: 52357d9f535af59449b725ca07f1b2b2, type: 3}
+      propertyPath: _container
+      value: 
+      objectReference: {fileID: 246482034}
+    - target: {fileID: 1581235579, guid: 52357d9f535af59449b725ca07f1b2b2, type: 3}
+      propertyPath: _starsScore
+      value: 
+      objectReference: {fileID: 2119892596}
+    - target: {fileID: 1581235579, guid: 52357d9f535af59449b725ca07f1b2b2, type: 3}
+      propertyPath: _buildingsGrid
+      value: 
+      objectReference: {fileID: 1938384107}
     - target: {fileID: 3848421543173986977, guid: 52357d9f535af59449b725ca07f1b2b2, type: 3}
       propertyPath: _container
       value: 
@@ -6828,24 +6988,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!114 &1227253981 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3848421543173986978, guid: 52357d9f535af59449b725ca07f1b2b2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1581235579, guid: 52357d9f535af59449b725ca07f1b2b2, type: 3}
   m_PrefabInstance: {fileID: 1227253973}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd7245e77bc99ef42ba565a76b94ffb4, type: 3}
+  m_Script: {fileID: 11500000, guid: 154cae1b15094bf48befca8e3180300f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1227253982 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3848421543173986977, guid: 52357d9f535af59449b725ca07f1b2b2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1581235580, guid: 52357d9f535af59449b725ca07f1b2b2, type: 3}
   m_PrefabInstance: {fileID: 1227253973}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71c9490122692404f921a80332130ac4, type: 3}
+  m_Script: {fileID: 11500000, guid: 919b24319dec1e5449b785e11e25ccef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1242506304
@@ -8547,9 +8707,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 246482034}
     - target: {fileID: 7478831377382940522, guid: 8c05e916457f8ac4194eda8e69ac79c6, type: 3}
+      propertyPath: _towerHall
+      value: 
+      objectReference: {fileID: 2645574674400504189, guid: 3a052683135b0fd43bfbc248bef8683b, type: 3}
+    - target: {fileID: 7478831377382940522, guid: 8c05e916457f8ac4194eda8e69ac79c6, type: 3}
+      propertyPath: _starsScore
+      value: 
+      objectReference: {fileID: 2119892596}
+    - target: {fileID: 7478831377382940522, guid: 8c05e916457f8ac4194eda8e69ac79c6, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
+    - target: {fileID: 7478831377382940522, guid: 8c05e916457f8ac4194eda8e69ac79c6, type: 3}
       propertyPath: _buildingsManager
       value: 
-      objectReference: {fileID: 1227253982}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c05e916457f8ac4194eda8e69ac79c6, type: 3}
 --- !u!4 &1510984228 stripped
@@ -9637,7 +9809,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1741460333}
-  - component: {fileID: 1741460332}
   m_Layer: 0
   m_Name: TypedProcessor
   m_TagString: Untagged
@@ -9645,18 +9816,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1741460332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1741460331}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b75bc3aeafff29d4294a27937966d3bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1741460333
 Transform:
   m_ObjectHideFlags: 0
@@ -10550,6 +10709,10 @@ PrefabInstance:
       propertyPath: _spawner
       value: 
       objectReference: {fileID: 1097840903}
+    - target: {fileID: 5216454337636917976, guid: 580a8942055e16649bd74d0351339c73, type: 3}
+      propertyPath: _animation
+      value: 
+      objectReference: {fileID: 714900932}
     - target: {fileID: 5216454339256521114, guid: 580a8942055e16649bd74d0351339c73, type: 3}
       propertyPath: m_RootOrder
       value: 4

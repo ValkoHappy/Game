@@ -2035,7 +2035,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitions: []
-  fadeTime: 5
+  fadeTime: 3
+  _particleDied: {fileID: 0}
 --- !u!114 &7428650840936361602
 MonoBehaviour:
   m_ObjectHideFlags: 0

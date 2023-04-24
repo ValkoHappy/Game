@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7478831375808633165}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14, y: 0, z: -14}
   m_LocalScale: {x: 6, y: 1, z: 6}
   m_ConstrainProportionsScale: 0
@@ -166,10 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59fc8a84acc4aa94bab9f1f22935da9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buildingsManager: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
   _gridSize: {x: 33, y: 33}
   _container: {fileID: 0}
   _towerHall: {fileID: 2645574674400504189, guid: d06f5206a7093d54c80a762fd195e921, type: 3}
+  _starsScore: {fileID: 0}
 --- !u!114 &7478831377382940503
 MonoBehaviour:
   m_ObjectHideFlags: 0

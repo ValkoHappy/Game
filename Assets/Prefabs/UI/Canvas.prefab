@@ -4536,6 +4536,7 @@ MonoBehaviour:
   _buildingsGrid: {fileID: 0}
   _spawner: {fileID: 0}
   _levelReward: {fileID: 0}
+  _starsScore: {fileID: 3537982764690447387}
 --- !u!225 &3537982764132546765
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4744,7 +4745,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3537982764255644470}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -5422,6 +5423,7 @@ MonoBehaviour:
   _saveSystem: {fileID: 0}
   _movingCameraSpawnEnemies: {fileID: 0}
   _levelReward: {fileID: 0}
+  _starsScore: {fileID: 3537982764690447387}
 --- !u!225 &3537982764690447386
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5668,7 +5670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goldContainer: {fileID: 0}
   _crystalsContainer: {fileID: 0}
-  _buildingsManager: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
   _buildingsGrid: {fileID: 0}
   _levelReward: {fileID: 0}
   _trainingScreen: {fileID: 0}
@@ -5676,6 +5678,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6321b8899bf91174abc3730549fb81e4, type: 2}
   - {fileID: 11400000, guid: 976a0f03a44c03f499d65e29a3647b08, type: 2}
   - {fileID: 11400000, guid: c2ec7be55915a834d85923493b5396b0, type: 2}
+  - {fileID: 11400000, guid: b30935bfc36cc0a40ab629a218047d7d, type: 2}
+  - {fileID: 11400000, guid: 31e63aba183257d41b7bd90a7f2a2794, type: 2}
+  - {fileID: 11400000, guid: 654f01431b92a764cbb77f21c78fbe58, type: 2}
+  - {fileID: 11400000, guid: 582c1918f95de4b4d83e8252b3b71a70, type: 2}
+  - {fileID: 11400000, guid: 7ca2ee0ddd1ec364b9ebc00da7d6a17b, type: 2}
+  - {fileID: 11400000, guid: 6a223ecbd85a71a49b1bb020bc4f73e8, type: 2}
   _builderViewGold: {fileID: -5355620270328244883, guid: 5151fb169d0714f42bd38aa568b7716a, type: 3}
   _builderViewCrystals: {fileID: -5355620270328244883, guid: d1336ebb59208d040a2d04f1a2e30498, type: 3}
   _itenContainer: {fileID: 594803787307991174}
@@ -5837,7 +5845,6 @@ MonoBehaviour:
   _switchingScreen: {fileID: 0}
   _buttleScreen: {fileID: 4015574554372630140}
   _leaderboardScreen: {fileID: 7756827242526982558}
-  _trainingScreen: {fileID: 0}
 --- !u!114 &4015574553851302368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6148,7 +6155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goldContainer: {fileID: 0}
   _crystalsContainer: {fileID: 0}
-  _buildingsManager: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
   _buildingsGrid: {fileID: 0}
   _levelReward: {fileID: 0}
   _trainingScreen: {fileID: 0}
@@ -8129,7 +8136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goldContainer: {fileID: 0}
   _crystalsContainer: {fileID: 0}
-  _buildingsManager: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
   _buildingsGrid: {fileID: 0}
   _levelReward: {fileID: 0}
   _trainingScreen: {fileID: 0}
@@ -10713,7 +10720,7 @@ MonoBehaviour:
   _extraction: Wind
   _buildingsGrid: {fileID: 0}
   _spawner: {fileID: 0}
-  _buildingsManager: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
 --- !u!224 &6188542513835017781 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5616292217817321525, guid: c81f89fdc0716a44caa01d9799f2acf3, type: 3}
@@ -11967,7 +11974,7 @@ MonoBehaviour:
   _extraction: Oil
   _buildingsGrid: {fileID: 0}
   _spawner: {fileID: 0}
-  _buildingsManager: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
 --- !u!114 &8614261913163472924 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3799717483317846129, guid: c81f89fdc0716a44caa01d9799f2acf3, type: 3}
@@ -12264,7 +12271,7 @@ MonoBehaviour:
   _extraction: Solar
   _buildingsGrid: {fileID: 0}
   _spawner: {fileID: 0}
-  _buildingsManager: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
 --- !u!1001 &6593449296509481486
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12419,7 +12426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4140137260001040167, guid: 0a52d63900bd42d48927bbfeca82b67d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 612
+      value: 576.415
       objectReference: {fileID: 0}
     - target: {fileID: 4140137260222553548, guid: 0a52d63900bd42d48927bbfeca82b67d, type: 3}
       propertyPath: m_RootOrder
@@ -12467,7 +12474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4140137260558641933, guid: 0a52d63900bd42d48927bbfeca82b67d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 762
+      value: 726.415
       objectReference: {fileID: 0}
     - target: {fileID: 4985690661507687096, guid: 0a52d63900bd42d48927bbfeca82b67d, type: 3}
       propertyPath: _camera
@@ -12832,6 +12839,10 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 74
       objectReference: {fileID: 0}
+    - target: {fileID: 4102338712918215568, guid: 69d61b6788801444f9687ee76988c6a3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 604
+      objectReference: {fileID: 0}
     - target: {fileID: 4102338713418999090, guid: 69d61b6788801444f9687ee76988c6a3, type: 3}
       propertyPath: m_text
       value: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
@@ -12862,7 +12873,7 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: ba019250fba624a47b15449c9998bd5e, type: 2}
     - target: {fileID: 8137944126093825122, guid: 69d61b6788801444f9687ee76988c6a3, type: 3}
       propertyPath: m_Alpha
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8137944126093825126, guid: 69d61b6788801444f9687ee76988c6a3, type: 3}
       propertyPath: m_Pivot.x

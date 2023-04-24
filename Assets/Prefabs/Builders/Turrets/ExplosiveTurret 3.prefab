@@ -555,7 +555,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5872539845551113575, guid: 70bdcacccd584a54eb3233e02c10c79d, type: 3}
       propertyPath: _waitForSeconds
-      value: 5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 6290428598040577803, guid: 70bdcacccd584a54eb3233e02c10c79d, type: 3}
       propertyPath: _health

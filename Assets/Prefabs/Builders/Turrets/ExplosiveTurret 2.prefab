@@ -362,6 +362,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6994924340402463159, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7907062529473311681, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -591,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2066874970013935225, guid: d623cd60271194a40bc2db2b7ffa356e, type: 3}
       propertyPath: _waitForSeconds
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 5528190518105981462, guid: d623cd60271194a40bc2db2b7ffa356e, type: 3}
       propertyPath: _bounceForce

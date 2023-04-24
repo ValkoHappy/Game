@@ -13,6 +13,7 @@ public class DefeatScreen : UIScreenAnimator
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private Spawner _spawner;
     [SerializeField] private LevelReward _levelReward;
+    [SerializeField] private StarsScore _starsScore;
 
     public event UnityAction ResumeButtonClick;
     public event UnityAction RestartButtonClick;
@@ -35,6 +36,7 @@ public class DefeatScreen : UIScreenAnimator
 
     private void OnResumeButton()
     {
+        _starsScore.RemoveAllBuildingsCount();
         ResumeButtonClick?.Invoke();
         _buildingsHandler.OnDestroyAllBuildings();
         _buildingsGrid.RemoveGrid();

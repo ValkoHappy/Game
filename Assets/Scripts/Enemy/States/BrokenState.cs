@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class BrokenState : EnemyState
 {
     [SerializeField] private float fadeTime = 3.0f;
+    [SerializeField] private ParticleSystem _particleDied;
 
     private const string Die = "Die";
     private Material enemyMaterial;
@@ -19,7 +21,6 @@ public class BrokenState : EnemyState
     public void ApplyDamage(Rigidbody attachedBody, float force)
     {
         Vector3 impactDirection = (attachedBody.position - transform.position).normalized;
-
         Animator.SetTrigger(Die);
         Rigidbody.AddForce(impactDirection * force, ForceMode.Impulse);
         StartCoroutine(FadeOut());
@@ -30,7 +31,7 @@ public class BrokenState : EnemyState
     {
         Color enemyColor = enemyMaterial.color;
         float elapsedTime = 0.0f;
-
+        Vector3 position = transform.position;
         while (elapsedTime < fadeTime)
         {
             float alpha = Mathf.Lerp(1.0f, 0.0f, elapsedTime / fadeTime);
@@ -39,6 +40,7 @@ public class BrokenState : EnemyState
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        Destroy(gameObject, fadeTime);
+        Instantiate(_particleDied, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

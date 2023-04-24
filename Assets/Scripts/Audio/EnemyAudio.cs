@@ -2,17 +2,19 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
+[RequireComponent(typeof(AudioSource))]
 public class EnemyAudio : MonoBehaviour
 {
     [SerializeField] private AudioClip[] _audioClips;
     [SerializeField] private AudioMixerGroup _audioMixerGroup;
-    [SerializeField] private AudioSource _audioSource;
 
+    private AudioSource _audioSource;
     private int _lastClipIndex = -1;
     private float _delayMax = 5f;
 
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         _audioSource.outputAudioMixerGroup = _audioMixerGroup;
         StartCoroutine(PlayRandomClipWithDelay());
     }

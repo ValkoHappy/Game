@@ -460,7 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9015936730533883222, guid: 1557355d1f372a54c8800006f49dc003, type: 3}
       propertyPath: _waitForSeconds
-      value: 3.75
+      value: 3.25
       objectReference: {fileID: 0}
     - target: {fileID: 9015936730533883226, guid: 1557355d1f372a54c8800006f49dc003, type: 3}
       propertyPath: m_RootOrder

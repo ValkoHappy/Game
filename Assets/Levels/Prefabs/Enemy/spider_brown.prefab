@@ -400,7 +400,7 @@ Animator:
   m_GameObject: {fileID: 1753974411347508317}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a96ff394aa19efb4bbcd55446aefd7db, type: 2}
-  m_Controller: {fileID: 9100000, guid: 283805c632fbf77458b8384b2b0ef8b9, type: 2}
+  m_Controller: {fileID: 9100000, guid: cda9491d695343248a8569bdbb6b6cbf, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transitions:
   - {fileID: 7874093506593851932}
-  _attackForce: 3
+  _attackForce: 6
   _attackDelay: 1
 --- !u!114 &8977991895887217452
 MonoBehaviour:
@@ -517,7 +517,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transitions: []
-  fadeTime: 5
+  fadeTime: 3
+  _particleDied: {fileID: 5985634496115995770, guid: 8b90072a93790fc46919e7e135802d3b, type: 3}
 --- !u!114 &1753974411347508303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,7 +1053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 5
+  _health: 12
 --- !u!65 &6275704872695405073
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1061,7 +1062,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3702560249715327746}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.014139367, y: 0.020567361, z: 0.012444386}
