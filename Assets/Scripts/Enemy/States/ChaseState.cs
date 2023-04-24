@@ -4,10 +4,11 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent), typeof(FoundBuildings))]
 public class ChaseState : EnemyState
 {
+    private const string Run = "Run";
+
     private FoundBuildings _foundBuildings;
     private NavMeshAgent _agent;
     private PeacefulConstruction _targetConstruction;
-    private const string Run = "Run";
 
     private void Awake()
     {
