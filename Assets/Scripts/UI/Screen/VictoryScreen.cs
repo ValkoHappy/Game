@@ -15,6 +15,10 @@ public class VictoryScreen : UIScreenAnimator
     [SerializeField] private MovingCameraSpawnEnemies _movingCameraSpawnEnemies;
     [SerializeField] private LevelReward _levelReward;
     [SerializeField] private StarsScore _starsScore;
+    [SerializeField] private YandexAds _yandexAds;
+
+    private int _counter = 0;
+    private int numberOfRepetitions = 3;
 
     public event UnityAction ResumeButtonClick;
     public event UnityAction BonusButtonClick;
@@ -37,16 +41,25 @@ public class VictoryScreen : UIScreenAnimator
 
     public void OnResumeButton()
     {
+        if(_counter >= numberOfRepetitions)
+        {
+            _yandexAds.ShowInterstitial();
+            _counter = 0;
+        }
+        else
+        {
+            _counter++;
+        }
         ResumeButtonClick?.Invoke();
-        OnMenuAfterFightScreen();
         _levelReward.ClaimReward();
+        OnMenuAfterFightScreen();
     }
 
     public void OnBonusButton()
     {
         BonusButtonClick?.Invoke();
-        OnMenuAfterFightScreen();
         _levelReward.ClaimDoubleReward();
+        OnMenuAfterFightScreen();
     }
 
     private void OnMenuAfterFightScreen()
