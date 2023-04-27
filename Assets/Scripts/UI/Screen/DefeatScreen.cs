@@ -14,6 +14,10 @@ public class DefeatScreen : UIScreenAnimator
     [SerializeField] private Spawner _spawner;
     [SerializeField] private LevelReward _levelReward;
     [SerializeField] private StarsScore _starsScore;
+    [SerializeField] private SaveSystem _saveSystem;
+
+    private int _counter = 0;
+    private int numberOfRepetitions = 2;
 
     public event UnityAction ResumeButtonClick;
     public event UnityAction RestartButtonClick;
@@ -36,6 +40,15 @@ public class DefeatScreen : UIScreenAnimator
 
     private void OnResumeButton()
     {
+        if (_counter >= numberOfRepetitions)
+        {
+            _yandexAds.ShowInterstitial();
+            _counter = 0;
+        }
+        else
+        {
+            _counter++;
+        }
         _starsScore.RemoveAllBuildingsCount();
         ResumeButtonClick?.Invoke();
         _buildingsHandler.OnDestroyAllBuildings();
@@ -44,6 +57,7 @@ public class DefeatScreen : UIScreenAnimator
         _buildingsGrid.CreateTowerHall();
         _levelReward.ReturnSpentResources();
         _spawner.StartLevel();
+        _saveSystem.Save();
     }
 
     private void OnRestartButton()
