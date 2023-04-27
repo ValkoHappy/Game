@@ -4422,6 +4422,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 304716455}
     - target: {fileID: 3537982764132546767, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _saveSystem
+      value: 
+      objectReference: {fileID: 1758313935}
+    - target: {fileID: 3537982764132546767, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _levelReward
       value: 
       objectReference: {fileID: 1758313936}
