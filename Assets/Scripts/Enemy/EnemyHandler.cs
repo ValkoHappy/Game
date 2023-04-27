@@ -9,6 +9,8 @@ public class EnemyHandler : MonoBehaviour
     private bool _isAttackBegun = false;
 
     public event UnityAction AllEnemiesKilled;
+    public event UnityAction EnemiesIncluded;
+    public event UnityAction EnemiesRemoved;
 
     public bool IsAttackBegun => _isAttackBegun;
     public int DeadEnemiesCount => _deadEnemiesCount;
@@ -46,6 +48,7 @@ public class EnemyHandler : MonoBehaviour
             Destroy(enemy.gameObject);
         }
         _enemies.Clear();
+        EnemiesRemoved?.Invoke();
     }
 
     public void OnEnemies()
@@ -55,5 +58,6 @@ public class EnemyHandler : MonoBehaviour
             enemy.enabled = true;
             _isAttackBegun = true;
         }
+        EnemiesIncluded?.Invoke();
     }
 }
