@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(ShootTurret), typeof(SphereCollider))]
+[RequireComponent(typeof(ShootTurret), typeof(SphereCollider))]
 public class Turret : MonoBehaviour
 {
     [SerializeField] private Transform _partToRotate;
@@ -12,7 +12,6 @@ public class Turret : MonoBehaviour
     private List<EnemyCollision> _enemies;
     private PeacefulConstruction _construction;
     private SphereCollider _sphereCollider;
-    private BuildingsGrid _buildingsGrid;
     private EnemyHandler _enemyHandler;
     private Coroutine _sortCoroutine;
 
@@ -21,7 +20,6 @@ public class Turret : MonoBehaviour
 
     private void Awake()
     {
-        _buildingsGrid = FindObjectOfType<BuildingsGrid>();
         _shootTurret = GetComponent<ShootTurret>();
         _construction = GetComponentInChildren<PeacefulConstruction>();
         _sphereCollider = GetComponent<SphereCollider>();
@@ -30,15 +28,15 @@ public class Turret : MonoBehaviour
 
     private void OnEnable()
     {
-        _buildingsGrid.DeliveredBuilding += TurnOnCollider;
-        _buildingsGrid.CreatedBuilding += TurnOffCollider;
+        _enemyHandler.EnemiesIncluded += TurnOnCollider;
+        _enemyHandler.EnemiesRemoved += TurnOffCollider;
         _construction.Died += RemoveAllEnemies;
     }
 
     private void OnDisable()
     {
-        _buildingsGrid.DeliveredBuilding -= TurnOnCollider;
-        _buildingsGrid.CreatedBuilding -= TurnOffCollider;
+        _enemyHandler.EnemiesIncluded -= TurnOnCollider;
+        _enemyHandler.EnemiesRemoved -= TurnOffCollider;
         _construction.Died -= RemoveAllEnemies;
     }
 
