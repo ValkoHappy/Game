@@ -89,6 +89,7 @@ public class ShopScreen : UIScreenAnimator
     private void OnExitButton()
     {
         ExitButtonClick?.Invoke();
+        OnStoreTabWeapons();
     }
 
     private void OnStoreTabMainBuildings()
