@@ -39,7 +39,7 @@ public class VictoryScreen : UIScreenAnimator
         _bonusButton.onClick.RemoveListener(OnBonusButton);
     }
 
-    public void OnResumeButton()
+    private void OnResumeButton()
     {
         if(_counter >= numberOfRepetitions)
         {
@@ -55,7 +55,7 @@ public class VictoryScreen : UIScreenAnimator
         OnMenuAfterFightScreen();
     }
 
-    public void OnBonusButton()
+    private void OnBonusButton()
     {
         BonusButtonClick?.Invoke();
         _levelReward.ClaimDoubleReward();
