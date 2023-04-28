@@ -53,7 +53,7 @@ public class Game : MonoBehaviour
     private void OnShopScreen()
     {
         _mainMenuScreen.CloseScreen();
-        _shopScreen.OpenScreen();
+        _shopScreen.OpenShop();
         _mobileControllerDownScreen.CloseScreen();
     }
 
