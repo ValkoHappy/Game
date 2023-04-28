@@ -24,22 +24,21 @@ public class DefeatScreen : UIScreenAnimator
 
     private void OnEnable()
     {
-        _buildingsHandler.AllBuildingsBroked += OpenScreen;
-
+        _buildingsHandler.AllBuildingsBroked += OpenDefeatScreen;
         _resumeButton.onClick.AddListener(OnResumeButton);
         _restartButton.onClick.AddListener(OnRestartButton);
     }
 
     private void OnDisable()
     {
-        _buildingsHandler.AllBuildingsBroked -= OpenScreen;
-
+        _buildingsHandler.AllBuildingsBroked -= OpenDefeatScreen;
         _resumeButton.onClick.RemoveListener(OnResumeButton);
         _restartButton.onClick.RemoveListener(OnRestartButton);
     }
 
-    private void OnResumeButton()
+    private void OpenDefeatScreen()
     {
+        OpenScreen();
         if (_counter >= numberOfRepetitions)
         {
             _yandexAds.ShowInterstitial();
@@ -49,6 +48,10 @@ public class DefeatScreen : UIScreenAnimator
         {
             _counter++;
         }
+    }
+
+    private void OnResumeButton()
+    {
         _starsScore.RemoveAllBuildingsCount();
         ResumeButtonClick?.Invoke();
         _buildingsHandler.OnDestroyAllBuildings();
