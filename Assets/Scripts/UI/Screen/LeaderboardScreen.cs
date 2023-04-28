@@ -45,11 +45,11 @@ public class LeaderboardScreen : UIScreenAnimator
 
     public void OpenAuthorizationPanel()
     {
+        OpenScreen();
 #if UNITY_WEBGL && !UNITY_EDITOR
         if (!PlayerAccount.IsAuthorized)
 #endif
         {
-            OpenScreen();
             _authorizationPanel.SetActive(true);
             _leaderboardPanel.SetActive(false);
         }
@@ -101,7 +101,6 @@ public class LeaderboardScreen : UIScreenAnimator
         if (PlayerAccount.IsAuthorized)
 #endif
         {
-            OpenScreen();
             _authorizationPanel.SetActive(false);
             _leaderboardPanel.SetActive(true);
         }
