@@ -1035,8 +1035,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.647962, y: 1.7959473, z: 0.5100112}
-  m_Center: {x: 0.021032631, y: 0.8932147, z: 0.012773685}
+  m_Size: {x: 0.3693673, y: 1.7959473, z: 0.3128875}
+  m_Center: {x: 0.036765844, y: 0.8932147, z: -0.0039146766}
 --- !u!114 &5744123798993530304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1072,7 +1072,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ff49a4ae1745148e9b1fd0637fd1644e, type: 3}
   - {fileID: 8300000, guid: 34aa6fa3008dc4386927f76c9d25db1d, type: 3}
   _audioMixerGroup: {fileID: -4155269728023372470, guid: 45c7e6910b2bbd047b831aa8a6a7df56, type: 2}
-  _audioSource: {fileID: 2917012223199445179}
 --- !u!82 &2917012223199445179
 AudioSource:
   m_ObjectHideFlags: 0
