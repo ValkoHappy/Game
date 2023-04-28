@@ -86,10 +86,15 @@ public class ShopScreen : UIScreenAnimator
         _storeTabGeneratorsButton.enabled = true;
     }
 
+    public void OpenShop()
+    {
+        OnStoreTabWeapons();
+        OpenScreen();
+    }
+
     private void OnExitButton()
     {
         ExitButtonClick?.Invoke();
-        OnStoreTabWeapons();
     }
 
     private void OnStoreTabMainBuildings()
