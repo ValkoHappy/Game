@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1310096965676774312}
   - component: {fileID: 8925204677989836487}
   - component: {fileID: 775668074685148802}
+  - component: {fileID: 4904965486977662014}
   m_Layer: 0
   m_Name: ExplosiveTurret 2
   m_TagString: Turret
@@ -81,6 +82,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 1, y: 1, z: 1}
   m_TimeToStationary: 0.5
+--- !u!65 &4904965486977662014
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7799248908628522134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 1, y: 1.25, z: 1}
 --- !u!1001 &1042979964516710422
 PrefabInstance:
   m_ObjectHideFlags: 0

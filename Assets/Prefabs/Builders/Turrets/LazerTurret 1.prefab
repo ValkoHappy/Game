@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4016082141280449998}
   - component: {fileID: 6556437537835514532}
   - component: {fileID: -3683823521688913551}
+  - component: {fileID: 8161568354469742423}
   m_Layer: 0
   m_Name: LazerTurret 1
   m_TagString: Turret
@@ -81,6 +82,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 1, y: 1, z: 1}
   m_TimeToStationary: 0.5
+--- !u!65 &8161568354469742423
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2507486313119855547}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 1, y: 1.25, z: 1}
 --- !u!1001 &1843667538433868148
 PrefabInstance:
   m_ObjectHideFlags: 0

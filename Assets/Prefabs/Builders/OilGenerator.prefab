@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1833638821257500497}
   - component: {fileID: 8008148637491687746}
   - component: {fileID: -3048099742558628682}
+  - component: {fileID: 3598870093047339791}
   m_Layer: 0
   m_Name: OilGenerator
   m_TagString: Oil
@@ -80,6 +81,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 1, y: 1, z: 1}
   m_TimeToStationary: 0.5
+--- !u!65 &3598870093047339791
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4214112405864594302}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 1, y: 1.25, z: 1}
 --- !u!1001 &594211053915126518
 PrefabInstance:
   m_ObjectHideFlags: 0
