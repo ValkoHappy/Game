@@ -11,6 +11,7 @@ public class Game : MonoBehaviour
     [SerializeField] private SwitchingScreen _switchingScreen;
     [SerializeField] private ButtleScreen _buttleScreen;
     [SerializeField] private LeaderboardScreen _leaderboardScreen;
+    [SerializeField] private BuildingsRemovalScreen _buildingsRemovalScreen;
 
     private void OnEnable()
     {
@@ -19,11 +20,12 @@ public class Game : MonoBehaviour
         _mainMenuScreen.SettingButtonClick += OnSettingMenuScreen;
         _mainMenuScreen.LeaderboardButtonClick += OnOpenLeaderboardScreen;
         _shopScreen.ExitButtonClick += OnMainMenuScreenAfterShop;
+        _shopScreen.DeleteBuildingsButtonClick += OnOpenBuildingsRemovalScreen;
         _victoryScreen.BonusButtonClick += OnMenuAfterFightScreen;
         _victoryScreen.ResumeButtonClick += OnMenuAfterFightScreen;
         _featScreen.ResumeButtonClick += OnRepeatBattle;
         _featScreen.RestartButtonClick += OnRepeatBattleForAdvertising;
-
+        _buildingsRemovalScreen.ExitButtonClick += OnCloseBuildingsRemovalScreen;
         _buttleScreen.ExitButtonClick += ExitOfFight;
         _buttleScreen.SettingsButtonClick += OnSettingMenuScreen;
     }
@@ -35,11 +37,12 @@ public class Game : MonoBehaviour
         _mainMenuScreen.SettingButtonClick -= OnSettingMenuScreen;
         _mainMenuScreen.LeaderboardButtonClick -= OnOpenLeaderboardScreen;
         _shopScreen.ExitButtonClick -= OnMainMenuScreenAfterShop;
+        _shopScreen.DeleteBuildingsButtonClick += OnOpenBuildingsRemovalScreen;
         _victoryScreen.BonusButtonClick -= OnMenuAfterFightScreen;
         _victoryScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
         _featScreen.ResumeButtonClick -= OnRepeatBattle;
         _featScreen.RestartButtonClick -= OnRepeatBattleForAdvertising;
-
+        _buildingsRemovalScreen.ExitButtonClick -= OnCloseBuildingsRemovalScreen;
         _buttleScreen.ExitButtonClick -= ExitOfFight;
         _buttleScreen.SettingsButtonClick -= OnSettingMenuScreen;
     }
@@ -96,5 +99,19 @@ public class Game : MonoBehaviour
     private void OnOpenLeaderboardScreen()
     {
         _leaderboardScreen.OpenAuthorizationPanel();
+    }
+
+    private void OnOpenBuildingsRemovalScreen()
+    {
+        _shopScreen.CloseScreen();
+        _mobileControllerDownScreen.OpenScreen();
+        _buildingsRemovalScreen.OpenScreen();
+    }
+
+    private void OnCloseBuildingsRemovalScreen()
+    {
+        _mobileControllerDownScreen.CloseScreen();
+        _buildingsRemovalScreen.CloseScreen();
+        _shopScreen.OpenScreen();
     }
 }
