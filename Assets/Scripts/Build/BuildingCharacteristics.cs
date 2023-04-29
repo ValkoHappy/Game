@@ -21,6 +21,8 @@ public class BuildingCharacteristics : MonoBehaviour
 
     private Localization _localization;
 
+    public Goods Goods => _goods;
+
     private void Awake()
     {
         _localization = FindObjectOfType<Localization>();

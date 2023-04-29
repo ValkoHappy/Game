@@ -18,7 +18,7 @@ public class VictoryScreen : UIScreenAnimator
     [SerializeField] private YandexAds _yandexAds;
 
     private int _counter = 0;
-    private int numberOfRepetitions = 3;
+    private int numberOfRepetitions = 2;
 
     public event UnityAction ResumeButtonClick;
     public event UnityAction BonusButtonClick;

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5689089065340969327}
   - component: {fileID: 5931316572436338940}
   - component: {fileID: -3873642929191617247}
+  - component: {fileID: 1539003493787948513}
   m_Layer: 0
   m_Name: Turret 1
   m_TagString: Turret
@@ -81,6 +82,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 1, y: 1, z: 1}
   m_TimeToStationary: 0.5
+--- !u!65 &1539003493787948513
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6594440513109305114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 1, y: 1.25, z: 1}
 --- !u!1001 &946530082615678553
 PrefabInstance:
   m_ObjectHideFlags: 0

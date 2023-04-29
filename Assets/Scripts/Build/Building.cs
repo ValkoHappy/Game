@@ -11,6 +11,7 @@ public class Building : MonoBehaviour
     private Renderer[] _renderers;
     private bool _isBuilding;
     private PeacefulConstruction _peacefulConstruction;
+    private BuildingCharacteristics _buildingCharacteristics;
 
     public event UnityAction DeliveryBuilding;
     public event UnityAction CreateBuilding;
@@ -18,9 +19,11 @@ public class Building : MonoBehaviour
     public Vector2Int TileSize => _size;
     public bool IsBuilding => _isBuilding;
     public PeacefulConstruction PeacefulConstruction => _peacefulConstruction;
+    public BuildingCharacteristics BuildingCharacteristics => _buildingCharacteristics;
 
     private void Awake()
     {
+        _buildingCharacteristics = GetComponentInChildren<BuildingCharacteristics>();
         _peacefulConstruction = GetComponentInChildren<PeacefulConstruction>();
         _renderers = GetComponentsInChildren<Renderer>();
         _originalColors = new Color[_renderers.Length];

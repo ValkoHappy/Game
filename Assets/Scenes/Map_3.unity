@@ -337,7 +337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2475971937453301211, guid: caee9e96ae538e24880ba62467fb4625, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2475971937453301211, guid: caee9e96ae538e24880ba62467fb4625, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1642,6 +1642,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1969234843}
     m_Modifications:
+    - target: {fileID: 1304593845, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _goldContainer
+      value: 
+      objectReference: {fileID: 1904822537}
+    - target: {fileID: 1304593845, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1904822541}
+    - target: {fileID: 1304593845, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _crystalsContainer
+      value: 
+      objectReference: {fileID: 1904822536}
     - target: {fileID: 1372194184, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _spawner
       value: 
@@ -1726,21 +1738,6 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1680017776363624836, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: entries.Array.data[0].Text
-      value: "\u0422\u044B \u043F\u0440\u043E\u0448\u0451\u043B \u0442\u0440\u0435\u0442\u044C\u044E
-        \u043A\u0430\u0440\u0442\u0443, \u0432\u043F\u0435\u0440\u0435\u0434\u0438
-        \u0442\u0435\u0431\u044F \u0436\u0434\u0451\u0442 \u0435\u0449\u0451 \u043E\u0434\u043D\u0430."
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680017776363624836, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: entries.Array.data[1].Text
-      value: You have passed the third card, there is another one waiting for you.
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680017776363624836, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: entries.Array.data[2].Text
-      value: "\xDC\xE7\xFCnc\xFC kart\u0131 ge\xE7tin, \xF6n\xFCn\xFCzde bir tane
-        daha bekliyor."
-      objectReference: {fileID: 0}
     - target: {fileID: 1792352430320074504, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1805,6 +1802,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2420540135533967819, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _removal
+      value: 
+      objectReference: {fileID: 548310255}
     - target: {fileID: 2480370638428371738, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1817,6 +1818,10 @@ PrefabInstance:
       propertyPath: _cameraMover
       value: 
       objectReference: {fileID: 1313946156}
+    - target: {fileID: 2914172460087895490, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _crystalsContainer
+      value: 
+      objectReference: {fileID: 1904822536}
     - target: {fileID: 3047846363350095383, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1926,37 +1931,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1904822541}
     - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildingsManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _crystalsContainer
       value: 
       objectReference: {fileID: 1904822536}
-    - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildings.Array.size
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildings.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: 654f01431b92a764cbb77f21c78fbe58, type: 2}
-    - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildings.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: 31e63aba183257d41b7bd90a7f2a2794, type: 2}
-    - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildings.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: 582c1918f95de4b4d83e8252b3b71a70, type: 2}
-    - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildings.Array.data[7]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7ca2ee0ddd1ec364b9ebc00da7d6a17b, type: 2}
-    - target: {fileID: 3537982764864865306, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildings.Array.data[8]
-      value: 
-      objectReference: {fileID: 11400000, guid: 6a223ecbd85a71a49b1bb020bc4f73e8, type: 2}
     - target: {fileID: 3537982764866789514, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2042,45 +2019,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _spawner
-      value: 
-      objectReference: {fileID: 1341470615}
-    - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _yandexAds
-      value: 
-      objectReference: {fileID: 1313946154}
-    - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _saveSystem
-      value: 
-      objectReference: {fileID: 1904822533}
-    - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _levelReward
-      value: 
-      objectReference: {fileID: 1904822534}
-    - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _enemyManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildingsGrid
-      value: 
-      objectReference: {fileID: 825140614}
-    - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _switchingScreen
       value: 
       objectReference: {fileID: 1034113169}
-    - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildingsManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _limbCameraAnimation
-      value: 
-      objectReference: {fileID: 1313946157}
-    - target: {fileID: 3537982764866789515, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _movingCameraSpawnEnemies
-      value: 
-      objectReference: {fileID: 1313946155}
     - target: {fileID: 3537982764866789526, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -2102,10 +2043,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1904822541}
     - target: {fileID: 3537982765008173345, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildingsManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3537982765008173345, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _crystalsContainer
       value: 
       objectReference: {fileID: 1904822536}
@@ -2113,6 +2050,10 @@ PrefabInstance:
       propertyPath: _crystalsContainer
       value: 
       objectReference: {fileID: 1904822536}
+    - target: {fileID: 3754720902961542769, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _goldContainer
+      value: 
+      objectReference: {fileID: 1904822537}
     - target: {fileID: 3847153098710635406, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _camera
       value: 
@@ -2186,25 +2127,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1904822541}
     - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildingsManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _crystalsContainer
       value: 
       objectReference: {fileID: 1904822536}
-    - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildings.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildings.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 45e8493e553288b4bb6ddeed1f575ead, type: 2}
-    - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
-      propertyPath: _buildings.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7150e20fc5418994f8795d2fd89be667, type: 2}
     - target: {fileID: 6595076029611978518, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _levelReward
       value: 
@@ -2217,6 +2142,18 @@ PrefabInstance:
       propertyPath: _goldContainer
       value: 
       objectReference: {fileID: 1904822537}
+    - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _goldContainer
+      value: 
+      objectReference: {fileID: 1904822537}
+    - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1904822541}
+    - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _crystalsContainer
+      value: 
+      objectReference: {fileID: 1904822536}
     - target: {fileID: 7414885484513123929, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -2628,6 +2565,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e722f5443cbd048b675375e24f1beb, type: 3}
+--- !u!114 &548310255 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 405124374}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba4bdbe74760ac4fa7b7e34c7b7d8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &563870553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4456754640281814, guid: 1a6a34cedc83b654099dbb403ec40524, type: 3}

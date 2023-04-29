@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2205331701495456397}
   - component: {fileID: 7462904060241793127}
   - component: {fileID: 6088243310155275162}
+  - component: {fileID: 5643423729867036264}
   m_Layer: 0
   m_Name: WindGenerator
   m_TagString: Wind
@@ -80,6 +81,19 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 1, y: 1, z: 1}
   m_TimeToStationary: 0.5
+--- !u!65 &5643423729867036264
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724100388775069729}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 1, y: 1.25, z: 1}
 --- !u!1001 &5703021145951108174
 PrefabInstance:
   m_ObjectHideFlags: 0
