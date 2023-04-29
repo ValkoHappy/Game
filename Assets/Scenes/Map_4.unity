@@ -3480,6 +3480,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1097840903}
     - target: {fileID: 3537982764690447461, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _yandexAds
+      value: 
+      objectReference: {fileID: 714900929}
+    - target: {fileID: 3537982764690447461, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _saveSystem
       value: 
       objectReference: {fileID: 1227253976}
