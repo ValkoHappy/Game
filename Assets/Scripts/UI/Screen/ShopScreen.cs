@@ -6,9 +6,11 @@ public class ShopScreen : UIScreenAnimator
 {
     [SerializeField] private LevelReward _levelReward;
     [SerializeField] private BuildingsGrid _buildingsGrid;
+    [SerializeField] private BuildingRemover _buildingRemover;
 
     [SerializeField] private Button _exitButton;
     [SerializeField] private Button _advertisingButton;
+    [SerializeField] private Button _deleteBuildingsButton;
 
     [SerializeField] private Button _storeTabFencesButton;
     [SerializeField] private Button _storeTabWeaponsButton;
@@ -19,6 +21,7 @@ public class ShopScreen : UIScreenAnimator
     [SerializeField] private UIScreenAnimator _storeTabGenerators;
 
     public event UnityAction ExitButtonClick;
+    public event UnityAction DeleteBuildingsButtonClick;
 
     private void Start()
     {
@@ -30,6 +33,7 @@ public class ShopScreen : UIScreenAnimator
         _buildingsGrid.CreatedBuilding += CloseScreen;
         _buildingsGrid.RemoveBuilding += OpenScreen;
         _buildingsGrid.DeliveredBuilding += OpenScreen;
+        _deleteBuildingsButton.onClick.AddListener(OnDeleteBuildingsButton);
 
         _exitButton.onClick.AddListener(OnExitButton);
         _advertisingButton.onClick.AddListener(ClaimCrystalsForAdvertising);
@@ -44,6 +48,7 @@ public class ShopScreen : UIScreenAnimator
         _buildingsGrid.CreatedBuilding -= CloseScreen;
         _buildingsGrid.RemoveBuilding -= OpenScreen;
         _buildingsGrid.DeliveredBuilding -= OpenScreen;
+        _deleteBuildingsButton.onClick.RemoveListener(OnDeleteBuildingsButton);
 
         _exitButton.onClick.RemoveListener(OnExitButton);
         _advertisingButton.onClick.RemoveListener(ClaimCrystalsForAdvertising);
@@ -56,6 +61,7 @@ public class ShopScreen : UIScreenAnimator
     {
         _exitButton.enabled = false;
         _advertisingButton.enabled = false;
+        _deleteBuildingsButton.enabled = false;
         _storeTabFencesButton.enabled = false;
         _storeTabWeaponsButton.enabled = false;
         _storeTabGeneratorsButton.enabled = false;
@@ -81,6 +87,7 @@ public class ShopScreen : UIScreenAnimator
     {
         _exitButton.enabled = true;
         _advertisingButton.enabled = true;
+        _deleteBuildingsButton.enabled = true;
         _storeTabFencesButton.enabled = true;
         _storeTabWeaponsButton.enabled = true;
         _storeTabGeneratorsButton.enabled = true;
@@ -121,5 +128,11 @@ public class ShopScreen : UIScreenAnimator
     private void ClaimCrystalsForAdvertising()
     {
         _levelReward.ClaimCrystalsForAdvertising();
+    }
+
+    private void OnDeleteBuildingsButton()
+    {
+        DeleteBuildingsButtonClick?.Invoke();
+        _buildingRemover.enabled = true;
     }
 }
