@@ -2210,12 +2210,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8950555958213599495}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 471ef7acea0940048b017e4170ef04cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _audioClips: []
+  _audioClips:
+  - {fileID: 8300000, guid: 6cc6d405af770c6489ec9a8a52967973, type: 3}
+  - {fileID: 8300000, guid: b8223689b63d02447aa27d8f98a78729, type: 3}
+  - {fileID: 8300000, guid: 4805c4602f1748745ba616bc7b8c01e6, type: 3}
+  - {fileID: 8300000, guid: 545be241f6f2cb14b81fd82fee90ecb9, type: 3}
   _audioMixerGroup: {fileID: -4155269728023372470, guid: 45c7e6910b2bbd047b831aa8a6a7df56, type: 2}
 --- !u!82 &1724612289875244575
 AudioSource:
@@ -2229,7 +2233,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: -4155269728023372470, guid: 45c7e6910b2bbd047b831aa8a6a7df56, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2238,7 +2242,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 40
+  MaxDistance: 30
   Pan2D: 0
   rolloffMode: 1
   BypassEffects: 0
