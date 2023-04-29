@@ -17,7 +17,7 @@ public class DefeatScreen : UIScreenAnimator
     [SerializeField] private SaveSystem _saveSystem;
 
     private int _counter = 0;
-    private int numberOfRepetitions = 2;
+    private int numberOfRepetitions = 1;
 
     public event UnityAction ResumeButtonClick;
     public event UnityAction RestartButtonClick;
