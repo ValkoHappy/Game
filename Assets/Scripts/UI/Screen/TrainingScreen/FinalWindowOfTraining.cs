@@ -9,6 +9,7 @@ public class FinalWindowOfTraining : UIScreenAnimator
 
     [SerializeField] private MainMenuScreen _mainMenuScreen;
     [SerializeField] private ShopScreen _shopScreen;
+    [SerializeField] private YandexAds _yandexAds;
 
     public event UnityAction ResumeButtonClick;
 
@@ -37,6 +38,7 @@ public class FinalWindowOfTraining : UIScreenAnimator
 
     private void OnResumeButton()
     {
+        _yandexAds.ShowInterstitial();
         _mainMenuScreen.EnabletAllButton();
         _shopScreen.EnabletAllButton();;
         CloseScreen();
