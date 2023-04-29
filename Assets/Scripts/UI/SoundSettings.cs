@@ -15,10 +15,11 @@ public class SoundSettings : MonoBehaviour
 
     private void Awake()
     {
-        if (PlayerPrefs.HasKey(MusicVolume))
+        if (PlayerPrefs.HasKey(MusicVolume) && PlayerPrefs.HasKey(EffectsVolume))
         {
             _musicSlider.value = PlayerPrefs.GetFloat(MusicVolume);
             _effectsSlider.value = PlayerPrefs.GetFloat(EffectsVolume);
+
             _audioMixer.SetFloat(MusicVolume, Mathf.Lerp(-80, 0, _musicSlider.value));
             _audioMixer.SetFloat(EffectsVolume, Mathf.Lerp(-80, 0, _effectsSlider.value));
         }
@@ -26,10 +27,16 @@ public class SoundSettings : MonoBehaviour
         {
             _musicSlider.value = _defaultVolume;
             _effectsSlider.value = _defaultVolume;
+
             _audioMixer.SetFloat(MusicVolume, Mathf.Lerp(-80, 0, _defaultVolume));
             _audioMixer.SetFloat(EffectsVolume, Mathf.Lerp(-80, 0, _defaultVolume));
+
+            PlayerPrefs.SetFloat(MusicVolume, _defaultVolume);
+            PlayerPrefs.SetFloat(EffectsVolume, _defaultVolume);
+            PlayerPrefs.Save();
         }
     }
+
 
     private void OnEnable()
     {
