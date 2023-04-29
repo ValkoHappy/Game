@@ -87,7 +87,7 @@ public class BuildingsHandler : MonoBehaviour
         _buildings.Clear();
     }
 
-    private void OnDestroyBuilding(Building building)
+    public void OnDestroyBuilding(Building building)
     {
         for (int i = 0; i < _buildings.Count; i++)
         {
