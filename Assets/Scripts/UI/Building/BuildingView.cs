@@ -12,6 +12,7 @@ public class BuildingView : MonoBehaviour
         _building = GetComponent<Building>();
     }
 
+
     private void OnEnable()
     {
         _building.CreateBuilding += OnOpen;
