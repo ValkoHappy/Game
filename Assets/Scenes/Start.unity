@@ -2237,7 +2237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLanguage: Russian
+  currentLanguage: English
   detectLanguage: 1
   defaultLanguage: Russian
   saveLoad: 1
@@ -2980,7 +2980,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041B\u0438\u0434\u0435\u0440\u0431\u043E\u0440\u0434"
+  m_text: Leaderboard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -4158,7 +4158,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -6144,7 +6144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+  m_text: Settings
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -6575,7 +6575,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041D\u043E\u0432\u0430\u044F \u0438\u0433\u0440\u0430"
+  m_text: New game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -7855,8 +7855,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439 \u0438 \u0437\u0430\u0449\u0438\u0442\u0438
-    \u0431\u0430\u0437\u0443"
+  m_text: Build and defend the base
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}

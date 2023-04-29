@@ -4393,6 +4393,10 @@ PrefabInstance:
       propertyPath: _cameraMover
       value: 
       objectReference: {fileID: 304716457}
+    - target: {fileID: 2914172460087895490, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _crystalsContainer
+      value: 
+      objectReference: {fileID: 1758313938}
     - target: {fileID: 3047846363350095383, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4669,6 +4673,10 @@ PrefabInstance:
       propertyPath: _crystalsContainer
       value: 
       objectReference: {fileID: 1758313938}
+    - target: {fileID: 3754720902961542769, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _goldContainer
+      value: 
+      objectReference: {fileID: 1758313939}
     - target: {fileID: 3847153098710635406, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _camera
       value: 
@@ -4769,6 +4777,18 @@ PrefabInstance:
       propertyPath: _goldContainer
       value: 
       objectReference: {fileID: 1758313939}
+    - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _goldContainer
+      value: 
+      objectReference: {fileID: 1758313939}
+    - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1758313944}
+    - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _crystalsContainer
+      value: 
+      objectReference: {fileID: 1758313938}
     - target: {fileID: 7414885484513123929, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -7763,11 +7783,11 @@ Transform:
   - {fileID: 1790501410}
   - {fileID: 1093893633}
   - {fileID: 2061935816}
+  - {fileID: 636743695}
   - {fileID: 820366781}
   - {fileID: 1417037626}
   - {fileID: 1941890223}
   - {fileID: 378879657}
-  - {fileID: 636743695}
   - {fileID: 258337357}
   - {fileID: 1152171024}
   - {fileID: 599248191}

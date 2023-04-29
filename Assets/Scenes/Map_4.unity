@@ -3239,6 +3239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1969234843}
     m_Modifications:
+    - target: {fileID: 1304593845, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
     - target: {fileID: 1372194184, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _spawner
       value: 
@@ -3399,6 +3403,10 @@ PrefabInstance:
       propertyPath: _cameraMover
       value: 
       objectReference: {fileID: 714900931}
+    - target: {fileID: 2914172460087895490, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _crystalsContainer
+      value: 
+      objectReference: {fileID: 1227253979}
     - target: {fileID: 3047846363350095383, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -3711,6 +3719,10 @@ PrefabInstance:
       propertyPath: _crystalsContainer
       value: 
       objectReference: {fileID: 1227253979}
+    - target: {fileID: 3754720902961542769, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _goldContainer
+      value: 
+      objectReference: {fileID: 1227253980}
     - target: {fileID: 3847153098710635406, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _camera
       value: 
@@ -3859,6 +3871,18 @@ PrefabInstance:
       propertyPath: _goldContainer
       value: 
       objectReference: {fileID: 1227253980}
+    - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _goldContainer
+      value: 
+      objectReference: {fileID: 1227253980}
+    - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingsHandler
+      value: 
+      objectReference: {fileID: 1227253981}
+    - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _crystalsContainer
+      value: 
+      objectReference: {fileID: 1227253979}
     - target: {fileID: 7414885484513123929, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
