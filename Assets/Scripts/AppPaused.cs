@@ -26,5 +26,33 @@ public class AppPaused : MonoBehaviour
             AudioListener.pause = false;
         }
     }
+
+    private void OnApplicationPause(bool isPaused)
+    {
+        if (isPaused)
+        {
+            Time.timeScale = 0;
+            AudioListener.pause = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            AudioListener.pause = false;
+        }
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus)
+        {
+            Time.timeScale = 0;
+            AudioListener.pause = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            AudioListener.pause = false;
+        }
+    }
 }
 
