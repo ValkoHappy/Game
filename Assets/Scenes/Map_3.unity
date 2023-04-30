@@ -2143,6 +2143,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1904822537}
     - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _levelReward
+      value: 
+      objectReference: {fileID: 1904822534}
+    - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _goldContainer
       value: 
       objectReference: {fileID: 1904822537}
@@ -2215,6 +2219,11 @@ PrefabInstance:
 --- !u!224 &405124375 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3537982764866789514, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 405124374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &405124376 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4015574553851302361, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
   m_PrefabInstance: {fileID: 405124374}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &418009434 stripped
@@ -4538,6 +4547,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5175333395803702183, guid: 4b40e53c9b14428499881fd394e2b08e, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 405124376}
     - target: {fileID: 6378051898233362154, guid: 4b40e53c9b14428499881fd394e2b08e, type: 3}
       propertyPath: _spawner
       value: 

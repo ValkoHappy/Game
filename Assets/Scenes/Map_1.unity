@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 281569178}
   - component: {fileID: 281569177}
   - component: {fileID: 281569176}
+  - component: {fileID: 281569179}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -419,6 +420,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281569174}
   m_CullTransparentMesh: 1
+--- !u!114 &281569179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281569174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbaa2e88b1c6cc46857c9c30840e7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 2093154848}
 --- !u!1001 &288928704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -608,7 +622,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Training
+  m_text: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -758,9 +772,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Well done! You have successfully completed the training and now you can
-    independently decide what to bet and what to save gold for. Good luck in the
-    game!
+  m_text: "\u041C\u043E\u043B\u043E\u0434\u0435\u0446! \u0422\u044B \u0443\u0441\u043F\u0435\u0448\u043D\u043E
+    \u043F\u0440\u043E\u0448\u0435\u043B \u043E\u0431\u0443\u0447\u0435\u043D\u0438\u0435
+    \u0438 \u0442\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u0435\u0448\u044C
+    \u0441\u0430\u043C\u043E\u0441\u0442\u043E\u044F\u0442\u0435\u043B\u044C\u043D\u043E
+    \u0440\u0435\u0448\u0430\u0442\u044C, \u0447\u0442\u043E \u0441\u0442\u0430\u0432\u0438\u0442\u044C
+    \u0438 \u043D\u0430 \u0447\u0442\u043E \u043A\u043E\u043F\u0438\u0442\u044C \u0437\u043E\u043B\u043E\u0442\u043E.
+    \u0416\u0435\u043B\u0430\u044E \u0443\u0434\u0430\u0447\u0438 \u0432 \u0438\u0433\u0440\u0435!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -1004,6 +1022,7 @@ GameObject:
   - component: {fileID: 426283068}
   - component: {fileID: 426283067}
   - component: {fileID: 426283066}
+  - component: {fileID: 426283069}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1114,6 +1133,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 426283064}
   m_CullTransparentMesh: 1
+--- !u!114 &426283069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426283064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbaa2e88b1c6cc46857c9c30840e7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 2093154848}
 --- !u!1001 &434248666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1477,7 +1509,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Training
+  m_text: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -2187,6 +2219,7 @@ GameObject:
   - component: {fileID: 897984241}
   - component: {fileID: 897984240}
   - component: {fileID: 897984239}
+  - component: {fileID: 897984242}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2297,6 +2330,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897984237}
   m_CullTransparentMesh: 1
+--- !u!114 &897984242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897984237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbaa2e88b1c6cc46857c9c30840e7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 2093154848}
 --- !u!4 &924117695 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7478831375808633161, guid: 8c05e916457f8ac4194eda8e69ac79c6, type: 3}
@@ -2563,7 +2609,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Training
+  m_text: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -2801,6 +2847,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81f51ec42d5c7784aa8e8d5298eddaa0, type: 3}
+--- !u!114 &1185662843 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 1540912046}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ba4bdbe74760ac4fa7b7e34c7b7d8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1187548675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3007,6 +3064,7 @@ GameObject:
   - component: {fileID: 1246801789}
   - component: {fileID: 1246801788}
   - component: {fileID: 1246801787}
+  - component: {fileID: 1246801790}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3117,6 +3175,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246801785}
   m_CullTransparentMesh: 1
+--- !u!114 &1246801790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246801785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fbaa2e88b1c6cc46857c9c30840e7c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 2093154848}
 --- !u!1001 &1264657779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3643,6 +3714,7 @@ MonoBehaviour:
   _resumeButton: {fileID: 426283066}
   _mainMenuScreen: {fileID: 2005515056}
   _shopScreen: {fileID: 1202714319}
+  _yandexAds: {fileID: 1221109124}
 --- !u!1001 &1501083867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3841,6 +3913,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1969234843}
     m_Modifications:
+    - target: {fileID: 983711531, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4.498108
+      objectReference: {fileID: 0}
+    - target: {fileID: 1141536767, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -3.753006
+      objectReference: {fileID: 0}
     - target: {fileID: 1372194184, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _spawner
       value: 
@@ -3850,6 +3930,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795091612}
     - target: {fileID: 1372194184, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingRemover
+      value: 
+      objectReference: {fileID: 1185662843}
+    - target: {fileID: 1372194184, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsHandler
       value: 
       objectReference: {fileID: 1581235579}
@@ -3858,8 +3942,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1440532936, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440532936, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 3.723
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440532936, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9063079
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1440532936, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3871,19 +3963,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1440532936, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.42261827
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1440532936, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1440532936, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 132
+      value: 156.435
       objectReference: {fileID: 0}
     - target: {fileID: 1440532936, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 50
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580886436, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 1612220096, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _spawner
@@ -3894,6 +3990,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795091612}
     - target: {fileID: 1612220096, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingRemover
+      value: 
+      objectReference: {fileID: 1185662843}
+    - target: {fileID: 1612220096, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsHandler
       value: 
       objectReference: {fileID: 1581235579}
@@ -3906,9 +4006,45 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1795091612}
     - target: {fileID: 1978003099, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildingRemover
+      value: 
+      objectReference: {fileID: 1185662843}
+    - target: {fileID: 1978003099, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _buildingsHandler
       value: 
       objectReference: {fileID: 1581235579}
+    - target: {fileID: 2060091425, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060091425, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060091425, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060091425, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060091425, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 118
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060091425, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060091425, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2060091425, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 85
+      objectReference: {fileID: 0}
     - target: {fileID: 366424089113132860, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _enemyHandler
       value: 
@@ -3963,19 +4099,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1447113459347689723, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: English
+      value: "\u0130ngilizce"
       objectReference: {fileID: 0}
     - target: {fileID: 1447113460069353174, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Effects
+      value: Etkiler
       objectReference: {fileID: 0}
     - target: {fileID: 1447113460448205443, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Settings
+      value: Ayarlar
       objectReference: {fileID: 0}
     - target: {fileID: 1447113460498458558, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Music
+      value: "M\xFCzik"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518604978922179748, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518604978922179748, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518604978922179748, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1518604978922179748, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1792352430320074504, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4011,7 +4163,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2069678228009488861, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Select button 1 to destroy buildings, but get back the money spent.
+      value: "Binalar\u0131 yok etmek i\xE7in 1 d\xFC\u011Fmesini se\xE7in, ancak
+        harcanan paray\u0131 geri al\u0131n."
       objectReference: {fileID: 0}
     - target: {fileID: 2237479397897824200, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4055,7 +4208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2633265536947219278, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Continue
+      value: Devam et
       objectReference: {fileID: 0}
     - target: {fileID: 2898031496057361025, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _cameraMover
@@ -4065,6 +4218,22 @@ PrefabInstance:
       propertyPath: _crystalsContainer
       value: 
       objectReference: {fileID: 323301691}
+    - target: {fileID: 2950128769180877216, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950128769180877216, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950128769180877216, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2950128769180877216, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3047846363350095383, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4083,16 +4252,32 @@ PrefabInstance:
       objectReference: {fileID: 725767884}
     - target: {fileID: 3263400174276755014, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Choose button 2 to save your buildings
+      value: "Binalar\u0131n\u0131z\u0131 kurtarmak i\xE7in 2 d\xFC\u011Fmesini se\xE7in"
       objectReference: {fileID: 0}
     - target: {fileID: 3287658912271598962, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Click on the building to delete it
+      value: "Kald\u0131rmak i\xE7in binaya dokunun"
       objectReference: {fileID: 0}
     - target: {fileID: 3329487000471409671, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _goldContainer
       value: 
       objectReference: {fileID: 323301692}
+    - target: {fileID: 3336371724462109603, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336371724462109603, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336371724462109603, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336371724462109603, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3537982764132546767, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _spawner
       value: 
@@ -4131,11 +4316,11 @@ PrefabInstance:
       objectReference: {fileID: 1221109118}
     - target: {fileID: 3537982764629146909, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Turkish
+      value: "T\xFCrk"
       objectReference: {fileID: 0}
     - target: {fileID: 3537982764654009187, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Russian
+      value: Rus
       objectReference: {fileID: 0}
     - target: {fileID: 3537982764690447387, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _enemyHandler
@@ -4331,7 +4516,7 @@ PrefabInstance:
       objectReference: {fileID: 323301692}
     - target: {fileID: 3832759552427902150, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Turrets
+      value: Taretler
       objectReference: {fileID: 0}
     - target: {fileID: 3847153098710635406, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _camera
@@ -4339,7 +4524,7 @@ PrefabInstance:
       objectReference: {fileID: 725767884}
     - target: {fileID: 4015574553798251335, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: currentLanguage
-      value: English
+      value: Turkish
       objectReference: {fileID: 0}
     - target: {fileID: 4015574553851302366, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _enemyHandler
@@ -4365,6 +4550,22 @@ PrefabInstance:
       propertyPath: _buildingsHandler
       value: 
       objectReference: {fileID: 1581235579}
+    - target: {fileID: 4138671419987199610, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138671419987199610, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138671419987199610, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4138671419987199610, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4687634384337178671, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -4379,15 +4580,31 @@ PrefabInstance:
       objectReference: {fileID: 323301691}
     - target: {fileID: 5090340699977490679, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Defeat
+      value: Yenilgi
       objectReference: {fileID: 0}
     - target: {fileID: 5090340701413604003, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Victory
+      value: Zafer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271417763143998011, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -83.000244
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271417763143998011, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 689.00836
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271417764130432529, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -82
+      objectReference: {fileID: 0}
+    - target: {fileID: 5271417764130432529, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 571.90796
       objectReference: {fileID: 0}
     - target: {fileID: 5554181369595907694, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Shop
+      value: "D\xFCkkan"
       objectReference: {fileID: 0}
     - target: {fileID: 6188542513835017781, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4407,7 +4624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6289164462759365813, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Battle
+      value: "Sava\u015F"
       objectReference: {fileID: 0}
     - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _levelReward
@@ -4433,6 +4650,10 @@ PrefabInstance:
       propertyPath: _crystalsContainer
       value: 
       objectReference: {fileID: 323301691}
+    - target: {fileID: 6346286016700323267, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _buildings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6595076029611978512, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.5
@@ -4447,12 +4668,16 @@ PrefabInstance:
       objectReference: {fileID: 1795091612}
     - target: {fileID: 6595076029611978519, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_Alpha
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6860110272230296308, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _goldContainer
       value: 
       objectReference: {fileID: 323301692}
+    - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+      propertyPath: _levelReward
+      value: 
+      objectReference: {fileID: 323301695}
     - target: {fileID: 7358263220663698718, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _goldContainer
       value: 
@@ -4471,15 +4696,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7421885440510667309, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Leaderboard
+      value: Lider kurulu
       objectReference: {fileID: 0}
     - target: {fileID: 7678117064842648229, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Settings
+      value: Ayarlar
       objectReference: {fileID: 0}
     - target: {fileID: 7948894335306280923, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Fences
+      value: Muhafazalar
       objectReference: {fileID: 0}
     - target: {fileID: 7986256442897323855, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: _spawner
@@ -4487,7 +4712,7 @@ PrefabInstance:
       objectReference: {fileID: 639568498}
     - target: {fileID: 8032276001897256107, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: delete mode
+      value: silme modu
       objectReference: {fileID: 0}
     - target: {fileID: 8139743717738737283, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_SizeDelta.y
@@ -4495,11 +4720,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8181340432749436413, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Leaderboard
+      value: Lider kurulu
       objectReference: {fileID: 0}
     - target: {fileID: 8432997471384710392, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Generators
+      value: "Jenerat\xF6rler"
       objectReference: {fileID: 0}
     - target: {fileID: 8495400008349044311, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_Alpha
@@ -4519,7 +4744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8886194045215464100, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_text
-      value: Rewards
+      value: "\xD6d\xFCller"
       objectReference: {fileID: 0}
     - target: {fileID: 8886194046206514823, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5008,7 +5233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Training
+  m_text: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -5144,8 +5369,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Welcome to the game! Build a base, install turrets, fences and generators,
-    accumulate gold, think over tactics and win!
+  m_text: "\u0414\u043E\u0431\u0440\u043E \u043F\u043E\u0436\u0430\u043B\u043E\u0432\u0430\u0442\u044C
+    \u0432 \u0438\u0433\u0440\u0443! \u041F\u043E\u0441\u0442\u0440\u043E\u0439 \u0431\u0430\u0437\u0443,
+    \u0443\u0441\u0442\u0430\u043D\u043E\u0432\u0438 \u0442\u0443\u0440\u0435\u043B\u0438,
+    \u043E\u0433\u0440\u0430\u0436\u0434\u0435\u043D\u0438\u044F \u0438 \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440\u044B,
+    \u043D\u0430\u043A\u043E\u043F\u0438 \u0437\u043E\u043B\u043E\u0442\u043E, \u043F\u0440\u043E\u0434\u0443\u043C\u0430\u0439
+    \u0442\u0430\u043A\u0442\u0438\u043A\u0443 \u0438 \u043E\u0434\u0435\u0440\u0436\u0438
+    \u043F\u043E\u0431\u0435\u0434\u0443!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -5606,8 +5836,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pay attention to the right side of the screen, where it is indicated how
-    much gold each generator that you bought brings.
+  m_text: "\u041E\u0431\u0440\u0430\u0442\u0438 \u0432\u043D\u0438\u043C\u0430\u043D\u0438\u0435
+    \u043D\u0430 \u043F\u0440\u0430\u0432\u0443\u044E \u0447\u0430\u0441\u0442\u044C
+    \u044D\u043A\u0440\u0430\u043D\u0430, \u0433\u0434\u0435 \u0443\u043A\u0430\u0437\u0430\u043D\u043E,
+    \u0441\u043A\u043E\u043B\u044C\u043A\u043E \u0437\u043E\u043B\u043E\u0442\u0430
+    \u043F\u0440\u0438\u043D\u043E\u0441\u0438\u0442 \u043A\u0430\u0436\u0434\u044B\u0439
+    \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440, \u043A\u043E\u0442\u043E\u0440\u044B\u0439
+    \u0442\u044B \u043A\u0443\u043F\u0438\u043B."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -5759,8 +5994,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Before the first battle, go to the store and buy the first turret, an oil
-    generator and a fence to be ready for battle.
+  m_text: "\u041F\u0435\u0440\u0435\u0434 \u043F\u0435\u0440\u0432\u044B\u043C \u0431\u043E\u0435\u043C
+    \u0437\u0430\u0439\u0434\u0438 \u0432 \u043C\u0430\u0433\u0430\u0437\u0438\u043D
+    \u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0442\u0438 \u043F\u0435\u0440\u0432\u0443\u044E
+    \u0442\u0443\u0440\u0435\u043B\u044C, \u043D\u0435\u0444\u0442\u044F\u043D\u043E\u0439
+    \u0433\u0435\u043D\u0435\u0440\u0430\u0442\u043E\u0440 \u0438 \u043E\u0433\u0440\u0430\u0436\u0434\u0435\u043D\u0438\u0435,
+    \u0447\u0442\u043E\u0431\u044B \u0431\u044B\u0442\u044C \u0433\u043E\u0442\u043E\u0432\u044B\u043C
+    \u043A \u0431\u0438\u0442\u0432\u0435."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -6081,7 +6321,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Training
+  m_text: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -6517,9 +6757,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Before the battle, the most important thing is to think over tactics and
-    calculate the balance of gold and crystals so that you can buy the most profitable
-    set of buildings and win.
+  m_text: "\u041F\u0435\u0440\u0435\u0434 \u0431\u043E\u0435\u043C \u0441\u0430\u043C\u043E\u0435
+    \u0433\u043B\u0430\u0432\u043D\u043E\u0435 - \u043F\u0440\u043E\u0434\u0443\u043C\u0430\u0442\u044C
+    \u0442\u0430\u043A\u0442\u0438\u043A\u0443 \u0438 \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u0442\u044C
+    \u0431\u0430\u043B\u0430\u043D\u0441 \u0437\u043E\u043B\u043E\u0442\u0430 \u0438
+    \u043A\u0440\u0438\u0441\u0442\u0430\u043B\u043B\u043E\u0432 \u0442\u0430\u043A,
+    \u0447\u0442\u043E\u0431\u044B \u043C\u043E\u0436\u043D\u043E \u0431\u044B\u043B\u043E
+    \u043A\u0443\u043F\u0438\u0442\u044C \u043D\u0430\u0438\u0431\u043E\u043B\u0435\u0435
+    \u0432\u044B\u0433\u043E\u0434\u043D\u044B\u0439 \u043D\u0430\u0431\u043E\u0440
+    \u0437\u0434\u0430\u043D\u0438\u0439 \u0438 \u043F\u043E\u0431\u0435\u0434\u0438\u0442\u044C."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -6546,7 +6792,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.35
+  m_fontSize: 29.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6693,7 +6939,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Now you can start the fight!
+  m_text: "\u0422\u0435\u043F\u0435\u0440\u044C \u043C\u043E\u0436\u0435\u0448\u044C
+    \u043D\u0430\u0447\u0438\u043D\u0430\u0442\u044C \u0431\u043E\u0439!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -6913,6 +7160,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3537982764866789514, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
   m_PrefabInstance: {fileID: 1540912046}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &2093154848 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4015574553851302361, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 1540912046}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2096862007 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8432997471384710393, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
@@ -6983,7 +7235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Training
+  m_text: "\u041E\u0431\u0443\u0447\u0435\u043D\u0438\u0435"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -7415,6 +7667,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5175333395803702183, guid: 4b40e53c9b14428499881fd394e2b08e, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 2093154848}
     - target: {fileID: 5861746931181809307, guid: 4b40e53c9b14428499881fd394e2b08e, type: 3}
       propertyPath: m_text
       value: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"

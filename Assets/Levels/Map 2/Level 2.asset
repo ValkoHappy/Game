@@ -20,5 +20,5 @@ MonoBehaviour:
   - _enemy: {fileID: 2333215707751712668, guid: 4ed750a75e76bec4187822deeb907a5e, type: 3}
     _count: 11
   _spawnSide: 2
-  _goldReward: 775
-  _cristalsReward: 460
+  _goldReward: 735
+  _cristalsReward: 440
