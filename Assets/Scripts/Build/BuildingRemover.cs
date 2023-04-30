@@ -1,12 +1,16 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BuildingRemover : MonoBehaviour
 {
     [SerializeField] private BuildingsHandler _buildingsHandler;
     [SerializeField] private GoldContainer _goldContainer;
     [SerializeField] private CrystalsContainer _crystalsContainer;
+    [SerializeField] private LevelReward _levelReward;
 
     private Camera _camera;
+
+    public event UnityAction<Building> BuildingRemoved;
 
     private void Awake()
     {
@@ -42,14 +46,17 @@ public class BuildingRemover : MonoBehaviour
 
     private void ReturnCurrency(Building building)
     {
+        BuildingRemoved?.Invoke(building);
         Goods goods = building.BuildingCharacteristics.Goods;
         if (goods.IsSoldForCrystals)
         {
             _crystalsContainer.AddCrystals(goods.Price);
+            _levelReward.RemoveCrystalsSpent(goods.Price);
         }
         else
         {
             _goldContainer.AddGold(goods.Price);
+            _levelReward.RemoveGoldSpent(goods.Price);
         }
     }
 }
