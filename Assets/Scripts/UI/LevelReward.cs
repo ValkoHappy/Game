@@ -68,6 +68,16 @@ public class LevelReward : MonoBehaviour
         _crystalsSpent += price;
     }
 
+    public void RemoveGoldSpent(int price)
+    {
+        _goldSpent -= price;
+    }
+
+    public void RemoveCrystalsSpent(int price)
+    {
+        _crystalsSpent -= price;
+    }
+
     public void ReturnSpentResources()
     {
         _goldContainer.AddGold(_goldSpent);
