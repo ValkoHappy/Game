@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 947421087726755751}
   - component: {fileID: -8489150716911843758}
   - component: {fileID: 7618432022638318371}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ExplosiveTurret 1
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 176617517009774278, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 254649965734967181, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
@@ -665,7 +665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1232818654375041988, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2179228035525212311, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
@@ -673,15 +673,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2189181869826523813, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3400573082419081412, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3996653372523206514, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4817646256519843927, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
@@ -697,7 +697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5590411447193848423, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5864573052153573377, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_RootOrder
@@ -753,7 +753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6336602543664410021, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6496713710709598907, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Name
@@ -765,7 +765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6804700715675399264, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7030132610253300258, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
@@ -773,19 +773,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7125563959089543804, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8500647385165434414, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8709313784934088568, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8851302630323073592, guid: 3cf649c0f906b354b9455672488c8031, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cf649c0f906b354b9455672488c8031, type: 3}

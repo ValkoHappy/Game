@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2645574674400504186}
   - component: {fileID: 2645574674400504189}
   - component: {fileID: -703005305243535902}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TownHall
   m_TagString: TownHall
   m_Icon: {fileID: 0}
@@ -71,6 +71,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2645574674400504186}
     m_Modifications:
+    - target: {fileID: 513786202370896064, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 643029819529601562, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149148475571, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
       propertyPath: _bounceForce
       value: 10
@@ -131,6 +139,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: TownHall 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2250523190449560798, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890597643511997318, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276650191605551696, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4651604386972807630, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374159404379988987, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566063594339575191, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7366617077925808119, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233420839868581202, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
 --- !u!4 &2538976149181352757 stripped
@@ -182,6 +222,10 @@ PrefabInstance:
     - target: {fileID: 7504485808419801275, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504485808419801275, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7683910814672389179, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_Pivot.x
@@ -267,12 +311,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691870476297803045, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338643, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5931316572436338940}
   - component: {fileID: -3873642929191617247}
   - component: {fileID: 1539003493787948513}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Turret 1
   m_TagString: Turret
   m_Icon: {fileID: 0}
@@ -102,9 +102,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2260194405451887584}
     m_Modifications:
+    - target: {fileID: 903426056187224828, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460111145850522175, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332377059864595402, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339321643284393164, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3958434797680617346, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4174721718177150930, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4656580392110199494, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388518269924201211, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388518270265399207, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5388518271078800966, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
       propertyPath: m_RootOrder
@@ -155,9 +187,25 @@ PrefabInstance:
       value: Machine gun installations Level 2 (1) 1
       objectReference: {fileID: 0}
     - target: {fileID: 7015785247484862122, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: _waitForSeconds
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015785247484862122, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
       propertyPath: _shootPoint.Array.data[0]
       value: 
       objectReference: {fileID: 5180578598105351331}
+    - target: {fileID: 7344656812750019110, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8085357450343580101, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8387525618543357132, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbae2951b897fac4fb25ea42cd3b81e6, type: 3}
 --- !u!114 &984192380448466484 stripped

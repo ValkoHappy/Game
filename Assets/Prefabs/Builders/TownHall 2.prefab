@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2645574674400504186}
   - component: {fileID: 2645574674400504189}
   - component: {fileID: 3645315395785918937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TownHall 2
   m_TagString: TownHall
   m_Icon: {fileID: 0}
@@ -83,6 +83,54 @@ PrefabInstance:
       propertyPath: _bounceRadius
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 42662388600485770, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 608006485705520929, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 667766885882658395, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1456259787288451017, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2825645210123696918, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3330509947170845473, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3422987477479015479, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127409855460703719, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5169951870406347000, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5470921381009824541, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6370774232245916687, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6929340268222832431, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8075123674680522406, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -130,6 +178,10 @@ PrefabInstance:
     - target: {fileID: 8888780333489433628, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
       propertyPath: m_Name
       value: TownHall 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8888780333489433628, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e1dfeb890c22ef48b4a18758f58a129, type: 3}
@@ -517,6 +569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBar
       objectReference: {fileID: 0}
+    - target: {fileID: 7504485808419801275, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7683910814672389179, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -601,12 +657,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691870476297803045, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338643, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

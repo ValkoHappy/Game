@@ -205,7 +205,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041B\u0438\u0434\u0435\u0440\u0431\u043E\u0440\u0434"
+  m_text: Lider kurulu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.7
+  m_fontSize: 19.2
   m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1085,7 +1085,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0411\u0438\u0442\u0432\u0430"
+  m_text: "Sava\u015F"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -2162,43 +2162,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &4102338712918215569
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4102338712918215568}
-  m_Layer: 5
-  m_Name: Shop
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &4102338712918215568
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4102338712918215569}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4102338714353884390}
-  m_Father: {fileID: 2344867779022758317}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 30, y: 614}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
 --- !u!1 &4102338712922500517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,7 +2305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
+  m_text: "D\xFCkkan"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -2369,7 +2332,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.75
+  m_fontSize: 55.4
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2460,12 +2423,12 @@ RectTransform:
   - {fileID: 4102338712922500516}
   - {fileID: 4102338713418999091}
   - {fileID: 4753190436530234791}
-  m_Father: {fileID: 4102338712918215568}
-  m_RootOrder: 0
+  m_Father: {fileID: 2344867779022758317}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -100}
+  m_AnchoredPosition: {x: 150, y: -138}
   m_SizeDelta: {x: 240, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4102338714353884388
@@ -3008,6 +2971,11 @@ MonoBehaviour:
   _leaderboardButton: {fileID: 320863961960616989}
   _settingButton: {fileID: 4178585124953636388}
   _findSpawnEnemiesButton: {fileID: 4753190437026416181}
+  _enemyHandler: {fileID: 0}
+  _starsScore: {fileID: 0}
+  _groundAudio: {fileID: 0}
+  _movingCameraSpawnEnemies: {fileID: 0}
+  _lobbyCameraAnimation: {fileID: 0}
 --- !u!225 &8137944126093825122
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3185,7 +3153,7 @@ RectTransform:
   m_Children:
   - {fileID: 2286081526543076531}
   - {fileID: 320863961960616978}
-  - {fileID: 4102338712918215568}
+  - {fileID: 4102338714353884390}
   m_Father: {fileID: 8137944126093825126}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3261,7 +3229,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+  m_text: Ayarlar
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
@@ -3288,7 +3256,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.7
+  m_fontSize: 27.3
   m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 1

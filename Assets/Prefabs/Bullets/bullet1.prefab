@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8626307516152205479}
   - component: {fileID: 5937004188820952411}
   - component: {fileID: 8304284850940115030}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5942101511930528918}
   - component: {fileID: 5340176117916027299}
   - component: {fileID: 2843498814452041852}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.043
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: -8112469295198869499}
   - component: {fileID: 4395150195568702347}
   - component: {fileID: 5586193439327126252}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bullet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 4401786004122343805}
   - component: {fileID: 1629677795271798612}
   - component: {fileID: 463849402839402599}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.042
   m_TagString: Untagged
   m_Icon: {fileID: 0}
