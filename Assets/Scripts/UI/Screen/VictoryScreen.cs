@@ -57,8 +57,8 @@ public class VictoryScreen : UIScreenAnimator
 
     private void OnBonusButton()
     {
-        BonusButtonClick?.Invoke();
         _levelReward.ClaimDoubleReward();
+        BonusButtonClick?.Invoke();
         OnMenuAfterFightScreen();
     }
 
