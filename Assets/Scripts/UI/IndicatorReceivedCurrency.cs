@@ -7,6 +7,7 @@ public class IndicatorReceivedCurrency : MonoBehaviour
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private Spawner _spawner;
     [SerializeField] private BuildingsHandler _buildingsHandler;
+    [SerializeField] private BuildingRemover _buildingRemover;
 
     public event UnityAction<int> OnCurrencyReceived;
 
@@ -14,6 +15,7 @@ public class IndicatorReceivedCurrency : MonoBehaviour
 
     private void OnEnable()
     {
+        _buildingRemover.BuildingRemoved += RemoveAmountCurrent;
         _buildingsGrid.BuildingSupplied += AddAmountCurrent;
         _spawner.LevelStarted += RemoveAllAmountCurrent;
         _buildingsHandler.AllBuildingsDeleted += RemoveAllAmountCurrent;
@@ -21,6 +23,7 @@ public class IndicatorReceivedCurrency : MonoBehaviour
 
     private void OnDisable()
     {
+        _buildingRemover.BuildingRemoved -= RemoveAmountCurrent;
         _buildingsGrid.BuildingSupplied -= AddAmountCurrent;
         _spawner.LevelStarted -= RemoveAllAmountCurrent;
         _buildingsHandler.AllBuildingsDeleted -= RemoveAllAmountCurrent;
@@ -37,6 +40,15 @@ public class IndicatorReceivedCurrency : MonoBehaviour
         if(building.tag == _extraction)
         {
             AmountCurrencyReceived += building.GetComponentInChildren<GeneratorMining>().AmountMoneyProduced;
+        }
+        OnCurrencyReceived?.Invoke(AmountCurrencyReceived);
+    }
+
+    private void RemoveAmountCurrent(Building building)
+    {
+        if (building.tag == _extraction)
+        {
+            AmountCurrencyReceived -= building.GetComponentInChildren<GeneratorMining>().AmountMoneyProduced;
         }
         OnCurrencyReceived?.Invoke(AmountCurrencyReceived);
     }
