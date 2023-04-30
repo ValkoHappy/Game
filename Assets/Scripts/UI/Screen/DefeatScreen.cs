@@ -65,8 +65,8 @@ public class DefeatScreen : UIScreenAnimator
 
     private void OnRestartButton()
     {
-        RestartButtonClick?.Invoke();
         _yandexAds.ShowRewardAd();
+        RestartButtonClick?.Invoke();
         _enemyHandler.OnDestroyEnemies();
         _buildingsHandler.OnCreateSavedBuildings();
         _spawner.StartLevel();
