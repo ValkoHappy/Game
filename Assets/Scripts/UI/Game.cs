@@ -8,7 +8,6 @@ public class Game : MonoBehaviour
     [SerializeField] private VictoryScreen _victoryScreen;
     [SerializeField] private DefeatScreen _featScreen;
     [SerializeField] private MobileControllerScreen _mobileControllerDownScreen;
-    [SerializeField] private SwitchingScreen _switchingScreen;
     [SerializeField] private ButtleScreen _buttleScreen;
     [SerializeField] private LeaderboardScreen _leaderboardScreen;
     [SerializeField] private BuildingsRemovalScreen _buildingsRemovalScreen;
