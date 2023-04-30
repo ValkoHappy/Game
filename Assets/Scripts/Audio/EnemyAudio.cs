@@ -10,7 +10,7 @@ public class EnemyAudio : MonoBehaviour
 
     private AudioSource _audioSource;
     private int _lastClipIndex = -1;
-    private float _delayMax = 5f;
+    private float _delayMax = 15f;
 
     private void Start()
     {
