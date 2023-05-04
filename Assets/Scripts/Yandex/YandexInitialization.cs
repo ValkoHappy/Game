@@ -6,6 +6,8 @@ public class YandexInitialization : MonoBehaviour
 {
     [SerializeField] private Localization _localization;
 
+    private const string Language = "Language";
+
 #if UNITY_WEBGL && !UNITY_EDITOR
     private void Awake()
     {
@@ -19,7 +21,10 @@ public class YandexInitialization : MonoBehaviour
 
     private void OnInitialized()
     {
-        _localization.SetLanguage(YandexGamesSdk.Environment.i18n.lang);
+        if(PlayerPrefs.HasKey(Language))
+            _localization.SetLanguage(Language);
+        else
+            _localization.SetLanguage(YandexGamesSdk.Environment.i18n.lang);
     }
 #endif
 }

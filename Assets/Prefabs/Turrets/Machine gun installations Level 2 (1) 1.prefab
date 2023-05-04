@@ -803,7 +803,7 @@ MonoBehaviour:
   _bullet: {fileID: 3304229111058280170, guid: 6e27c47632436e84685f4abc808de76c, type: 3}
   _shootPoint:
   - {fileID: 0}
-  _waitForSeconds: 1.5
+  _waitForSeconds: 1.35
   _radiusAttack: 9
   _yOffset: 0.5
   _particleShoot: {fileID: 19809874, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}

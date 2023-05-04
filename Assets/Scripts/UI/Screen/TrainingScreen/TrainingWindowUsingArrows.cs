@@ -71,6 +71,7 @@ public class TrainingWindowUsingArrows : UIScreenAnimator
         {
             _shopScreen.EnabletExitButton();
             _arrowPointingToFences.SetActive(false);
+            _atrrowOnProduct.SetActive(false);
             _arrowPointingToExitButton.SetActive(true);
         }
     }

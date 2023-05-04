@@ -60,8 +60,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _panel: {fileID: 1065557427625724564}
   _levelReward: {fileID: 0}
+  _buildingsGrid: {fileID: 0}
+  _buildingRemover: {fileID: 0}
   _exitButton: {fileID: 7176435506008382134}
   _advertisingButton: {fileID: 6147400715871004021}
+  _deleteBuildingsButton: {fileID: 0}
   _storeTabFencesButton: {fileID: 4260353747610602075}
   _storeTabWeaponsButton: {fileID: 6086000446082915850}
   _storeTabGeneratorsButton: {fileID: 2326094795295492474}
@@ -156,7 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goldContainer: {fileID: 0}
   _crystalsContainer: {fileID: 0}
-  _buildingsManager: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
   _buildingsGrid: {fileID: 0}
   _levelReward: {fileID: 0}
   _trainingScreen: {fileID: 0}
@@ -1767,7 +1770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goldContainer: {fileID: 0}
   _crystalsContainer: {fileID: 0}
-  _buildingsManager: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
   _buildingsGrid: {fileID: 0}
   _levelReward: {fileID: 0}
   _trainingScreen: {fileID: 0}
@@ -1992,7 +1995,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _goldContainer: {fileID: 0}
   _crystalsContainer: {fileID: 0}
-  _buildingsManager: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
   _buildingsGrid: {fileID: 0}
   _levelReward: {fileID: 0}
   _trainingScreen: {fileID: 0}
@@ -3297,6 +3300,8 @@ MonoBehaviour:
   _extraction: Solar
   _buildingsGrid: {fileID: 0}
   _spawner: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
+  _buildingRemover: {fileID: 0}
 --- !u!114 &3677383873871802895 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3799717483317846129, guid: c81f89fdc0716a44caa01d9799f2acf3, type: 3}
@@ -3430,19 +3435,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2961477129733035491, guid: c81f89fdc0716a44caa01d9799f2acf3, type: 3}
   m_PrefabInstance: {fileID: 1619249794211341806}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6147400714491251481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4567209508664324109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d374b4eeffb1e514f9279760e35e5f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _score: {fileID: 2505116231214237087}
 --- !u!114 &6147400714491251480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3458,6 +3450,21 @@ MonoBehaviour:
   _extraction: Oil
   _buildingsGrid: {fileID: 0}
   _spawner: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
+  _buildingRemover: {fileID: 0}
+--- !u!114 &6147400714491251481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4567209508664324109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d374b4eeffb1e514f9279760e35e5f41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _score: {fileID: 2505116231214237087}
 --- !u!224 &6595995680552891867 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5616292217817321525, guid: c81f89fdc0716a44caa01d9799f2acf3, type: 3}
@@ -3614,6 +3621,8 @@ MonoBehaviour:
   _extraction: Wind
   _buildingsGrid: {fileID: 0}
   _spawner: {fileID: 0}
+  _buildingsHandler: {fileID: 0}
+  _buildingRemover: {fileID: 0}
 --- !u!114 &8784183313207038962 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3799717483317846129, guid: c81f89fdc0716a44caa01d9799f2acf3, type: 3}
@@ -3632,10 +3641,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1065557427625724563}
     m_Modifications:
-    - target: {fileID: 236312468147092155, guid: 0a69b8b923bc6724380d2c8771e23cc4, type: 3}
-      propertyPath: _crystalsContainer
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2246669891960924422, guid: 0a69b8b923bc6724380d2c8771e23cc4, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -3723,10 +3728,6 @@ PrefabInstance:
     - target: {fileID: 2246669891960924423, guid: 0a69b8b923bc6724380d2c8771e23cc4, type: 3}
       propertyPath: m_Name
       value: Stats_All
-      objectReference: {fileID: 0}
-    - target: {fileID: 2246669891960924424, guid: 0a69b8b923bc6724380d2c8771e23cc4, type: 3}
-      propertyPath: _goldContainer
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a69b8b923bc6724380d2c8771e23cc4, type: 3}

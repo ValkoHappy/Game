@@ -33,6 +33,7 @@ public class FinalWindowOfTraining : UIScreenAnimator
 
     public void OnOpenScreen()
     {
+        _mainMenuScreen.TurnOffAllButton();
         OpenScreen();
     }
 
