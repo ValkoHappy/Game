@@ -1,46 +1,48 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class TrainingWindowOfGenerators : UIScreenAnimator
 {
+    private const string Oil = "Oil";
+
     [SerializeField] private GameObject _indicator;
     [SerializeField] private Button _resumeButton;
     [SerializeField] private GameObject _shop;
     [SerializeField] private BuildingsGrid _buildingGrid;
 
-    private const string Oil = "Oil";
-
-    public event UnityAction ResumeButtonClick;
+    public event Action Resumed;
 
     private void OnEnable()
     {
-        _resumeButton.onClick.AddListener(OnResumeButton);
-        _buildingGrid.BuildingSupplied += OnOpenScreen;
+        _resumeButton.onClick.AddListener(OnResumeButtonClick);
+        _buildingGrid.BuildingSupplied += OnOpen;
     }
 
     private void OnDisable()
     {
-        _resumeButton.onClick.RemoveListener(OnResumeButton);
-        _buildingGrid.BuildingSupplied -= OnOpenScreen;
+        _resumeButton.onClick.RemoveListener(OnResumeButtonClick);
+        _buildingGrid.BuildingSupplied -= OnOpen;
     }
 
-    private void OnOpenScreen(Building building)
+    private void OnOpen(Building building)
     {
         if (building.tag == Oil)
         {
             _shop.SetActive(false);
-            OpenScreen();
+            OnOpen();
+
             if (_indicator != null)
                 _indicator.SetActive(true);
         }
     }
 
-    private void OnResumeButton()
+    private void OnResumeButtonClick()
     {
         _shop.SetActive(true);
-        ResumeButtonClick?.Invoke();
-        CloseScreen();
+        Resumed?.Invoke();
+        OnClose();
+
         if (_indicator != null)
             _indicator.SetActive(false);
     }

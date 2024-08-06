@@ -1,7 +1,6 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Spawner : MonoBehaviour
 {
@@ -16,10 +15,10 @@ public class Spawner : MonoBehaviour
     private Level _currentLevel;
     private EnemyCount[] _enemyCounts;
 
-    public event UnityAction<int> LevelChanged;
-    public event UnityAction LevelStarted;
-    public event UnityAction LevelCreated;
-    public event UnityAction CurrentLevelExceedsCount;
+    public event Action<int> LevelChanged;
+    public event Action LevelStarted;
+    public event Action LevelCreated;
+    public event Action MaximumLevelChanged;
 
     public Level Level => _currentLevel;
     public int CurrentLevelIndex => _currentLevelIndex;
@@ -33,15 +32,15 @@ public class Spawner : MonoBehaviour
 
     private void OnEnable()
     {
-        _enemyHandler.AllEnemiesKilled += NextLevel;
+        _enemyHandler.AllEnemiesKilled += OnNextLevel;
     }
 
     private void OnDisable()
     {
-        _enemyHandler.AllEnemiesKilled -= NextLevel;
+        _enemyHandler.AllEnemiesKilled -= OnNextLevel;
     }
 
-    public void NextLevel()
+    public void OnNextLevel()
     {
         if (_currentLevelIndex < _levels.Count)
         {
@@ -54,9 +53,8 @@ public class Spawner : MonoBehaviour
     public void StartLevel()
     {
         if (_currentLevelIndex >= _levels.Count)
-        {
             return;
-        }
+
         _currentLevel = _levels[_currentLevelIndex];
         _enemyCounts = _currentLevel.EnemyCounts;
 
@@ -71,19 +69,18 @@ public class Spawner : MonoBehaviour
     public void SwitchAnotherMap()
     {
         if (_currentLevelIndex >= _levels.Count)
-        {
-            _sceneManage.NextScene();
-        }
+            _sceneManage.Next();
     }
 
-    public bool ChecForMaximumLevel()
+    public bool CheckMaximumLevel()
     {
         if (_currentLevelIndex >= _levels.Count)
         {
-            _sceneManage.ShowScene();
-            CurrentLevelExceedsCount?.Invoke();
+            _sceneManage.Show();
+            MaximumLevelChanged?.Invoke();
             return true;
         }
+
         return false;
     }
 
@@ -104,11 +101,12 @@ public class Spawner : MonoBehaviour
             Transform spawnPoint;
             Enemy enemyCurrent = null;
             int countEnemies = enemy.Count;
+
             while (countEnemies > 0)
             {
                 spawnPoint = GetSpawnPoint();
                 enemyCurrent = Instantiate(enemy.Enemy, spawnPoint.position, Quaternion.identity, _container);
-                _enemyHandler.AddEnemy(enemyCurrent);
+                _enemyHandler.Add(enemyCurrent);
                 enemyCurrent = null;
                 countEnemies--;
             }
@@ -118,18 +116,16 @@ public class Spawner : MonoBehaviour
     private Transform GetSpawnPoint()
     {
         List<Transform> points = new List<Transform>();
+
         foreach (Transform spawnPoint in _spawnPoints)
         {
             if (spawnPoint.GetComponent<SpawnPoint>().Side == _currentLevel.SpawnSide)
-            {
                 points.Add(spawnPoint);
-            }
         }
 
         if (points.Count == 0)
-        {
             return null;
-        }
-        return points[Random.Range(0, points.Count)];
+
+        return points[UnityEngine.Random.Range(0, points.Count)];
     }
 }

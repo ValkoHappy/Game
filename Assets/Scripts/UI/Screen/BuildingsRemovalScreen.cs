@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class BuildingsRemovalScreen : UIScreenAnimator
@@ -7,21 +7,21 @@ public class BuildingsRemovalScreen : UIScreenAnimator
     [SerializeField] private Button _exitButton;
     [SerializeField] private BuildingRemover _removal;
 
-    public event UnityAction ExitButtonClick;
+    public event Action Exited;
 
     private void OnEnable()
     {
-        _exitButton.onClick.AddListener(OnExitButton);
+        _exitButton.onClick.AddListener(OnExitButtonClick);
     }
 
     private void OnDisable()
     {
-        _exitButton.onClick.RemoveListener(OnExitButton);
+        _exitButton.onClick.RemoveListener(OnExitButtonClick);
     }
 
-    private void OnExitButton()
+    private void OnExitButtonClick()
     {
-        ExitButtonClick?.Invoke();
+        Exited?.Invoke();
         _removal.enabled = false;
     }
 }

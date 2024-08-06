@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class LevelReward : MonoBehaviour
 {
@@ -15,31 +15,32 @@ public class LevelReward : MonoBehaviour
     private int _crystalsSpent = 0;
     private int _crystalsForAdvertising = 50;
     private int _doubleMultiplier = 2;
-    public event UnityAction<int> GoldChanged;
-    public event UnityAction<int> CrystalsChanged;
+
+    public event Action<int> GoldChanged;
+    public event Action<int> CrystalsChanged;
 
     public int CrystalsCount => _crystalsCount;
     public int GoldCount => _goldCount;
 
     private void OnEnable()
     {
-        _spawner.LevelStarted += ClearSpentResources;
-        _enemyHandler.AllEnemiesKilled += CalculateReward;
+        _spawner.LevelStarted += OnClearSpentResources;
+        _enemyHandler.AllEnemiesKilled += OnCalculateReward;
 
-        _buttonRewardAd.ShowReward += ClaimDouble;
-        _buttonRewardAd.ShowReward += ClaimCrystalsForAdvertising;
+        _buttonRewardAd.Shown += OnClaimDouble;
+        _buttonRewardAd.Shown += OnClaimCrystalsAdvertising;
     }
 
     private void OnDisable()
     {
-        _spawner.LevelStarted -= ClearSpentResources;
-        _enemyHandler.AllEnemiesKilled -= CalculateReward;
+        _spawner.LevelStarted -= OnClearSpentResources;
+        _enemyHandler.AllEnemiesKilled -= OnCalculateReward;
 
-        _buttonRewardAd.ShowReward -= ClaimDouble;
-        _buttonRewardAd.ShowReward -= ClaimCrystalsForAdvertising;
+        _buttonRewardAd.Shown -= OnClaimDouble;
+        _buttonRewardAd.Shown -= OnClaimCrystalsAdvertising;
     }
 
-    public void CalculateReward()
+    public void OnCalculateReward()
     {
         _crystalsCount = _spawner.Level.CristalsReward;
         _goldCount =  _spawner.Level.GoldReward;
@@ -49,19 +50,18 @@ public class LevelReward : MonoBehaviour
 
     public void ClaimReward()
     {
-        _goldContainer.AddGold(_goldCount);
-        _crystalsContainer.AddCrystals(_crystalsCount);
+        _goldContainer.Add(_goldCount);
+        _crystalsContainer.Add(_crystalsCount);
         _goldCount = 0;
         _crystalsCount = 0;
     }
 
-    public void ClaimDouble()
+    public void OnClaimDouble()
     {
-        _goldContainer.AddGold(_goldCount);
-        _crystalsContainer.AddCrystals(_crystalsCount * _doubleMultiplier);
+        _goldContainer.Add(_goldCount);
+        _crystalsContainer.Add(_crystalsCount * _doubleMultiplier);
         _goldCount = 0;
         _crystalsCount = 0;
-
     }
 
     public void AddGoldSpent(int price)
@@ -86,25 +86,25 @@ public class LevelReward : MonoBehaviour
 
     public void ReturnSpentResources()
     {
-        _goldContainer.AddGold(_goldSpent);
-        _crystalsContainer.AddCrystals(_crystalsSpent);
+        _goldContainer.Add(_goldSpent);
+        _crystalsContainer.Add(_crystalsSpent);
         _crystalsSpent = 0;
         _goldSpent = 0;
     }
 
-    public void ClearSpentResources()
+    public void OnClearSpentResources()
     {
         _crystalsSpent = 0;
         _goldSpent = 0;
     }
 
-    public void ClaimCrystalsForAdvertisingReward() 
+    public void ClaimCrystalsAdvertisingReward() 
     {
         _buttonRewardAd.ShowRewardAd();
     }
 
-    private void ClaimCrystalsForAdvertising()
+    private void OnClaimCrystalsAdvertising()
     {
-        _crystalsContainer.AddCrystals(_crystalsForAdvertising);
+        _crystalsContainer.Add(_crystalsForAdvertising);
     }
 }

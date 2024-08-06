@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class InitialTrainingWindow : UIScreenAnimator
@@ -8,35 +8,35 @@ public class InitialTrainingWindow : UIScreenAnimator
     [SerializeField] private Button _resumeButton;
     [SerializeField] private YandexAds _yandexAds;
 
-    public event UnityAction ResumeButtonClick;
-    public event UnityAction RefuseToStudyButtonClick;
+    public event Action Resumed;
+    public event Action StudyRefused;
 
     private void OnEnable()
     {
-        _resumeButton.onClick.AddListener(OnResumeButton);
+        _resumeButton.onClick.AddListener(OnResumeButtonClick);
         _refuseToStudyButton.onClick.AddListener(OnRefuseToStudyButtonClick);
     }
 
     private void OnDisable()
     {
-        _resumeButton.onClick.RemoveListener(OnResumeButton);
+        _resumeButton.onClick.RemoveListener(OnResumeButtonClick);
         _refuseToStudyButton.onClick.RemoveListener(OnRefuseToStudyButtonClick);
     }
 
-    public void OnOpenScreen()
+    public void OnOpen()
     {
-        OpenScreen();
+        base.OnOpen();
     }
 
     public void OnRefuseToStudyButtonClick()
     {
         _yandexAds.ShowInterstitial();
-        RefuseToStudyButtonClick?.Invoke();
+        StudyRefused?.Invoke();
     }
 
-    private void OnResumeButton()
+    private void OnResumeButtonClick()
     {
-        ResumeButtonClick?.Invoke();
-        CloseScreen();
+        Resumed?.Invoke();
+        OnClose();
     }
 }

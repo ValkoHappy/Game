@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class VictoryScreen : UIScreenAnimator
@@ -18,33 +18,33 @@ public class VictoryScreen : UIScreenAnimator
     [SerializeField] private YandexAds _yandexAds;
     [SerializeField] private ButtonRewardAd _buttonRewardAd;
 
-    public event UnityAction ResumeButtonClick;
-    public event UnityAction BonusButtonClick;
+    public event Action Resumed;
+    public event Action BonusGetted;
 
     private void OnEnable()
     {
-        _enemyHandler.AllEnemiesKilled += OpenScreen;
+        _enemyHandler.AllEnemiesKilled += OnOpen;
 
         _resumeButton.onClick.AddListener(OnResumeButton);
         _bonusButton.onClick.AddListener(ReawardAd);
 
-        _buttonRewardAd.ShowReward += OnBonusButton;
+        _buttonRewardAd.Shown += OnBonusButton;
     }
 
     private void OnDisable()
     {
-        _enemyHandler.AllEnemiesKilled -= OpenScreen;
+        _enemyHandler.AllEnemiesKilled -= OnOpen;
 
         _resumeButton.onClick.RemoveListener(OnResumeButton);
         _bonusButton.onClick.RemoveListener(ReawardAd);
 
-        _buttonRewardAd.ShowReward -= OnBonusButton;
+        _buttonRewardAd.Shown -= OnBonusButton;
     }
 
     private void OnResumeButton()
     {
         _yandexAds.ShowInterstitial();
-        ResumeButtonClick?.Invoke();
+        Resumed?.Invoke();
         _levelReward.ClaimReward();
         OnMenuAfterFightScreen();
     }
@@ -56,8 +56,8 @@ public class VictoryScreen : UIScreenAnimator
 
     private void OnBonusButton()
     {
-        _levelReward.ClaimDouble();
-        BonusButtonClick?.Invoke();
+        _levelReward.OnClaimDouble();
+        BonusGetted?.Invoke();
         OnMenuAfterFightScreen();
     }
 
@@ -70,9 +70,11 @@ public class VictoryScreen : UIScreenAnimator
         _buildingsGrid.RemoveGrid();
         _buildingsGrid.CreateTowerHall();
         _saveSystem.Save();
-        if (_spawner.ChecForMaximumLevel())
+
+        if (_spawner.CheckMaximumLevel())
             _saveSystem.ResetLevel();
+
         _spawner.StartLevel();
-        _movingCameraSpawnEnemies.RotationCamera();
+        _movingCameraSpawnEnemies.OnRotationCamera();
     }
 }

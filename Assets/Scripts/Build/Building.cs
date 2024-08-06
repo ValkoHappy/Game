@@ -1,23 +1,23 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Building : MonoBehaviour
 {
     [SerializeField] private Vector2Int _size;
 
-    private Color _color1 = new Color(0, 1, 0, 0.3f);
-    private Color _color2 = new Color(1, 0, 0, 0.3f);
-    private Color[] _originalColors;
-    private Renderer[] _renderers;
-    private bool _isBuilding;
     private PeacefulConstruction _peacefulConstruction;
     private BuildingCharacteristics _buildingCharacteristics;
 
-    public event UnityAction DeliveryBuilding;
-    public event UnityAction CreateBuilding;
+    private Renderer[] _renderers;
+
+    private Color _positiveColor = new Color(0, 1, 0, 0.3f);
+    private Color _negativeColor = new Color(1, 0, 0, 0.3f);
+    private Color[] _originalColors;
+
+    public event Action Delivered;
+    public event Action Created;
 
     public Vector2Int TileSize => _size;
-    public bool IsBuilding => _isBuilding;
     public PeacefulConstruction PeacefulConstruction => _peacefulConstruction;
     public BuildingCharacteristics BuildingCharacteristics => _buildingCharacteristics;
 
@@ -27,6 +27,7 @@ public class Building : MonoBehaviour
         _peacefulConstruction = GetComponentInChildren<PeacefulConstruction>();
         _renderers = GetComponentsInChildren<Renderer>();
         _originalColors = new Color[_renderers.Length];
+
         for (int i = 0; i < _renderers.Length; i++)
         {
             _originalColors[i] = _renderers[i].material.color;
@@ -36,20 +37,14 @@ public class Building : MonoBehaviour
     public void SetTransparent(bool available)
     {
         if (available)
-        {
-            SetColor(_color1);
-            _isBuilding = true;
-        }
+            SetColor(_positiveColor);
         else
-        {
-            SetColor(_color2);
-            _isBuilding = false;
-        }
+            SetColor(_negativeColor);
     }
 
     public void Create()
     {
-        CreateBuilding?.Invoke();
+        Created?.Invoke();
     }
 
     public void SetNormal()
@@ -58,7 +53,8 @@ public class Building : MonoBehaviour
         {
             _renderers[i].material.color = _originalColors[i];
         }
-        DeliveryBuilding?.Invoke();
+
+        Delivered?.Invoke();
     }
 
     private void SetColor(Color color)

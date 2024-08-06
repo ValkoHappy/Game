@@ -1,39 +1,20 @@
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.Events;
 
-public class LobbyCameraAnimation : MonoBehaviour
+public class LobbyCameraAnimation : CameraAnimation
 {
     [SerializeField] private Vector3[] _waypoints;
-    [SerializeField] private float _duration;
 
-    private float _time = 0;
-    private bool _isPlaying = true;
-
-    public event UnityAction AnimationIsFinished;
+    private Tween _tween;
 
     private void Start()
     {
-        RotationCamera();
+        OnRotationCamera();
     }
 
-    private void Update()
+    public override void OnRotationCamera()
     {
-        if (_isPlaying)
-        {
-            _time += Time.deltaTime;
-            if (_time >= _duration)
-            {
-                AnimationIsFinished?.Invoke();
-                _time = 0;
-                _isPlaying = false;
-            }
-        }
+        _tween.Kill();
+        _tween = transform.DOLocalPath(_waypoints, Duration, PathType.Linear);
     }
-
-    public void RotationCamera()
-    {
-        transform.DOLocalPath(_waypoints, _duration, PathType.Linear);
-    }
-
 }

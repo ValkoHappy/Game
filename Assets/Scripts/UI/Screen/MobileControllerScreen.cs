@@ -7,17 +7,17 @@ public class MobileControllerScreen : UIScreenAnimator
 
     private void OnEnable()
     {
-        _lobbyCameraAnimation.AnimationIsFinished += OpenScreen;
-        _buildingsGrid.CreatedBuilding += OpenScreen;
-        _buildingsGrid.RemoveBuilding += CloseScreen;
-        _buildingsGrid.DeliveredBuilding += CloseScreen;
+        _lobbyCameraAnimation.AnimationFinished += OnOpen;
+        _buildingsGrid.BuildingCreated += OnOpen;
+        _buildingsGrid.BuildingRemoved += OnClose;
+        _buildingsGrid.BuildingDelivered += OnClose;
     }
 
     private void OnDisable()
     {
-        _lobbyCameraAnimation.AnimationIsFinished -= OpenScreen;
-        _buildingsGrid.CreatedBuilding -= OpenScreen;
-        _buildingsGrid.RemoveBuilding -= CloseScreen;
-        _buildingsGrid.DeliveredBuilding -= CloseScreen;
+        _lobbyCameraAnimation.AnimationFinished -= OnOpen;
+        _buildingsGrid.BuildingCreated -= OnOpen;
+        _buildingsGrid.BuildingRemoved -= OnClose;
+        _buildingsGrid.BuildingDelivered -= OnClose;
     }
 }

@@ -1,13 +1,8 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class SaveSystem : MonoBehaviour
 {
-    [SerializeField] private Spawner _spawner;
-    [SerializeField] private GoldContainer _goldContainer;
-    [SerializeField] private CrystalsContainer _crystalsContainer;
-    [SerializeField] private SceneNext _sceneManage;
-
     private const string CurrentLevel = "CurrentLevel";
     private const string Level = "Level";
     private const string Gold = "Gold";
@@ -15,12 +10,17 @@ public class SaveSystem : MonoBehaviour
     private const string Crystals = "Crystals";
     private const string Map = "Map";
 
+    [SerializeField] private Spawner _spawner;
+    [SerializeField] private GoldContainer _goldContainer;
+    [SerializeField] private CrystalsContainer _crystalsContainer;
+    [SerializeField] private SceneNext _sceneManage;
+
     private int _initialLevel = 1;
     private int _initialMap = 1;
     private int _initialAmountGold = 175;
     private int _initialAmountCrystals = 75;
 
-    public event UnityAction SaveNotFound;
+    public event Action SaveNotFounded;
 
     private void Awake()
     {
@@ -45,9 +45,9 @@ public class SaveSystem : MonoBehaviour
             {
                 _spawner.InitCurrentLevel(PlayerPrefs.GetInt(CurrentLevel));
                 _spawner.InitLevel(PlayerPrefs.GetInt(Level));
-                _goldContainer.InitGold(PlayerPrefs.GetInt(Gold), PlayerPrefs.GetInt(AllGold));
-                _crystalsContainer.InitCrystals(PlayerPrefs.GetInt(Crystals));
-                _sceneManage.InitScene(PlayerPrefs.GetInt(Map));
+                _goldContainer.Init(PlayerPrefs.GetInt(Gold), PlayerPrefs.GetInt(AllGold));
+                _crystalsContainer.Init(PlayerPrefs.GetInt(Crystals));
+                _sceneManage.Init(PlayerPrefs.GetInt(Map));
             }
         }
     }
@@ -56,8 +56,8 @@ public class SaveSystem : MonoBehaviour
     {
         if (PlayerPrefs.HasKey(Map))
         {
-            _sceneManage.InitScene(PlayerPrefs.GetInt(Map));
-            SaveNotFound?.Invoke();
+            _sceneManage.Init(PlayerPrefs.GetInt(Map));
+            SaveNotFounded?.Invoke();
         }
     }
 
@@ -67,7 +67,7 @@ public class SaveSystem : MonoBehaviour
         PlayerPrefs.SetInt(Map, _sceneManage.SceneIndex);
     }
 
-    public void ResetSave()
+    public void Clear()
     {
         PlayerPrefs.SetInt(CurrentLevel, 0);
         PlayerPrefs.SetInt(Level, _initialLevel);

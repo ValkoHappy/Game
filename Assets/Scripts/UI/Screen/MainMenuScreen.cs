@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MainMenuScreen : UIScreenAnimator
@@ -16,31 +16,31 @@ public class MainMenuScreen : UIScreenAnimator
     [SerializeField] private MovingCameraSpawnEnemies _movingCameraSpawnEnemies;
     [SerializeField] private LobbyCameraAnimation _lobbyCameraAnimation;
 
-    public event UnityAction PlayButtonClick;
-    public event UnityAction ShopButtonClick;
-    public event UnityAction LeaderboardButtonClick;
-    public event UnityAction SettingButtonClick;
-    public event UnityAction FindSpawnEnemiesButtonClick;
+    public event Action Playing;
+    public event Action ShopOpening;
+    public event Action LeaderboardOpening;
+    public event Action SettingOpening;
+    public event Action SpawnEnemiesFinded;
 
     private void OnEnable()
     {
-        _lobbyCameraAnimation.AnimationIsFinished += OpenScreen;
+        _lobbyCameraAnimation.AnimationFinished += OnOpen;
 
-        _playButton.onClick.AddListener(OnPlayButton);
-        _shopButton.onClick.AddListener(OnShopButton);
-        _leaderboardButton.onClick.AddListener(OnLeaderboardButton);
-        _settingButton.onClick.AddListener(OnSettingButton);
+        _playButton.onClick.AddListener(OnPlayButtonClick);
+        _shopButton.onClick.AddListener(OnShopButtonClick);
+        _leaderboardButton.onClick.AddListener(OnLeaderboardButtonClick);
+        _settingButton.onClick.AddListener(OnSettingButtonClick);
         _findSpawnEnemiesButton.onClick.AddListener(OnFindSpawnEnemiesButton);
     }
 
     private void OnDisable()
     {
-        _lobbyCameraAnimation.AnimationIsFinished -= OpenScreen;
+        _lobbyCameraAnimation.AnimationFinished -= OnOpen;
 
-        _playButton.onClick.RemoveListener(OnPlayButton);
-        _shopButton.onClick.RemoveListener(OnShopButton);
-        _leaderboardButton.onClick.RemoveListener(OnLeaderboardButton);
-        _settingButton.onClick.RemoveListener(OnSettingButton);
+        _playButton.onClick.RemoveListener(OnPlayButtonClick);
+        _shopButton.onClick.RemoveListener(OnShopButtonClick);
+        _leaderboardButton.onClick.RemoveListener(OnLeaderboardButtonClick);
+        _settingButton.onClick.RemoveListener(OnSettingButtonClick);
         _findSpawnEnemiesButton.onClick.AddListener(OnFindSpawnEnemiesButton);
     }
 
@@ -73,33 +73,33 @@ public class MainMenuScreen : UIScreenAnimator
         _findSpawnEnemiesButton.enabled = true;
     }
 
-    private void OnPlayButton()
+    private void OnPlayButtonClick()
     {
-        PlayButtonClick?.Invoke();
+        Playing?.Invoke();
         _enemyHandler.OnEnemies();
-        _starsScore.CloseStars();
+        _starsScore.Close();
         _starsScore.RemoveAllBuildingsDiedCount();
         _groundAudio.OnFightClip();
     }
 
-    private void OnShopButton()
+    private void OnShopButtonClick()
     {
-        ShopButtonClick?.Invoke();
+        ShopOpening?.Invoke();
     }
 
-    private void OnLeaderboardButton()
+    private void OnLeaderboardButtonClick()
     {
-        LeaderboardButtonClick?.Invoke();
+        LeaderboardOpening?.Invoke();
     }
 
-    private void OnSettingButton()
+    private void OnSettingButtonClick()
     {
-        SettingButtonClick?.Invoke();
+        SettingOpening?.Invoke();
     }
 
     private void OnFindSpawnEnemiesButton()
     {
-        FindSpawnEnemiesButtonClick?.Invoke();
-        _movingCameraSpawnEnemies.RotationCamera();
+        SpawnEnemiesFinded?.Invoke();
+        _movingCameraSpawnEnemies.OnRotationCamera();
     }
 }

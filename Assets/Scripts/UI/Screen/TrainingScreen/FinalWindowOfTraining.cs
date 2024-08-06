@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class FinalWindowOfTraining : UIScreenAnimator
@@ -11,38 +11,40 @@ public class FinalWindowOfTraining : UIScreenAnimator
     [SerializeField] private ShopScreen _shopScreen;
     [SerializeField] private YandexAds _yandexAds;
 
-    public event UnityAction ResumeButtonClick;
+    public event Action ButtonResumed;
 
     private void OnEnable()
     {
-        _resumeButton.onClick.AddListener(OnResumeButton);
+        _resumeButton.onClick.AddListener(OnResumeButtonClick);
+
         foreach (var button in _openPanelButtons)
         {
-            button.onClick.AddListener(OnOpenScreen);
+            button.onClick.AddListener(OnOpen);
         }
     }
 
     private void OnDisable()
     {
-        _resumeButton.onClick.RemoveListener(OnResumeButton);
+        _resumeButton.onClick.RemoveListener(OnResumeButtonClick);
+
         foreach (var button in _openPanelButtons)
         {
-            button.onClick.RemoveListener(OnOpenScreen);
+            button.onClick.RemoveListener(OnOpen);
         }
     }
 
-    public void OnOpenScreen()
+    public void OnOpen()
     {
         _mainMenuScreen.TurnOffAllButton();
-        OpenScreen();
+        base.OnOpen();
     }
 
-    private void OnResumeButton()
+    private void OnResumeButtonClick()
     {
         _yandexAds.ShowInterstitial();
         _mainMenuScreen.EnabletAllButton();
         _shopScreen.EnabletAllButton();;
-        CloseScreen();
-        ResumeButtonClick?.Invoke();
+        OnClose();
+        ButtonResumed?.Invoke();
     }
 }

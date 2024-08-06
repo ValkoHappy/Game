@@ -3,16 +3,21 @@ using UnityEngine;
 [RequireComponent(typeof(Camera))]
 public class CameraMover : MonoBehaviour
 {
+    private const string MouseWheel = "Mouse ScrollWheel";
+
     [Header("Bounds")]
     [SerializeField] private float _leftBound;
     [SerializeField] private float _rightBound;
     [SerializeField] private float _upBound;
     [SerializeField] private float _downBound;
+
     [Header("Move parameters")]
     [SerializeField] private float _speed;
+
     [Header("Zoom")]
     [SerializeField] private float _zoomSpeed;
     [SerializeField] private float _zoomDistance;
+
     [Header("Position")]
     [SerializeField] private Quaternion _startRotation;
     [SerializeField] private Vector3 _startPosition;
@@ -22,8 +27,6 @@ public class CameraMover : MonoBehaviour
     private float _minZoom = 15f;
     private float _maxZoom = 70f;
     private float _wheelSpeedMultiplier = 3f;
-
-    private const string MouseWheel = "Mouse ScrollWheel";
 
     public float MinZoom => _minZoom;
     public float MaxZoom => _maxZoom;

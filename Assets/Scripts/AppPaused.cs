@@ -3,56 +3,41 @@ using Agava.WebUtility;
 
 public class AppPaused : MonoBehaviour
 {
+    private float _maxValue = 1f;
+    private float _minValue = 0f;
+
     private void OnEnable()
     {
-        WebApplication.InBackgroundChangeEvent += OnInBackgroundChange;
+        WebApplication.InBackgroundChangeEvent += OnSetPauseState;
     }
 
     private void OnDisable()
     {
-        WebApplication.InBackgroundChangeEvent -= OnInBackgroundChange;
+        WebApplication.InBackgroundChangeEvent -= OnSetPauseState;
     }
 
-    private void OnInBackgroundChange(bool inBackground)
+    private void OnSetPauseState(bool isPause)
     {
-        if (inBackground)
+        if (isPause)
         {
-            Time.timeScale = 0;
+            Time.timeScale = _minValue;
             AudioListener.pause = true;
         }
         else
         {
-            Time.timeScale = 1;
+            Time.timeScale = _maxValue;
             AudioListener.pause = false;
         }
     }
 
     private void OnApplicationPause(bool isPaused)
     {
-        if (isPaused)
-        {
-            Time.timeScale = 0;
-            AudioListener.pause = true;
-        }
-        else
-        {
-            Time.timeScale = 1;
-            AudioListener.pause = false;
-        }
+        OnSetPauseState(isPaused);
     }
 
     private void OnApplicationFocus(bool hasFocus)
     {
-        if (!hasFocus)
-        {
-            Time.timeScale = 0;
-            AudioListener.pause = true;
-        }
-        else
-        {
-            Time.timeScale = 1;
-            AudioListener.pause = false;
-        }
+        OnSetPauseState(hasFocus);
     }
 }
 

@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class BuildingRemover : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class BuildingRemover : MonoBehaviour
 
     private Camera _camera;
 
-    public event UnityAction<Building> BuildingRemoved;
+    public event Action<Building> BuildingRemoved;
 
     private void Awake()
     {
@@ -26,12 +26,14 @@ public class BuildingRemover : MonoBehaviour
         if (Input.GetMouseButtonDown(0) || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             Vector3 clickPoint = Input.mousePosition;
+
             if (Input.touchCount > 0)
             {
                 clickPoint = Input.GetTouch(0).position;
             }
 
             Ray ray = _camera.ScreenPointToRay(clickPoint);
+
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 if (hit.collider.TryGetComponent(out Building building))
@@ -48,14 +50,15 @@ public class BuildingRemover : MonoBehaviour
     {
         BuildingRemoved?.Invoke(building);
         Goods goods = building.BuildingCharacteristics.Goods;
+
         if (goods.IsSoldForCrystals)
         {
-            _crystalsContainer.AddCrystals(goods.Price);
+            _crystalsContainer.Add(goods.Price);
             _levelReward.RemoveCrystalsSpent(goods.Price);
         }
         else
         {
-            _goldContainer.AddGold(goods.Price);
+            _goldContainer.Add(goods.Price);
             _levelReward.RemoveGoldSpent(goods.Price);
         }
     }

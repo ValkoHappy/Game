@@ -23,7 +23,7 @@ public class Level : ScriptableObject
 }
 
 [System.Serializable]
-public class EnemyCount
+public struct EnemyCount
 {
     [SerializeField] private Enemy _enemy;
     [SerializeField] private int _count;

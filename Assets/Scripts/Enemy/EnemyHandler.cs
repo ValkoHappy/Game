@@ -1,27 +1,26 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class EnemyHandler : MonoBehaviour
 {
     private List<Enemy> _enemies;
+
     private int _deadEnemiesCount;
     private bool _isAttackBegun = false;
 
-    public event UnityAction AllEnemiesKilled;
-    public event UnityAction EnemiesIncluded;
-    public event UnityAction EnemiesRemoved;
+    public event Action AllEnemiesKilled;
+    public event Action EnemiesIncluded;
+    public event Action EnemiesRemoved;
 
     public bool IsAttackBegun => _isAttackBegun;
-    public int DeadEnemiesCount => _deadEnemiesCount;
-
 
     private void Awake()
     {
         _enemies = new List<Enemy>();
     }
 
-    public void AddEnemy(Enemy enemy)
+    public void Add(Enemy enemy)
     {
         _enemies.Add(enemy);
         enemy.Died += OnEnemyDeath;
@@ -36,9 +35,7 @@ public class EnemyHandler : MonoBehaviour
         enemy.Died -= OnEnemyDeath;
 
         if (_enemies.Count <= 0)
-        {
             AllEnemiesKilled?.Invoke();
-        }
     }
 
     public void OnDestroyEnemies()
@@ -47,6 +44,7 @@ public class EnemyHandler : MonoBehaviour
         {
             Destroy(enemy.gameObject);
         }
+
         _enemies.Clear();
         EnemiesRemoved?.Invoke();
     }
@@ -58,6 +56,7 @@ public class EnemyHandler : MonoBehaviour
             enemy.enabled = true;
             _isAttackBegun = true;
         }
+
         EnemiesIncluded?.Invoke();
     }
 }

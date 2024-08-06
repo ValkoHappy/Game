@@ -11,22 +11,22 @@ public class RewardsScore : MonoBehaviour
     {
         _crystals.text = _levelReward.CrystalsCount.ToString();
         _gold.text = _levelReward.GoldCount.ToString();
-        _levelReward.CrystalsChanged += OnCrystalsChanged;
-        _levelReward.GoldChanged += OnGoldChanged;
+        _levelReward.CrystalsChanged += OnSetCrystals;
+        _levelReward.GoldChanged += OnSetGold;
     }
 
     private void OnDisable()
     {
-        _levelReward.CrystalsChanged -= OnCrystalsChanged;
-        _levelReward.GoldChanged -= OnGoldChanged;
+        _levelReward.CrystalsChanged -= OnSetCrystals;
+        _levelReward.GoldChanged -= OnSetGold;
     }
 
-    private void OnGoldChanged(int score)
+    private void OnSetGold(int score)
     {
         _gold.text = score.ToString();
     }
 
-    private void OnCrystalsChanged(int score)
+    private void OnSetCrystals(int score)
     {
         _crystals.text = score.ToString();
     }

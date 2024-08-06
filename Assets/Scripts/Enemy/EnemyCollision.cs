@@ -1,20 +1,17 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
-[RequireComponent(typeof(HealthContainer), typeof(BoxCollider))]
+[RequireComponent(typeof(HealthHandler), typeof(BoxCollider))]
 public class EnemyCollision : MonoBehaviour, IDamageable
 {
     private Enemy _enemy;
-    private bool _isAlive;
-    private HealthContainer _healthContainer;
+    private HealthHandler _healthContainer;
 
-    public event UnityAction<EnemyCollision> Died;
-
-    public HealthContainer HealthContainer => _healthContainer;
+    public event Action<EnemyCollision> Died;
 
     private void Awake()
     {
-        _healthContainer = GetComponent<HealthContainer>();
+        _healthContainer = GetComponent<HealthHandler>();
         _enemy = GetComponentInParent<Enemy>();
     }
 
@@ -31,13 +28,9 @@ public class EnemyCollision : MonoBehaviour, IDamageable
     public bool IsAlive()
     {
         if (_healthContainer.Health <= 0)
-        {
-            return _isAlive = false;
-        }
+            return false;
         else
-        {
-            return _isAlive = true;
-        }
+            return true;
     }
 
     public bool ApplayDamage(Rigidbody rigidbody, int damage, int force)
@@ -53,7 +46,6 @@ public class EnemyCollision : MonoBehaviour, IDamageable
     protected void OnDied()
     {
         enabled = false;
-        _isAlive = false;
         Died?.Invoke(this);
     }
 }

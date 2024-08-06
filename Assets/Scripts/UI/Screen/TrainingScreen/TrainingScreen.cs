@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class TrainingScreen : MonoBehaviour
 {
+    private const string Level = "Level";
+
     [SerializeField] private MovingCameraSpawnEnemies _cameraSpawnEnemies;
     [SerializeField] private InitialTrainingWindow _initialTrainingWindow;
     [SerializeField] private TrainingWindow _trainingWindow;
@@ -11,46 +13,48 @@ public class TrainingScreen : MonoBehaviour
     [SerializeField] private MainMenuScreen _mainMenuScreen;
     [SerializeField] private ShopScreen _shopScreen;
 
-    private const string Level = "Level";
-
-    public event UnityAction TrainingFinished;
+    public event Action Finished;
 
     private void Start()
     {
         int level = PlayerPrefs.GetInt(Level);
+
         if (level > 1)
-        {
             gameObject.SetActive(false);
-        }
     }
 
     private void OnEnable()
     {
-        _initialTrainingWindow.RefuseToStudyButtonClick += TurnOffTrainingScreen;
-        _trainingWindow.ResumeButtonClick += ExitButtle;
-        _cameraSpawnEnemies.AnimationIsFinished += _initialTrainingWindow.OnOpenScreen;
-        _finalWindow.ResumeButtonClick += TurnOffTrainingScreen; 
+        _initialTrainingWindow.StudyRefused += OnTurnOffTraining;
+        _trainingWindow.Resumed += OnExitButtle;
+        _cameraSpawnEnemies.AnimationFinished += OnOpenInitialWindow;
+        _finalWindow.ButtonResumed += OnTurnOffTraining; 
     }
 
     private void OnDisable()
     {
-        _initialTrainingWindow.RefuseToStudyButtonClick -= TurnOffTrainingScreen;
-        _trainingWindow.ResumeButtonClick -= ExitButtle;
-        _cameraSpawnEnemies.AnimationIsFinished -= _initialTrainingWindow.OnOpenScreen;
-        _finalWindow.ResumeButtonClick -= TurnOffTrainingScreen;
+        _initialTrainingWindow.StudyRefused -= OnTurnOffTraining;
+        _trainingWindow.Resumed -= OnExitButtle;
+        _cameraSpawnEnemies.AnimationFinished -= OnOpenInitialWindow;
+        _finalWindow.ButtonResumed -= OnTurnOffTraining;
     }
 
-    private void TurnOffTrainingScreen()
+    private void OnTurnOffTraining()
     {
-        TrainingFinished?.Invoke();
+        Finished?.Invoke();
         _shopScreen.EnabletAllButton();
         _mainMenuScreen.EnabletAllButton();
         gameObject.SetActive(false);
     }
 
-    private void ExitButtle()
+    private void OnExitButtle()
     {
         _shopScreen.EnabletAllButton();
         _mainMenuScreen.EnabletShopButton();
+    }
+
+    private void OnOpenInitialWindow()
+    {
+        _initialTrainingWindow.OnOpen();
     }
 }

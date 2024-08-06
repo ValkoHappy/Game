@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class IndicatorCurrencyScore : MonoBehaviour
 {
+    private const string Plus = "+";
+
     [SerializeField] private TMP_Text _score;
 
     private IndicatorReceivedCurrency _indicatorReceived;
@@ -14,22 +16,22 @@ public class IndicatorCurrencyScore : MonoBehaviour
 
     private void Start()
     {
-        _score.text = "+" + _indicatorReceived.AmountCurrencyReceived.ToString();
+        _score.text = Plus + _indicatorReceived.AmountCurrencyReceived.ToString();
     }
 
     private void OnEnable()
     {
-        _score.text = "+" + _indicatorReceived.AmountCurrencyReceived.ToString();
-        _indicatorReceived.OnCurrencyReceived += OnScoreChanged;
+        _score.text = Plus + _indicatorReceived.AmountCurrencyReceived.ToString();
+        _indicatorReceived.OnCurrencyReceived += OnSetScore;
     }
 
     private void OnDisable()
     {
-        _indicatorReceived.OnCurrencyReceived -= OnScoreChanged;
+        _indicatorReceived.OnCurrencyReceived -= OnSetScore;
     }
 
-    private void OnScoreChanged(int score)
+    private void OnSetScore(int score)
     {
-        _score.text = "+" + score.ToString();
+        _score.text = Plus + score.ToString();
     }
 }

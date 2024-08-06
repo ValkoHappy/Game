@@ -4,25 +4,26 @@ using UnityEngine.SceneManagement;
 public class SceneNext : MonoBehaviour
 {
     private int _sceneIndex = 1;
+    private int _addNumber = 1;
 
     public int SceneIndex => _sceneIndex;
 
-    public void NextScene()
+    public void Next()
     {
         SceneManager.LoadScene(_sceneIndex);
     }
 
-    public void ShowScene()
+    public void Show()
     {
-        _sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        _sceneIndex = SceneManager.GetActiveScene().buildIndex + _addNumber;
     }
 
-    public void OpenScene()
+    public void Open()
     {
         SceneManager.LoadScene(_sceneIndex);
     }
 
-    public void InitScene(int sceneIndex)
+    public void Init(int sceneIndex)
     {
         _sceneIndex = sceneIndex;
     }

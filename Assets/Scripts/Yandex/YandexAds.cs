@@ -1,13 +1,15 @@
 using Agava.YandexGames;
+using System;
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.Events;
 
 public class YandexAds : MonoBehaviour
 {
     [SerializeField] private SoundSettings _soundSettings;
 
-    public event UnityAction ShowReward;
+    private float _minScale = 0f;
+    private float _maxScale = 1f;
+
+    public event Action RewardShown;
 
     public void ShowInterstitial()
     {
@@ -16,34 +18,15 @@ public class YandexAds : MonoBehaviour
 #endif
     }
 
-//    public void ShowRewardAd()
-//    {
-//#if UNITY_WEBGL && !UNITY_EDITOR
-//        VideoAd.Show(() => _soundSettings.Mute(), AddCoin, () => _soundSettings.Load(), null);
-//#endif
-//        //VideoAd.Show(OnAdOpen, OnAdClose);
-//    }
-
-//    public void AddCoin()
-//    {
-//        ShowReward?.Invoke();
-//    }
-
     public void OnAdOpen()
     {
-        Time.timeScale = 0;
+        Time.timeScale = _minScale;
         _soundSettings.Mute();
     }
 
-    //public void OnAdClose()
-    //{
-    //    Time.timeScale = 1;
-    //    AudioListener.volume = 1;
-    //}
-
     public void OnIterstitialAddClose(bool value)
     {
-        Time.timeScale = 1;
+        Time.timeScale = _maxScale;
         _soundSettings.Load();
     }
 }

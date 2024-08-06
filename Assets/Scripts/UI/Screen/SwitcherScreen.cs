@@ -1,9 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class SwitchingScreen : UIScreenAnimator
+public class SwitcherScreen : UIScreenAnimator
 {
     [SerializeField] private Button _switchingButton;
     [SerializeField] private List<Goods> _buildings;
@@ -12,18 +12,18 @@ public class SwitchingScreen : UIScreenAnimator
 
     [SerializeField] private Spawner _spawner;
 
-    public event UnityAction SwitchingButtonClick;
+    public event Action Switching;
 
     private void OnEnable()
     {
-        _spawner.CurrentLevelExceedsCount += OpenScreen;
-        _switchingButton.onClick.AddListener(OnSwitchingButton);
+        _spawner.MaximumLevelChanged += OnOpen;
+        _switchingButton.onClick.AddListener(OnSwitchingButtonClick);
     }
 
     private void OnDisable()
     {
-        _spawner.CurrentLevelExceedsCount -= OpenScreen;
-        _switchingButton.onClick.RemoveListener(OnSwitchingButton);
+        _spawner.MaximumLevelChanged -= OnOpen;
+        _switchingButton.onClick.RemoveListener(OnSwitchingButtonClick);
     }
 
     private void Start()
@@ -34,11 +34,11 @@ public class SwitchingScreen : UIScreenAnimator
         }
     }
 
-    public void OnSwitchingButton()
+    public void OnSwitchingButtonClick()
     {
-        SwitchingButtonClick?.Invoke();
+        Switching?.Invoke();
         _spawner.SwitchAnotherMap();
-        CloseScreen();
+        OnClose();
     }
 
     private void AddItem(Goods building)

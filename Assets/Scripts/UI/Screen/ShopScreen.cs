@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ShopScreen : UIScreenAnimator
@@ -20,37 +20,36 @@ public class ShopScreen : UIScreenAnimator
     [SerializeField] private UIScreenAnimator _storeTabWeapons;
     [SerializeField] private UIScreenAnimator _storeTabGenerators;
 
-    public event UnityAction ExitButtonClick;
-    public event UnityAction DeleteBuildingsButtonClick;
+    public event Action Exited;
+    public event Action BuildingsDeleted;
 
     private void Start()
     {
-        _storeTabWeapons.OpenScreen();   
+        _storeTabWeapons.OnOpen();   
     }
 
     private void OnEnable()
     {
-        _buildingsGrid.CreatedBuilding += CloseScreen;
-        _buildingsGrid.RemoveBuilding += OpenScreen;
-        _buildingsGrid.DeliveredBuilding += OpenScreen;
+        _buildingsGrid.BuildingCreated += OnClose;
+        _buildingsGrid.BuildingRemoved += OnOpen;
+        _buildingsGrid.BuildingDelivered += OnOpen;
         _deleteBuildingsButton.onClick.AddListener(OnDeleteBuildingsButton);
 
-        _exitButton.onClick.AddListener(OnExitButton);
+        _exitButton.onClick.AddListener(OnExitButtonClick);
         _advertisingButton.onClick.AddListener(ClaimCrystalsForAdvertising);
         _storeTabFencesButton.onClick.AddListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.AddListener(OnStoreTabWeapons);
         _storeTabGeneratorsButton.onClick.AddListener(OnStoreTabGenerators);
-
     }
 
     private void OnDisable()
     {
-        _buildingsGrid.CreatedBuilding -= CloseScreen;
-        _buildingsGrid.RemoveBuilding -= OpenScreen;
-        _buildingsGrid.DeliveredBuilding -= OpenScreen;
+        _buildingsGrid.BuildingCreated -= OnClose;
+        _buildingsGrid.BuildingRemoved -= OnOpen;
+        _buildingsGrid.BuildingDelivered -= OnOpen;
         _deleteBuildingsButton.onClick.RemoveListener(OnDeleteBuildingsButton);
 
-        _exitButton.onClick.RemoveListener(OnExitButton);
+        _exitButton.onClick.RemoveListener(OnExitButtonClick);
         _advertisingButton.onClick.RemoveListener(ClaimCrystalsForAdvertising);
         _storeTabFencesButton.onClick.RemoveListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.RemoveListener(OnStoreTabWeapons);
@@ -93,46 +92,46 @@ public class ShopScreen : UIScreenAnimator
         _storeTabGeneratorsButton.enabled = true;
     }
 
-    public void OpenShop()
+    public void Open()
     {
         OnStoreTabWeapons();
-        OpenScreen();
+        OnOpen();
     }
 
-    private void OnExitButton()
+    private void OnExitButtonClick()
     {
-        ExitButtonClick?.Invoke();
+        Exited?.Invoke();
     }
 
     private void OnStoreTabMainBuildings()
     {
-        _storeTabFences.OpenScreen();
-        _storeTabWeapons.CloseScreen();
-        _storeTabGenerators.CloseScreen();
+        _storeTabFences.OnOpen();
+        _storeTabWeapons.OnClose();
+        _storeTabGenerators.OnClose();
     }
 
     private void OnStoreTabWeapons()
     {
-        _storeTabFences.CloseScreen();
-        _storeTabWeapons.OpenScreen();
-        _storeTabGenerators.CloseScreen();
+        _storeTabFences.OnClose();
+        _storeTabWeapons.OnOpen();
+        _storeTabGenerators.OnClose();
     }
 
     private void OnStoreTabGenerators()
     {
-        _storeTabFences.CloseScreen();
-        _storeTabWeapons.CloseScreen();
-        _storeTabGenerators.OpenScreen();
+        _storeTabFences.OnClose();
+        _storeTabWeapons.OnClose();
+        _storeTabGenerators.OnOpen();
     }
 
     private void ClaimCrystalsForAdvertising()
     {
-        _levelReward.ClaimCrystalsForAdvertisingReward();
+        _levelReward.ClaimCrystalsAdvertisingReward();
     }
 
     private void OnDeleteBuildingsButton()
     {
-        DeleteBuildingsButtonClick?.Invoke();
+        BuildingsDeleted?.Invoke();
         _buildingRemover.enabled = true;
     }
 }

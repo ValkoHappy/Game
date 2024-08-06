@@ -189,15 +189,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0891a58843160c247a14c26d9da3fe50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4291243029155556837 stripped
+--- !u!114 &6828982492283197682 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 919132149148475572, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7604763893955827107, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
   m_PrefabInstance: {fileID: 3984813883902840145}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
+  m_Script: {fileID: 11500000, guid: 664fad8856dec2740b8e59636ef9efb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6653333106616779132
@@ -210,7 +210,7 @@ PrefabInstance:
     - target: {fileID: 2632820826197489230, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: _healthContainer
       value: 
-      objectReference: {fileID: 4291243029155556837}
+      objectReference: {fileID: 6828982492283197682}
     - target: {fileID: 2632820826197489230, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: _peacefulConstruction
       value: 

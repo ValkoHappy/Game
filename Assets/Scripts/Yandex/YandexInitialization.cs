@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class YandexInitialization : MonoBehaviour
 {
+    private const string Language = "Language";
+
     [SerializeField] private Localization _localization;
     [SerializeField] private YandexAds _yandexAds;
 
-    private const string Language = "Language";
+    private float _wait = 0.5f;
 
 #if UNITY_WEBGL && !UNITY_EDITOR
     private void Awake()
@@ -18,7 +20,7 @@ public class YandexInitialization : MonoBehaviour
     private IEnumerator Start()
     {
         yield return YandexGamesSdk.Initialize(OnInitialized);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(_wait);
 
         if (_yandexAds != null)
             _yandexAds.ShowInterstitial();

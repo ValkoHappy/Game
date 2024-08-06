@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ButtleScreen : UIScreenAnimator
@@ -13,30 +13,30 @@ public class ButtleScreen : UIScreenAnimator
     [SerializeField] private GroundAudio _groundAudio;
     [SerializeField] private YandexAds _yandexAds;
 
-    public event UnityAction ExitButtonClick;
-    public event UnityAction SettingsButtonClick;
+    public event Action Exited;
+    public event Action SettingsOpened;
 
     private void OnEnable()
     {
-        _enemyHandler.AllEnemiesKilled += CloseScreen;
-        _buildingsHandler.AllBuildingsBroked += CloseScreen;
+        _enemyHandler.AllEnemiesKilled += OnClose;
+        _buildingsHandler.BuildingsBroked += OnClose;
 
-        _exitButton.onClick.AddListener(OnExitButton);
-        _settingsButton.onClick.AddListener(OnSettingsButton);
+        _exitButton.onClick.AddListener(OnExitButtonClick);
+        _settingsButton.onClick.AddListener(OnSettingsButtonClick);
     }
 
     private void OnDisable()
     {
-        _enemyHandler.AllEnemiesKilled -= CloseScreen;
-        _buildingsHandler.AllBuildingsBroked -= CloseScreen;
+        _enemyHandler.AllEnemiesKilled -= OnClose;
+        _buildingsHandler.BuildingsBroked -= OnClose;
 
-        _exitButton.onClick.RemoveListener(OnExitButton);
-        _settingsButton.onClick.RemoveListener(OnSettingsButton);
+        _exitButton.onClick.RemoveListener(OnExitButtonClick);
+        _settingsButton.onClick.RemoveListener(OnSettingsButtonClick);
     }
 
-    private void OnExitButton()
+    private void OnExitButtonClick()
     {
-        ExitButtonClick?.Invoke();
+        Exited?.Invoke();
         _enemyHandler.OnDestroyEnemies();
         _buildingsHandler.OnCreateSavedBuildings();
         _spawner.StartLevel();
@@ -44,8 +44,8 @@ public class ButtleScreen : UIScreenAnimator
         _yandexAds.ShowInterstitial();
     }
 
-    private void OnSettingsButton()
+    private void OnSettingsButtonClick()
     {
-        SettingsButtonClick?.Invoke();
+        SettingsOpened?.Invoke();
     }
 }

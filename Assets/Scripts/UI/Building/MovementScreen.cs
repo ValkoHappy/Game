@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MovementScreen : UIScreenAnimator
@@ -8,7 +8,8 @@ public class MovementScreen : UIScreenAnimator
     [SerializeField] private Button _delateButton;
 
     private MoveSelection _moveSelection;
-    public event UnityAction ChoiceMade;
+
+    public event Action MadeChoiced;
 
     private void Awake()
     {
@@ -17,29 +18,29 @@ public class MovementScreen : UIScreenAnimator
 
     private void Start()
     {
-        OpenScreen();
+        OnOpen();
     }
 
     private void OnEnable()
     {
-        _saveButton.onClick.AddListener(OnSaveButton);
-        _delateButton.onClick.AddListener(OnDelateButton);
+        _saveButton.onClick.AddListener(OnSaveButtonClick);
+        _delateButton.onClick.AddListener(OnDelateButtonClick);
     }
 
     private void OnDisable()
     {
-        _saveButton.onClick.RemoveListener(OnSaveButton);
-        _delateButton.onClick.RemoveListener(OnDelateButton);
+        _saveButton.onClick.RemoveListener(OnSaveButtonClick);
+        _delateButton.onClick.RemoveListener(OnDelateButtonClick);
     }
 
-    private void OnSaveButton()
+    private void OnSaveButtonClick()
     {
         _moveSelection.SetBuildingModeInsert();
-        ChoiceMade?.Invoke();
+        MadeChoiced?.Invoke();
     }
-    private void OnDelateButton()
+    private void OnDelateButtonClick()
     {
         _moveSelection.SetBuildingModeDelete();
-        ChoiceMade?.Invoke();
+        MadeChoiced?.Invoke();
     }
 }

@@ -8,6 +8,7 @@ public class UIScaler : MonoBehaviour
     [SerializeField] private float _aspectRatioThreshold = 16f / 9f;
 
     private CanvasScaler _canvasScaler;
+    private Vector2 _referenceResolution = new Vector2(1920, 1080);
 
     private void Awake()
     {
@@ -16,16 +17,16 @@ public class UIScaler : MonoBehaviour
 
     private void Start()
     {
-        _canvasScaler.referenceResolution = new Vector2(1920, 1080);
+        _canvasScaler.referenceResolution = _referenceResolution;
         _canvasScaler.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
     }
 
     private void Update()
     {
-        UpdateCanvasScaler();
+        UpdateCanvas();
     }
 
-    private void UpdateCanvasScaler()
+    private void UpdateCanvas()
     {
         float currentAspectRatio = (float)Screen.width / Screen.height;
 

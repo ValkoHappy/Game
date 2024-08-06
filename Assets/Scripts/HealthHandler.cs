@@ -1,15 +1,15 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class HealthContainer : MonoBehaviour
+public class HealthHandler : MonoBehaviour
 {
     [SerializeField] private int _health;
 
     private int _maxHealth;
 
-    public event UnityAction<int> HealthChanged;
-    public event UnityAction MaxHealthChanged;
-    public event UnityAction Died;
+    public event Action<int> HealthChanged;
+    public event Action MaxHealthChanged;
+    public event Action Died;
 
     public int Health => _health;
     public int MaxHealth => _maxHealth;
@@ -21,17 +21,17 @@ public class HealthContainer : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        _health -= damageAmount;
+        if(_health <= 0 || damageAmount <= 0)
+            return;
 
-        if (_health <= 0)
-        {
-            _health = 0;
-            Died?.Invoke();
-        }
+        _health = Math.Max(0, _health - damageAmount);
         HealthChanged?.Invoke(_health);
+
+        if (_health == 0)
+            Died?.Invoke();
     }
 
-    public void ResetHealth()
+    public void Clear()
     {
         _health = _maxHealth;
         MaxHealthChanged?.Invoke();

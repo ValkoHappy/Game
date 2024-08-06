@@ -1,17 +1,15 @@
 using Lean.Localization;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Localization : MonoBehaviour
 {
-    [SerializeField] private LeanLocalization _leanLocalization;
-
     private const string Language = "Language";
 
-    private string _currentLanguage;
+    [SerializeField] private LeanLocalization _leanLocalization;
 
-    public event UnityAction LanguageChanged;
+    private string _currentLanguage;
 
     private Dictionary<string, string> _language = new()
     {
@@ -19,6 +17,8 @@ public class Localization : MonoBehaviour
         { "en", "English" },
         { "tr", "Turkish" },
     };
+
+    public event Action LanguageChanged;
 
     public void SetLanguage(string value)
     {

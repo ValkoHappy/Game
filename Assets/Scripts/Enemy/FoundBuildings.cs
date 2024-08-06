@@ -7,10 +7,12 @@ public class FoundBuildings : MonoBehaviour
     private PeacefulConstruction _targetConstruction;
     private Coroutine _removeCoroutine;
     private Coroutine _sortCoroutine;
-
-    public PeacefulConstruction TargetConstruction => _targetConstruction;
+    private WaitForSeconds _sortWait = new WaitForSeconds(0.5f);
+    private WaitForSeconds _removeWait = new WaitForSeconds(5f);
 
     private List<PeacefulConstruction> _constructions = new List<PeacefulConstruction>();
+
+    public PeacefulConstruction TargetConstruction => _targetConstruction;
 
     private void Start()
     {
@@ -22,7 +24,9 @@ public class FoundBuildings : MonoBehaviour
         if (_removeCoroutine != null)
         {
             StopCoroutine(_removeCoroutine);
+            _sortCoroutine = null;
         }
+
         _removeCoroutine = StartCoroutine(RemoveBuilding());
     }
 
@@ -31,7 +35,9 @@ public class FoundBuildings : MonoBehaviour
         if (_sortCoroutine != null)
         {
             StopCoroutine(_sortCoroutine);
+            _sortCoroutine = null;
         }
+
         _sortCoroutine = StartCoroutine(SortConstructions());
     }
 
@@ -41,15 +47,12 @@ public class FoundBuildings : MonoBehaviour
         if (other.TryGetComponent(out PeacefulConstruction peacefulConstruction))
         {
             if (peacefulConstruction != null && peacefulConstruction.IsAlive())
-            {
                 _constructions.Add(peacefulConstruction);
-            }
         }
     }
 
     private IEnumerator SortConstructions()
     {
-        var waitForSeconds = new WaitForSeconds(0.5f);
         if (_constructions.Count > 0)
         {
             float shortestDistance = Mathf.Infinity;
@@ -68,34 +71,31 @@ public class FoundBuildings : MonoBehaviour
                     }
                 }
                 else if (construction.IsAlive() == false)
-                {
                     nearestEnemy = null;
-                }
 
                 if (nearestEnemy != null && nearestEnemy.IsAlive())
-                {
                     _targetConstruction = nearestEnemy;
-                }
             }
         }
-        yield return waitForSeconds;
+
+        yield return _sortWait;
+
         StartSortConstructions();
     }
 
     private IEnumerator RemoveBuilding()
     {
-        var waitForSeconds = new WaitForSeconds(5f);
         if (_constructions.Count > 0)
         {
             foreach (var construction in _constructions)
             {
                 if (construction != null && construction.IsAlive() == false)
-                {
                     _constructions.Remove(construction);
-                }
             }
         }
-        yield return waitForSeconds;
+
+        yield return _removeWait;
+
         StartRemove();
     }
 }

@@ -17,17 +17,18 @@ public class StarsScore : MonoBehaviour
 
     private void OnEnable()
     {
-        _enemyHandler.AllEnemiesKilled += ShowStars;
+        _enemyHandler.AllEnemiesKilled += OnShow;
     }
 
     private void OnDisable()
     {
-        _enemyHandler.AllEnemiesKilled -= ShowStars;
+        _enemyHandler.AllEnemiesKilled -= OnShow;
     }
 
-    public void ShowStars()
+    public void OnShow()
     {
         _buildingsStars = _buildingsStarsPercentage - (_buildingsDiedCount / _buildingsCount * _buildingsStarsPercentage);
+
         for (int i = 0; i < _stars.Length; i++)
         {
             if (_buildingsStars >= (i + 1) * _starsThreshold)
@@ -42,7 +43,7 @@ public class StarsScore : MonoBehaviour
         }
     }
 
-    public void CloseStars()
+    public void Close()
     {
         foreach (var star in _stars)
         {
@@ -53,8 +54,9 @@ public class StarsScore : MonoBehaviour
         {
             reward.LeanScale(new Vector3(0, 0, 0), 0);
         }
+
         _buildingsStars = 0;
-        _buildingsDiedCount = 0;
+        RemoveAllBuildingsDiedCount();
     }
 
     public void AddBuildingsCount()

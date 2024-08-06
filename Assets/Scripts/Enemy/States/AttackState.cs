@@ -3,43 +3,50 @@ using UnityEngine;
 
 public class AttackState : EnemyState
 {
+    private const string Attack = "Attack";
+
     [SerializeField] private float _attackForce;
     [SerializeField] private float _attackDelay;
 
-    private const string Attack = "Attack";
     private Coroutine _attackCoroutine;
+    private WaitForSeconds _attackWait;
+
+    private void Awake()
+    {
+        _attackWait = new WaitForSeconds(_attackDelay);
+    }
 
     private void OnEnable()
     {
         if(enabled)
-            StartAttack();
+            StartCombat();
     }
 
     private void OnDisable()
     {
         if (_attackCoroutine != null)
-        {
             StopCoroutine(_attackCoroutine);
-        }
     }
 
-    private void StartAttack()
+    private void StartCombat()
     {
         if (_attackCoroutine != null)
         {
             StopCoroutine(_attackCoroutine);
+            _attackCoroutine = null;
         }
-        _attackCoroutine = StartCoroutine(AttackCoroutine());
+
+        _attackCoroutine = StartCoroutine(ExecuteCombat());
     }
 
-    private IEnumerator AttackCoroutine()
+    private IEnumerator ExecuteCombat()
     {
         Animator.SetTrigger(Attack);
-        var waitForSecounds = new WaitForSeconds(_attackDelay);
+    
         PeacefulConstruction.ApplyDamage(_attackForce);
-        yield return waitForSecounds;
+        yield return _attackWait;
 
         if(PeacefulConstruction.IsAlive())
-            StartAttack();
+            StartCombat();
     }
 }

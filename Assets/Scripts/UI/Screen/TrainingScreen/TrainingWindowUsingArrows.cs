@@ -3,6 +3,10 @@ using UnityEngine.UI;
 
 public class TrainingWindowUsingArrows : UIScreenAnimator
 {
+    private const string Turret = "Turret";
+    private const string Oil = "Oil";
+    private const string Fence = "Fence";
+
     [SerializeField] private Button _shopButton;
     [SerializeField] private Button _generationsShopButton;
     [SerializeField] private Button _fencesShopButton;
@@ -16,10 +20,6 @@ public class TrainingWindowUsingArrows : UIScreenAnimator
     [SerializeField] private ShopScreen _shopScreen;
     [SerializeField] private BuildingsGrid _buildingGrid;
 
-    private const string Turret = "Turret";
-    private const string Oil = "Oil";
-    private const string Fence = "Fence";
-
     private void Start()
     {
         _shopScreen.TurnOffAllButton();
@@ -27,27 +27,27 @@ public class TrainingWindowUsingArrows : UIScreenAnimator
 
     private void OnEnable()
     {
-        _shopButton.onClick.AddListener(EnableAtrrowOnProduct);
-        _generationsShopButton.onClick.AddListener(EnableAtrrowOnProduct);
-        _fencesShopButton.onClick.AddListener(EnableAtrrowOnProduct);
-        _exitShopButton.onClick.AddListener(TurnOffAtrrowOnProduct);
-        _buildingGrid.CreatedBuilding += TurnOffAtrrowOnProduct;
+        _shopButton.onClick.AddListener(OnEnableAtrrowProduct);
+        _generationsShopButton.onClick.AddListener(OnEnableAtrrowProduct);
+        _fencesShopButton.onClick.AddListener(OnEnableAtrrowProduct);
+        _exitShopButton.onClick.AddListener(OnTurnOffAtrrowProduct);
+        _buildingGrid.BuildingCreated += OnTurnOffAtrrowProduct;
         _buildingGrid.BuildingSupplied += OnOpenIndicators;
-        _buildingGrid.RemoveBuilding += EnableAtrrowOnProduct;
+        _buildingGrid.BuildingRemoved += OnEnableAtrrowProduct;
     }
 
     private void OnDisable()
     {
-        _shopButton.onClick.RemoveListener(EnableAtrrowOnProduct);
-        _generationsShopButton.onClick.RemoveListener(EnableAtrrowOnProduct);
-        _fencesShopButton.onClick.RemoveListener(EnableAtrrowOnProduct);
-        _exitShopButton.onClick.RemoveListener(TurnOffAtrrowOnProduct);
-        _buildingGrid.CreatedBuilding -= TurnOffAtrrowOnProduct;
+        _shopButton.onClick.RemoveListener(OnEnableAtrrowProduct);
+        _generationsShopButton.onClick.RemoveListener(OnEnableAtrrowProduct);
+        _fencesShopButton.onClick.RemoveListener(OnEnableAtrrowProduct);
+        _exitShopButton.onClick.RemoveListener(OnTurnOffAtrrowProduct);
+        _buildingGrid.BuildingCreated -= OnTurnOffAtrrowProduct;
         _buildingGrid.BuildingSupplied -= OnOpenIndicators;
-        _buildingGrid.RemoveBuilding -= EnableAtrrowOnProduct;;
+        _buildingGrid.BuildingRemoved -= OnEnableAtrrowProduct;;
     }
 
-    public void EnableAtrrowOnProduct()
+    public void OnEnableAtrrowProduct()
     {
         _atrrowOnProduct.SetActive(true);
         _arrowPointingToGenerators.SetActive(false);
@@ -76,7 +76,7 @@ public class TrainingWindowUsingArrows : UIScreenAnimator
         }
     }
 
-    private void TurnOffAtrrowOnProduct()
+    private void OnTurnOffAtrrowProduct()
     {
         _atrrowOnProduct.SetActive(false);
         _arrowPointingToExitButton.SetActive(false);

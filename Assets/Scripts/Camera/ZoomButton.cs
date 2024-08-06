@@ -20,12 +20,10 @@ public class ZoomButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         if (_zoom != null)
         {
             StopCoroutine(_zoom);
-            _zoom = StartCoroutine(Zoom());
+            _zoom = null;
         }
-        else
-        {
-            _zoom = StartCoroutine(Zoom());
-        }
+
+        _zoom = StartCoroutine(Zoom());
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -40,6 +38,7 @@ public class ZoomButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public virtual IEnumerator Zoom()
     {
         _isZooming = true;
+
         while (_isZooming)
         {
             _cameraMover.ZoomIn();

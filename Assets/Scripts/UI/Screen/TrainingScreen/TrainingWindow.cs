@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class TrainingWindow : UIScreenAnimator
@@ -8,33 +8,37 @@ public class TrainingWindow : UIScreenAnimator
     [SerializeField] private Button _openPanelButton;
     [SerializeField] private Button _resumeButton;
 
-    public event UnityAction ResumeButtonClick;
+    public event Action Resumed;
 
     private void OnEnable()
     {
-        _resumeButton.onClick.AddListener(OnResumeButton);
+        _resumeButton.onClick.AddListener(OnResumeButtonClick);
+
         if (_openPanelButton != null)
-            _openPanelButton.onClick.AddListener(OnOpenScreen);
+            _openPanelButton.onClick.AddListener(OnOpen);
     }
 
     private void OnDisable()
     {
-        _resumeButton.onClick.RemoveListener(OnResumeButton);
+        _resumeButton.onClick.RemoveListener(OnResumeButtonClick);
+
         if (_openPanelButton != null)
-            _openPanelButton.onClick.RemoveListener(OnOpenScreen);
+            _openPanelButton.onClick.RemoveListener(OnOpen);
     }
 
-    public void OnOpenScreen()
+    public void OnOpen()
     {
-        OpenScreen();
+        base.OnOpen();
+
         if(_indicator != null)
             _indicator.SetActive(true);
     }
 
-    private void OnResumeButton()
+    private void OnResumeButtonClick()
     {
-        ResumeButtonClick?.Invoke();
-        CloseScreen();
+        Resumed?.Invoke();
+        OnClose();
+
         if (_indicator != null)
             _indicator.SetActive(false);
     }

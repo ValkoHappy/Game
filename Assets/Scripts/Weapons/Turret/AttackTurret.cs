@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-//[RequireComponent(typeof(Turret), typeof(SphereCollider))]
-public class ShootTurret : MonoBehaviour
+public class AttackTurret : MonoBehaviour
 {
     [SerializeField] private Bullet _bullet;
     [SerializeField] private Transform[] _shootPoint;
@@ -16,6 +15,7 @@ public class ShootTurret : MonoBehaviour
     private EnemyHandler _enemyHandler;
     private RecoilAnimation _recoilAnimation;
     private Coroutine _shootCoroutine;
+    private WaitForSeconds _shootWait;
     private bool _canShoot = true;
     public bool _canShooting = false;
 
@@ -23,13 +23,13 @@ public class ShootTurret : MonoBehaviour
     public float Damage => _shootPoint.Length;
     public float RadiusAttack => _radiusAttack;
 
-
     private void Awake()
     {
         _sphereCollider = GetComponent<SphereCollider>();   
         _enemyHandler = FindObjectOfType<EnemyHandler>();
         _turret = GetComponent<Turret>();
         _recoilAnimation = GetComponentInChildren<RecoilAnimation>();
+        _shootWait = new WaitForSeconds(_waitForSeconds);
     }
 
     private void Start()
@@ -44,29 +44,19 @@ public class ShootTurret : MonoBehaviour
             if (_canShoot)
             {
                 if (_canShooting == false)
-                {
                     StartShoot();
-                }
             }
 
             if (_turret.TargetEnemy == null)
-            {
                 _canShooting = false;
-            }
 
             if (_turret.TargetEnemy != null && _turret.TargetEnemy.IsAlive())
-            {
-                RestartShoot();
-            }
+                Restart();
             else
-            {
-                StopShoot();
-            }
+                Stop();
         }
         else
-        {
             _canShoot = false;
-        }
     }
 
     public void StartShoot()
@@ -81,12 +71,12 @@ public class ShootTurret : MonoBehaviour
         }
     }
 
-    public void StopShoot()
+    public void Stop()
     {
         _canShoot = false;
     }
 
-    public void RestartShoot()
+    public void Restart()
     {
         _canShoot = true;
     }
@@ -101,19 +91,21 @@ public class ShootTurret : MonoBehaviour
 
     private IEnumerator Shoot()
     {
-        var waitForSeconds = new WaitForSeconds(_waitForSeconds);
         _canShooting = true;
+
         for (int i = 0; i < _shootPoint.Length; i++)
         {
             CreateBullet(_shootPoint[i]);
         }
+
         _recoilAnimation.StartRecoil(_waitForSeconds);
-        yield return waitForSeconds;
+
+        yield return _shootWait;
+
         _canShooting = false;
+
         if (_turret.TargetEnemy.IsAlive())
-        {
             StartShoot();
-        }
     }
 }
 

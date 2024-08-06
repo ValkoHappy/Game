@@ -17,24 +17,28 @@ public class GroundAudio : MonoBehaviour
     private void OnEnable()
     {
         _enemyHandler.AllEnemiesKilled += OnÑalmClip;
-        _buildingsHandler.AllBuildingsBroked += OnÑalmClip;
+        _buildingsHandler.BuildingsBroked += OnÑalmClip;
     }
 
     private void OnDisable()
     {
         _enemyHandler.AllEnemiesKilled -= OnÑalmClip;
-        _buildingsHandler.AllBuildingsBroked -= OnÑalmClip;
+        _buildingsHandler.BuildingsBroked -= OnÑalmClip;
     }
 
     public void OnÑalmClip()
-    { 
-        _audioSource.clip = _calmClip;
-        _audioSource.Play();
+    {
+        SetClip(_calmClip);
     }
 
     public void OnFightClip()
     {
-        _audioSource.clip = _fightClip;
+        SetClip(_fightClip);
+    }
+
+    private void SetClip(AudioClip clip)
+    {
+        _audioSource.clip = clip;
         _audioSource.Play();
     }
 }

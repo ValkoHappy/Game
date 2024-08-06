@@ -4,16 +4,16 @@ using UnityEngine.Audio;
 
 public class SoundSettings : MonoBehaviour
 {
+    private const string MusicVolume = "MusicVolume";
+    private const string EffectsVolume = "EffectsVolume";
+
     [SerializeField] private Slider _musicSlider;
     [SerializeField] private Slider _effectsSlider;
     [SerializeField] private AudioMixer _audioMixer;
 
-    private const string MusicVolume = "MusicVolume";
-    private const string EffectsVolume = "EffectsVolume";
-
     private float _defaultVolume = 0.74f;
     private float _minVolume = -80f;
-
+    private float _maxVolume = 0f;
 
     private void Start()
     {
@@ -41,14 +41,14 @@ public class SoundSettings : MonoBehaviour
 
     private void OnEnable()
     {
-        _musicSlider.onValueChanged.AddListener(SetMusicSlider);
-        _effectsSlider.onValueChanged.AddListener(SetEffectsSlider);
+        _musicSlider.onValueChanged.AddListener(OnSetMusicSlider);
+        _effectsSlider.onValueChanged.AddListener(OnSetEffectsSlider);
     }
 
     private void OnDisable()
     {
-        _musicSlider.onValueChanged.RemoveListener(SetMusicSlider);
-        _effectsSlider.onValueChanged.RemoveListener(SetEffectsSlider);
+        _musicSlider.onValueChanged.RemoveListener(OnSetMusicSlider);
+        _effectsSlider.onValueChanged.RemoveListener(OnSetEffectsSlider);
     }
 
     public void Mute()
@@ -66,7 +66,7 @@ public class SoundSettings : MonoBehaviour
         SetVolumeEffects(_effectsSlider.value);
     }
 
-    public void SetMusicSlider(float volume)
+    public void OnSetMusicSlider(float volume)
     {
         _musicSlider.value = volume;
         PlayerPrefs.SetFloat(MusicVolume, volume);
@@ -74,7 +74,7 @@ public class SoundSettings : MonoBehaviour
         SetVolumeMusic(volume);
     }
 
-    public void SetEffectsSlider(float volume)
+    public void OnSetEffectsSlider(float volume)
     {
         _effectsSlider.value = volume;
         PlayerPrefs.SetFloat(EffectsVolume, volume);
@@ -84,11 +84,11 @@ public class SoundSettings : MonoBehaviour
 
     private void SetVolumeMusic(float volume)
     {
-        _audioMixer.SetFloat(MusicVolume, Mathf.Lerp(-80, 0, volume));
+        _audioMixer.SetFloat(MusicVolume, Mathf.Lerp(_minVolume, _maxVolume, volume));
     }
 
     private void SetVolumeEffects(float volume)
     {
-        _audioMixer.SetFloat(EffectsVolume, Mathf.Lerp(-80, 0, volume));
+        _audioMixer.SetFloat(EffectsVolume, Mathf.Lerp(_minVolume, _maxVolume, volume));
     }
 }

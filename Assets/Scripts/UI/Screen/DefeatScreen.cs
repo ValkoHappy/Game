@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DefeatScreen : UIScreenAnimator
@@ -17,37 +17,37 @@ public class DefeatScreen : UIScreenAnimator
     [SerializeField] private StarsScore _starsScore;
     [SerializeField] private SaveSystem _saveSystem;
 
-    public event UnityAction ResumeButtonClick;
-    public event UnityAction RestartButtonClick;
+    public event Action Resumed;
+    public event Action Restarted;
 
     private void OnEnable()
     {
-        _buildingsHandler.AllBuildingsBroked += OpenDefeatScreen;
+        _buildingsHandler.BuildingsBroked += OnOpenDefeat;
         _resumeButton.onClick.AddListener(OnResumeButton);
-        _restartButton.onClick.AddListener(OnRestartButtonReward);
+        _restartButton.onClick.AddListener(OnShowRewardAd);
 
-        _buttonRewardAd.ShowReward += OnRestartButton;
+        _buttonRewardAd.Shown += OnRestart;
     }
 
     private void OnDisable()
     {
-        _buildingsHandler.AllBuildingsBroked -= OpenDefeatScreen;
+        _buildingsHandler.BuildingsBroked -= OnOpenDefeat;
         _resumeButton.onClick.RemoveListener(OnResumeButton);
-        _restartButton.onClick.RemoveListener(OnRestartButtonReward);
+        _restartButton.onClick.RemoveListener(OnShowRewardAd);
 
-        _buttonRewardAd.ShowReward -= OnRestartButton;
+        _buttonRewardAd.Shown -= OnRestart;
     }
 
-    private void OpenDefeatScreen()
+    private void OnOpenDefeat()
     {
         _yandexAds.ShowInterstitial();
-        OpenScreen();
+        OnOpen();
     }
 
     private void OnResumeButton()
     {
         _starsScore.RemoveAllBuildingsCount();
-        ResumeButtonClick?.Invoke();
+        Resumed?.Invoke();
         _buildingsHandler.OnDestroyAllBuildings();
         _buildingsGrid.RemoveGrid();
         _enemyHandler.OnDestroyEnemies();
@@ -57,14 +57,14 @@ public class DefeatScreen : UIScreenAnimator
         _saveSystem.Save();
     }
 
-    private void OnRestartButtonReward()
+    private void OnShowRewardAd()
     {
         _buttonRewardAd.ShowRewardAd();
     }
 
-    private void OnRestartButton()
+    private void OnRestart()
     {
-        RestartButtonClick?.Invoke();
+        Restarted?.Invoke();
         _enemyHandler.OnDestroyEnemies();
         _buildingsHandler.OnCreateSavedBuildings();
         _spawner.StartLevel();

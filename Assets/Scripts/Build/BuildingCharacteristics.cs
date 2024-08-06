@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BuildingCharacteristics : MonoBehaviour
 {
-    [SerializeField] private HealthContainer _healthContainer;
-    [SerializeField] private ShootTurret _shootTurret;
+    [SerializeField] private HealthHandler _healthContainer;
+    [SerializeField] private AttackTurret _shootTurret;
     [SerializeField] private GeneratorMining _extraction;
     [SerializeField] private Goods _goods;
 
@@ -61,6 +61,7 @@ public class BuildingCharacteristics : MonoBehaviour
         {
             _damageIcon.SetActive(false);
             _attackDelayIcon.SetActive(false);
+
             if(_radiusAttack != null )
                 _radiusAttack.SetActive(false);
         }

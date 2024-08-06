@@ -12,27 +12,26 @@ public class BuildingView : MonoBehaviour
         _building = GetComponent<Building>();
     }
 
-
     private void OnEnable()
     {
-        _building.CreateBuilding += OnOpen;
-        _building.DeliveryBuilding += OnClose;
+        _building.Created += OnOpen;
+        _building.Delivered += OnClose;
     }
 
     private void OnDisable()
     {
-        _building.CreateBuilding -= OnOpen;
-        _building.DeliveryBuilding -= OnClose;
+        _building.Created -= OnOpen;
+        _building.Delivered -= OnClose;
     }
 
     private void OnOpen()
     {
-        _movementScreen.OpenScreen();
+        _movementScreen.OnOpen();
     }
 
     private void OnClose()
     {
         _buildingCharacteristics.CloseRadiusAttack();
-        _movementScreen.CloseScreen();
+        _movementScreen.OnClose();
     }
 }

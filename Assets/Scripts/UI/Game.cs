@@ -14,85 +14,85 @@ public class Game : MonoBehaviour
 
     private void OnEnable()
     {
-        _mainMenuScreen.PlayButtonClick += OnStartGame;
-        _mainMenuScreen.ShopButtonClick += OnShopScreen;
-        _mainMenuScreen.SettingButtonClick += OnSettingMenuScreen;
-        _mainMenuScreen.LeaderboardButtonClick += OnOpenLeaderboardScreen;
-        _shopScreen.ExitButtonClick += OnMainMenuScreenAfterShop;
-        _shopScreen.DeleteBuildingsButtonClick += OnOpenBuildingsRemovalScreen;
-        _victoryScreen.BonusButtonClick += OnMenuAfterFightScreen;
-        _victoryScreen.ResumeButtonClick += OnMenuAfterFightScreen;
-        _featScreen.ResumeButtonClick += OnRepeatBattle;
-        _featScreen.RestartButtonClick += OnRepeatBattleForAdvertising;
-        _buildingsRemovalScreen.ExitButtonClick += OnCloseBuildingsRemovalScreen;
-        _buttleScreen.ExitButtonClick += ExitOfFight;
-        _buttleScreen.SettingsButtonClick += OnSettingMenuScreen;
+        _mainMenuScreen.Playing += OnStart;
+        _mainMenuScreen.ShopOpening += OnShopScreen;
+        _mainMenuScreen.SettingOpening += OnSettingMenuScreen;
+        _mainMenuScreen.LeaderboardOpening += OnOpenLeaderboardScreen;
+        _shopScreen.Exited += OnMainMenuScreenAfterShop;
+        _shopScreen.BuildingsDeleted += OnOpenBuildingsRemovalScreen;
+        _victoryScreen.BonusGetted += OnMenuAfterFightScreen;
+        _victoryScreen.Resumed += OnMenuAfterFightScreen;
+        _featScreen.Resumed += OnRepeatBattle;
+        _featScreen.Restarted += OnRepeatBattleForAdvertising;
+        _buildingsRemovalScreen.Exited += OnCloseBuildingsRemovalScreen;
+        _buttleScreen.Exited += OnExitOfFight;
+        _buttleScreen.SettingsOpened += OnSettingMenuScreen;
     }
 
     private void OnDisable()
     {
-        _mainMenuScreen.PlayButtonClick -= OnStartGame;
-        _mainMenuScreen.ShopButtonClick -= OnShopScreen;
-        _mainMenuScreen.SettingButtonClick -= OnSettingMenuScreen;
-        _mainMenuScreen.LeaderboardButtonClick -= OnOpenLeaderboardScreen;
-        _shopScreen.ExitButtonClick -= OnMainMenuScreenAfterShop;
-        _shopScreen.DeleteBuildingsButtonClick += OnOpenBuildingsRemovalScreen;
-        _victoryScreen.BonusButtonClick -= OnMenuAfterFightScreen;
-        _victoryScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
-        _featScreen.ResumeButtonClick -= OnRepeatBattle;
-        _featScreen.RestartButtonClick -= OnRepeatBattleForAdvertising;
-        _buildingsRemovalScreen.ExitButtonClick -= OnCloseBuildingsRemovalScreen;
-        _buttleScreen.ExitButtonClick -= ExitOfFight;
-        _buttleScreen.SettingsButtonClick -= OnSettingMenuScreen;
+        _mainMenuScreen.Playing -= OnStart;
+        _mainMenuScreen.ShopOpening -= OnShopScreen;
+        _mainMenuScreen.SettingOpening -= OnSettingMenuScreen;
+        _mainMenuScreen.LeaderboardOpening -= OnOpenLeaderboardScreen;
+        _shopScreen.Exited -= OnMainMenuScreenAfterShop;
+        _shopScreen.BuildingsDeleted += OnOpenBuildingsRemovalScreen;
+        _victoryScreen.BonusGetted -= OnMenuAfterFightScreen;
+        _victoryScreen.Resumed -= OnMenuAfterFightScreen;
+        _featScreen.Resumed -= OnRepeatBattle;
+        _featScreen.Restarted -= OnRepeatBattleForAdvertising;
+        _buildingsRemovalScreen.Exited -= OnCloseBuildingsRemovalScreen;
+        _buttleScreen.Exited -= OnExitOfFight;
+        _buttleScreen.SettingsOpened -= OnSettingMenuScreen;
     }
 
-    private void OnStartGame()
+    private void OnStart()
     {
-        _mainMenuScreen.CloseScreen();
-        _buttleScreen.OpenScreen();
+        _mainMenuScreen.OnClose();
+        _buttleScreen.OnOpen();
     }
 
     private void OnShopScreen()
     {
-        _mainMenuScreen.CloseScreen();
-        _shopScreen.OpenShop();
-        _mobileControllerDownScreen.CloseScreen();
+        _mainMenuScreen.OnClose();
+        _shopScreen.Open();
+        _mobileControllerDownScreen.OnClose();
     }
 
     private void OnMainMenuScreenAfterShop()
     {
-        _shopScreen.CloseScreen();
-        _mainMenuScreen.OpenScreen();
-        _mobileControllerDownScreen.OpenScreen();
+        _shopScreen.OnClose();
+        _mainMenuScreen.OnOpen();
+        _mobileControllerDownScreen.OnOpen();
     }
 
-    private void ExitOfFight()
+    private void OnExitOfFight()
     {
-        _buttleScreen.CloseScreen();
-        _mainMenuScreen.OpenScreen();
+        _buttleScreen.OnClose();
+        _mainMenuScreen.OnOpen();
     }
 
     private void OnMenuAfterFightScreen()
     {
-        _victoryScreen.CloseScreen();
-        _mainMenuScreen.OpenScreen();
+        _victoryScreen.OnClose();
+        _mainMenuScreen.OnOpen();
     }
 
     private void OnRepeatBattleForAdvertising()
     {
-        _featScreen.CloseScreen();
-        _mainMenuScreen.OpenScreen();
+        _featScreen.OnClose();
+        _mainMenuScreen.OnOpen();
     }
 
     private void OnRepeatBattle()
     {
-        _featScreen.CloseScreen();
-        _mainMenuScreen.OpenScreen();
+        _featScreen.OnClose();
+        _mainMenuScreen.OnOpen();
     }
 
     private void OnSettingMenuScreen()
     {
-        _settingMenuScreen.OpenScreen();
+        _settingMenuScreen.OnOpen();
     }
 
     private void OnOpenLeaderboardScreen()
@@ -102,15 +102,15 @@ public class Game : MonoBehaviour
 
     private void OnOpenBuildingsRemovalScreen()
     {
-        _shopScreen.CloseScreen();
-        _mobileControllerDownScreen.OpenScreen();
-        _buildingsRemovalScreen.OpenScreen();
+        _shopScreen.OnClose();
+        _mobileControllerDownScreen.OnOpen();
+        _buildingsRemovalScreen.OnOpen();
     }
 
     private void OnCloseBuildingsRemovalScreen()
     {
-        _mobileControllerDownScreen.CloseScreen();
-        _buildingsRemovalScreen.CloseScreen();
-        _shopScreen.OpenScreen();
+        _mobileControllerDownScreen.OnClose();
+        _buildingsRemovalScreen.OnClose();
+        _shopScreen.OnOpen();
     }
 }
