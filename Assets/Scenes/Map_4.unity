@@ -4080,6 +4080,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3537982764866789514, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
   m_PrefabInstance: {fileID: 657856807}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &657856809 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1692367823339727372, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 657856807}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feeca4a3be14d8c4a8ac273369bbd800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &657856810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8405421663404335183, guid: 1e71ffeaaffed1e4d9c8feae9b9c2b1e, type: 3}
+  m_PrefabInstance: {fileID: 657856807}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8a9066e1d510c4dae4b53ae1c2cb29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &658447118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7131,6 +7153,10 @@ PrefabInstance:
       propertyPath: _yandexAds
       value: 
       objectReference: {fileID: 714900929}
+    - target: {fileID: 3848421543173986980, guid: 52357d9f535af59449b725ca07f1b2b2, type: 3}
+      propertyPath: _buttonRewardAd
+      value: 
+      objectReference: {fileID: 657856809}
     - target: {fileID: 3848421543173986989, guid: 52357d9f535af59449b725ca07f1b2b2, type: 3}
       propertyPath: m_Name
       value: Manager
@@ -11208,6 +11234,10 @@ PrefabInstance:
       propertyPath: _animation
       value: 
       objectReference: {fileID: 714900932}
+    - target: {fileID: 5216454337636917983, guid: 580a8942055e16649bd74d0351339c73, type: 3}
+      propertyPath: _soundSettings
+      value: 
+      objectReference: {fileID: 657856810}
     - target: {fileID: 5216454339256521114, guid: 580a8942055e16649bd74d0351339c73, type: 3}
       propertyPath: m_RootOrder
       value: 4

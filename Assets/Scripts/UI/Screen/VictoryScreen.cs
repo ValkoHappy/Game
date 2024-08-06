@@ -16,9 +16,7 @@ public class VictoryScreen : UIScreenAnimator
     [SerializeField] private LevelReward _levelReward;
     [SerializeField] private StarsScore _starsScore;
     [SerializeField] private YandexAds _yandexAds;
-
-    private int _counter = 0;
-    private int numberOfRepetitions = 2;
+    [SerializeField] private ButtonRewardAd _buttonRewardAd;
 
     public event UnityAction ResumeButtonClick;
     public event UnityAction BonusButtonClick;
@@ -28,7 +26,9 @@ public class VictoryScreen : UIScreenAnimator
         _enemyHandler.AllEnemiesKilled += OpenScreen;
 
         _resumeButton.onClick.AddListener(OnResumeButton);
-        _bonusButton.onClick.AddListener(OnBonusButton);
+        _bonusButton.onClick.AddListener(ReawardAd);
+
+        _buttonRewardAd.ShowReward += OnBonusButton;
     }
 
     private void OnDisable()
@@ -36,28 +36,27 @@ public class VictoryScreen : UIScreenAnimator
         _enemyHandler.AllEnemiesKilled -= OpenScreen;
 
         _resumeButton.onClick.RemoveListener(OnResumeButton);
-        _bonusButton.onClick.RemoveListener(OnBonusButton);
+        _bonusButton.onClick.RemoveListener(ReawardAd);
+
+        _buttonRewardAd.ShowReward -= OnBonusButton;
     }
 
     private void OnResumeButton()
     {
-        if(_counter >= numberOfRepetitions)
-        {
-            _yandexAds.ShowInterstitial();
-            _counter = 0;
-        }
-        else
-        {
-            _counter++;
-        }
+        _yandexAds.ShowInterstitial();
         ResumeButtonClick?.Invoke();
         _levelReward.ClaimReward();
         OnMenuAfterFightScreen();
     }
 
+    private void ReawardAd()
+    {
+        _buttonRewardAd.ShowRewardAd();
+    }
+
     private void OnBonusButton()
     {
-        _levelReward.ClaimDoubleReward();
+        _levelReward.ClaimDouble();
         BonusButtonClick?.Invoke();
         OnMenuAfterFightScreen();
     }

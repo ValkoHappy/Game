@@ -8,6 +8,7 @@ public class DefeatScreen : UIScreenAnimator
     [SerializeField] private Button _restartButton;
 
     [SerializeField] private YandexAds _yandexAds;
+    [SerializeField] private ButtonRewardAd _buttonRewardAd;
     [SerializeField] private EnemyHandler _enemyHandler;
     [SerializeField] private BuildingsHandler _buildingsHandler;
     [SerializeField] private BuildingsGrid _buildingsGrid;
@@ -16,9 +17,6 @@ public class DefeatScreen : UIScreenAnimator
     [SerializeField] private StarsScore _starsScore;
     [SerializeField] private SaveSystem _saveSystem;
 
-    private int _counter = 0;
-    private int numberOfRepetitions = 1;
-
     public event UnityAction ResumeButtonClick;
     public event UnityAction RestartButtonClick;
 
@@ -26,28 +24,24 @@ public class DefeatScreen : UIScreenAnimator
     {
         _buildingsHandler.AllBuildingsBroked += OpenDefeatScreen;
         _resumeButton.onClick.AddListener(OnResumeButton);
-        _restartButton.onClick.AddListener(OnRestartButton);
+        _restartButton.onClick.AddListener(OnRestartButtonReward);
+
+        _buttonRewardAd.ShowReward += OnRestartButton;
     }
 
     private void OnDisable()
     {
         _buildingsHandler.AllBuildingsBroked -= OpenDefeatScreen;
         _resumeButton.onClick.RemoveListener(OnResumeButton);
-        _restartButton.onClick.RemoveListener(OnRestartButton);
+        _restartButton.onClick.RemoveListener(OnRestartButtonReward);
+
+        _buttonRewardAd.ShowReward -= OnRestartButton;
     }
 
     private void OpenDefeatScreen()
     {
+        _yandexAds.ShowInterstitial();
         OpenScreen();
-        if (_counter >= numberOfRepetitions)
-        {
-            _yandexAds.ShowInterstitial();
-            _counter = 0;
-        }
-        else
-        {
-            _counter++;
-        }
     }
 
     private void OnResumeButton()
@@ -63,9 +57,13 @@ public class DefeatScreen : UIScreenAnimator
         _saveSystem.Save();
     }
 
+    private void OnRestartButtonReward()
+    {
+        _buttonRewardAd.ShowRewardAd();
+    }
+
     private void OnRestartButton()
     {
-        _yandexAds.ShowRewardAd();
         RestartButtonClick?.Invoke();
         _enemyHandler.OnDestroyEnemies();
         _buildingsHandler.OnCreateSavedBuildings();

@@ -80,7 +80,7 @@ MonoBehaviour:
   _goldContainer: {fileID: 3848421543173986983}
   _crystalsContainer: {fileID: 3848421543173986976}
   _spawner: {fileID: 0}
-  _yandexAds: {fileID: 0}
+  _buttonRewardAd: {fileID: 0}
 --- !u!114 &3848421543173987035
 MonoBehaviour:
   m_ObjectHideFlags: 0

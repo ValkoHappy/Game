@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6777644965825404098}
   - component: {fileID: 8074797320548408669}
   - component: {fileID: 3647992220036375810}
-  - component: {fileID: 8640732317564069503}
   m_Layer: 6
   m_Name: SolarGenerator
   m_TagString: Solar
@@ -81,19 +80,6 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 1, y: 1, z: 1}
   m_TimeToStationary: 0.5
---- !u!65 &8640732317564069503
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9009138805096558829}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 1, y: 1.25, z: 1}
 --- !u!1001 &5161082797468468938
 PrefabInstance:
   m_ObjectHideFlags: 0

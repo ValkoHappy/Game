@@ -7,7 +7,7 @@ public class LevelReward : MonoBehaviour
     [SerializeField] private GoldContainer _goldContainer;
     [SerializeField] private CrystalsContainer _crystalsContainer;
     [SerializeField] private Spawner _spawner;
-    [SerializeField] private YandexAds _yandexAds;
+    [SerializeField] private ButtonRewardAd _buttonRewardAd;
 
     private int _crystalsCount = 0;
     private int _goldCount = 0;
@@ -25,12 +25,18 @@ public class LevelReward : MonoBehaviour
     {
         _spawner.LevelStarted += ClearSpentResources;
         _enemyHandler.AllEnemiesKilled += CalculateReward;
+
+        _buttonRewardAd.ShowReward += ClaimDouble;
+        _buttonRewardAd.ShowReward += ClaimCrystalsForAdvertising;
     }
 
     private void OnDisable()
     {
         _spawner.LevelStarted -= ClearSpentResources;
         _enemyHandler.AllEnemiesKilled -= CalculateReward;
+
+        _buttonRewardAd.ShowReward -= ClaimDouble;
+        _buttonRewardAd.ShowReward -= ClaimCrystalsForAdvertising;
     }
 
     public void CalculateReward()
@@ -49,13 +55,13 @@ public class LevelReward : MonoBehaviour
         _crystalsCount = 0;
     }
 
-    public void ClaimDoubleReward()
+    public void ClaimDouble()
     {
-        _yandexAds.ShowRewardAd();
         _goldContainer.AddGold(_goldCount);
         _crystalsContainer.AddCrystals(_crystalsCount * _doubleMultiplier);
         _goldCount = 0;
         _crystalsCount = 0;
+
     }
 
     public void AddGoldSpent(int price)
@@ -92,9 +98,13 @@ public class LevelReward : MonoBehaviour
         _goldSpent = 0;
     }
 
-    public void ClaimCrystalsForAdvertising() 
+    public void ClaimCrystalsForAdvertisingReward() 
     {
-        _yandexAds.ShowRewardAd();
+        _buttonRewardAd.ShowRewardAd();
+    }
+
+    private void ClaimCrystalsForAdvertising()
+    {
         _crystalsContainer.AddCrystals(_crystalsForAdvertising);
     }
 }

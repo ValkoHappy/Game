@@ -12,6 +12,8 @@ public class SoundSettings : MonoBehaviour
     private const string EffectsVolume = "EffectsVolume";
 
     private float _defaultVolume = 0.74f;
+    private float _minVolume = -80f;
+
 
     private void Start()
     {
@@ -47,6 +49,21 @@ public class SoundSettings : MonoBehaviour
     {
         _musicSlider.onValueChanged.RemoveListener(SetMusicSlider);
         _effectsSlider.onValueChanged.RemoveListener(SetEffectsSlider);
+    }
+
+    public void Mute()
+    {
+        _audioMixer.SetFloat(MusicVolume, _minVolume);
+        _audioMixer.SetFloat(EffectsVolume, _minVolume);
+    }
+
+    public void Load()
+    {
+        _musicSlider.value = PlayerPrefs.GetFloat(MusicVolume);
+        _effectsSlider.value = PlayerPrefs.GetFloat(EffectsVolume);
+
+        SetVolumeMusic(_musicSlider.value);
+        SetVolumeEffects(_effectsSlider.value);
     }
 
     public void SetMusicSlider(float volume)

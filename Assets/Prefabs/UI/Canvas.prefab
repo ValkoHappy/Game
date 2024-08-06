@@ -2058,6 +2058,7 @@ GameObject:
   - component: {fileID: 1479074132}
   - component: {fileID: 732365046}
   - component: {fileID: 2244342734237616818}
+  - component: {fileID: 1692367823339727372}
   m_Layer: 5
   m_Name: RewardForAdvertisingButton
   m_TagString: Untagged
@@ -2183,6 +2184,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 4015574553851302361}
+--- !u!114 &1692367823339727372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479074130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feeca4a3be14d8c4a8ac273369bbd800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundSettings: {fileID: 8405421663404335183}
 --- !u!1 &1521800494
 GameObject:
   m_ObjectHideFlags: 0
@@ -5470,6 +5484,7 @@ GameObject:
   - component: {fileID: 3537982764104926893}
   - component: {fileID: 3537982764104926880}
   - component: {fileID: 4923666279521269363}
+  - component: {fileID: 6649310554182931273}
   m_Layer: 5
   m_Name: Button_ETC_AD_TwoLine
   m_TagString: Untagged
@@ -5595,6 +5610,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 4015574553851302361}
+--- !u!114 &6649310554182931273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3537982764104926883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feeca4a3be14d8c4a8ac273369bbd800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundSettings: {fileID: 8405421663404335183}
 --- !u!1 &3537982764112497270
 GameObject:
   m_ObjectHideFlags: 0
@@ -5738,6 +5766,7 @@ MonoBehaviour:
   _resumeButton: {fileID: 7650675648764118578}
   _restartButton: {fileID: 3537982764104926880}
   _yandexAds: {fileID: 0}
+  _buttonRewardAd: {fileID: 6649310554182931273}
   _enemyHandler: {fileID: 0}
   _buildingsHandler: {fileID: 0}
   _buildingsGrid: {fileID: 0}
@@ -6560,6 +6589,7 @@ MonoBehaviour:
   _levelReward: {fileID: 0}
   _starsScore: {fileID: 3537982764690447387}
   _yandexAds: {fileID: 0}
+  _buttonRewardAd: {fileID: 270373376465328816}
 --- !u!225 &3537982764690447386
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6627,6 +6657,7 @@ GameObject:
   - component: {fileID: 3537982764772008758}
   - component: {fileID: 3537982764772008756}
   - component: {fileID: 6339408876621817825}
+  - component: {fileID: 270373376465328816}
   m_Layer: 5
   m_Name: Button_Bonus
   m_TagString: Untagged
@@ -6752,6 +6783,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 4015574553851302361}
+--- !u!114 &270373376465328816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3537982764772008753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feeca4a3be14d8c4a8ac273369bbd800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundSettings: {fileID: 8405421663404335183}
 --- !u!1 &3537982764864865379
 GameObject:
   m_ObjectHideFlags: 0
@@ -14525,6 +14569,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8c74aef3b227784aa0480d3f751bd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8405421663404335183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2059364494, guid: e22a5055a557d8d4d89c83caba160da7, type: 3}
+  m_PrefabInstance: {fileID: 8405421664840042689}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8a9066e1d510c4dae4b53ae1c2cb29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &8501113656341654364

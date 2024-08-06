@@ -127,7 +127,7 @@ public class ShopScreen : UIScreenAnimator
 
     private void ClaimCrystalsForAdvertising()
     {
-        _levelReward.ClaimCrystalsForAdvertising();
+        _levelReward.ClaimCrystalsForAdvertisingReward();
     }
 
     private void OnDeleteBuildingsButton()
