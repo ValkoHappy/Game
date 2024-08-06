@@ -36,7 +36,7 @@ public class ShopScreen : UIScreenAnimator
         _deleteBuildingsButton.onClick.AddListener(OnDeleteBuildingsButton);
 
         _exitButton.onClick.AddListener(OnExitButtonClick);
-        _advertisingButton.onClick.AddListener(ClaimCrystalsForAdvertising);
+        _advertisingButton.onClick.AddListener(OnClaimCrystalsAdvertising);
         _storeTabFencesButton.onClick.AddListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.AddListener(OnStoreTabWeapons);
         _storeTabGeneratorsButton.onClick.AddListener(OnStoreTabGenerators);
@@ -50,7 +50,7 @@ public class ShopScreen : UIScreenAnimator
         _deleteBuildingsButton.onClick.RemoveListener(OnDeleteBuildingsButton);
 
         _exitButton.onClick.RemoveListener(OnExitButtonClick);
-        _advertisingButton.onClick.RemoveListener(ClaimCrystalsForAdvertising);
+        _advertisingButton.onClick.RemoveListener(OnClaimCrystalsAdvertising);
         _storeTabFencesButton.onClick.RemoveListener(OnStoreTabMainBuildings);
         _storeTabWeaponsButton.onClick.RemoveListener(OnStoreTabWeapons);
         _storeTabGeneratorsButton.onClick.RemoveListener(OnStoreTabGenerators);
@@ -124,7 +124,7 @@ public class ShopScreen : UIScreenAnimator
         _storeTabGenerators.OnOpen();
     }
 
-    private void ClaimCrystalsForAdvertising()
+    private void OnClaimCrystalsAdvertising()
     {
         _levelReward.ClaimCrystalsAdvertisingReward();
     }
