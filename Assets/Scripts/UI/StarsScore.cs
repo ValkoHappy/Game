@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class StarsScore : MonoBehaviour
 {
+    [SerializeField] private EnemyHandler _enemyHandler;
+
     [SerializeField] private GameObject[] _stars;
     [SerializeField] private GameObject[] _rewards;
 
@@ -13,9 +15,20 @@ public class StarsScore : MonoBehaviour
     private int _starsThreshold = 20;
     private int _buildingsStarsPercentage = 100;
 
-    public void ShowStars()
+    private void OnEnable()
+    {
+        _enemyHandler.AllEnemiesKilled += OnShow;
+    }
+
+    private void OnDisable()
+    {
+        _enemyHandler.AllEnemiesKilled -= OnShow;
+    }
+
+    public void OnShow()
     {
         _buildingsStars = _buildingsStarsPercentage - (_buildingsDiedCount / _buildingsCount * _buildingsStarsPercentage);
+
         for (int i = 0; i < _stars.Length; i++)
         {
             if (_buildingsStars >= (i + 1) * _starsThreshold)
@@ -30,7 +43,7 @@ public class StarsScore : MonoBehaviour
         }
     }
 
-    public void CloseStars()
+    public void Close()
     {
         foreach (var star in _stars)
         {
@@ -41,7 +54,9 @@ public class StarsScore : MonoBehaviour
         {
             reward.LeanScale(new Vector3(0, 0, 0), 0);
         }
+
         _buildingsStars = 0;
+        RemoveAllBuildingsDiedCount();
     }
 
     public void AddBuildingsCount()
@@ -52,6 +67,11 @@ public class StarsScore : MonoBehaviour
     public void RemoveBuildingsCount()
     {
         _buildingsCount--;
+    }
+
+    public void RemoveAllBuildingsCount()
+    {
+        _buildingsCount = 0;
     }
 
     public void AddBuildingsDiedCount()

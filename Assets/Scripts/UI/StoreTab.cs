@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class StoreTab : MonoBehaviour
 {
+    private const string Level = "Level";
+
     [SerializeField] private GoldContainer _goldContainer;
     [SerializeField] private CrystalsContainer _crystalsContainer; 
-    [SerializeField] private BuildingsHandler _buildingsManager;
+    [SerializeField] private BuildingsHandler _buildingsHandler;
     [SerializeField] private BuildingsGrid _buildingsGrid;
     [SerializeField] private LevelReward _levelReward;
     [SerializeField] private TrainingScreen _trainingScreen;
@@ -17,37 +19,33 @@ public class StoreTab : MonoBehaviour
 
     private int _priceGoods = 0;
     private bool _isSoldForCrystalsGoods;
-    private const string Level = "Level";
+    private int _minCountLevel = 1;
+    private int _addIndex = 0;
 
     private void OnEnable()
     {
-        _buildingsGrid.DeliveredBuilding += OnCanceliedPurchase;
-        _buildingsGrid.RemoveBuilding += OnPurchaseCancelled;
+        _buildingsGrid.BuildingDelivered += OnCanceliedPurchase;
+        _buildingsGrid.BuildingRemoved += OnPurchaseCancelled;
 
-        if (_trainingScreen != null)
-        {
-            _trainingScreen.TutorialFinished += AddMissingItems;
-        }
+        if(_trainingScreen != null)
+            _trainingScreen.Finished += OnAddMissingItems;
     }
 
     private void OnDisable()
     {
-        _buildingsGrid.DeliveredBuilding -= OnCanceliedPurchase;
-        _buildingsGrid.RemoveBuilding -= OnPurchaseCancelled;
+        _buildingsGrid.BuildingDelivered -= OnCanceliedPurchase;
+        _buildingsGrid.BuildingRemoved -= OnPurchaseCancelled;
 
         if (_trainingScreen != null)
-        {
-            _trainingScreen.TutorialFinished -= AddMissingItems;
-        }
+            _trainingScreen.Finished -= OnAddMissingItems;
     }
 
     private void Start()
     {
         int level = PlayerPrefs.GetInt(Level);
-        if (level <= 1)
-        {
-            AddItem(_buildings[0]);
-        }
+
+        if (level <= _minCountLevel)
+            AddItem(_buildings[_addIndex]);
         else
         {
             for (int i = 0; i < _buildings.Count; i++)
@@ -57,7 +55,7 @@ public class StoreTab : MonoBehaviour
         }
     }
 
-    public void AddMissingItems()
+    public void OnAddMissingItems()
     {
         for (int i = 1; i < _buildings.Count; i++)
         {
@@ -70,13 +68,13 @@ public class StoreTab : MonoBehaviour
         if (building.IsSoldForCrystals)
         {
             var view = Instantiate(_builderViewCrystals, _itenContainer);
-            view.SellButtonClick += OnSellButtonClick;
+            view.Selling += OnSellButtonClick;
             view.Render(building);
         }
         else 
         {
             var view = Instantiate(_builderViewGold, _itenContainer);
-            view.SellButtonClick += OnSellButtonClick;
+            view.Selling += OnSellButtonClick;
             view.Render(building);
         }
     }
@@ -89,6 +87,7 @@ public class StoreTab : MonoBehaviour
     private void TrySellBuilding(Goods statsBuilding, BuilderView builderView)
     {
         _priceGoods = statsBuilding.Price;
+
         if (statsBuilding.IsSoldForCrystals)
         {
             if (statsBuilding.Price <= _crystalsContainer.Crystals)
@@ -97,9 +96,8 @@ public class StoreTab : MonoBehaviour
                 _isSoldForCrystalsGoods = true;
             }
             else
-            {
                 return;
-            }
+
         }
         else
         {
@@ -109,26 +107,21 @@ public class StoreTab : MonoBehaviour
                 _isSoldForCrystalsGoods = false;
             }
             else
-            {
                 return;
-            }
         }
+
         Building building = _buildingsGrid.CreateBuilding(statsBuilding.BuildingPrefab);
-        _buildingsManager.AddBuilding(building.PeacefulConstruction);
+        _buildingsHandler.AddBuilding(building.PeacefulConstruction);
     }
 
     private void OnPurchaseCancelled()
     {
         if (_isSoldForCrystalsGoods)
-        {
-            _crystalsContainer.AddCrystals(_priceGoods);
-            _priceGoods = 0;
-        }
+            _crystalsContainer.Add(_priceGoods);
         else
-        {
-            _goldContainer.AddGold(_priceGoods);
-            _priceGoods = 0;
-        }
+            _goldContainer.Add(_priceGoods);
+
+        _priceGoods = 0;
     }
 
     private void OnCanceliedPurchase()

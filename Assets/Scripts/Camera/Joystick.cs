@@ -8,7 +8,10 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     private Image _joystick;
     private Image _touch;
     private Vector2 _inputPos;
+
     private int _speedIncrease = 2;
+    private float _maxInputMagnitude = 1.0f;
+    private  float _joystickSizeFactor = 2.0f;
 
     private void Awake()
     {
@@ -27,8 +30,8 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
         }
 
         _inputPos = new(position.x, position.y);
-        _inputPos = (_inputPos.magnitude > 1.0f) ? _inputPos.normalized : _inputPos;
-        _touch.rectTransform.anchoredPosition = new(_inputPos.x * (_joystick.rectTransform.sizeDelta.x / 2), _inputPos.y * (_joystick.rectTransform.sizeDelta.y / 2));
+        _inputPos = (_inputPos.magnitude > _maxInputMagnitude) ? _inputPos.normalized : _inputPos;
+        _touch.rectTransform.anchoredPosition = new(_inputPos.x * (_joystick.rectTransform.sizeDelta.x / _joystickSizeFactor), _inputPos.y * (_joystick.rectTransform.sizeDelta.y / _joystickSizeFactor));
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -46,9 +49,11 @@ public class Joystick : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, I
     {
         Vector3 direction = Vector3.zero;       
 
-        if (_inputPos.x != 0) direction.x = _inputPos.x;
+        if (_inputPos.x != 0) 
+            direction.x = _inputPos.x;
 
-        if (_inputPos.y != 0) direction.z = _inputPos.y;
+        if (_inputPos.y != 0) 
+            direction.z = _inputPos.y;
 
         return direction * _speedIncrease;
     }

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc47c44b9f831f741b319bac2baa3166, type: 3}
   m_Name: Level 7
   m_EditorClassIdentifier: 
-  _miniEnemy: {fileID: 2554310421426300920, guid: cd3240ae89b778a4eb6731f9e4a12668, type: 3}
-  _bossEnemy: {fileID: 1305874152407787249, guid: 386565cbaf6e13b448edc0691bbd62ea, type: 3}
-  _miniEnemyCount: 27
-  _bossEnemyCount: 10
-  _spawnDelay: 1
+  _enemyCounts:
+  - _enemy: {fileID: 2554310421426300920, guid: 091c8f6a80da4a243b762b5211cb4df9, type: 3}
+    _count: 13
+  - _enemy: {fileID: 4048740256579591613, guid: 0c8cae6dc1a8f48469b83f85e55618be, type: 3}
+    _count: 7
   _spawnSide: 3
-  _goldReward: 400
-  _cristalsReward: 180
+  _goldReward: 525
+  _cristalsReward: 285

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2645574674400504186}
   - component: {fileID: 2645574674400504189}
   - component: {fileID: -703005305243535902}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TownHall
   m_TagString: TownHall
   m_Icon: {fileID: 0}
@@ -71,9 +71,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2645574674400504186}
     m_Modifications:
+    - target: {fileID: 513786202370896064, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 643029819529601562, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149148475571, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
       propertyPath: _bounceForce
-      value: 30
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149148475571, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: _bounceRadius
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 919132149148475572, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
       propertyPath: _health
@@ -127,6 +139,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: TownHall 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2250523190449560798, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2890597643511997318, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3276650191605551696, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4651604386972807630, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374159404379988987, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6566063594339575191, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7366617077925808119, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233420839868581202, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
 --- !u!4 &2538976149181352757 stripped
@@ -145,15 +189,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0891a58843160c247a14c26d9da3fe50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4291243029155556837 stripped
+--- !u!114 &6828982492283197682 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 919132149148475572, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7604763893955827107, guid: 87d7870c47b9b72479042e07968e9788, type: 3}
   m_PrefabInstance: {fileID: 3984813883902840145}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
+  m_Script: {fileID: 11500000, guid: 664fad8856dec2740b8e59636ef9efb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &6653333106616779132
@@ -166,7 +210,7 @@ PrefabInstance:
     - target: {fileID: 2632820826197489230, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: _healthContainer
       value: 
-      objectReference: {fileID: 4291243029155556837}
+      objectReference: {fileID: 6828982492283197682}
     - target: {fileID: 2632820826197489230, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: _peacefulConstruction
       value: 
@@ -178,6 +222,10 @@ PrefabInstance:
     - target: {fileID: 7504485808419801275, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_Name
       value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 7504485808419801275, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7683910814672389179, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_Pivot.x
@@ -263,12 +311,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691870476297803045, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8691870478081338642, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8691870478081338643, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

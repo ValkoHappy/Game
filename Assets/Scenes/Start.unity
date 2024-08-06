@@ -1122,6 +1122,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6967948774689079630, guid: e22a5055a557d8d4d89c83caba160da7, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6967948774689079631, guid: e22a5055a557d8d4d89c83caba160da7, type: 3}
       propertyPath: _localization
       value: 
@@ -1140,6 +1144,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22a5055a557d8d4d89c83caba160da7, type: 3}
+--- !u!114 &199996430 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2059364494, guid: e22a5055a557d8d4d89c83caba160da7, type: 3}
+  m_PrefabInstance: {fileID: 199996429}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8a9066e1d510c4dae4b53ae1c2cb29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &204100712 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bc548e86c85e20d488fdbf013d742cc3, type: 3}
@@ -1197,13 +1212,14 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: Russian
-    Text: "\u0417\u0430\u0449\u0438\u0442\u0438\u0442\u0435 \u0431\u0430\u0437\u0443"
+    Text: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439 \u0438 \u0437\u0430\u0449\u0438\u0442\u0438
+      \u0431\u0430\u0437\u0443!"
     Object: {fileID: 0}
   - Language: English
-    Text: Protect the base
+    Text: Build and defend the base!
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "\xDCss\xFC koruyun"
+    Text: "\xDCss\xFC in\u015Fa et ve koru!"
     Object: {fileID: 0}
 --- !u!1001 &267521544
 PrefabInstance:
@@ -4088,6 +4104,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeaderboardScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 3131847801189162125, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5004074457921536030, guid: d44264ead767dc94bb8ba962c78d02d8, type: 3}
       propertyPath: _audioSource
       value: 
@@ -4572,6 +4592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _localization: {fileID: 1176354290}
+  _yandexAds: {fileID: 1176354292}
 --- !u!114 &1176354292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4584,6 +4605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a670d12c6f66cba448cf235008987081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundSettings: {fileID: 199996430}
 --- !u!114 &1176354293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5820,10 +5842,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
+    m_Left: 10
+    m_Right: 10
     m_Top: 0
-    m_Bottom: 0
+    m_Bottom: 10
   m_ChildAlignment: 1
   m_Spacing: 10
   m_ChildForceExpandWidth: 1
@@ -6692,6 +6714,7 @@ GameObject:
   - component: {fileID: 1596644780}
   - component: {fileID: 1596644779}
   - component: {fileID: 1596644781}
+  - component: {fileID: 1596644782}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6840,6 +6863,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596644773}
   m_Enabled: 1
+--- !u!114 &1596644782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596644773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e951377b7d88f2346b65f2cc46a0ea5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minMatch: 0.4
+  _maxMatch: 1
+  _aspectRatioThreshold: 1.7777778
 --- !u!1001 &1596806266
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7850,7 +7888,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0417\u0430\u0449\u0438\u0442\u0438\u0442\u0435 \u0431\u0430\u0437\u0443"
+  m_text: "\u041F\u043E\u0441\u0442\u0440\u043E\u0439 \u0438 \u0437\u0430\u0449\u0438\u0442\u0438
+    \u0431\u0430\u0437\u0443!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 17dd390de18854b4c8da4dfa56fb7abd, type: 2}

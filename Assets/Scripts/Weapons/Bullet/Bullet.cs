@@ -11,8 +11,6 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody _rigidbody;
     private float _delayDestroy = 3;
-
-    public int Damage => _damage;
     
     private void Awake()
     {
@@ -29,12 +27,10 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent(out EnemyCollision enemy))
-        {
-            ApplyDamageToEnemy(enemy);
-        }
+            ApplyDamageEnemy(enemy);
     }
 
-    private void ApplyDamageToEnemy(EnemyCollision enemy)
+    private void ApplyDamageEnemy(EnemyCollision enemy)
     {
         if (enemy.ApplayDamage(_rigidbody, _damage, _force))
         {
@@ -43,6 +39,7 @@ public class Bullet : MonoBehaviour
                 _particle.transform.position = transform.position;
                 _particle.Play();
             }
+
             Instantiate(_particle);
             Destroy(gameObject);
         }
@@ -55,12 +52,11 @@ public class Bullet : MonoBehaviour
             if(enemy != null)
             {
                 Collider[] colliders = Physics.OverlapSphere(transform.position, _radius);
+
                 foreach (Collider collider in colliders)
                 {
                     if (collider.TryGetComponent(out EnemyCollision enemyCollision))
-                    {
-                        ApplyDamageToEnemy(enemyCollision);
-                    }
+                        ApplyDamageEnemy(enemyCollision);
                 }
             }
         }

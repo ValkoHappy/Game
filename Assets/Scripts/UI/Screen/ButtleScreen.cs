@@ -1,5 +1,5 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ButtleScreen : UIScreenAnimator
@@ -7,28 +7,45 @@ public class ButtleScreen : UIScreenAnimator
     [SerializeField] private Button _exitButton;
     [SerializeField] private Button _settingsButton;
 
-    public event UnityAction ExitButtonClick;
-    public event UnityAction SettingsButtonClick;
+    [SerializeField] private EnemyHandler _enemyHandler;
+    [SerializeField] private BuildingsHandler _buildingsHandler;
+    [SerializeField] private Spawner _spawner;
+    [SerializeField] private GroundAudio _groundAudio;
+    [SerializeField] private YandexAds _yandexAds;
+
+    public event Action Exited;
+    public event Action SettingsOpened;
 
     private void OnEnable()
     {
-        _exitButton.onClick.AddListener(OnExitButton);
-        _settingsButton.onClick.AddListener(OnSettingsButton);
+        _enemyHandler.AllEnemiesKilled += OnClose;
+        _buildingsHandler.BuildingsBroked += OnClose;
+
+        _exitButton.onClick.AddListener(OnExitButtonClick);
+        _settingsButton.onClick.AddListener(OnSettingsButtonClick);
     }
 
     private void OnDisable()
     {
-        _exitButton.onClick.RemoveListener(OnExitButton);
-        _settingsButton.onClick.RemoveListener(OnSettingsButton);
+        _enemyHandler.AllEnemiesKilled -= OnClose;
+        _buildingsHandler.BuildingsBroked -= OnClose;
+
+        _exitButton.onClick.RemoveListener(OnExitButtonClick);
+        _settingsButton.onClick.RemoveListener(OnSettingsButtonClick);
     }
 
-    public void OnExitButton()
+    private void OnExitButtonClick()
     {
-        ExitButtonClick?.Invoke();
+        Exited?.Invoke();
+        _enemyHandler.OnDestroyEnemies();
+        _buildingsHandler.OnCreateSavedBuildings();
+        _spawner.StartLevel();
+        _groundAudio.On—almClip();
+        _yandexAds.ShowInterstitial();
     }
 
-    public void OnSettingsButton()
+    private void OnSettingsButtonClick()
     {
-        SettingsButtonClick?.Invoke();
+        SettingsOpened?.Invoke();
     }
 }

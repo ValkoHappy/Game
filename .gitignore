@@ -71,4 +71,9 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
-.idea/.idea.Magic-SurvivorRPG/.idea 
+# Visual Studio Code config files
+.vscode/
+.vsconfig
+
+# JetBrains Rider config files
+.idea/

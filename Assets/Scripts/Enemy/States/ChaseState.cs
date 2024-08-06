@@ -4,10 +4,14 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent), typeof(FoundBuildings))]
 public class ChaseState : EnemyState
 {
+    private const string Run = "Run";
+
     private FoundBuildings _foundBuildings;
     private NavMeshAgent _agent;
     private PeacefulConstruction _targetConstruction;
-    private const string Run = "Run";
+
+    private float _maxValue = 0.01f;
+    private float _minValue = 0.0f;
 
     private void Awake()
     {
@@ -17,22 +21,21 @@ public class ChaseState : EnemyState
 
     private void OnEnable()
     {
-        Animator.SetFloat(Run, 0.01f);
+        Animator.SetFloat(Run, _maxValue);
         _agent.enabled = true;
     }
 
     private void OnDisable()
     {
-        Animator.SetFloat(Run, 0);
+        Animator.SetFloat(Run, _minValue);
         _agent.enabled = false;
     }
 
     private void Update()
     {
         _targetConstruction = _foundBuildings.TargetConstruction;
+
         if (_targetConstruction != null)
-        {
             _agent.SetDestination(_targetConstruction.transform.position);
-        }
     }
 }

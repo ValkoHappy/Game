@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Game : MonoBehaviour
@@ -9,262 +8,109 @@ public class Game : MonoBehaviour
     [SerializeField] private VictoryScreen _victoryScreen;
     [SerializeField] private DefeatScreen _featScreen;
     [SerializeField] private MobileControllerScreen _mobileControllerDownScreen;
-    [SerializeField] private SwitchingScreen _switchingScreen;
     [SerializeField] private ButtleScreen _buttleScreen;
     [SerializeField] private LeaderboardScreen _leaderboardScreen;
-
-    [SerializeField] private Spawner _spawner;
-    [SerializeField] private EnemyHandler _enemyManager;
-    [SerializeField] private BuildingsHandler _buildingsManager;
-    [SerializeField] private BuildingsGrid _buildingsGrid;
-    [SerializeField] private StarsScore _starsScore;
-    [SerializeField] private LobbyCameraAnimation _limbCameraAnimation;
-    [SerializeField] private LevelReward _levelReward;
-    [SerializeField] private SaveSystem _saveSystem;
-    [SerializeField] private YandexAds _yandexAds;
-    [SerializeField] private GroundAudio _groundAudio;
-    [SerializeField] private MovingCameraSpawnEnemies _movingCameraSpawnEnemies;
-    [SerializeField] private TrainingScreen _trainingScreen;
-
-    private void Awake()
-    {
-        _saveSystem.Load();
-    }
-
-    private void Start()
-    {
-        _spawner.ShowLevel();
-        _spawner.StartLevel();
-        _groundAudio.On—almClip();
-
-    }
+    [SerializeField] private BuildingsRemovalScreen _buildingsRemovalScreen;
 
     private void OnEnable()
     {
-        _limbCameraAnimation.AnimationIsFinished += OnOpenMainMenu;
-        _limbCameraAnimation.AnimationIsFinished += MovingCamera;
-
-        _enemyManager.AllEnemiesKilled += OnAllEnemiesKilled;
-        _buildingsManager.AllBuildingsBroked += OnAllBuildingsDestroyed;
-
-        _mainMenuScreen.PlayButtonClick += OnStartGame;
-        _mainMenuScreen.ShopButtonClick += OnShopScreen;
-        _mainMenuScreen.SettingButtonClick += OnSettingMenuScreen;
-        _mainMenuScreen.FindSpawnEnemiesButtonClick += MovingCamera;
-        _mainMenuScreen.LeaderboardButtonClick += OnOpenLeaderboardScreen;
-
-        _shopScreen.ExitButtonClick += OnMainMenuScreenAfterShop;
-
-        _settingMenuScreen.ExitButtonClick +=  _settingMenuScreen.CloseScreen;
-
-        _victoryScreen.ResumeButtonClick += —ontinueAfterWinning;
-        _victoryScreen.BonusButtonClick += —ontinueAfterWinningForAdvertising;
-        _victoryScreen.BonusButtonClick += OnMenuAfterFightScreen;
-        _victoryScreen.ResumeButtonClick += OnMenuAfterFightScreen;
-
-        _featScreen.ResumeButtonClick += OnRepeatBattle;
-        _featScreen.RestartButtonClick += OnRepeatBattleForAdvertising;
-
-        _buildingsGrid.CreatedBuilding += OnCloseShop;
-        _buildingsGrid.RemoveBuilding += OnOpenShop;
-        _buildingsGrid.DeliveredBuilding += OnOpenShop;
-
-        _spawner.LevelStarted += _levelReward.ClearSpentResources;
-
-        _spawner.—urrentLevelExceedsCount += OnSwitchingScreen;
-
-        _switchingScreen.SwitchingButtonClick += OnSwitchAnotherMap;
-
-        _buttleScreen.ExitButtonClick += ExitOfFight;
-        _buttleScreen.SettingsButtonClick += OnSettingMenuScreen;
+        _mainMenuScreen.Playing += OnStart;
+        _mainMenuScreen.ShopOpening += OnShopScreen;
+        _mainMenuScreen.SettingOpening += OnSettingMenuScreen;
+        _mainMenuScreen.LeaderboardOpening += OnOpenLeaderboardScreen;
+        _shopScreen.Exited += OnMainMenuScreenAfterShop;
+        _shopScreen.BuildingsDeleted += OnOpenBuildingsRemovalScreen;
+        _victoryScreen.BonusGetted += OnMenuAfterFightScreen;
+        _victoryScreen.Resumed += OnMenuAfterFightScreen;
+        _featScreen.Resumed += OnRepeatBattle;
+        _featScreen.Restarted += OnRepeatBattleForAdvertising;
+        _buildingsRemovalScreen.Exited += OnCloseBuildingsRemovalScreen;
+        _buttleScreen.Exited += OnExitOfFight;
+        _buttleScreen.SettingsOpened += OnSettingMenuScreen;
     }
 
     private void OnDisable()
     {
-        _limbCameraAnimation.AnimationIsFinished -= OnOpenMainMenu;
-        _limbCameraAnimation.AnimationIsFinished -= MovingCamera;
-
-        _enemyManager.AllEnemiesKilled -= OnAllEnemiesKilled;
-        _buildingsManager.AllBuildingsBroked -= OnAllBuildingsDestroyed;
-
-        _mainMenuScreen.PlayButtonClick -= OnStartGame;
-        _mainMenuScreen.ShopButtonClick -= OnShopScreen;
-        _mainMenuScreen.SettingButtonClick -= OnSettingMenuScreen;
-        _mainMenuScreen.FindSpawnEnemiesButtonClick -= MovingCamera;
-        _mainMenuScreen.LeaderboardButtonClick -= OnOpenLeaderboardScreen;
-
-        _shopScreen.ExitButtonClick -= OnMainMenuScreenAfterShop;
-
-        _settingMenuScreen.ExitButtonClick -= _settingMenuScreen.CloseScreen;
-
-        _victoryScreen.ResumeButtonClick -= —ontinueAfterWinning;
-        _victoryScreen.BonusButtonClick -= —ontinueAfterWinningForAdvertising;
-        _victoryScreen.BonusButtonClick -= OnMenuAfterFightScreen;
-        _victoryScreen.ResumeButtonClick -= OnMenuAfterFightScreen;
-
-        _featScreen.ResumeButtonClick -= OnRepeatBattle;
-        _featScreen.RestartButtonClick -= OnRepeatBattleForAdvertising;
-
-        _buildingsGrid.CreatedBuilding -= OnCloseShop;
-        _buildingsGrid.RemoveBuilding -= OnOpenShop;
-        _buildingsGrid.DeliveredBuilding -= OnOpenShop;
-
-        _spawner.LevelStarted -= _levelReward.ClearSpentResources;
-
-        _spawner.—urrentLevelExceedsCount -= OnSwitchingScreen;
-
-        _switchingScreen.SwitchingButtonClick -= OnSwitchAnotherMap;
-
-        _buttleScreen.ExitButtonClick -= ExitOfFight;
-        _buttleScreen.SettingsButtonClick -= OnSettingMenuScreen;
+        _mainMenuScreen.Playing -= OnStart;
+        _mainMenuScreen.ShopOpening -= OnShopScreen;
+        _mainMenuScreen.SettingOpening -= OnSettingMenuScreen;
+        _mainMenuScreen.LeaderboardOpening -= OnOpenLeaderboardScreen;
+        _shopScreen.Exited -= OnMainMenuScreenAfterShop;
+        _shopScreen.BuildingsDeleted += OnOpenBuildingsRemovalScreen;
+        _victoryScreen.BonusGetted -= OnMenuAfterFightScreen;
+        _victoryScreen.Resumed -= OnMenuAfterFightScreen;
+        _featScreen.Resumed -= OnRepeatBattle;
+        _featScreen.Restarted -= OnRepeatBattleForAdvertising;
+        _buildingsRemovalScreen.Exited -= OnCloseBuildingsRemovalScreen;
+        _buttleScreen.Exited -= OnExitOfFight;
+        _buttleScreen.SettingsOpened -= OnSettingMenuScreen;
     }
 
-    private void OnAllEnemiesKilled()
+    private void OnStart()
     {
-        _starsScore.ShowStars();
-        _levelReward.CalculateReward();
-        _victoryScreen.OpenScreen();
-        //_victoryScreen.OnStartEffect();
-        _spawner.NextLevel();
-        _buttleScreen.CloseScreen();
-        _groundAudio.On—almClip();
-    }
-
-    private void OnAllBuildingsDestroyed()
-    {
-        _featScreen.OpenScreen();
-        _buttleScreen.CloseScreen();
-        _groundAudio.On—almClip();
-    }
-
-    private void OnStartGame()
-    {
-        _mainMenuScreen.CloseScreen();
-        _enemyManager.OnEnemies();
-        _starsScore.CloseStars();
-        _starsScore.RemoveAllBuildingsDiedCount();
-        //_mobileControllerDownScreen.Open();
-        _buttleScreen.OpenScreen();
-        _groundAudio.OnFightClip();
+        _mainMenuScreen.OnClose();
+        _buttleScreen.OnOpen();
     }
 
     private void OnShopScreen()
     {
-        _mainMenuScreen.CloseScreen();
-        _shopScreen.OpenScreen();
-        _mobileControllerDownScreen.CloseScreen();
-    }
-
-    private void OnCloseShop()
-    {
-        _shopScreen.CloseScreen();
-        _mobileControllerDownScreen.OpenScreen();
-    }
-
-    private void OnOpenShop()
-    {
-        _mobileControllerDownScreen.CloseScreen();
-        _shopScreen.OpenScreen();
-    }
-
-    private void OnOpenMainMenu()
-    {
-        _mainMenuScreen.OpenScreen();
-        _mobileControllerDownScreen.OpenScreen();
+        _mainMenuScreen.OnClose();
+        _shopScreen.Open();
+        _mobileControllerDownScreen.OnClose();
     }
 
     private void OnMainMenuScreenAfterShop()
     {
-        _shopScreen.CloseScreen();
-        _mainMenuScreen.OpenScreen();
-        _mobileControllerDownScreen.OpenScreen();
+        _shopScreen.OnClose();
+        _mainMenuScreen.OnOpen();
+        _mobileControllerDownScreen.OnOpen();
     }
 
-    private void ExitOfFight()
+    private void OnExitOfFight()
     {
-        _enemyManager.OnDestroyEnemies();
-        _buildingsManager.OnCreateSavedBuildings();
-        _buttleScreen.CloseScreen();
-        _mainMenuScreen.OpenScreen();
-        _spawner.StartLevel();
-        _groundAudio.On—almClip();
-        _yandexAds.ShowInterstitial();
+        _buttleScreen.OnClose();
+        _mainMenuScreen.OnOpen();
     }
 
     private void OnMenuAfterFightScreen()
     {
-        _spawner.ShowLevel();
-        _enemyManager.OnDestroyEnemies();
-        _buildingsManager.OnDestroyAllBuildings();
-        _buildingsGrid.RemoveGrid();
-        _victoryScreen.CloseScreen();
-        _mainMenuScreen.OpenScreen();
-        _buildingsGrid.CreateTowerHall();
-        _saveSystem.Save();
-        if (_spawner.ChecForMaximumLevel())
-            _saveSystem.ResetLevel();
-        _spawner.StartLevel();
-        _movingCameraSpawnEnemies.RotationCamera();
-        if (_trainingScreen != null)
-            _trainingScreen.OpenEndTutorialWindow();
-    }
-
-    private void —ontinueAfterWinning()
-    {
-        _levelReward.ClaimReward();
-    }
-
-    private void —ontinueAfterWinningForAdvertising()
-    {
-        _levelReward.ClaimDoubleReward();
+        _victoryScreen.OnClose();
+        _mainMenuScreen.OnOpen();
     }
 
     private void OnRepeatBattleForAdvertising()
     {
-        _yandexAds.ShowRewardAd();
-        _enemyManager.OnDestroyEnemies();
-        _buildingsManager.OnCreateSavedBuildings();
-        _featScreen.CloseScreen();
-        _mainMenuScreen.OpenScreen();
-        _spawner.StartLevel();
+        _featScreen.OnClose();
+        _mainMenuScreen.OnOpen();
     }
 
     private void OnRepeatBattle()
     {
-        //_yandexAds.ShowInterstitial();
-        _buildingsManager.OnDestroyAllBuildings();
-        _buildingsGrid.RemoveGrid();
-        _enemyManager.OnDestroyEnemies();
-        _featScreen.CloseScreen();
-        _mainMenuScreen.OpenScreen();
-        _buildingsGrid.CreateTowerHall();
-        _levelReward.ReturnSpentResources();
-        _spawner.StartLevel();
+        _featScreen.OnClose();
+        _mainMenuScreen.OnOpen();
     }
 
     private void OnSettingMenuScreen()
     {
-        _settingMenuScreen.OpenScreen();
-    }
-
-    private void OnSwitchingScreen()
-    {
-        _switchingScreen.OpenScreen();
-    }
-
-    private void OnSwitchAnotherMap()
-    {
-        _switchingScreen.CloseScreen();
-        _spawner.SwitchAnotherMap();
-    }
-
-    private void MovingCamera()
-    {
-        _movingCameraSpawnEnemies.RotationCamera();
+        _settingMenuScreen.OnOpen();
     }
 
     private void OnOpenLeaderboardScreen()
     {
         _leaderboardScreen.OpenAuthorizationPanel();
+    }
+
+    private void OnOpenBuildingsRemovalScreen()
+    {
+        _shopScreen.OnClose();
+        _mobileControllerDownScreen.OnOpen();
+        _buildingsRemovalScreen.OnOpen();
+    }
+
+    private void OnCloseBuildingsRemovalScreen()
+    {
+        _mobileControllerDownScreen.OnClose();
+        _buildingsRemovalScreen.OnClose();
+        _shopScreen.OnOpen();
     }
 }

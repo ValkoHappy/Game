@@ -1,8 +1,15 @@
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class SaveSystem : MonoBehaviour
 {
+    private const string CurrentLevel = "CurrentLevel";
+    private const string Level = "Level";
+    private const string Gold = "Gold";
+    private const string AllGold = "AllGold";
+    private const string Crystals = "Crystals";
+    private const string Map = "Map";
+
     [SerializeField] private Spawner _spawner;
     [SerializeField] private GoldContainer _goldContainer;
     [SerializeField] private CrystalsContainer _crystalsContainer;
@@ -13,18 +20,16 @@ public class SaveSystem : MonoBehaviour
     private int _initialAmountGold = 175;
     private int _initialAmountCrystals = 75;
 
-    private const string ÑurrentLevel = "CurrentLevel";
-    private const string Level = "Level";
-    private const string Gold = "Gold";
-    private const string AllGold = "AllGold";
-    private const string Crystals = "Crystals";
-    private const string Map = "Map";
+    public event Action SaveNotFounded;
 
-    public event UnityAction SaveNotFound;
+    private void Awake()
+    {
+        Load();
+    }
 
     public void Save()
     {
-        PlayerPrefs.SetInt(ÑurrentLevel, _spawner.CurrentLevelIndex);
+        PlayerPrefs.SetInt(CurrentLevel, _spawner.CurrentLevelIndex);
         PlayerPrefs.SetInt(Level, _spawner.LevelIndex);
         PlayerPrefs.SetInt(Gold, _goldContainer.Gold);
         PlayerPrefs.SetInt(Crystals, _crystalsContainer.Crystals);
@@ -36,11 +41,14 @@ public class SaveSystem : MonoBehaviour
     {
         if (PlayerPrefs.HasKey(Level))
         {
-            _spawner.InitCurrentLevel(PlayerPrefs.GetInt(ÑurrentLevel));
-            _spawner.InitLevel(PlayerPrefs.GetInt(Level));
-            _goldContainer.InitGold(PlayerPrefs.GetInt(Gold), PlayerPrefs.GetInt(AllGold));
-            _crystalsContainer.InitCrystals(PlayerPrefs.GetInt(Crystals));
-            _sceneManage.InitScene(PlayerPrefs.GetInt(Map));
+            if(_spawner != null)
+            {
+                _spawner.InitCurrentLevel(PlayerPrefs.GetInt(CurrentLevel));
+                _spawner.InitLevel(PlayerPrefs.GetInt(Level));
+                _goldContainer.Init(PlayerPrefs.GetInt(Gold), PlayerPrefs.GetInt(AllGold));
+                _crystalsContainer.Init(PlayerPrefs.GetInt(Crystals));
+                _sceneManage.Init(PlayerPrefs.GetInt(Map));
+            }
         }
     }
 
@@ -48,20 +56,20 @@ public class SaveSystem : MonoBehaviour
     {
         if (PlayerPrefs.HasKey(Map))
         {
-            _sceneManage.InitScene(PlayerPrefs.GetInt(Map));
-            SaveNotFound?.Invoke();
+            _sceneManage.Init(PlayerPrefs.GetInt(Map));
+            SaveNotFounded?.Invoke();
         }
     }
 
     public void ResetLevel()
     {
-        PlayerPrefs.SetInt(ÑurrentLevel, 0);
+        PlayerPrefs.SetInt(CurrentLevel, 0);
         PlayerPrefs.SetInt(Map, _sceneManage.SceneIndex);
     }
 
-    public void ResetSave()
+    public void Clear()
     {
-        PlayerPrefs.SetInt(ÑurrentLevel, 0);
+        PlayerPrefs.SetInt(CurrentLevel, 0);
         PlayerPrefs.SetInt(Level, _initialLevel);
         PlayerPrefs.SetInt(Gold, _initialAmountGold);
         PlayerPrefs.SetInt(Crystals, _initialAmountCrystals);

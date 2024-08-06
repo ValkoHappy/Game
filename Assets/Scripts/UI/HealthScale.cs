@@ -1,12 +1,9 @@
-using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthScale : UIScreenAnimator
 {
-    [SerializeField] private HealthContainer _healthContainer;
+    [SerializeField] private HealthHandler _healthContainer;
     [SerializeField] private PeacefulConstruction _peacefulConstruction;
     [SerializeField] private CanvasGroup _canvasGroup;
     [SerializeField] private Slider _slider;
@@ -22,31 +19,31 @@ public class HealthScale : UIScreenAnimator
 
     private void OnEnable()
     {
-        _healthContainer.HealthChanged += ChangeHealth;
-        _healthContainer.MaxHealthChanged += OnMaxHealthChanged;
-        _peacefulConstruction.BuildingRestored += OnMaxHealthChanged;
+        _healthContainer.HealthChanged += OnChangeHealth;
+        _healthContainer.MaxHealthChanged += OnSetMaxValue;
+        _peacefulConstruction.BuildingRestored += OnSetMaxValue;
     }
 
     private void OnDisable()
     {
-        _healthContainer.HealthChanged -= ChangeHealth;
-        _healthContainer.MaxHealthChanged -= OnMaxHealthChanged;
-        _peacefulConstruction.BuildingRestored -= OnMaxHealthChanged;
+        _healthContainer.HealthChanged -= OnChangeHealth;
+        _healthContainer.MaxHealthChanged -= OnSetMaxValue;
+        _peacefulConstruction.BuildingRestored -= OnSetMaxValue;
     }
 
-    public void OnMaxHealthChanged()
+    public void OnSetMaxValue()
     {
         _slider.value = _slider.maxValue;
-        CloseScreen();
+        OnClose();
     }
 
-    private void ChangeHealth(int health)
+    private void OnChangeHealth(int health)
     {
-        OpenScreen();
+        OnOpen();
         float currentHealth = Mathf.SmoothDamp(_slider.value, health, ref _currentVelocity, _maxHealthTransitionTime * Time.deltaTime);
         _slider.value = health;
 
         if(_slider.value == _slider.minValue)
-            CloseScreen();
+            OnClose();
     }
 }

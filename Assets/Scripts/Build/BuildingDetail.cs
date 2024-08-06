@@ -7,7 +7,7 @@ public class BuildingDetail : MonoBehaviour
     {
         if(TryGetComponent(out Rigidbody rigidbody))
         {
-            rigidbody.isKinematic= false;
+            rigidbody.isKinematic = false;
             rigidbody.AddExplosionForce(force, center, radius);
         }
     }

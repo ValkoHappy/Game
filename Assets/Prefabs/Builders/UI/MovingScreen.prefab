@@ -536,7 +536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -2}
   m_SizeDelta: {x: -6, y: 15}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3963784393925431673
@@ -1504,13 +1504,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6106690908770440559}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3993e5018678e4f4cb0ae954f4c98619, type: 3}
+  m_Script: {fileID: 11500000, guid: ff0e8b21d307bc14cb842bd5e2b843a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _healthContainer: {fileID: 0}
   _shootTurret: {fileID: 0}
   _extraction: {fileID: 0}
-  _goods: {fileID: 11400000, guid: 976a0f03a44c03f499d65e29a3647b08, type: 2}
+  _goods: {fileID: 0}
   _labelText: {fileID: 1065095881275448608}
   _healthText: {fileID: 5379966327645120967}
   _damageText: {fileID: 341629757642956683}

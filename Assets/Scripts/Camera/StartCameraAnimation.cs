@@ -5,8 +5,10 @@ public class StartCameraAnimation : MonoBehaviour
 {
     [SerializeField] private float _duration;
 
-    private int rotationAngle = 360;
-    private int numberOfRepetitions = -1;
+    private Tween _tween;
+
+    private int _rotationAngle = 360;
+    private int _numberOfRepetitions = -1;
 
     private void Start()
     {
@@ -15,6 +17,7 @@ public class StartCameraAnimation : MonoBehaviour
 
     public void RotationCamera()
     {
-        transform.DOLocalRotate(new Vector3(0, rotationAngle, 0), _duration, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetLoops(numberOfRepetitions);
+        _tween.Kill();
+        _tween = transform.DOLocalRotate(new Vector3(0, _rotationAngle, 0), _duration, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetLoops(_numberOfRepetitions);
     }
 }

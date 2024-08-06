@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3018154362197622357}
   - component: {fileID: 3304229111058280170}
   - component: {fileID: 3925764645217952462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bullet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _force: 50
+  _force: 30
   _speed: 40
   _yOffSet: 1
   _radius: 1
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 768353009796374221}
   - component: {fileID: 5052025138479559918}
   - component: {fileID: 2645355952617620560}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cone.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 402419199174628154}
   - component: {fileID: 4612429089128915676}
   - component: {fileID: 1194350130293493466}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.061
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 379814871765852010}
   - component: {fileID: 6144647608725550339}
   - component: {fileID: 4085566884537985794}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.059
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 2730404099919245354}
   - component: {fileID: 7671942768440639434}
   - component: {fileID: 6137933687243161850}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.060
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4,17 +4,20 @@ using UnityEngine;
 [RequireComponent(typeof(PeacefulConstruction), typeof(Animator))]
 public class GeneratorMining : MonoBehaviour
 {
+    private const string Extraction = "Extraction";
+
     [SerializeField] private int _amountMoneyProduced;
     [SerializeField] private float _waitForSecounds;
 
     private GoldContainer _moneyContainer;
     private Coroutine _extract;
     private PeacefulConstruction _peacefulConstruction;
-    private HealthContainer _healthContainer;
+    private HealthHandler _healthContainer;
     private Animator _animator;
     private Building _building;
     private BuildingsGrid _buildingGrid;
-    private const string Extraction = "Extraction";
+
+    private WaitForSeconds _extractWait;
 
     public int AmountMoneyProduced => _amountMoneyProduced;
 
@@ -24,27 +27,28 @@ public class GeneratorMining : MonoBehaviour
         _moneyContainer = FindObjectOfType<GoldContainer>();
         _buildingGrid = FindObjectOfType<BuildingsGrid>();
         _peacefulConstruction = GetComponent<PeacefulConstruction>();
-        _healthContainer = GetComponent<HealthContainer>();
+        _healthContainer = GetComponent<HealthHandler>();
         _animator = GetComponent<Animator>();
+        _extractWait = new WaitForSeconds(_waitForSecounds);
     }
 
     private void OnEnable()
     {
-        _building.DeliveryBuilding += OnExtractionAnimation;
-        _buildingGrid.DeliveredBuilding += OnExtractionAnimation;
-        _buildingGrid.DeliveredBuilding += StartExtract;
+        _building.Delivered += OnExtractionAnimation;
+        _buildingGrid.BuildingDelivered += OnExtractionAnimation;
+        _buildingGrid.BuildingDelivered += OnStartExtract;
         _peacefulConstruction.Died += OnOffExtractionAnimation;
-        _peacefulConstruction.BuildingRestored += StartExtract;
+        _peacefulConstruction.BuildingRestored += OnStartExtract;
         _healthContainer.Died += OnOffExtractionAnimation;
     }
 
     private void OnDisable()
     {
-        _building.DeliveryBuilding -= OnExtractionAnimation;
-        _buildingGrid.DeliveredBuilding -= OnExtractionAnimation;
-        _buildingGrid.DeliveredBuilding -= StartExtract;
+        _building.Delivered -= OnExtractionAnimation;
+        _buildingGrid.BuildingDelivered -= OnExtractionAnimation;
+        _buildingGrid.BuildingDelivered -= OnStartExtract;
         _peacefulConstruction.Died -= OnOffExtractionAnimation;
-        _peacefulConstruction.BuildingRestored -= StartExtract;
+        _peacefulConstruction.BuildingRestored -= OnStartExtract;
         _healthContainer.Died -= OnOffExtractionAnimation;
     }
 
@@ -59,36 +63,32 @@ public class GeneratorMining : MonoBehaviour
         _animator.enabled = false;
     }
 
-    private void StartExtract()
+    private void OnStartExtract()
     {
         if (_moneyContainer != null && _peacefulConstruction.IsAlive())
         {
             if (_extract != null)
             {
                 StopCoroutine(_extract);
+                _extract = null;
             }
+
             OnExtractionAnimation();
             _extract = StartCoroutine(Extract());
         }
         else
-        {
             OnOffExtractionAnimation();
-        }
     }
 
     private IEnumerator Extract()
     {
-        var waitForSecounds = new WaitForSeconds(_waitForSecounds);
-        _moneyContainer.AddGold(_amountMoneyProduced);
-        yield return waitForSecounds;
+        _moneyContainer.Add(_amountMoneyProduced);
+
+        yield return _extractWait;
 
         if (_peacefulConstruction.IsAlive())
-        {
-            StartExtract();
-        }
+            OnStartExtract();
         else
-        {
             OnOffExtractionAnimation();
-        }
     }
 }

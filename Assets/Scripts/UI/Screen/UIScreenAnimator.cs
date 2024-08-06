@@ -1,15 +1,17 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))]
-public class UIScreenAnimator : MonoBehaviour
+public abstract class UIScreenAnimator : MonoBehaviour
 {
+    private const string OpenStr = "Open";
+    private const string CloseStr = "Close";
+
     [SerializeField] private CanvasGroup _panel;
 
     private Animator _animator;
-    private const string Open = "Open";
-    private const string Close = "Close";
 
-    public CanvasGroup Panel => _panel;
+    private float _minAlpha = 0;
+    private float _maxAlpha = 1;
 
     private void Awake()
     {
@@ -17,19 +19,23 @@ public class UIScreenAnimator : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public  void OpenScreen()
+    public  void OnOpen()
     {
         _panel.blocksRaycasts = true;
+
         if (_animator != null)
-            _animator.SetTrigger(Open);
-        _panel.alpha = 1;
+            _animator.SetTrigger(OpenStr);
+
+        _panel.alpha = _maxAlpha;
     }
 
-    public  void CloseScreen()
+    public  void OnClose()
     {
         _panel.blocksRaycasts = false;
+
         if (_animator != null)
-            _animator.SetTrigger(Close);
-        _panel.alpha = 0;
+            _animator.SetTrigger(CloseStr);
+
+        _panel.alpha = _minAlpha;
     }
 }

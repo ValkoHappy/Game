@@ -2027,6 +2027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _recoilDistance: 0.05
   _recoilSpeed: 5
+  _numberOfRepetitions: 2
 --- !u!1 &8666075922372864548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,7 +2376,8 @@ MonoBehaviour:
   - {fileID: 9015936730077058747}
   - {fileID: 9015936731686733926}
   _waitForSeconds: 2
-  _yOffset: 1
+  _radiusAttack: 0
+  _yOffset: 0.5
   _particleShoot: {fileID: 19809874, guid: acee4f4e191fea8479aad0b4b8e1dc18, type: 3}
   _canShooting: 0
 --- !u!135 &9015936730533883223

@@ -1,8 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Events;
 
-public class MovingCameraSpawnEnemies : MonoBehaviour
+public class MovingCameraSpawnEnemies : CameraAnimation
 {
     [SerializeField] private Vector3[] _waypointsUp;
     [SerializeField] private Vector3[] _waypointsDown;
@@ -12,45 +11,34 @@ public class MovingCameraSpawnEnemies : MonoBehaviour
     [SerializeField] private float _duration;
     [SerializeField] private float _duration2;
     [SerializeField] private Spawner _spawner;
+    [SerializeField] private LobbyCameraAnimation _animation;
 
-    private float _time = 0;
-    private bool _isPlaying = false;
+    private Tween _tween;
 
-    public event UnityAction AnimationIsFinished;
-
-    private void Update()
+    private void OnEnable()
     {
-        if (_isPlaying)
-        {
-            _time += Time.deltaTime;
-            if (_time >= _duration + _duration2)
-            {
-                AnimationIsFinished?.Invoke();
-                _time = 0;
-                _isPlaying = false;
-            }
-        }
+        _animation.AnimationFinished += OnRotationCamera;
     }
 
-    public void RotationCamera()
+    private void OnDisable()
     {
-        _isPlaying = true;
+        _animation.AnimationFinished -= OnRotationCamera;
+    }
+
+    public override void OnRotationCamera()
+    {
+        _tween.Kill();
+        Play();
+
         if (_spawner.Level.SpawnSide == Level.Side.Up)
-        {
-            transform.DOLocalPath(_waypointsUp, _duration);
-        }
-        else if(_spawner.Level.SpawnSide == Level.Side.Down)
-        {
-            transform.DOLocalPath(_waypointsDown, _duration);
-        }
+            _tween = transform.DOLocalPath(_waypointsUp, _duration);
+        else if (_spawner.Level.SpawnSide == Level.Side.Down)
+            _tween = transform.DOLocalPath(_waypointsDown, _duration);
         else if (_spawner.Level.SpawnSide == Level.Side.Left)
-        {
-            transform.DOLocalPath(_waypointsLeft, _duration);
-        }
+            _tween = transform.DOLocalPath(_waypointsLeft, _duration);
         else if (_spawner.Level.SpawnSide == Level.Side.Right)
-        {
-            transform.DOLocalPath(_waypointsRight, _duration);
-        }
-        transform.DOLocalMove(_endWaypoint, _duration2).SetDelay(_duration);
+            _tween = transform.DOLocalPath(_waypointsRight, _duration);
+
+        _tween = transform.DOLocalMove(_endWaypoint, _duration2).SetDelay(_duration);
     }
 }

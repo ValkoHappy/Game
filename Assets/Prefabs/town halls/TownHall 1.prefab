@@ -176,8 +176,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1472859899459667556}
   - component: {fileID: 919132149148475571}
-  - component: {fileID: 919132149148475572}
   - component: {fileID: 765859525624998862}
+  - component: {fileID: 7604763893955827107}
   m_Layer: 0
   m_Name: TownHall 1
   m_TagString: TownHall
@@ -222,19 +222,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bounceForce: 50
   _bounceRadius: 10
---- !u!114 &919132149148475572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2250523190449560798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _health: 150
 --- !u!65 &765859525624998862
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -248,6 +235,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9487873, y: 1.9983914, z: 2.0242004}
   m_Center: {x: -0.004732549, y: 0.8295413, z: -0}
+--- !u!114 &7604763893955827107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250523190449560798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664fad8856dec2740b8e59636ef9efb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 0
 --- !u!1 &2890597643511997318
 GameObject:
   m_ObjectHideFlags: 0

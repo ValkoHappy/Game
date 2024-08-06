@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3848421543173986979}
-  - component: {fileID: 3848421543173986977}
-  - component: {fileID: 3848421543173986978}
   - component: {fileID: 3848421543173986983}
   - component: {fileID: 3848421543173986976}
   - component: {fileID: 3848421543173986980}
   - component: {fileID: 3848421543173987035}
   - component: {fileID: 3848421543173987034}
+  - component: {fileID: 1581235579}
+  - component: {fileID: 1581235580}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -38,33 +38,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3848421543173986977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3848421543173986989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71c9490122692404f921a80332130ac4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _container: {fileID: 0}
-  _buildingsGrid: {fileID: 0}
-  _starsScore: {fileID: 0}
---- !u!114 &3848421543173986978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3848421543173986989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd7245e77bc99ef42ba565a76b94ffb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3848421543173986983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,11 +76,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81fbaa18850940c478e13e81d32d5440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyManager: {fileID: 3848421543173986978}
+  _enemyHandler: {fileID: 1581235580}
   _goldContainer: {fileID: 3848421543173986983}
   _crystalsContainer: {fileID: 3848421543173986976}
   _spawner: {fileID: 0}
-  _yandexAds: {fileID: 0}
+  _buttonRewardAd: {fileID: 0}
 --- !u!114 &3848421543173987035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,5 +107,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3add7926cfe64444be7210b753d92b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1581235579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848421543173986989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154cae1b15094bf48befca8e3180300f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _container: {fileID: 0}
+  _buildingsGrid: {fileID: 0}
+  _starsScore: {fileID: 0}
+--- !u!114 &1581235580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3848421543173986989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919b24319dec1e5449b785e11e25ccef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

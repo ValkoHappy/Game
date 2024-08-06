@@ -1,6 +1,6 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator), typeof(Rigidbody), typeof(FoundBuildings))]
 [RequireComponent(typeof(AttackState), typeof(ApproachedObjectTransition), typeof(LostObjectTransition))]
@@ -14,10 +14,10 @@ public class Enemy : MonoBehaviour
     private EnemyState _currentState;
     private Animator _animator;
     private Rigidbody _rigidbody;
-    private HealthContainer _healthContainer;
+    private HealthHandler _healthContainer;
     private PeacefulConstruction _targetConstruction;
 
-    public event UnityAction<Enemy> Died;
+    public event Action<Enemy> Died;
 
     public EnemyState CurrentState => _currentState;
     public EnemyState BrokenState => _brokenState;
@@ -32,20 +32,13 @@ public class Enemy : MonoBehaviour
         _healthContainer.Died -= OnEnemyDied;
     }
 
-    private void OnEnemyDied()
-    {
-        Died?.Invoke(this);
-        enabled = false;
-        _rigidbody.constraints = RigidbodyConstraints.None;
-    }
-
     private void Awake()
     {
         _foundBuildings = GetComponent<FoundBuildings>();
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody>();
         _targetConstruction = FindObjectOfType<PeacefulConstruction>();
-        _healthContainer = GetComponentInChildren<HealthContainer>();
+        _healthContainer = GetComponentInChildren<HealthHandler>();
     }
 
     private void Start()
@@ -53,6 +46,7 @@ public class Enemy : MonoBehaviour
         _currentState = _firstState;
         _targetConstruction = _foundBuildings.TargetConstruction;
         _currentState.Enter(_targetConstruction, _animator, _rigidbody);
+        _brokenState.Enter(_targetConstruction, _animator, _rigidbody);
     }
 
     private void Update()
@@ -74,9 +68,7 @@ public class Enemy : MonoBehaviour
             Transit(nextState);
 
         if(_healthContainer.Health <= 0 && _currentState != _brokenState)
-        {
             Transit(_brokenState);
-        }
     }
 
     public void ApplayDamage(Rigidbody rigidbody, int damage, int force)
@@ -90,6 +82,12 @@ public class Enemy : MonoBehaviour
                 _brokenState.ApplyDamage(rigidbody, force);
             }
         }
+    }
+
+    private void OnEnemyDied()
+    {
+        Died?.Invoke(this);
+        _rigidbody.constraints = RigidbodyConstraints.None;
     }
 
     private void Transit(EnemyState nextState)

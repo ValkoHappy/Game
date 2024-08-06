@@ -1,30 +1,30 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-[RequireComponent(typeof(HealthContainer))]
+[RequireComponent(typeof(HealthHandler))]
 public class PeacefulConstruction : MonoBehaviour
 {
     [SerializeField] private float _bounceForce;
     [SerializeField] private float _bounceRadius;
 
-    public event UnityAction<PeacefulConstruction> Die;
-    public event UnityAction Died;
-    public event UnityAction Damaged;
-    private HealthContainer _healthContainer;
     private bool _isAlive;
+
+    private HealthHandler _healthContainer;
     private BuildingDetail[] _buildingDetails;
     private Building _building;
     private List<BuildingDetailSnapshot> _detailSnapshots = new List<BuildingDetailSnapshot>();
 
-    public event UnityAction BuildingRestored;
+    public event Action<PeacefulConstruction> ConstructionDied;
+    public event Action Died;
+    public event Action Damaged;
+    public event Action BuildingRestored;
 
-    public HealthContainer HealthContainer => _healthContainer;
     public Building Building => _building;
 
     private void Awake()
     {
-        _healthContainer = GetComponent<HealthContainer>();
+        _healthContainer = GetComponent<HealthHandler>();
         _building = GetComponentInParent<Building>();
     }
 
@@ -35,24 +35,20 @@ public class PeacefulConstruction : MonoBehaviour
 
     private void OnEnable()
     {
-        _healthContainer.Died += OnDied;
+        _healthContainer.Died += OnDie;
     }
 
     private void OnDisable()
     {
-        _healthContainer.Died -= OnDied;
+        _healthContainer.Died -= OnDie;
     }
 
     public bool IsAlive()
     {
         if (_healthContainer.Health <= 0)
-        {
             return _isAlive = false;
-        }
         else
-        {
             return _isAlive = true;
-        }
     }
 
     public void ApplyDamage(float damage)
@@ -71,9 +67,11 @@ public class PeacefulConstruction : MonoBehaviour
                 _buildingDetails[i].transform.localRotation = _detailSnapshots[i].Rotation;
                 _buildingDetails[i].ResetBounce();
             }
-            _healthContainer.ResetHealth();
+
+            _healthContainer.Clear();
             _isAlive = true;
         }
+
         BuildingRestored?.Invoke();
         _detailSnapshots.Clear();
     }
@@ -83,17 +81,11 @@ public class PeacefulConstruction : MonoBehaviour
         Destroy(_building.gameObject);
     }
 
-    private void OnDied()
+    private void OnDie()
     {
         Died?.Invoke();
-        Die?.Invoke(this);
+        ConstructionDied?.Invoke(this);
         Break();
-    }
-
-    private struct BuildingDetailSnapshot
-    {
-        public Vector3 Position;
-        public Quaternion Rotation;
     }
 
     private void Break()
@@ -107,5 +99,11 @@ public class PeacefulConstruction : MonoBehaviour
             });
             detail.Bounce(_bounceForce, transform.position, _bounceRadius);
         }
+    }
+
+    private struct BuildingDetailSnapshot
+    {
+        public Vector3 Position;
+        public Quaternion Rotation;
     }
 }

@@ -2,44 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ShootTurret), typeof(SphereCollider))]
+[RequireComponent(typeof(AttackTurret), typeof(SphereCollider))]
 public class Turret : MonoBehaviour
 {
     [SerializeField] private Transform _partToRotate;
     [SerializeField] private float _rotationSpeed;
 
-    private ShootTurret _shootTurret;
+    private AttackTurret _shootTurret;
     private List<EnemyCollision> _enemies;
     private PeacefulConstruction _construction;
     private SphereCollider _sphereCollider;
-    private BuildingsGrid _buildingsGrid;
-    private EnemyHandler _enemyManager;
+    private EnemyHandler _enemyHandler;
     private Coroutine _sortCoroutine;
+    private WaitForSeconds _sortWait = new WaitForSeconds(0.5f);
 
     public PeacefulConstruction Construction => _construction;
     public EnemyCollision TargetEnemy { get; private set; }
 
     private void Awake()
     {
-        _buildingsGrid = FindObjectOfType<BuildingsGrid>();
-        _shootTurret = GetComponent<ShootTurret>();
+        _shootTurret = GetComponent<AttackTurret>();
         _construction = GetComponentInChildren<PeacefulConstruction>();
         _sphereCollider = GetComponent<SphereCollider>();
-        _enemyManager= FindObjectOfType<EnemyHandler>();
+        _enemyHandler= FindObjectOfType<EnemyHandler>();
     }
 
     private void OnEnable()
     {
-        _buildingsGrid.DeliveredBuilding += TurnOnCollider;
-        _buildingsGrid.CreatedBuilding += TurnOffCollider;
-        _construction.Died += RemoveAllEnemies;
+        _enemyHandler.EnemiesIncluded += OnEnableCollider;
+        _enemyHandler.EnemiesRemoved += OnTurnOffCollider;
+        _construction.Died += OnRemoveAllEnemies;
     }
 
     private void OnDisable()
     {
-        _buildingsGrid.DeliveredBuilding -= TurnOnCollider;
-        _buildingsGrid.CreatedBuilding -= TurnOffCollider;
-        _construction.Died -= RemoveAllEnemies;
+        _enemyHandler.EnemiesIncluded -= OnEnableCollider;
+        _enemyHandler.EnemiesRemoved -= OnTurnOffCollider;
+        _construction.Died -= OnRemoveAllEnemies;
     }
 
     private void Start()
@@ -51,7 +50,7 @@ public class Turret : MonoBehaviour
 
     private void Update()
     {
-        if (_enemyManager.IsAttackBegun && TargetEnemy != null && TargetEnemy.IsAlive() && _construction.IsAlive())
+        if (_enemyHandler.IsAttackBegun && TargetEnemy != null && TargetEnemy.IsAlive() && _construction.IsAlive())
         {
             Vector3 direction = TargetEnemy.transform.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
@@ -59,9 +58,7 @@ public class Turret : MonoBehaviour
         }
 
         if (TargetEnemy == null && _construction.IsAlive() && _partToRotate.rotation != Quaternion.Euler(new Vector3(0, 0, 0)))
-        {
             _partToRotate.rotation = Quaternion.Slerp(_partToRotate.rotation, Quaternion.LookRotation(new Vector3(0, 0, 0)), Time.deltaTime * _rotationSpeed);
-        }
     }
 
     public void StartSortEnemies()
@@ -69,13 +66,14 @@ public class Turret : MonoBehaviour
         if (_sortCoroutine != null)
         {
             StopCoroutine(_sortCoroutine);
+            _sortCoroutine = null;
         }
+
         _sortCoroutine = StartCoroutine(SortEnemies());
     }
 
     private IEnumerator SortEnemies()
     {
-        var waitForSeconds = new WaitForSeconds(0.5f);
         if (_enemies.Count > 0)
         {
             float shortestDistance = Mathf.Infinity;
@@ -98,11 +96,14 @@ public class Turret : MonoBehaviour
             if (nearestEnemy != null && nearestEnemy.IsAlive())
             {
                 TargetEnemy = nearestEnemy;
+
                 if (TargetEnemy.IsAlive())
-                    _shootTurret.RestartShoot();
+                    _shootTurret.Restart();
             }
         }
-        yield return waitForSeconds;
+
+        yield return _sortWait;
+
         StartSortEnemies();
     }
 
@@ -111,24 +112,22 @@ public class Turret : MonoBehaviour
         if (other.TryGetComponent(out EnemyCollision enemy))
         {
             if (enemy != null && enemy.IsAlive())
-            {
                 _enemies.Add(enemy);
-            }
         }
     }
 
-    private void RemoveAllEnemies()
+    private void OnRemoveAllEnemies()
     {
         _enemies.Clear();
     }
 
-    private void TurnOnCollider()
+    private void OnEnableCollider()
     {
         if (_sphereCollider != null) 
             _sphereCollider.enabled = true;
     }
 
-    private void TurnOffCollider()
+    private void OnTurnOffCollider()
     {
         if(_sphereCollider != null )
             _sphereCollider.enabled = false;

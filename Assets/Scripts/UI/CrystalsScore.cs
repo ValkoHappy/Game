@@ -14,15 +14,15 @@ public class CrystalsScore : MonoBehaviour
     private void OnEnable()
     {
         _score.text = _crystalsContainer.Crystals.ToString();
-        _crystalsContainer.CrystalsChanged += OnScoreChanged;
+        _crystalsContainer.CrystalsChanged += OnSetScore;
     }
 
     private void OnDisable()
     {
-        _crystalsContainer.CrystalsChanged -= OnScoreChanged;
+        _crystalsContainer.CrystalsChanged -= OnSetScore;
     }
 
-    private void OnScoreChanged(int score)
+    private void OnSetScore(int score)
     {
         _score.text = score.ToString();
     }
