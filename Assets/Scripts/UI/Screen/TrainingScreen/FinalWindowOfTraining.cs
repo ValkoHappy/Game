@@ -23,7 +23,7 @@ public class FinalWindowOfTraining : UIScreenAnimator
         }
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         _resumeButton.onClick.RemoveListener(OnResumeButtonClick);
 
@@ -33,7 +33,7 @@ public class FinalWindowOfTraining : UIScreenAnimator
         }
     }
 
-    public void OnOpen()
+    public override void OnOpen()
     {
         _mainMenuScreen.TurnOffAllButton();
         base.OnOpen();

@@ -33,7 +33,7 @@ public class TrainingWindowBeforeEnteringStore : UIScreenAnimator
             _openPanelButton.onClick.RemoveListener(OnOpen);
     }
 
-    public void OnOpen()
+    public override void OnOpen()
     {
         _menuScreen.EnabletShopButton();
         base.OnOpen();

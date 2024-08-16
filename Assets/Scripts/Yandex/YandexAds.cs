@@ -1,5 +1,4 @@
 using Agava.YandexGames;
-using System;
 using UnityEngine;
 
 public class YandexAds : MonoBehaviour
@@ -8,8 +7,6 @@ public class YandexAds : MonoBehaviour
 
     private float _minScale = 0f;
     private float _maxScale = 1f;
-
-    public event Action RewardShown;
 
     public void ShowInterstitial()
     {

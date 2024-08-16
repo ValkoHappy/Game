@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(CanvasGroup))]
-public abstract class UIScreenAnimator : MonoBehaviour
+public class UIScreenAnimator : MonoBehaviour
 {
     private const string OpenStr = "Open";
     private const string CloseStr = "Close";
@@ -19,7 +19,7 @@ public abstract class UIScreenAnimator : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public  void OnOpen()
+    public virtual void OnOpen()
     {
         _panel.blocksRaycasts = true;
 
@@ -29,7 +29,7 @@ public abstract class UIScreenAnimator : MonoBehaviour
         _panel.alpha = _maxAlpha;
     }
 
-    public  void OnClose()
+    public virtual void OnClose()
     {
         _panel.blocksRaycasts = false;
 

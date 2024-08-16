@@ -23,11 +23,6 @@ public class InitialTrainingWindow : UIScreenAnimator
         _refuseToStudyButton.onClick.RemoveListener(OnRefuseToStudyButtonClick);
     }
 
-    public void OnOpen()
-    {
-        base.OnOpen();
-    }
-
     public void OnRefuseToStudyButtonClick()
     {
         _yandexAds.ShowInterstitial();

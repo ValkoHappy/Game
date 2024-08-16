@@ -17,7 +17,6 @@ public class Spawner : MonoBehaviour
 
     public event Action<int> LevelChanged;
     public event Action LevelStarted;
-    public event Action LevelCreated;
     public event Action MaximumLevelChanged;
 
     public Level Level => _currentLevel;

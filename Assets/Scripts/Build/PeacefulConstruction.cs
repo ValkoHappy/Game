@@ -8,8 +8,6 @@ public class PeacefulConstruction : MonoBehaviour
     [SerializeField] private float _bounceForce;
     [SerializeField] private float _bounceRadius;
 
-    private bool _isAlive;
-
     private HealthHandler _healthContainer;
     private BuildingDetail[] _buildingDetails;
     private Building _building;
@@ -46,9 +44,9 @@ public class PeacefulConstruction : MonoBehaviour
     public bool IsAlive()
     {
         if (_healthContainer.Health <= 0)
-            return _isAlive = false;
+            return false;
         else
-            return _isAlive = true;
+            return true;
     }
 
     public void ApplyDamage(float damage)
@@ -69,7 +67,6 @@ public class PeacefulConstruction : MonoBehaviour
             }
 
             _healthContainer.Clear();
-            _isAlive = true;
         }
 
         BuildingRestored?.Invoke();

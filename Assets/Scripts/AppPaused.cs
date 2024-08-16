@@ -32,12 +32,12 @@ public class AppPaused : MonoBehaviour
 
     private void OnApplicationPause(bool isPaused)
     {
-        OnSetPauseState(isPaused);
+        OnSetPauseState(!isPaused);
     }
 
     private void OnApplicationFocus(bool hasFocus)
     {
-        OnSetPauseState(hasFocus);
+        OnSetPauseState(!hasFocus);
     }
 }
 

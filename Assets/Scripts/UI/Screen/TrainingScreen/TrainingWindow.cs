@@ -26,7 +26,7 @@ public class TrainingWindow : UIScreenAnimator
             _openPanelButton.onClick.RemoveListener(OnOpen);
     }
 
-    public void OnOpen()
+    public override void OnOpen()
     {
         base.OnOpen();
 
