@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class FoundObjectTransition : EnemyTransition
+namespace Scripts.Enemy.Transition
 {
-    [SerializeField] private float _foundDistance;
-
-    private void Update()
+    public class FoundObjectTransition : EnemyTransition
     {
-        if (Vector3.Distance(PeacefulConstruction.transform.position, transform.position) < _foundDistance)
-            NeedTransit = true;
+        [SerializeField] private float _foundDistance;
+
+        private void Update()
+        {
+            if (Vector3.Distance(PeacefulConstruction.transform.position, transform.position) < _foundDistance)
+                NeedTransit = true;
+        }
     }
 }

@@ -1,37 +1,40 @@
 using TMPro;
 using UnityEngine;
 
-public class IndicatorCurrencyScore : MonoBehaviour
+namespace Scripts.UI
 {
-    private const string Plus = "+";
-
-    [SerializeField] private TMP_Text _score;
-
-    private IndicatorReceivedCurrency _indicatorReceived;
-
-    private void Awake()
+    public class IndicatorCurrencyScore : MonoBehaviour
     {
-        _indicatorReceived = GetComponent<IndicatorReceivedCurrency>();
-    }
+        private const string Plus = "+";
 
-    private void Start()
-    {
-        _score.text = Plus + _indicatorReceived.AmountCurrencyReceived.ToString();
-    }
+        [SerializeField] private TMP_Text _score;
 
-    private void OnEnable()
-    {
-        _score.text = Plus + _indicatorReceived.AmountCurrencyReceived.ToString();
-        _indicatorReceived.OnCurrencyReceived += OnSetScore;
-    }
+        private IndicatorReceivedCurrency _indicatorReceived;
 
-    private void OnDisable()
-    {
-        _indicatorReceived.OnCurrencyReceived -= OnSetScore;
-    }
+        private void Awake()
+        {
+            _indicatorReceived = GetComponent<IndicatorReceivedCurrency>();
+        }
 
-    private void OnSetScore(int score)
-    {
-        _score.text = Plus + score.ToString();
+        private void Start()
+        {
+            _score.text = Plus + _indicatorReceived.AmountCurrencyReceived.ToString();
+        }
+
+        private void OnEnable()
+        {
+            _score.text = Plus + _indicatorReceived.AmountCurrencyReceived.ToString();
+            _indicatorReceived.OnCurrencyReceived += OnSetScore;
+        }
+
+        private void OnDisable()
+        {
+            _indicatorReceived.OnCurrencyReceived -= OnSetScore;
+        }
+
+        private void OnSetScore(int score)
+        {
+            _score.text = Plus + score.ToString();
+        }
     }
 }

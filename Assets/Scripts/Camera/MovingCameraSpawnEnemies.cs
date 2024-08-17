@@ -1,44 +1,48 @@
 using DG.Tweening;
+using Scripts.SO;
 using UnityEngine;
 
-public class MovingCameraSpawnEnemies : CameraAnimation
+namespace Scripts.Camera
 {
-    [SerializeField] private Vector3[] _waypointsUp;
-    [SerializeField] private Vector3[] _waypointsDown;
-    [SerializeField] private Vector3[] _waypointsLeft;
-    [SerializeField] private Vector3[] _waypointsRight;
-    [SerializeField] private Vector3 _endWaypoint;
-    [SerializeField] private float _duration;
-    [SerializeField] private float _duration2;
-    [SerializeField] private Spawner _spawner;
-    [SerializeField] private LobbyCameraAnimation _animation;
-
-    private Tween _tween;
-
-    private void OnEnable()
+    public class MovingCameraSpawnEnemies : CameraAnimation
     {
-        _animation.AnimationFinished += OnRotationCamera;
-    }
+        [SerializeField] private Vector3[] _waypointsUp;
+        [SerializeField] private Vector3[] _waypointsDown;
+        [SerializeField] private Vector3[] _waypointsLeft;
+        [SerializeField] private Vector3[] _waypointsRight;
+        [SerializeField] private Vector3 _endWaypoint;
+        [SerializeField] private float _delay;
+        [SerializeField] private float _duration;
+        [SerializeField] private Spawner.Spawner _spawner;
+        [SerializeField] private LobbyCameraAnimation _animation;
 
-    private void OnDisable()
-    {
-        _animation.AnimationFinished -= OnRotationCamera;
-    }
+        private Tween _tween;
 
-    public override void OnRotationCamera()
-    {
-        _tween.Kill();
-        Play();
+        private void OnEnable()
+        {
+            _animation.AnimationFinished += OnRotationCamera;
+        }
 
-        if (_spawner.Level.SpawnSide == Level.Side.Up)
-            _tween = transform.DOLocalPath(_waypointsUp, _duration);
-        else if (_spawner.Level.SpawnSide == Level.Side.Down)
-            _tween = transform.DOLocalPath(_waypointsDown, _duration);
-        else if (_spawner.Level.SpawnSide == Level.Side.Left)
-            _tween = transform.DOLocalPath(_waypointsLeft, _duration);
-        else if (_spawner.Level.SpawnSide == Level.Side.Right)
-            _tween = transform.DOLocalPath(_waypointsRight, _duration);
+        private void OnDisable()
+        {
+            _animation.AnimationFinished -= OnRotationCamera;
+        }
 
-        _tween = transform.DOLocalMove(_endWaypoint, _duration2).SetDelay(_duration);
+        public override void OnRotationCamera()
+        {
+            _tween.Kill();
+            Play();
+
+            if (_spawner.Level.SpawnSide == Level.Side.Up)
+                _tween = transform.DOLocalPath(_waypointsUp, _delay);
+            else if (_spawner.Level.SpawnSide == Level.Side.Down)
+                _tween = transform.DOLocalPath(_waypointsDown, _delay);
+            else if (_spawner.Level.SpawnSide == Level.Side.Left)
+                _tween = transform.DOLocalPath(_waypointsLeft, _delay);
+            else if (_spawner.Level.SpawnSide == Level.Side.Right)
+                _tween = transform.DOLocalPath(_waypointsRight, _delay);
+
+            _tween = transform.DOLocalMove(_endWaypoint, _duration).SetDelay(_delay);
+        }
     }
 }

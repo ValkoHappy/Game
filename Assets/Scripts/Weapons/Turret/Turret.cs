@@ -1,136 +1,151 @@
 using System.Collections;
 using System.Collections.Generic;
+using Scripts.Build;
+using Scripts.Enemy;
 using UnityEngine;
 
-[RequireComponent(typeof(AttackTurret), typeof(SphereCollider))]
-public class Turret : MonoBehaviour
+namespace Scripts.Weapons.Turret
 {
-    [SerializeField] private Transform _partToRotate;
-    [SerializeField] private float _rotationSpeed;
-
-    private AttackTurret _shootTurret;
-    private List<EnemyCollision> _enemies;
-    private PeacefulConstruction _construction;
-    private SphereCollider _sphereCollider;
-    private EnemyHandler _enemyHandler;
-    private Coroutine _sortCoroutine;
-    private WaitForSeconds _sortWait = new WaitForSeconds(0.5f);
-
-    public PeacefulConstruction Construction => _construction;
-    public EnemyCollision TargetEnemy { get; private set; }
-
-    private void Awake()
+    [RequireComponent(typeof(AttackTurret))]
+    [RequireComponent(typeof(SphereCollider))]
+    public class Turret : MonoBehaviour
     {
-        _shootTurret = GetComponent<AttackTurret>();
-        _construction = GetComponentInChildren<PeacefulConstruction>();
-        _sphereCollider = GetComponent<SphereCollider>();
-        _enemyHandler= FindObjectOfType<EnemyHandler>();
-    }
+        [SerializeField] private Transform _partToRotate;
+        [SerializeField] private float _rotationSpeed;
 
-    private void OnEnable()
-    {
-        _enemyHandler.EnemiesIncluded += OnEnableCollider;
-        _enemyHandler.EnemiesRemoved += OnTurnOffCollider;
-        _construction.Died += OnRemoveAllEnemies;
-    }
+        private AttackTurret _shootTurret;
+        private List<EnemyCollision> _enemies;
+        private PeacefulConstruction _construction;
+        private SphereCollider _sphereCollider;
+        private EnemyHandler _enemyHandler;
+        private Coroutine _sortCoroutine;
+        private WaitForSeconds _sortWait = new WaitForSeconds(0.5f);
 
-    private void OnDisable()
-    {
-        _enemyHandler.EnemiesIncluded -= OnEnableCollider;
-        _enemyHandler.EnemiesRemoved -= OnTurnOffCollider;
-        _construction.Died -= OnRemoveAllEnemies;
-    }
+        public PeacefulConstruction Construction => _construction;
+        public EnemyCollision TargetEnemy { get; private set; }
 
-    private void Start()
-    {
-        _enemies = new List<EnemyCollision>();
-        _sphereCollider.enabled = false;
-        StartSortEnemies();
-    }
-
-    private void Update()
-    {
-        if (_enemyHandler.IsAttackBegun && TargetEnemy != null && TargetEnemy.IsAlive() && _construction.IsAlive())
+        private void Awake()
         {
-            Vector3 direction = TargetEnemy.transform.position - transform.position;
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            _partToRotate.rotation = Quaternion.Slerp(_partToRotate.rotation, lookRotation, Time.deltaTime * _rotationSpeed);
+            _shootTurret = GetComponent<AttackTurret>();
+            _construction = GetComponentInChildren<PeacefulConstruction>();
+            _sphereCollider = GetComponent<SphereCollider>();
+            _enemyHandler = FindObjectOfType<EnemyHandler>();
         }
 
-        if (TargetEnemy == null && _construction.IsAlive() && _partToRotate.rotation != Quaternion.Euler(new Vector3(0, 0, 0)))
-            _partToRotate.rotation = Quaternion.Slerp(_partToRotate.rotation, Quaternion.LookRotation(new Vector3(0, 0, 0)), Time.deltaTime * _rotationSpeed);
-    }
-
-    public void StartSortEnemies()
-    {
-        if (_sortCoroutine != null)
+        private void OnEnable()
         {
-            StopCoroutine(_sortCoroutine);
-            _sortCoroutine = null;
+            _enemyHandler.EnemiesIncluded += OnEnableCollider;
+            _enemyHandler.EnemiesRemoved += OnTurnOffCollider;
+            _construction.Died += OnRemoveAllEnemies;
         }
 
-        _sortCoroutine = StartCoroutine(SortEnemies());
-    }
-
-    private IEnumerator SortEnemies()
-    {
-        if (_enemies.Count > 0)
+        private void OnDisable()
         {
-            float shortestDistance = Mathf.Infinity;
-            EnemyCollision nearestEnemy = null;
+            _enemyHandler.EnemiesIncluded -= OnEnableCollider;
+            _enemyHandler.EnemiesRemoved -= OnTurnOffCollider;
+            _construction.Died -= OnRemoveAllEnemies;
+        }
 
-            foreach (var target in _enemies)
+        private void Start()
+        {
+            _enemies = new List<EnemyCollision>();
+            _sphereCollider.enabled = false;
+            StartSortEnemies();
+        }
+
+        private void Update()
+        {
+            if (_enemyHandler.IsAttackBegun && TargetEnemy != null && TargetEnemy.IsAlive && _construction.IsAlive)
             {
-                if (target.IsAlive() && target != null)
-                {
-                    float distanceToEnemy = Vector3.Distance(transform.position, target.transform.position);
+                Vector3 direction = TargetEnemy.transform.position - transform.position;
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
 
-                    if (distanceToEnemy < shortestDistance)
+                _partToRotate.rotation = Quaternion.Slerp(
+                    _partToRotate.rotation,
+                    lookRotation,
+                    Time.deltaTime * _rotationSpeed);
+            }
+
+            if (TargetEnemy == null && _construction.IsAlive
+                && _partToRotate.rotation != Quaternion.Euler(new Vector3(0, 0, 0)))
+            {
+                _partToRotate.rotation = Quaternion.Slerp(
+                    _partToRotate.rotation,
+                    Quaternion.LookRotation(new Vector3(0, 0, 0)),
+                    Time.deltaTime * _rotationSpeed);
+            }
+        }
+
+        private void StartSortEnemies()
+        {
+            if (_sortCoroutine != null)
+            {
+                StopCoroutine(_sortCoroutine);
+                _sortCoroutine = null;
+            }
+
+            _sortCoroutine = StartCoroutine(SortEnemies());
+        }
+
+        private IEnumerator SortEnemies()
+        {
+            if (_enemies.Count > 0)
+            {
+                float shortestDistance = Mathf.Infinity;
+                EnemyCollision nearestEnemy = null;
+
+                foreach (var target in _enemies)
+                {
+                    if (target.IsAlive && target != null)
                     {
-                        shortestDistance = distanceToEnemy;
-                        nearestEnemy = target;
+                        float distanceToEnemy = Vector3.Distance(transform.position, target.transform.position);
+
+                        if (distanceToEnemy < shortestDistance)
+                        {
+                            shortestDistance = distanceToEnemy;
+                            nearestEnemy = target;
+                        }
                     }
+                }
+
+                if (nearestEnemy != null && nearestEnemy.IsAlive)
+                {
+                    TargetEnemy = nearestEnemy;
+
+                    if (TargetEnemy.IsAlive)
+                        _shootTurret.Restart();
                 }
             }
 
-            if (nearestEnemy != null && nearestEnemy.IsAlive())
-            {
-                TargetEnemy = nearestEnemy;
+            yield return _sortWait;
 
-                if (TargetEnemy.IsAlive())
-                    _shootTurret.Restart();
+            StartSortEnemies();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out EnemyCollision enemy))
+            {
+                if (enemy != null && enemy.IsAlive)
+                    _enemies.Add(enemy);
             }
         }
 
-        yield return _sortWait;
-
-        StartSortEnemies();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out EnemyCollision enemy))
+        private void OnRemoveAllEnemies()
         {
-            if (enemy != null && enemy.IsAlive())
-                _enemies.Add(enemy);
+            _enemies.Clear();
+        }
+
+        private void OnEnableCollider()
+        {
+            if (_sphereCollider != null)
+                _sphereCollider.enabled = true;
+        }
+
+        private void OnTurnOffCollider()
+        {
+            if (_sphereCollider != null)
+                _sphereCollider.enabled = false;
         }
     }
-
-    private void OnRemoveAllEnemies()
-    {
-        _enemies.Clear();
-    }
-
-    private void OnEnableCollider()
-    {
-        if (_sphereCollider != null) 
-            _sphereCollider.enabled = true;
-    }
-
-    private void OnTurnOffCollider()
-    {
-        if(_sphereCollider != null )
-            _sphereCollider.enabled = false;
-    }
 }
-

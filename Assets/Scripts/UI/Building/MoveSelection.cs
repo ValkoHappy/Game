@@ -1,24 +1,33 @@
 using UnityEngine;
 
-public class MoveSelection : MonoBehaviour
+namespace Scripts.UI.Building
 {
-    private BuildingMode _buildingMode;
-    public enum BuildingMode { Movement, Insert, Delete }
-
-    public BuildingMode Mode => _buildingMode;
-
-    public void SetBuildingModeMovement()
+    public class MoveSelection : MonoBehaviour
     {
-        _buildingMode = BuildingMode.Movement;
-    }
+        private BuildingMode _buildingMode;
 
-    public void SetBuildingModeInsert()
-    {
-        _buildingMode = BuildingMode.Insert;
-    }
+        public enum BuildingMode
+        {
+            Movement,
+            Insert,
+            Delete
+        }
 
-    public void SetBuildingModeDelete()
-    {
-        _buildingMode = BuildingMode.Delete;
+        public BuildingMode Mode => _buildingMode;
+
+        public void SetBuildingModeMovement()
+        {
+            _buildingMode = BuildingMode.Movement;
+        }
+
+        public void SetBuildingModeInsert()
+        {
+            _buildingMode = BuildingMode.Insert;
+        }
+
+        public void SetBuildingModeDelete()
+        {
+            _buildingMode = BuildingMode.Delete;
+        }
     }
 }

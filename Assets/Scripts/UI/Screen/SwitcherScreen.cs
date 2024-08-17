@@ -1,49 +1,53 @@
 using System;
 using System.Collections.Generic;
+using Scripts.SO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SwitcherScreen : UIScreenAnimator
+namespace Scripts.UI.Screen
 {
-    [SerializeField] private Button _switchingButton;
-    [SerializeField] private List<Goods> _buildings;
-    [SerializeField] private BuilderView _builderView;
-    [SerializeField] private Transform _itenContainer;
-
-    [SerializeField] private Spawner _spawner;
-
-    public event Action Switching;
-
-    private void OnEnable()
+    public class SwitcherScreen : UIScreenAnimator
     {
-        _spawner.MaximumLevelChanged += OnOpen;
-        _switchingButton.onClick.AddListener(OnSwitchingButtonClick);
-    }
+        [SerializeField] private Button _switchingButton;
+        [SerializeField] private List<Goods> _buildings;
+        [SerializeField] private BuilderView _builderView;
+        [SerializeField] private Transform _itenContainer;
 
-    private void OnDisable()
-    {
-        _spawner.MaximumLevelChanged -= OnOpen;
-        _switchingButton.onClick.RemoveListener(OnSwitchingButtonClick);
-    }
+        [SerializeField] private Spawner.Spawner _spawner;
 
-    private void Start()
-    {
-        for (int i = 0; i < _buildings.Count; i++)
+        public event Action Switching;
+
+        private void OnEnable()
         {
-            AddItem(_buildings[i]);
+            _spawner.MaximumLevelChanged += OnOpen;
+            _switchingButton.onClick.AddListener(OnSwitchingButtonClick);
         }
-    }
 
-    public void OnSwitchingButtonClick()
-    {
-        Switching?.Invoke();
-        _spawner.SwitchAnotherMap();
-        OnClose();
-    }
+        private void OnDisable()
+        {
+            _spawner.MaximumLevelChanged -= OnOpen;
+            _switchingButton.onClick.RemoveListener(OnSwitchingButtonClick);
+        }
 
-    private void AddItem(Goods building)
-    {
-        var view = Instantiate(_builderView, _itenContainer);
-        view.Render(building);
+        private void Start()
+        {
+            for (int i = 0; i < _buildings.Count; i++)
+            {
+                AddItem(_buildings[i]);
+            }
+        }
+
+        public void OnSwitchingButtonClick()
+        {
+            Switching?.Invoke();
+            _spawner.SwitchAnotherMap();
+            OnClose();
+        }
+
+        private void AddItem(Goods building)
+        {
+            var view = Instantiate(_builderView, _itenContainer);
+            view.Render(building);
+        }
     }
 }

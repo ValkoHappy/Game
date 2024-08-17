@@ -1,37 +1,41 @@
+using Scripts.Build;
 using UnityEngine;
 
-public class BuildingView : MonoBehaviour
+namespace Scripts.UI.Building
 {
-    [SerializeField] private MovementScreen _movementScreen;
-    [SerializeField] private BuildingCharacteristics _buildingCharacteristics;
-
-    private Building _building;
-
-    private void Awake()
+    public class BuildingView : MonoBehaviour
     {
-        _building = GetComponent<Building>();
-    }
+        [SerializeField] private MovementScreen _movementScreen;
+        [SerializeField] private BuildingCharacteristics _buildingCharacteristics;
 
-    private void OnEnable()
-    {
-        _building.Created += OnOpen;
-        _building.Delivered += OnClose;
-    }
+        private Build.Building _building;
 
-    private void OnDisable()
-    {
-        _building.Created -= OnOpen;
-        _building.Delivered -= OnClose;
-    }
+        private void Awake()
+        {
+            _building = GetComponent<Build.Building>();
+        }
 
-    private void OnOpen()
-    {
-        _movementScreen.OnOpen();
-    }
+        private void OnEnable()
+        {
+            _building.Created += OnOpen;
+            _building.Delivered += OnClose;
+        }
 
-    private void OnClose()
-    {
-        _buildingCharacteristics.CloseRadiusAttack();
-        _movementScreen.OnClose();
+        private void OnDisable()
+        {
+            _building.Created -= OnOpen;
+            _building.Delivered -= OnClose;
+        }
+
+        private void OnOpen()
+        {
+            _movementScreen.OnOpen();
+        }
+
+        private void OnClose()
+        {
+            _buildingCharacteristics.CloseRadiusAttack();
+            _movementScreen.OnClose();
+        }
     }
 }

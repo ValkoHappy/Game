@@ -1,46 +1,51 @@
 using System;
+using Scripts.UI.Screen;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MovementScreen : UIScreenAnimator
+namespace Scripts.UI.Building
 {
-    [SerializeField] private Button _saveButton;
-    [SerializeField] private Button _delateButton;
-
-    private MoveSelection _moveSelection;
-
-    public event Action MadeChoiced;
-
-    private void Awake()
+    public class MovementScreen : UIScreenAnimator
     {
-        _moveSelection = FindObjectOfType<MoveSelection>();
-    }
+        [SerializeField] private Button _saveButton;
+        [SerializeField] private Button _delateButton;
 
-    private void Start()
-    {
-        OnOpen();
-    }
+        private MoveSelection _moveSelection;
 
-    private void OnEnable()
-    {
-        _saveButton.onClick.AddListener(OnSaveButtonClick);
-        _delateButton.onClick.AddListener(OnDelateButtonClick);
-    }
+        public event Action MadeChoiced;
 
-    private void OnDisable()
-    {
-        _saveButton.onClick.RemoveListener(OnSaveButtonClick);
-        _delateButton.onClick.RemoveListener(OnDelateButtonClick);
-    }
+        private void Awake()
+        {
+            _moveSelection = FindObjectOfType<MoveSelection>();
+        }
 
-    private void OnSaveButtonClick()
-    {
-        _moveSelection.SetBuildingModeInsert();
-        MadeChoiced?.Invoke();
-    }
-    private void OnDelateButtonClick()
-    {
-        _moveSelection.SetBuildingModeDelete();
-        MadeChoiced?.Invoke();
+        private void Start()
+        {
+            OnOpen();
+        }
+
+        private void OnEnable()
+        {
+            _saveButton.onClick.AddListener(OnSaveButtonClick);
+            _delateButton.onClick.AddListener(OnDelateButtonClick);
+        }
+
+        private void OnDisable()
+        {
+            _saveButton.onClick.RemoveListener(OnSaveButtonClick);
+            _delateButton.onClick.RemoveListener(OnDelateButtonClick);
+        }
+
+        private void OnSaveButtonClick()
+        {
+            _moveSelection.SetBuildingModeInsert();
+            MadeChoiced?.Invoke();
+        }
+
+        private void OnDelateButtonClick()
+        {
+            _moveSelection.SetBuildingModeDelete();
+            MadeChoiced?.Invoke();
+        }
     }
 }

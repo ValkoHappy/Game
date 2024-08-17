@@ -1,29 +1,33 @@
+using Scripts.Miner;
 using TMPro;
 using UnityEngine;
 
-public class CrystalsScore : MonoBehaviour
+namespace Scripts.UI
 {
-    [SerializeField] private CrystalsContainer _crystalsContainer;
-    [SerializeField] private TMP_Text _score;
-
-    private void Start()
+    public class CrystalsScore : MonoBehaviour
     {
-        _score.text = _crystalsContainer.Crystals.ToString();
-    }
+        [SerializeField] private CrystalsContainer _crystalsContainer;
+        [SerializeField] private TMP_Text _score;
 
-    private void OnEnable()
-    {
-        _score.text = _crystalsContainer.Crystals.ToString();
-        _crystalsContainer.CrystalsChanged += OnSetScore;
-    }
+        private void Start()
+        {
+            _score.text = _crystalsContainer.Crystals.ToString();
+        }
 
-    private void OnDisable()
-    {
-        _crystalsContainer.CrystalsChanged -= OnSetScore;
-    }
+        private void OnEnable()
+        {
+            _score.text = _crystalsContainer.Crystals.ToString();
+            _crystalsContainer.CrystalsChanged += OnSetScore;
+        }
 
-    private void OnSetScore(int score)
-    {
-        _score.text = score.ToString();
+        private void OnDisable()
+        {
+            _crystalsContainer.CrystalsChanged -= OnSetScore;
+        }
+
+        private void OnSetScore(int score)
+        {
+            _score.text = score.ToString();
+        }
     }
 }

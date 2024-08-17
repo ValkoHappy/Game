@@ -1,41 +1,44 @@
 using UnityEngine;
 
-[RequireComponent(typeof(CanvasGroup))]
-public class UIScreenAnimator : MonoBehaviour
+namespace Scripts.UI.Screen
 {
-    private const string OpenStr = "Open";
-    private const string CloseStr = "Close";
-
-    [SerializeField] private CanvasGroup _panel;
-
-    private Animator _animator;
-
-    private float _minAlpha = 0;
-    private float _maxAlpha = 1;
-
-    private void Awake()
+    [RequireComponent(typeof(CanvasGroup))]
+    public class UIScreenAnimator : MonoBehaviour
     {
-        _panel = GetComponent<CanvasGroup>();
-        _animator = GetComponent<Animator>();
-    }
+        private const string OpenStr = "Open";
+        private const string CloseStr = "Close";
 
-    public virtual void OnOpen()
-    {
-        _panel.blocksRaycasts = true;
+        [SerializeField] private CanvasGroup _panel;
 
-        if (_animator != null)
-            _animator.SetTrigger(OpenStr);
+        private Animator _animator;
 
-        _panel.alpha = _maxAlpha;
-    }
+        private float _minAlpha = 0;
+        private float _maxAlpha = 1;
 
-    public virtual void OnClose()
-    {
-        _panel.blocksRaycasts = false;
+        private void Awake()
+        {
+            _panel = GetComponent<CanvasGroup>();
+            _animator = GetComponent<Animator>();
+        }
 
-        if (_animator != null)
-            _animator.SetTrigger(CloseStr);
+        public virtual void OnOpen()
+        {
+            _panel.blocksRaycasts = true;
 
-        _panel.alpha = _minAlpha;
+            if (_animator != null)
+                _animator.SetTrigger(OpenStr);
+
+            _panel.alpha = _maxAlpha;
+        }
+
+        public virtual void OnClose()
+        {
+            _panel.blocksRaycasts = false;
+
+            if (_animator != null)
+                _animator.SetTrigger(CloseStr);
+
+            _panel.alpha = _minAlpha;
+        }
     }
 }

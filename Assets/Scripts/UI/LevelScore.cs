@@ -1,24 +1,27 @@
 using TMPro;
 using UnityEngine;
 
-public class LevelScore : MonoBehaviour
+namespace Scripts.UI
 {
-    [SerializeField] private Spawner _spawner;
-    [SerializeField] private TMP_Text _score;
-
-    private void OnEnable()
+    public class LevelScore : MonoBehaviour
     {
-        _score.text = _spawner.LevelIndex.ToString();
-        _spawner.LevelChanged += OnSetScore;
-    }
+        [SerializeField] private Spawner.Spawner _spawner;
+        [SerializeField] private TMP_Text _score;
 
-    private void OnDisable()
-    {
-        _spawner.LevelChanged -= OnSetScore;
-    }
+        private void OnEnable()
+        {
+            _score.text = _spawner.LevelIndex.ToString();
+            _spawner.LevelChanged += OnSetScore;
+        }
 
-    private void OnSetScore(int score)
-    {
-        _score.text = score.ToString();
+        private void OnDisable()
+        {
+            _spawner.LevelChanged -= OnSetScore;
+        }
+
+        private void OnSetScore(int score)
+        {
+            _score.text = score.ToString();
+        }
     }
 }

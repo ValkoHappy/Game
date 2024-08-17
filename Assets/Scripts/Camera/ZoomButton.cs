@@ -1,48 +1,65 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System.Collections;
 
-public class ZoomButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+namespace Scripts.Camera
 {
-    [SerializeField] protected Camera _camera;
-
-    protected CameraMover _cameraMover;
-    private Coroutine _zoom;
-    private bool _isZooming = false;
-
-    private void Awake()
+    public class ZoomButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
-        _cameraMover = _camera.GetComponent<CameraMover>();
-    }
+        [SerializeField] private UnityEngine.Camera _camera;
+        [SerializeField] private ZoomType _zoomType;
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (_zoom != null)
+        protected CameraMover _cameraMover;
+        private Coroutine _zoom;
+
+        public enum ZoomType
         {
-            StopCoroutine(_zoom);
-            _zoom = null;
+            In,
+            Out,
         }
 
-        _zoom = StartCoroutine(Zoom());
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        if (_zoom != null)
+        private void Awake()
         {
-            _isZooming = false;
-            StopCoroutine(_zoom);
+            _cameraMover = _camera.GetComponent<CameraMover>();
         }
-    }
 
-    public virtual IEnumerator Zoom()
-    {
-        _isZooming = true;
-
-        while (_isZooming)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            _cameraMover.ZoomIn();
-            yield return null;
+            if (_zoom != null)
+            {
+                StopCoroutine(_zoom);
+                _zoom = null;
+            }
+
+            _zoom = StartCoroutine(Zoom());
+        }
+
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            if (_zoom != null)
+            {
+                StopCoroutine(_zoom);
+            }
+        }
+
+        public IEnumerator Zoom()
+        {
+            if (_zoomType == ZoomType.In)
+            {
+                while (_camera.fieldOfView > _cameraMover.MinZoom)
+                {
+                    _cameraMover.ZoomIn();
+                    yield return null;
+                }
+            }
+            else if (_zoomType == ZoomType.Out)
+            {
+                while (_camera.fieldOfView < _cameraMover.MaxZoom)
+                {
+                    _cameraMover.ZoomOut();
+                    yield return null;
+                }
+            }
         }
     }
 }

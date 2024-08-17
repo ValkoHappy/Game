@@ -1,33 +1,36 @@
-using Lean.Localization;
 using System;
 using System.Collections.Generic;
+using Lean.Localization;
 using UnityEngine;
 
-public class Localization : MonoBehaviour
+namespace Scripts.Yandex
 {
-    private const string Language = "Language";
-
-    [SerializeField] private LeanLocalization _leanLocalization;
-
-    private string _currentLanguage;
-
-    private Dictionary<string, string> _language = new()
+    public class Localization : MonoBehaviour
     {
-        { "ru", "Russian" },
-        { "en", "English" },
-        { "tr", "Turkish" },
-    };
+        private const string Language = "Language";
 
-    public event Action LanguageChanged;
+        [SerializeField] private LeanLocalization _leanLocalization;
 
-    public void SetLanguage(string value)
-    {
-        if (_language.ContainsKey(value))
+        private string _currentLanguage;
+
+        private Dictionary<string, string> _language = new()
         {
-            _leanLocalization.SetCurrentLanguage(_language[value]);
-            _currentLanguage = value;
-            LanguageChanged?.Invoke();
-            PlayerPrefs.SetString(Language, _currentLanguage);
+            { "ru", "Russian" },
+            { "en", "English" },
+            { "tr", "Turkish" },
+        };
+
+        public event Action LanguageChanged;
+
+        public void SetLanguage(string value)
+        {
+            if (_language.ContainsKey(value))
+            {
+                _leanLocalization.SetCurrentLanguage(_language[value]);
+                _currentLanguage = value;
+                LanguageChanged?.Invoke();
+                PlayerPrefs.SetString(Language, _currentLanguage);
+            }
         }
     }
 }

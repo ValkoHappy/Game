@@ -1,23 +1,65 @@
-using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
-public class SoundSettings : MonoBehaviour
+namespace Scripts.UI
 {
-    private const string MusicVolume = "MusicVolume";
-    private const string EffectsVolume = "EffectsVolume";
-
-    [SerializeField] private Slider _musicSlider;
-    [SerializeField] private Slider _effectsSlider;
-    [SerializeField] private AudioMixer _audioMixer;
-
-    private float _defaultVolume = 0.74f;
-    private float _minVolume = -80f;
-    private float _maxVolume = 0f;
-
-    private void Start()
+    public class SoundSettings : MonoBehaviour
     {
-        if (PlayerPrefs.HasKey(MusicVolume) && PlayerPrefs.HasKey(EffectsVolume))
+        private const string MusicVolume = "MusicVolume";
+        private const string EffectsVolume = "EffectsVolume";
+
+        [SerializeField] private Slider _musicSlider;
+        [SerializeField] private Slider _effectsSlider;
+        [SerializeField] private AudioMixer _audioMixer;
+
+        private float _defaultVolume = 0.74f;
+        private float _minVolume = -80f;
+        private float _maxVolume = 0f;
+
+        private void Start()
+        {
+            if (PlayerPrefs.HasKey(MusicVolume) && PlayerPrefs.HasKey(EffectsVolume))
+            {
+                _musicSlider.value = PlayerPrefs.GetFloat(MusicVolume);
+                _effectsSlider.value = PlayerPrefs.GetFloat(EffectsVolume);
+
+                SetVolumeMusic(_musicSlider.value);
+                SetVolumeEffects(_effectsSlider.value);
+            }
+            else
+            {
+                _musicSlider.value = _defaultVolume;
+                _effectsSlider.value = _defaultVolume;
+
+                SetVolumeMusic(_defaultVolume);
+                SetVolumeEffects(_defaultVolume);
+
+                PlayerPrefs.SetFloat(MusicVolume, _defaultVolume);
+                PlayerPrefs.SetFloat(EffectsVolume, _defaultVolume);
+                PlayerPrefs.Save();
+            }
+        }
+
+        private void OnEnable()
+        {
+            _musicSlider.onValueChanged.AddListener(OnSetMusicSlider);
+            _effectsSlider.onValueChanged.AddListener(OnSetEffectsSlider);
+        }
+
+        private void OnDisable()
+        {
+            _musicSlider.onValueChanged.RemoveListener(OnSetMusicSlider);
+            _effectsSlider.onValueChanged.RemoveListener(OnSetEffectsSlider);
+        }
+
+        public void Mute()
+        {
+            _audioMixer.SetFloat(MusicVolume, _minVolume);
+            _audioMixer.SetFloat(EffectsVolume, _minVolume);
+        }
+
+        public void Load()
         {
             _musicSlider.value = PlayerPrefs.GetFloat(MusicVolume);
             _effectsSlider.value = PlayerPrefs.GetFloat(EffectsVolume);
@@ -25,70 +67,31 @@ public class SoundSettings : MonoBehaviour
             SetVolumeMusic(_musicSlider.value);
             SetVolumeEffects(_effectsSlider.value);
         }
-        else
+
+        public void OnSetMusicSlider(float volume)
         {
-            _musicSlider.value = _defaultVolume;
-            _effectsSlider.value = _defaultVolume;
-
-            SetVolumeMusic(_defaultVolume);
-            SetVolumeEffects(_defaultVolume);
-
-            PlayerPrefs.SetFloat(MusicVolume, _defaultVolume);
-            PlayerPrefs.SetFloat(EffectsVolume, _defaultVolume);
+            _musicSlider.value = volume;
+            PlayerPrefs.SetFloat(MusicVolume, volume);
             PlayerPrefs.Save();
+            SetVolumeMusic(volume);
         }
-    }
 
-    private void OnEnable()
-    {
-        _musicSlider.onValueChanged.AddListener(OnSetMusicSlider);
-        _effectsSlider.onValueChanged.AddListener(OnSetEffectsSlider);
-    }
+        public void OnSetEffectsSlider(float volume)
+        {
+            _effectsSlider.value = volume;
+            PlayerPrefs.SetFloat(EffectsVolume, volume);
+            PlayerPrefs.Save();
+            SetVolumeEffects(volume);
+        }
 
-    private void OnDisable()
-    {
-        _musicSlider.onValueChanged.RemoveListener(OnSetMusicSlider);
-        _effectsSlider.onValueChanged.RemoveListener(OnSetEffectsSlider);
-    }
+        private void SetVolumeMusic(float volume)
+        {
+            _audioMixer.SetFloat(MusicVolume, Mathf.Lerp(_minVolume, _maxVolume, volume));
+        }
 
-    public void Mute()
-    {
-        _audioMixer.SetFloat(MusicVolume, _minVolume);
-        _audioMixer.SetFloat(EffectsVolume, _minVolume);
-    }
-
-    public void Load()
-    {
-        _musicSlider.value = PlayerPrefs.GetFloat(MusicVolume);
-        _effectsSlider.value = PlayerPrefs.GetFloat(EffectsVolume);
-
-        SetVolumeMusic(_musicSlider.value);
-        SetVolumeEffects(_effectsSlider.value);
-    }
-
-    public void OnSetMusicSlider(float volume)
-    {
-        _musicSlider.value = volume;
-        PlayerPrefs.SetFloat(MusicVolume, volume);
-        PlayerPrefs.Save();
-        SetVolumeMusic(volume);
-    }
-
-    public void OnSetEffectsSlider(float volume)
-    {
-        _effectsSlider.value = volume;
-        PlayerPrefs.SetFloat(EffectsVolume, volume);
-        PlayerPrefs.Save();
-        SetVolumeEffects(volume);
-    }
-
-    private void SetVolumeMusic(float volume)
-    {
-        _audioMixer.SetFloat(MusicVolume, Mathf.Lerp(_minVolume, _maxVolume, volume));
-    }
-
-    private void SetVolumeEffects(float volume)
-    {
-        _audioMixer.SetFloat(EffectsVolume, Mathf.Lerp(_minVolume, _maxVolume, volume));
+        private void SetVolumeEffects(float volume)
+        {
+            _audioMixer.SetFloat(EffectsVolume, Mathf.Lerp(_minVolume, _maxVolume, volume));
+        }
     }
 }

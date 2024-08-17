@@ -2,14 +2,16 @@ using System.Collections;
 using Agava.YandexGames;
 using UnityEngine;
 
-public class YandexInitialization : MonoBehaviour
+namespace Scripts.Yandex
 {
-    private const string Language = "Language";
+    public class YandexInitialization : MonoBehaviour
+    {
+        private const string Language = "Language";
 
-    [SerializeField] private Localization _localization;
-    [SerializeField] private YandexAds _yandexAds;
+        [SerializeField] private Localization _localization;
+        [SerializeField] private YandexAds _yandexAds;
 
-    private float _wait = 0.5f;
+        private float _wait = 0.5f;
 
 #if UNITY_WEBGL && !UNITY_EDITOR
     private void Awake()
@@ -34,4 +36,5 @@ public class YandexInitialization : MonoBehaviour
             _localization.SetLanguage(YandexGamesSdk.Environment.i18n.lang);
     }
 #endif
+    }
 }

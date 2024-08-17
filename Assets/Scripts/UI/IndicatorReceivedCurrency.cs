@@ -1,53 +1,58 @@
 using System;
+using Scripts.Build;
+using Scripts.Miner;
 using UnityEngine;
 
-public class IndicatorReceivedCurrency : MonoBehaviour
+namespace Scripts.UI
 {
-    [SerializeField] private string _extraction;
-    [SerializeField] private BuildingsGrid _buildingsGrid;
-    [SerializeField] private Spawner _spawner;
-    [SerializeField] private BuildingsHandler _buildingsHandler;
-    [SerializeField] private BuildingRemover _buildingRemover;
-
-    public event Action<int> OnCurrencyReceived;
-
-    public int AmountCurrencyReceived { get; private set; }
-
-    private void OnEnable()
+    public class IndicatorReceivedCurrency : MonoBehaviour
     {
-        _buildingRemover.BuildingRemoved += OnRemoveAmount;
-        _buildingsGrid.BuildingSupplied += OnAddAmount;
-        _spawner.LevelStarted += OnRemoveAllAmount;
-        _buildingsHandler.BuildingsDeleted += OnRemoveAllAmount;
-    }
+        [SerializeField] private string _extraction;
+        [SerializeField] private BuildingsGrid _buildingsGrid;
+        [SerializeField] private Spawner.Spawner _spawner;
+        [SerializeField] private BuildingsHandler _buildingsHandler;
+        [SerializeField] private BuildingRemover _buildingRemover;
 
-    private void OnDisable()
-    {
-        _buildingRemover.BuildingRemoved -= OnRemoveAmount;
-        _buildingsGrid.BuildingSupplied -= OnAddAmount;
-        _spawner.LevelStarted -= OnRemoveAllAmount;
-        _buildingsHandler.BuildingsDeleted -= OnRemoveAllAmount;
-    }
+        public event Action<int> OnCurrencyReceived;
 
-    public void OnRemoveAllAmount()
-    {
-        AmountCurrencyReceived = 0;
-        OnCurrencyReceived?.Invoke(AmountCurrencyReceived);
-    }
+        public int AmountCurrencyReceived { get; private set; }
 
-    private void OnAddAmount(Building building)
-    {
-        if(building.tag == _extraction)
-            AmountCurrencyReceived += building.GetComponentInChildren<GeneratorMining>().AmountMoneyProduced;
+        private void OnEnable()
+        {
+            _buildingRemover.BuildingRemoved += OnRemoveAmount;
+            _buildingsGrid.BuildingSupplied += OnAddAmount;
+            _spawner.LevelStarted += OnRemoveAllAmount;
+            _buildingsHandler.BuildingsDeleted += OnRemoveAllAmount;
+        }
 
-        OnCurrencyReceived?.Invoke(AmountCurrencyReceived);
-    }
+        private void OnDisable()
+        {
+            _buildingRemover.BuildingRemoved -= OnRemoveAmount;
+            _buildingsGrid.BuildingSupplied -= OnAddAmount;
+            _spawner.LevelStarted -= OnRemoveAllAmount;
+            _buildingsHandler.BuildingsDeleted -= OnRemoveAllAmount;
+        }
 
-    private void OnRemoveAmount(Building building)
-    {
-        if (building.tag == _extraction)
-            AmountCurrencyReceived -= building.GetComponentInChildren<GeneratorMining>().AmountMoneyProduced;
+        public void OnRemoveAllAmount()
+        {
+            AmountCurrencyReceived = 0;
+            OnCurrencyReceived?.Invoke(AmountCurrencyReceived);
+        }
 
-        OnCurrencyReceived?.Invoke(AmountCurrencyReceived);
+        private void OnAddAmount(Build.Building building)
+        {
+            if (building.tag == _extraction)
+                AmountCurrencyReceived += building.GetComponentInChildren<GeneratorMining>().AmountMoneyProduced;
+
+            OnCurrencyReceived?.Invoke(AmountCurrencyReceived);
+        }
+
+        private void OnRemoveAmount(Build.Building building)
+        {
+            if (building.tag == _extraction)
+                AmountCurrencyReceived -= building.GetComponentInChildren<GeneratorMining>().AmountMoneyProduced;
+
+            OnCurrencyReceived?.Invoke(AmountCurrencyReceived);
+        }
     }
 }

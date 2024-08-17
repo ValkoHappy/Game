@@ -1,20 +1,23 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Joystick))]
-public class MobileInput : MonoBehaviour
+namespace Scripts.Camera
 {
-    [SerializeField] private CameraMover _cameraMover;
-
-    private Joystick _joystick;
-
-    private void Awake()
+    [RequireComponent(typeof(Joystick))]
+    public class MobileInput : MonoBehaviour
     {
-        _cameraMover = FindObjectOfType<CameraMover>();
-        _joystick = GetComponent<Joystick>();
-    }
+        [SerializeField] private CameraMover _cameraMover;
 
-    private void Update()
-    {
-        _cameraMover.Move(_joystick.GetDirection());
+        private Joystick _joystick;
+
+        private void Awake()
+        {
+            _cameraMover = FindObjectOfType<CameraMover>();
+            _joystick = GetComponent<Joystick>();
+        }
+
+        private void Update()
+        {
+            _cameraMover.Move(_joystick.GetDirection());
+        }
     }
 }

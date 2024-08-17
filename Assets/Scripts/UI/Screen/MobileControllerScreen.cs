@@ -1,23 +1,28 @@
+using Scripts.Build;
+using Scripts.Camera;
 using UnityEngine;
 
-public class MobileControllerScreen : UIScreenAnimator  
+namespace Scripts.UI.Screen
 {
-    [SerializeField] private LobbyCameraAnimation _lobbyCameraAnimation;
-    [SerializeField] private BuildingsGrid _buildingsGrid;
-
-    private void OnEnable()
+    public class MobileControllerScreen : UIScreenAnimator
     {
-        _lobbyCameraAnimation.AnimationFinished += OnOpen;
-        _buildingsGrid.BuildingCreated += OnOpen;
-        _buildingsGrid.BuildingRemoved += OnClose;
-        _buildingsGrid.BuildingDelivered += OnClose;
-    }
+        [SerializeField] private LobbyCameraAnimation _lobbyCameraAnimation;
+        [SerializeField] private BuildingsGrid _buildingsGrid;
 
-    private void OnDisable()
-    {
-        _lobbyCameraAnimation.AnimationFinished -= OnOpen;
-        _buildingsGrid.BuildingCreated -= OnOpen;
-        _buildingsGrid.BuildingRemoved -= OnClose;
-        _buildingsGrid.BuildingDelivered -= OnClose;
+        private void OnEnable()
+        {
+            _lobbyCameraAnimation.AnimationFinished += OnOpen;
+            _buildingsGrid.BuildingCreated += OnOpen;
+            _buildingsGrid.BuildingRemoved += OnClose;
+            _buildingsGrid.BuildingDelivered += OnClose;
+        }
+
+        private void OnDisable()
+        {
+            _lobbyCameraAnimation.AnimationFinished -= OnOpen;
+            _buildingsGrid.BuildingCreated -= OnOpen;
+            _buildingsGrid.BuildingRemoved -= OnClose;
+            _buildingsGrid.BuildingDelivered -= OnClose;
+        }
     }
 }

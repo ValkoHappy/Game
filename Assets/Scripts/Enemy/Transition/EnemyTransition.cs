@@ -1,20 +1,25 @@
+using Scripts.Build;
+using Scripts.Enemy.States;
 using UnityEngine;
 
-public class EnemyTransition : MonoBehaviour
+namespace Scripts.Enemy.Transition
 {
-    [SerializeField] private EnemyState _targetState;
-
-    public EnemyState TargetState => _targetState;
-    protected PeacefulConstruction PeacefulConstruction { get; private set; }
-    public bool NeedTransit { get; protected set; }
-
-    protected virtual void OnEnable()
+    public class EnemyTransition : MonoBehaviour
     {
-        NeedTransit = false;
-    }
+        [SerializeField] private EnemyState _targetState;
 
-    public void Init(PeacefulConstruction peacefulConstruction)
-    {
-        PeacefulConstruction = peacefulConstruction;
+        public EnemyState TargetState => _targetState;
+        public bool NeedTransit { get; protected set; }
+        protected PeacefulConstruction PeacefulConstruction { get; private set; }
+
+        protected virtual void OnEnable()
+        {
+            NeedTransit = false;
+        }
+
+        public void Init(PeacefulConstruction peacefulConstruction)
+        {
+            PeacefulConstruction = peacefulConstruction;
+        }
     }
 }

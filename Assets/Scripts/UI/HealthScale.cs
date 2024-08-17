@@ -1,49 +1,55 @@
+using Scripts.Build;
+using Scripts.Health;
+using Scripts.UI.Screen;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthScale : UIScreenAnimator
+namespace Scripts.UI
 {
-    [SerializeField] private HealthHandler _healthContainer;
-    [SerializeField] private PeacefulConstruction _peacefulConstruction;
-    [SerializeField] private CanvasGroup _canvasGroup;
-    [SerializeField] private Slider _slider;
-
-    private float _currentVelocity;
-    private float _maxHealthTransitionTime = 100;
-
-    private void Start()
+    public class HealthScale : UIScreenAnimator
     {
-        _slider.maxValue = _healthContainer.MaxHealth;
-        _slider.value = _slider.maxValue;
-    }
+        [SerializeField] private HealthHandler _healthContainer;
+        [SerializeField] private PeacefulConstruction _peacefulConstruction;
+        [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private Slider _slider;
 
-    private void OnEnable()
-    {
-        _healthContainer.HealthChanged += OnChangeHealth;
-        _healthContainer.MaxHealthChanged += OnSetMaxValue;
-        _peacefulConstruction.BuildingRestored += OnSetMaxValue;
-    }
+        private float _currentVelocity;
+        private float _maxHealthTransitionTime = 100;
 
-    private void OnDisable()
-    {
-        _healthContainer.HealthChanged -= OnChangeHealth;
-        _healthContainer.MaxHealthChanged -= OnSetMaxValue;
-        _peacefulConstruction.BuildingRestored -= OnSetMaxValue;
-    }
+        private void Start()
+        {
+            _slider.maxValue = _healthContainer.MaxHealth;
+            _slider.value = _slider.maxValue;
+        }
 
-    public void OnSetMaxValue()
-    {
-        _slider.value = _slider.maxValue;
-        OnClose();
-    }
+        private void OnEnable()
+        {
+            _healthContainer.HealthChanged += OnChangeHealth;
+            _healthContainer.MaxHealthChanged += OnSetMaxValue;
+            _peacefulConstruction.BuildingRestored += OnSetMaxValue;
+        }
 
-    private void OnChangeHealth(int health)
-    {
-        OnOpen();
-        float currentHealth = Mathf.SmoothDamp(_slider.value, health, ref _currentVelocity, _maxHealthTransitionTime * Time.deltaTime);
-        _slider.value = health;
+        private void OnDisable()
+        {
+            _healthContainer.HealthChanged -= OnChangeHealth;
+            _healthContainer.MaxHealthChanged -= OnSetMaxValue;
+            _peacefulConstruction.BuildingRestored -= OnSetMaxValue;
+        }
 
-        if(_slider.value == _slider.minValue)
+        public void OnSetMaxValue()
+        {
+            _slider.value = _slider.maxValue;
             OnClose();
+        }
+
+        private void OnChangeHealth(int health)
+        {
+            OnOpen();
+            float currentHealth = Mathf.SmoothDamp(_slider.value, health, ref _currentVelocity, _maxHealthTransitionTime * Time.deltaTime);
+            _slider.value = health;
+
+            if (_slider.value == _slider.minValue)
+                OnClose();
+        }
     }
 }

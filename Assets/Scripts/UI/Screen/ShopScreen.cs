@@ -1,137 +1,141 @@
 using System;
+using Scripts.Build;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopScreen : UIScreenAnimator
+namespace Scripts.UI.Screen
 {
-    [SerializeField] private LevelReward _levelReward;
-    [SerializeField] private BuildingsGrid _buildingsGrid;
-    [SerializeField] private BuildingRemover _buildingRemover;
-
-    [SerializeField] private Button _exitButton;
-    [SerializeField] private Button _advertisingButton;
-    [SerializeField] private Button _deleteBuildingsButton;
-
-    [SerializeField] private Button _storeTabFencesButton;
-    [SerializeField] private Button _storeTabWeaponsButton;
-    [SerializeField] private Button _storeTabGeneratorsButton;
-
-    [SerializeField] private UIScreenAnimator _storeTabFences;
-    [SerializeField] private UIScreenAnimator _storeTabWeapons;
-    [SerializeField] private UIScreenAnimator _storeTabGenerators;
-
-    public event Action Exited;
-    public event Action BuildingsDeleted;
-
-    private void Start()
+    public class ShopScreen : UIScreenAnimator
     {
-        _storeTabWeapons.OnOpen();   
-    }
+        [SerializeField] private LevelReward _levelReward;
+        [SerializeField] private BuildingsGrid _buildingsGrid;
+        [SerializeField] private BuildingRemover _buildingRemover;
 
-    private void OnEnable()
-    {
-        _buildingsGrid.BuildingCreated += OnClose;
-        _buildingsGrid.BuildingRemoved += OnOpen;
-        _buildingsGrid.BuildingDelivered += OnOpen;
-        _deleteBuildingsButton.onClick.AddListener(OnDeleteBuildingsButton);
+        [SerializeField] private Button _exitButton;
+        [SerializeField] private Button _advertisingButton;
+        [SerializeField] private Button _deleteBuildingsButton;
 
-        _exitButton.onClick.AddListener(OnExitButtonClick);
-        _advertisingButton.onClick.AddListener(OnClaimCrystalsAdvertising);
-        _storeTabFencesButton.onClick.AddListener(OnStoreTabMainBuildings);
-        _storeTabWeaponsButton.onClick.AddListener(OnStoreTabWeapons);
-        _storeTabGeneratorsButton.onClick.AddListener(OnStoreTabGenerators);
-    }
+        [SerializeField] private Button _storeTabFencesButton;
+        [SerializeField] private Button _storeTabWeaponsButton;
+        [SerializeField] private Button _storeTabGeneratorsButton;
 
-    private void OnDisable()
-    {
-        _buildingsGrid.BuildingCreated -= OnClose;
-        _buildingsGrid.BuildingRemoved -= OnOpen;
-        _buildingsGrid.BuildingDelivered -= OnOpen;
-        _deleteBuildingsButton.onClick.RemoveListener(OnDeleteBuildingsButton);
+        [SerializeField] private UIScreenAnimator _storeTabFences;
+        [SerializeField] private UIScreenAnimator _storeTabWeapons;
+        [SerializeField] private UIScreenAnimator _storeTabGenerators;
 
-        _exitButton.onClick.RemoveListener(OnExitButtonClick);
-        _advertisingButton.onClick.RemoveListener(OnClaimCrystalsAdvertising);
-        _storeTabFencesButton.onClick.RemoveListener(OnStoreTabMainBuildings);
-        _storeTabWeaponsButton.onClick.RemoveListener(OnStoreTabWeapons);
-        _storeTabGeneratorsButton.onClick.RemoveListener(OnStoreTabGenerators);
-    }
+        public event Action Exited;
+        public event Action BuildingsDeleted;
 
-    public void TurnOffAllButton()
-    {
-        _exitButton.enabled = false;
-        _advertisingButton.enabled = false;
-        _deleteBuildingsButton.enabled = false;
-        _storeTabFencesButton.enabled = false;
-        _storeTabWeaponsButton.enabled = false;
-        _storeTabGeneratorsButton.enabled = false;
-    }
+        private void Start()
+        {
+            _storeTabWeapons.OnOpen();
+        }
 
-    public void EnabletGeneratorsButton()
-    {
-        _storeTabGeneratorsButton.enabled = true;
-    }
+        private void OnEnable()
+        {
+            _buildingsGrid.BuildingCreated += OnClose;
+            _buildingsGrid.BuildingRemoved += OnOpen;
+            _buildingsGrid.BuildingDelivered += OnOpen;
+            _deleteBuildingsButton.onClick.AddListener(OnDeleteBuildingsButton);
 
-    public void EnabletFencesButton()
-    {
-        _storeTabGeneratorsButton.enabled = false;
-        _storeTabFencesButton.enabled = true;
-    }
-    public void EnabletExitButton()
-    {
-        _storeTabFencesButton.enabled = false;
-        _exitButton.enabled = true;
-    }
+            _exitButton.onClick.AddListener(OnExitButtonClick);
+            _advertisingButton.onClick.AddListener(OnClaimCrystalsAdvertising);
+            _storeTabFencesButton.onClick.AddListener(OnStoreTabMainBuildings);
+            _storeTabWeaponsButton.onClick.AddListener(OnStoreTabWeapons);
+            _storeTabGeneratorsButton.onClick.AddListener(OnStoreTabGenerators);
+        }
 
-    public void EnabletAllButton()
-    {
-        _exitButton.enabled = true;
-        _advertisingButton.enabled = true;
-        _deleteBuildingsButton.enabled = true;
-        _storeTabFencesButton.enabled = true;
-        _storeTabWeaponsButton.enabled = true;
-        _storeTabGeneratorsButton.enabled = true;
-    }
+        private void OnDisable()
+        {
+            _buildingsGrid.BuildingCreated -= OnClose;
+            _buildingsGrid.BuildingRemoved -= OnOpen;
+            _buildingsGrid.BuildingDelivered -= OnOpen;
+            _deleteBuildingsButton.onClick.RemoveListener(OnDeleteBuildingsButton);
 
-    public void Open()
-    {
-        OnStoreTabWeapons();
-        OnOpen();
-    }
+            _exitButton.onClick.RemoveListener(OnExitButtonClick);
+            _advertisingButton.onClick.RemoveListener(OnClaimCrystalsAdvertising);
+            _storeTabFencesButton.onClick.RemoveListener(OnStoreTabMainBuildings);
+            _storeTabWeaponsButton.onClick.RemoveListener(OnStoreTabWeapons);
+            _storeTabGeneratorsButton.onClick.RemoveListener(OnStoreTabGenerators);
+        }
 
-    private void OnExitButtonClick()
-    {
-        Exited?.Invoke();
-    }
+        public void TurnOffAllButton()
+        {
+            _exitButton.enabled = false;
+            _advertisingButton.enabled = false;
+            _deleteBuildingsButton.enabled = false;
+            _storeTabFencesButton.enabled = false;
+            _storeTabWeaponsButton.enabled = false;
+            _storeTabGeneratorsButton.enabled = false;
+        }
 
-    private void OnStoreTabMainBuildings()
-    {
-        _storeTabFences.OnOpen();
-        _storeTabWeapons.OnClose();
-        _storeTabGenerators.OnClose();
-    }
+        public void EnableGeneratorsButton()
+        {
+            _storeTabGeneratorsButton.enabled = true;
+        }
 
-    private void OnStoreTabWeapons()
-    {
-        _storeTabFences.OnClose();
-        _storeTabWeapons.OnOpen();
-        _storeTabGenerators.OnClose();
-    }
+        public void EnableFencesButton()
+        {
+            _storeTabGeneratorsButton.enabled = false;
+            _storeTabFencesButton.enabled = true;
+        }
+        public void EnableExitButton()
+        {
+            _storeTabFencesButton.enabled = false;
+            _exitButton.enabled = true;
+        }
 
-    private void OnStoreTabGenerators()
-    {
-        _storeTabFences.OnClose();
-        _storeTabWeapons.OnClose();
-        _storeTabGenerators.OnOpen();
-    }
+        public void EnableAllButton()
+        {
+            _exitButton.enabled = true;
+            _advertisingButton.enabled = true;
+            _deleteBuildingsButton.enabled = true;
+            _storeTabFencesButton.enabled = true;
+            _storeTabWeaponsButton.enabled = true;
+            _storeTabGeneratorsButton.enabled = true;
+        }
 
-    private void OnClaimCrystalsAdvertising()
-    {
-        _levelReward.ClaimCrystalsAdvertisingReward();
-    }
+        public void Open()
+        {
+            OnStoreTabWeapons();
+            OnOpen();
+        }
 
-    private void OnDeleteBuildingsButton()
-    {
-        BuildingsDeleted?.Invoke();
-        _buildingRemover.enabled = true;
+        private void OnExitButtonClick()
+        {
+            Exited?.Invoke();
+        }
+
+        private void OnStoreTabMainBuildings()
+        {
+            _storeTabFences.OnOpen();
+            _storeTabWeapons.OnClose();
+            _storeTabGenerators.OnClose();
+        }
+
+        private void OnStoreTabWeapons()
+        {
+            _storeTabFences.OnClose();
+            _storeTabWeapons.OnOpen();
+            _storeTabGenerators.OnClose();
+        }
+
+        private void OnStoreTabGenerators()
+        {
+            _storeTabFences.OnClose();
+            _storeTabWeapons.OnClose();
+            _storeTabGenerators.OnOpen();
+        }
+
+        private void OnClaimCrystalsAdvertising()
+        {
+            _levelReward.ClaimCrystalsAdvertisingReward();
+        }
+
+        private void OnDeleteBuildingsButton()
+        {
+            BuildingsDeleted?.Invoke();
+            _buildingRemover.enabled = true;
+        }
     }
 }

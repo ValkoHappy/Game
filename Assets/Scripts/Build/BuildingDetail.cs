@@ -1,22 +1,26 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(BoxCollider))]
-public class BuildingDetail : MonoBehaviour
+namespace Scripts.Build
 {
-    public void Bounce(float force, Vector3 center, float radius)
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(BoxCollider))]
+    public class BuildingDetail : MonoBehaviour
     {
-        if(TryGetComponent(out Rigidbody rigidbody))
+        public void Bounce(float force, Vector3 center, float radius)
         {
-            rigidbody.isKinematic = false;
-            rigidbody.AddExplosionForce(force, center, radius);
+            if (TryGetComponent(out Rigidbody rigidbody))
+            {
+                rigidbody.isKinematic = false;
+                rigidbody.AddExplosionForce(force, center, radius);
+            }
         }
-    }
 
-    public void ResetBounce()
-    {
-        if (TryGetComponent(out Rigidbody rigidbody))
+        public void ResetBounce()
         {
-            rigidbody.isKinematic = true;
+            if (TryGetComponent(out Rigidbody rigidbody))
+            {
+                rigidbody.isKinematic = true;
+            }
         }
     }
 }

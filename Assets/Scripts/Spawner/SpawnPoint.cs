@@ -1,8 +1,12 @@
+using Scripts.SO;
 using UnityEngine;
 
-public class SpawnPoint : MonoBehaviour
+namespace Scripts.Spawner
 {
-    [SerializeField] private Level.Side _side;
+    public class SpawnPoint : MonoBehaviour
+    {
+        [SerializeField] private Level.Side _side;
 
-    public Level.Side Side => _side;
+        public Level.Side Side => _side;
+    }
 }

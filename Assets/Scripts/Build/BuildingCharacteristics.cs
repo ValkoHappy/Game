@@ -1,80 +1,88 @@
 using Lean.Localization;
+using Scripts.Health;
+using Scripts.Miner;
+using Scripts.SO;
+using Scripts.Weapons.Turret;
+using Scripts.Yandex;
 using TMPro;
 using UnityEngine;
 
-public class BuildingCharacteristics : MonoBehaviour
+namespace Scripts.Build
 {
-    [SerializeField] private HealthHandler _healthContainer;
-    [SerializeField] private AttackTurret _shootTurret;
-    [SerializeField] private GeneratorMining _extraction;
-    [SerializeField] private Goods _goods;
-
-    [SerializeField] private TMP_Text _labelText;
-    [SerializeField] private TMP_Text _healthText;
-    [SerializeField] private TMP_Text _damageText;
-    [SerializeField] private GameObject _damageIcon;
-    [SerializeField] private TMP_Text _attackDelayText;
-    [SerializeField] private GameObject _attackDelayIcon;
-    [SerializeField] private TMP_Text _extractionsText;
-    [SerializeField] private GameObject _extractionsIcon;
-    [SerializeField] private GameObject _radiusAttack;
-
-    private Localization _localization;
-
-    public Goods Goods => _goods;
-
-    private void Awake()
+    public class BuildingCharacteristics : MonoBehaviour
     {
-        _localization = FindObjectOfType<Localization>();
-    }
+        [SerializeField] private HealthHandler _healthContainer;
+        [SerializeField] private AttackTurret _shootTurret;
+        [SerializeField] private GeneratorMining _extraction;
+        [SerializeField] private Goods _goods;
 
-    private void OnEnable()
-    {
-        _localization.LanguageChanged += UpdateTranslationText;
-    }
+        [SerializeField] private TMP_Text _labelText;
+        [SerializeField] private TMP_Text _healthText;
+        [SerializeField] private TMP_Text _damageText;
+        [SerializeField] private GameObject _damageIcon;
+        [SerializeField] private TMP_Text _attackDelayText;
+        [SerializeField] private GameObject _attackDelayIcon;
+        [SerializeField] private TMP_Text _extractionsText;
+        [SerializeField] private GameObject _extractionsIcon;
+        [SerializeField] private GameObject _radiusAttack;
 
-    private void OnDisable()
-    {
-        _localization.LanguageChanged -= UpdateTranslationText;
-    }
+        private Localization _localization;
 
-    private void Start()
-    {
-        UpdateTranslationText();
+        public Goods Goods => _goods;
 
-        if (_healthContainer != null)
-            _healthText.text = _healthContainer.Health.ToString();
-
-        if (_extraction != null)
-            _extractionsText.text = _extraction.AmountMoneyProduced.ToString();
-        else
-            _extractionsIcon.SetActive(false);
-
-        if (_shootTurret != null)
+        private void Awake()
         {
-            _damageText.text = _shootTurret.Damage.ToString();
-            _attackDelayText.text = _shootTurret.ShootDelay.ToString();
-            Vector3 scale = Vector3.one * _shootTurret.RadiusAttack * 2;
-            _radiusAttack.transform.localScale = scale;
+            _localization = FindObjectOfType<Localization>();
         }
-        else
-        {
-            _damageIcon.SetActive(false);
-            _attackDelayIcon.SetActive(false);
 
-            if(_radiusAttack != null )
+        private void OnEnable()
+        {
+            _localization.LanguageChanged += UpdateTranslationText;
+        }
+
+        private void OnDisable()
+        {
+            _localization.LanguageChanged -= UpdateTranslationText;
+        }
+
+        private void Start()
+        {
+            UpdateTranslationText();
+
+            if (_healthContainer != null)
+                _healthText.text = _healthContainer.Health.ToString();
+
+            if (_extraction != null)
+                _extractionsText.text = _extraction.AmountMoneyProduced.ToString();
+            else
+                _extractionsIcon.SetActive(false);
+
+            if (_shootTurret != null)
+            {
+                _damageText.text = _shootTurret.Damage.ToString();
+                _attackDelayText.text = _shootTurret.ShootDelay.ToString();
+                Vector3 scale = Vector3.one * _shootTurret.RadiusAttack * 2;
+                _radiusAttack.transform.localScale = scale;
+            }
+            else
+            {
+                _damageIcon.SetActive(false);
+                _attackDelayIcon.SetActive(false);
+
+                if (_radiusAttack != null)
+                    _radiusAttack.SetActive(false);
+            }
+        }
+
+        public void CloseRadiusAttack()
+        {
+            if (_radiusAttack != null)
                 _radiusAttack.SetActive(false);
         }
-    }
 
-    public void CloseRadiusAttack()
-    {
-        if (_radiusAttack != null)
-            _radiusAttack.SetActive(false);
-    }
-
-    private void UpdateTranslationText()
-    {
-        _labelText.text = LeanLocalization.GetTranslationText(_goods.Label);
+        private void UpdateTranslationText()
+        {
+            _labelText.text = LeanLocalization.GetTranslationText(_goods.Label);
+        }
     }
 }

@@ -1,51 +1,58 @@
 using System;
+using Scripts.Audio;
+using Scripts.Build;
+using Scripts.Enemy;
+using Scripts.Yandex;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtleScreen : UIScreenAnimator
+namespace Scripts.UI.Screen
 {
-    [SerializeField] private Button _exitButton;
-    [SerializeField] private Button _settingsButton;
-
-    [SerializeField] private EnemyHandler _enemyHandler;
-    [SerializeField] private BuildingsHandler _buildingsHandler;
-    [SerializeField] private Spawner _spawner;
-    [SerializeField] private GroundAudio _groundAudio;
-    [SerializeField] private YandexAds _yandexAds;
-
-    public event Action Exited;
-    public event Action SettingsOpened;
-
-    private void OnEnable()
+    public class ButtleScreen : UIScreenAnimator
     {
-        _enemyHandler.AllEnemiesKilled += OnClose;
-        _buildingsHandler.BuildingsBroked += OnClose;
+        [SerializeField] private Button _exitButton;
+        [SerializeField] private Button _settingsButton;
 
-        _exitButton.onClick.AddListener(OnExitButtonClick);
-        _settingsButton.onClick.AddListener(OnSettingsButtonClick);
-    }
+        [SerializeField] private EnemyHandler _enemyHandler;
+        [SerializeField] private BuildingsHandler _buildingsHandler;
+        [SerializeField] private Spawner.Spawner _spawner;
+        [SerializeField] private GroundAudio _groundAudio;
+        [SerializeField] private YandexAds _yandexAds;
 
-    private void OnDisable()
-    {
-        _enemyHandler.AllEnemiesKilled -= OnClose;
-        _buildingsHandler.BuildingsBroked -= OnClose;
+        public event Action Exited;
+        public event Action SettingsOpened;
 
-        _exitButton.onClick.RemoveListener(OnExitButtonClick);
-        _settingsButton.onClick.RemoveListener(OnSettingsButtonClick);
-    }
+        private void OnEnable()
+        {
+            _enemyHandler.AllEnemiesKilled += OnClose;
+            _buildingsHandler.BuildingsBroked += OnClose;
 
-    private void OnExitButtonClick()
-    {
-        Exited?.Invoke();
-        _enemyHandler.OnDestroyEnemies();
-        _buildingsHandler.OnCreateSavedBuildings();
-        _spawner.StartLevel();
-        _groundAudio.On—almClip();
-        _yandexAds.ShowInterstitial();
-    }
+            _exitButton.onClick.AddListener(OnExitButtonClick);
+            _settingsButton.onClick.AddListener(OnSettingsButtonClick);
+        }
 
-    private void OnSettingsButtonClick()
-    {
-        SettingsOpened?.Invoke();
+        private void OnDisable()
+        {
+            _enemyHandler.AllEnemiesKilled -= OnClose;
+            _buildingsHandler.BuildingsBroked -= OnClose;
+
+            _exitButton.onClick.RemoveListener(OnExitButtonClick);
+            _settingsButton.onClick.RemoveListener(OnSettingsButtonClick);
+        }
+
+        private void OnExitButtonClick()
+        {
+            Exited?.Invoke();
+            _enemyHandler.OnDestroyEnemies();
+            _buildingsHandler.OnCreateSavedBuildings();
+            _spawner.StartLevel();
+            _groundAudio.On—almClip();
+            _yandexAds.ShowInterstitial();
+        }
+
+        private void OnSettingsButtonClick()
+        {
+            SettingsOpened?.Invoke();
+        }
     }
 }

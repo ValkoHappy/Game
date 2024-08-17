@@ -2,61 +2,62 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHandler : MonoBehaviour
+namespace Scripts.Enemy
 {
-    private List<Enemy> _enemies;
-
-    private int _deadEnemiesCount;
-    private bool _isAttackBegun = false;
-
-    public event Action AllEnemiesKilled;
-    public event Action EnemiesIncluded;
-    public event Action EnemiesRemoved;
-
-    public bool IsAttackBegun => _isAttackBegun;
-
-    private void Awake()
+    public class EnemyHandler : MonoBehaviour
     {
-        _enemies = new List<Enemy>();
-    }
+        private List<Enemy> _enemies;
 
-    public void Add(Enemy enemy)
-    {
-        _enemies.Add(enemy);
-        enemy.Died += OnEnemyDeath;
-        enemy.enabled = false;
-        _isAttackBegun = false;
-    }
+        private bool _isAttackBegun = false;
 
-    public void OnEnemyDeath(Enemy enemy)
-    {
-        _enemies.Remove(enemy);
-        _deadEnemiesCount++;
-        enemy.Died -= OnEnemyDeath;
+        public event Action AllEnemiesKilled;
+        public event Action EnemiesIncluded;
+        public event Action EnemiesRemoved;
 
-        if (_enemies.Count <= 0)
-            AllEnemiesKilled?.Invoke();
-    }
+        public bool IsAttackBegun => _isAttackBegun;
 
-    public void OnDestroyEnemies()
-    {
-        foreach (var enemy in _enemies)
+        private void Awake()
         {
-            Destroy(enemy.gameObject);
+            _enemies = new List<Enemy>();
         }
 
-        _enemies.Clear();
-        EnemiesRemoved?.Invoke();
-    }
-
-    public void OnEnemies()
-    {
-        foreach (var enemy in _enemies)
+        public void Add(Enemy enemy)
         {
-            enemy.enabled = true;
-            _isAttackBegun = true;
+            _enemies.Add(enemy);
+            enemy.Died += OnEnemyDeath;
+            enemy.enabled = false;
+            _isAttackBegun = false;
         }
 
-        EnemiesIncluded?.Invoke();
+        public void OnEnemyDeath(Enemy enemy)
+        {
+            _enemies.Remove(enemy);
+            enemy.Died -= OnEnemyDeath;
+
+            if (_enemies.Count <= 0)
+                AllEnemiesKilled?.Invoke();
+        }
+
+        public void OnDestroyEnemies()
+        {
+            foreach (var enemy in _enemies)
+            {
+                Destroy(enemy.gameObject);
+            }
+
+            _enemies.Clear();
+            EnemiesRemoved?.Invoke();
+        }
+
+        public void OnEnemies()
+        {
+            foreach (var enemy in _enemies)
+            {
+                enemy.enabled = true;
+                _isAttackBegun = true;
+            }
+
+            EnemiesIncluded?.Invoke();
+        }
     }
 }

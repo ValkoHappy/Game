@@ -1,12 +1,16 @@
 using UnityEngine;
 
-public class LostObjectTransition : EnemyTransition
+namespace Scripts.Enemy.Transition
 {
-    [SerializeField] private float _minimumLostDistance;
-
-    private void Update()
+    public class LostObjectTransition : EnemyTransition
     {
-        if (Vector3.Distance(transform.position, PeacefulConstruction.transform.position) > _minimumLostDistance || PeacefulConstruction.IsAlive() == false)
-            NeedTransit = true;
+        [SerializeField] private float _minimumLostDistance;
+
+        private void Update()
+        {
+            if (Vector3.Distance(transform.position, PeacefulConstruction.transform.position) > _minimumLostDistance
+                || PeacefulConstruction.IsAlive == false)
+                NeedTransit = true;
+        }
     }
 }

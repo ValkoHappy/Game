@@ -1,53 +1,58 @@
+using Scripts.Build;
+using Scripts.Enemy.Transition;
 using UnityEngine;
 
-public class EnemyState : MonoBehaviour
+namespace Scripts.Enemy.States
 {
-    [SerializeField] private EnemyTransition[] _transitions;
-
-    public PeacefulConstruction PeacefulConstruction { get; private set; }
-    public Animator Animator { get; private set; }
-    public Rigidbody Rigidbody { get; private set; }
-    public EnemyTransition[] Transitions => _transitions;
-
-    public void Enter(PeacefulConstruction peacefulConstruction, Animator animator, Rigidbody rigidbody)
+    public class EnemyState : MonoBehaviour
     {
-        if (enabled == false)
+        [SerializeField] private EnemyTransition[] _transitions;
+
+        public PeacefulConstruction PeacefulConstruction { get; private set; }
+        public Animator Animator { get; private set; }
+        public Rigidbody Rigidbody { get; private set; }
+        public EnemyTransition[] Transitions => _transitions;
+
+        public void Enter(PeacefulConstruction peacefulConstruction, Animator animator, Rigidbody rigidbody)
         {
-            PeacefulConstruction = peacefulConstruction;
-            Animator = animator;
-            Rigidbody = rigidbody;
-
-            enabled = true;
-
-            foreach (var transition in _transitions)
+            if (enabled == false)
             {
-                transition.enabled = true;
-                transition.Init(PeacefulConstruction);
-            }
-        }
-    }
+                PeacefulConstruction = peacefulConstruction;
+                Animator = animator;
+                Rigidbody = rigidbody;
 
-    public EnemyState GetNextState()
-    {
-        foreach (var transition in _transitions)
-        {
-            if (transition.NeedTransit)
-                return transition.TargetState;
-        }
+                enabled = true;
 
-        return null;
-    }
-
-    public void Exit()
-    {
-        if (enabled == true)
-        {
-            foreach (var transition in _transitions)
-            {
-                transition.enabled = false;
+                foreach (var transition in _transitions)
+                {
+                    transition.enabled = true;
+                    transition.Init(PeacefulConstruction);
+                }
             }
         }
 
-        enabled = false;
+        public EnemyState GetNextState()
+        {
+            foreach (var transition in _transitions)
+            {
+                if (transition.NeedTransit)
+                    return transition.TargetState;
+            }
+
+            return null;
+        }
+
+        public void Exit()
+        {
+            if (enabled == true)
+            {
+                foreach (var transition in _transitions)
+                {
+                    transition.enabled = false;
+                }
+            }
+
+            enabled = false;
+        }
     }
 }

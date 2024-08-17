@@ -2,47 +2,50 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class BrokenState : EnemyState
+namespace Scripts.Enemy.States
 {
-    private const string Die = "Die";
-
-    [SerializeField] private float _fadeTime = 3.0f;
-    [SerializeField] private ParticleSystem _particleDied;
-
-    private Material enemyMaterial;
-
-    public event Action Died;
-
-    private void Awake()
+    public class BrokenState : EnemyState
     {
-        enemyMaterial = GetComponentInChildren<Renderer>().material;
-    }
+        private const string Die = "Die";
 
-    public void ApplyDamage(Rigidbody attachedBody, float force)
-    {
-        Vector3 impactDirection = (attachedBody.position - transform.position).normalized;
-        Animator.SetTrigger(Die);
-        Rigidbody.AddForce(impactDirection * force, ForceMode.Impulse);
-        StartCoroutine(FadeOut());
-        Died?.Invoke();
-    }
+        [SerializeField] private float _fadeTime = 3.0f;
+        [SerializeField] private ParticleSystem _particleDied;
 
-    private IEnumerator FadeOut()
-    {
-        Color enemyColor = enemyMaterial.color;
-        float elapsedTime = 0.0f;
-        Vector3 position = transform.position;
+        private Material enemyMaterial;
 
-        while (elapsedTime < _fadeTime)
+        public event Action Died;
+
+        private void Awake()
         {
-            float alpha = Mathf.Lerp(1.0f, 0.0f, elapsedTime / _fadeTime);
-            enemyColor.a = alpha;
-            enemyMaterial.color = enemyColor;
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            enemyMaterial = GetComponentInChildren<Renderer>().material;
         }
 
-        Instantiate(_particleDied, transform.position, transform.rotation);
-        Destroy(gameObject);
+        public void ApplyDamage(Rigidbody attachedBody, float force)
+        {
+            Vector3 impactDirection = (attachedBody.position - transform.position).normalized;
+            Animator.SetTrigger(Die);
+            Rigidbody.AddForce(impactDirection * force, ForceMode.Impulse);
+            StartCoroutine(FadeOut());
+            Died?.Invoke();
+        }
+
+        private IEnumerator FadeOut()
+        {
+            Color enemyColor = enemyMaterial.color;
+            float elapsedTime = 0.0f;
+            Vector3 position = transform.position;
+
+            while (elapsedTime < _fadeTime)
+            {
+                float alpha = Mathf.Lerp(1.0f, 0.0f, elapsedTime / _fadeTime);
+                enemyColor.a = alpha;
+                enemyMaterial.color = enemyColor;
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            Instantiate(_particleDied, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }

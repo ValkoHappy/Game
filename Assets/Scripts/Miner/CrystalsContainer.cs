@@ -1,31 +1,35 @@
 using System;
+using Scripts.SO;
 using UnityEngine;
 
-public class CrystalsContainer : MonoBehaviour
+namespace Scripts.Miner
 {
-    [SerializeField] private int _crystals;
-
-    public event Action<int> CrystalsChanged;
-    public int Crystals => _crystals;
-
-    public void Add(int value)
+    public class CrystalsContainer : MonoBehaviour
     {
-        _crystals += value;
-        CrystalsChanged?.Invoke(_crystals);
-    }
+        [SerializeField] private int _crystals;
 
-    public void BuyBuilding(Goods statsBuilding)
-    {
-        _crystals -= statsBuilding.Price;
+        public event Action<int> CrystalsChanged;
+        public int Crystals => _crystals;
 
-        if(_crystals < 0)
-            _crystals = 0;
+        public void Add(int value)
+        {
+            _crystals += value;
+            CrystalsChanged?.Invoke(_crystals);
+        }
 
-        CrystalsChanged?.Invoke(_crystals);
-    }
+        public void BuyBuilding(Goods statsBuilding)
+        {
+            _crystals -= statsBuilding.Price;
 
-    public void Init(int crystals)
-    {
-        _crystals = crystals;
+            if (_crystals < 0)
+                _crystals = 0;
+
+            CrystalsChanged?.Invoke(_crystals);
+        }
+
+        public void Init(int crystals)
+        {
+            _crystals = crystals;
+        }
     }
 }

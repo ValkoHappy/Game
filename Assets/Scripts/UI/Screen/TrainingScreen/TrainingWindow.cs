@@ -2,44 +2,47 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TrainingWindow : UIScreenAnimator
+namespace Scripts.UI.Screen.TrainingScreen
 {
-    [SerializeField] private GameObject _indicator;
-    [SerializeField] private Button _openPanelButton;
-    [SerializeField] private Button _resumeButton;
-
-    public event Action Resumed;
-
-    private void OnEnable()
+    public class TrainingWindow : UIScreenAnimator
     {
-        _resumeButton.onClick.AddListener(OnResumeButtonClick);
+        [SerializeField] private GameObject _indicator;
+        [SerializeField] private Button _openPanelButton;
+        [SerializeField] private Button _resumeButton;
 
-        if (_openPanelButton != null)
-            _openPanelButton.onClick.AddListener(OnOpen);
-    }
+        public event Action Resumed;
 
-    private void OnDisable()
-    {
-        _resumeButton.onClick.RemoveListener(OnResumeButtonClick);
+        private void OnEnable()
+        {
+            _resumeButton.onClick.AddListener(OnResumeButtonClick);
 
-        if (_openPanelButton != null)
-            _openPanelButton.onClick.RemoveListener(OnOpen);
-    }
+            if (_openPanelButton != null)
+                _openPanelButton.onClick.AddListener(OnOpen);
+        }
 
-    public override void OnOpen()
-    {
-        base.OnOpen();
+        private void OnDisable()
+        {
+            _resumeButton.onClick.RemoveListener(OnResumeButtonClick);
 
-        if(_indicator != null)
-            _indicator.SetActive(true);
-    }
+            if (_openPanelButton != null)
+                _openPanelButton.onClick.RemoveListener(OnOpen);
+        }
 
-    private void OnResumeButtonClick()
-    {
-        Resumed?.Invoke();
-        OnClose();
+        public override void OnOpen()
+        {
+            base.OnOpen();
 
-        if (_indicator != null)
-            _indicator.SetActive(false);
+            if (_indicator != null)
+                _indicator.SetActive(true);
+        }
+
+        private void OnResumeButtonClick()
+        {
+            Resumed?.Invoke();
+            OnClose();
+
+            if (_indicator != null)
+                _indicator.SetActive(false);
+        }
     }
 }

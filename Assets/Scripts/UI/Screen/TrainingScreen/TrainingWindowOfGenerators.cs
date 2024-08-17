@@ -1,49 +1,53 @@
 using System;
+using Scripts.Build;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TrainingWindowOfGenerators : UIScreenAnimator
+namespace Scripts.UI.Screen.TrainingScreen
 {
-    private const string Oil = "Oil";
-
-    [SerializeField] private GameObject _indicator;
-    [SerializeField] private Button _resumeButton;
-    [SerializeField] private GameObject _shop;
-    [SerializeField] private BuildingsGrid _buildingGrid;
-
-    public event Action Resumed;
-
-    private void OnEnable()
+    public class TrainingWindowOfGenerators : UIScreenAnimator
     {
-        _resumeButton.onClick.AddListener(OnResumeButtonClick);
-        _buildingGrid.BuildingSupplied += OnOpen;
-    }
+        private const string Oil = "Oil";
 
-    private void OnDisable()
-    {
-        _resumeButton.onClick.RemoveListener(OnResumeButtonClick);
-        _buildingGrid.BuildingSupplied -= OnOpen;
-    }
+        [SerializeField] private GameObject _indicator;
+        [SerializeField] private Button _resumeButton;
+        [SerializeField] private GameObject _shop;
+        [SerializeField] private BuildingsGrid _buildingGrid;
 
-    private void OnOpen(Building building)
-    {
-        if (building.tag == Oil)
+        public event Action Resumed;
+
+        private void OnEnable()
         {
-            _shop.SetActive(false);
-            OnOpen();
+            _resumeButton.onClick.AddListener(OnResumeButtonClick);
+            _buildingGrid.BuildingSupplied += OnOpen;
+        }
+
+        private void OnDisable()
+        {
+            _resumeButton.onClick.RemoveListener(OnResumeButtonClick);
+            _buildingGrid.BuildingSupplied -= OnOpen;
+        }
+
+        private void OnOpen(Build.Building building)
+        {
+            if (building.tag == Oil)
+            {
+                _shop.SetActive(false);
+                OnOpen();
+
+                if (_indicator != null)
+                    _indicator.SetActive(true);
+            }
+        }
+
+        private void OnResumeButtonClick()
+        {
+            _shop.SetActive(true);
+            Resumed?.Invoke();
+            OnClose();
 
             if (_indicator != null)
-                _indicator.SetActive(true);
+                _indicator.SetActive(false);
         }
-    }
-
-    private void OnResumeButtonClick()
-    {
-        _shop.SetActive(true);
-        Resumed?.Invoke();
-        OnClose();
-
-        if (_indicator != null)
-            _indicator.SetActive(false);
     }
 }

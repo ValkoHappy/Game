@@ -1,84 +1,88 @@
+using Scripts.Build;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TrainingWindowUsingArrows : UIScreenAnimator
+namespace Scripts.UI.Screen.TrainingScreen
 {
-    private const string Turret = "Turret";
-    private const string Oil = "Oil";
-    private const string Fence = "Fence";
-
-    [SerializeField] private Button _shopButton;
-    [SerializeField] private Button _generationsShopButton;
-    [SerializeField] private Button _fencesShopButton;
-    [SerializeField] private Button _exitShopButton;
-
-    [SerializeField] private GameObject _arrowPointingToGenerators;
-    [SerializeField] private GameObject _arrowPointingToFences;
-    [SerializeField] private GameObject _arrowPointingToExitButton;
-    [SerializeField] private GameObject _atrrowOnProduct;
-
-    [SerializeField] private ShopScreen _shopScreen;
-    [SerializeField] private BuildingsGrid _buildingGrid;
-
-    private void Start()
+    public class TrainingWindowUsingArrows : UIScreenAnimator
     {
-        _shopScreen.TurnOffAllButton();
-    }
+        private const string Turret = "Turret";
+        private const string Oil = "Oil";
+        private const string Fence = "Fence";
 
-    private void OnEnable()
-    {
-        _shopButton.onClick.AddListener(OnEnableAtrrowProduct);
-        _generationsShopButton.onClick.AddListener(OnEnableAtrrowProduct);
-        _fencesShopButton.onClick.AddListener(OnEnableAtrrowProduct);
-        _exitShopButton.onClick.AddListener(OnTurnOffAtrrowProduct);
-        _buildingGrid.BuildingCreated += OnTurnOffAtrrowProduct;
-        _buildingGrid.BuildingSupplied += OnOpenIndicators;
-        _buildingGrid.BuildingRemoved += OnEnableAtrrowProduct;
-    }
+        [SerializeField] private Button _shopButton;
+        [SerializeField] private Button _generationsShopButton;
+        [SerializeField] private Button _fencesShopButton;
+        [SerializeField] private Button _exitShopButton;
 
-    private void OnDisable()
-    {
-        _shopButton.onClick.RemoveListener(OnEnableAtrrowProduct);
-        _generationsShopButton.onClick.RemoveListener(OnEnableAtrrowProduct);
-        _fencesShopButton.onClick.RemoveListener(OnEnableAtrrowProduct);
-        _exitShopButton.onClick.RemoveListener(OnTurnOffAtrrowProduct);
-        _buildingGrid.BuildingCreated -= OnTurnOffAtrrowProduct;
-        _buildingGrid.BuildingSupplied -= OnOpenIndicators;
-        _buildingGrid.BuildingRemoved -= OnEnableAtrrowProduct;;
-    }
+        [SerializeField] private GameObject _arrowPointingToGenerators;
+        [SerializeField] private GameObject _arrowPointingToFences;
+        [SerializeField] private GameObject _arrowPointingToExitButton;
+        [SerializeField] private GameObject _atrrowOnProduct;
 
-    public void OnEnableAtrrowProduct()
-    {
-        _atrrowOnProduct.SetActive(true);
-        _arrowPointingToGenerators.SetActive(false);
-        _arrowPointingToFences.SetActive(false);
-    }
+        [SerializeField] private ShopScreen _shopScreen;
+        [SerializeField] private BuildingsGrid _buildingGrid;
 
-    private void OnOpenIndicators(Building building)
-    {
-        if (building.tag == Turret)
+        private void Start()
         {
-            _shopScreen.EnabletGeneratorsButton();
-            _arrowPointingToGenerators.SetActive(true);
+            _shopScreen.TurnOffAllButton();
         }
-        else if (building.tag == Oil)
+
+        private void OnEnable()
         {
-            _shopScreen.EnabletFencesButton();
+            _shopButton.onClick.AddListener(OnEnableArrowProduct);
+            _generationsShopButton.onClick.AddListener(OnEnableArrowProduct);
+            _fencesShopButton.onClick.AddListener(OnEnableArrowProduct);
+            _exitShopButton.onClick.AddListener(OnTurnOffArrowProduct);
+            _buildingGrid.BuildingCreated += OnTurnOffArrowProduct;
+            _buildingGrid.BuildingSupplied += OnOpenIndicators;
+            _buildingGrid.BuildingRemoved += OnEnableArrowProduct;
+        }
+
+        private void OnDisable()
+        {
+            _shopButton.onClick.RemoveListener(OnEnableArrowProduct);
+            _generationsShopButton.onClick.RemoveListener(OnEnableArrowProduct);
+            _fencesShopButton.onClick.RemoveListener(OnEnableArrowProduct);
+            _exitShopButton.onClick.RemoveListener(OnTurnOffArrowProduct);
+            _buildingGrid.BuildingCreated -= OnTurnOffArrowProduct;
+            _buildingGrid.BuildingSupplied -= OnOpenIndicators;
+            _buildingGrid.BuildingRemoved -= OnEnableArrowProduct;
+        }
+
+        public void OnEnableArrowProduct()
+        {
+            _atrrowOnProduct.SetActive(true);
             _arrowPointingToGenerators.SetActive(false);
-            _arrowPointingToFences.SetActive(true);
-        }
-        else if (building.tag == Fence)
-        {
-            _shopScreen.EnabletExitButton();
             _arrowPointingToFences.SetActive(false);
-            _atrrowOnProduct.SetActive(false);
-            _arrowPointingToExitButton.SetActive(true);
         }
-    }
 
-    private void OnTurnOffAtrrowProduct()
-    {
-        _atrrowOnProduct.SetActive(false);
-        _arrowPointingToExitButton.SetActive(false);
+        private void OnOpenIndicators(Build.Building building)
+        {
+            if (building.tag == Turret)
+            {
+                _shopScreen.EnableGeneratorsButton();
+                _arrowPointingToGenerators.SetActive(true);
+            }
+            else if (building.tag == Oil)
+            {
+                _shopScreen.EnableFencesButton();
+                _arrowPointingToGenerators.SetActive(false);
+                _arrowPointingToFences.SetActive(true);
+            }
+            else if (building.tag == Fence)
+            {
+                _shopScreen.EnableExitButton();
+                _arrowPointingToFences.SetActive(false);
+                _atrrowOnProduct.SetActive(false);
+                _arrowPointingToExitButton.SetActive(true);
+            }
+        }
+
+        private void OnTurnOffArrowProduct()
+        {
+            _atrrowOnProduct.SetActive(false);
+            _arrowPointingToExitButton.SetActive(false);
+        }
     }
 }

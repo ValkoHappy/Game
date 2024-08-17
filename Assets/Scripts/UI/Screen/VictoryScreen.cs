@@ -1,80 +1,87 @@
 using System;
+using Scripts.Build;
+using Scripts.Camera;
+using Scripts.Enemy;
+using Scripts.Yandex;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VictoryScreen : UIScreenAnimator
+namespace Scripts.UI.Screen
 {
-    [SerializeField] private Button _resumeButton;
-    [SerializeField] private Button _bonusButton;
-
-    [SerializeField] private Spawner _spawner;
-    [SerializeField] private EnemyHandler _enemyHandler;
-    [SerializeField] private BuildingsHandler _buildingsHandler;
-    [SerializeField] private BuildingsGrid _buildingsGrid;
-    [SerializeField] private SaveSystem _saveSystem;
-    [SerializeField] private MovingCameraSpawnEnemies _movingCameraSpawnEnemies;
-    [SerializeField] private LevelReward _levelReward;
-    [SerializeField] private StarsScore _starsScore;
-    [SerializeField] private YandexAds _yandexAds;
-    [SerializeField] private ButtonRewardAd _buttonRewardAd;
-
-    public event Action Resumed;
-    public event Action BonusGetted;
-
-    private void OnEnable()
+    public class VictoryScreen : UIScreenAnimator
     {
-        _enemyHandler.AllEnemiesKilled += OnOpen;
+        [SerializeField] private Button _resumeButton;
+        [SerializeField] private Button _bonusButton;
 
-        _resumeButton.onClick.AddListener(OnResumeButton);
-        _bonusButton.onClick.AddListener(ReawardAd);
+        [SerializeField] private Spawner.Spawner _spawner;
+        [SerializeField] private EnemyHandler _enemyHandler;
+        [SerializeField] private BuildingsHandler _buildingsHandler;
+        [SerializeField] private BuildingsGrid _buildingsGrid;
+        [SerializeField] private SaveSystem.SaveSystem _saveSystem;
+        [SerializeField] private MovingCameraSpawnEnemies _movingCameraSpawnEnemies;
+        [SerializeField] private LevelReward _levelReward;
+        [SerializeField] private StarsScore _starsScore;
+        [SerializeField] private YandexAds _yandexAds;
+        [SerializeField] private ButtonRewardAd _buttonRewardAd;
 
-        _buttonRewardAd.Shown += OnBonusButton;
-    }
+        public event Action Resumed;
+        public event Action BonusGetted;
 
-    private void OnDisable()
-    {
-        _enemyHandler.AllEnemiesKilled -= OnOpen;
+        private void OnEnable()
+        {
+            _enemyHandler.AllEnemiesKilled += OnOpen;
 
-        _resumeButton.onClick.RemoveListener(OnResumeButton);
-        _bonusButton.onClick.RemoveListener(ReawardAd);
+            _resumeButton.onClick.AddListener(OnResumeButton);
+            _bonusButton.onClick.AddListener(ReawardAd);
 
-        _buttonRewardAd.Shown -= OnBonusButton;
-    }
+            _buttonRewardAd.Shown += OnBonusButton;
+        }
 
-    private void OnResumeButton()
-    {
-        _yandexAds.ShowInterstitial();
-        Resumed?.Invoke();
-        _levelReward.ClaimReward();
-        OnMenuAfterFightScreen();
-    }
+        private void OnDisable()
+        {
+            _enemyHandler.AllEnemiesKilled -= OnOpen;
 
-    private void ReawardAd()
-    {
-        _buttonRewardAd.ShowRewardAd();
-    }
+            _resumeButton.onClick.RemoveListener(OnResumeButton);
+            _bonusButton.onClick.RemoveListener(ReawardAd);
 
-    private void OnBonusButton()
-    {
-        _levelReward.OnClaimDouble();
-        BonusGetted?.Invoke();
-        OnMenuAfterFightScreen();
-    }
+            _buttonRewardAd.Shown -= OnBonusButton;
+        }
 
-    private void OnMenuAfterFightScreen()
-    {
-        _starsScore.RemoveAllBuildingsCount();
-        _spawner.ShowLevel();
-        _enemyHandler.OnDestroyEnemies();
-        _buildingsHandler.OnDestroyAllBuildings();
-        _buildingsGrid.RemoveGrid();
-        _buildingsGrid.CreateTowerHall();
-        _saveSystem.Save();
+        private void OnResumeButton()
+        {
+            _yandexAds.ShowInterstitial();
+            Resumed?.Invoke();
+            _levelReward.ClaimReward();
+            OnMenuAfterFightScreen();
+        }
 
-        if (_spawner.CheckMaximumLevel())
-            _saveSystem.ResetLevel();
+        private void ReawardAd()
+        {
+            _buttonRewardAd.ShowRewardAd();
+        }
 
-        _spawner.StartLevel();
-        _movingCameraSpawnEnemies.OnRotationCamera();
+        private void OnBonusButton()
+        {
+            _levelReward.OnClaimDouble();
+            BonusGetted?.Invoke();
+            OnMenuAfterFightScreen();
+        }
+
+        private void OnMenuAfterFightScreen()
+        {
+            _starsScore.RemoveAllBuildingsCount();
+            _spawner.ShowLevel();
+            _enemyHandler.OnDestroyEnemies();
+            _buildingsHandler.OnDestroyAllBuildings();
+            _buildingsGrid.RemoveGrid();
+            _buildingsGrid.CreateTowerHall();
+            _saveSystem.Save();
+
+            if (_spawner.CheckMaximumLevel())
+                _saveSystem.ResetLevel();
+
+            _spawner.StartLevel();
+            _movingCameraSpawnEnemies.OnRotationCamera();
+        }
     }
 }

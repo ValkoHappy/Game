@@ -1,41 +1,46 @@
+using Scripts.Build;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent), typeof(FoundBuildings))]
-public class ChaseState : EnemyState
+namespace Scripts.Enemy.States
 {
-    private const string Run = "Run";
-
-    private FoundBuildings _foundBuildings;
-    private NavMeshAgent _agent;
-    private PeacefulConstruction _targetConstruction;
-
-    private float _maxValue = 0.01f;
-    private float _minValue = 0.0f;
-
-    private void Awake()
+    [RequireComponent(typeof(NavMeshAgent))]
+    [RequireComponent(typeof(FoundBuildings))]
+    public class ChaseState : EnemyState
     {
-        _foundBuildings = GetComponent<FoundBuildings>();
-        _agent = GetComponent<NavMeshAgent>();
-    }
+        private const string Run = "Run";
 
-    private void OnEnable()
-    {
-        Animator.SetFloat(Run, _maxValue);
-        _agent.enabled = true;
-    }
+        private FoundBuildings _foundBuildings;
+        private NavMeshAgent _agent;
+        private PeacefulConstruction _targetConstruction;
 
-    private void OnDisable()
-    {
-        Animator.SetFloat(Run, _minValue);
-        _agent.enabled = false;
-    }
+        private float _maxValue = 0.01f;
+        private float _minValue = 0.0f;
 
-    private void Update()
-    {
-        _targetConstruction = _foundBuildings.TargetConstruction;
+        private void Awake()
+        {
+            _foundBuildings = GetComponent<FoundBuildings>();
+            _agent = GetComponent<NavMeshAgent>();
+        }
 
-        if (_targetConstruction != null)
-            _agent.SetDestination(_targetConstruction.transform.position);
+        private void OnEnable()
+        {
+            Animator.SetFloat(Run, _maxValue);
+            _agent.enabled = true;
+        }
+
+        private void OnDisable()
+        {
+            Animator.SetFloat(Run, _minValue);
+            _agent.enabled = false;
+        }
+
+        private void Update()
+        {
+            _targetConstruction = _foundBuildings.TargetConstruction;
+
+            if (_targetConstruction != null)
+                _agent.SetDestination(_targetConstruction.transform.position);
+        }
     }
 }

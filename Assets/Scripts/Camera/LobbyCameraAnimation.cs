@@ -1,20 +1,23 @@
-using UnityEngine;
 using DG.Tweening;
+using UnityEngine;
 
-public class LobbyCameraAnimation : CameraAnimation
+namespace Scripts.Camera
 {
-    [SerializeField] private Vector3[] _waypoints;
-
-    private Tween _tween;
-
-    private void Start()
+    public class LobbyCameraAnimation : CameraAnimation
     {
-        OnRotationCamera();
-    }
+        [SerializeField] private Vector3[] _waypoints;
 
-    public override void OnRotationCamera()
-    {
-        _tween.Kill();
-        _tween = transform.DOLocalPath(_waypoints, Duration, PathType.Linear);
+        private Tween _tween;
+
+        private void Start()
+        {
+            OnRotationCamera();
+        }
+
+        public override void OnRotationCamera()
+        {
+            _tween.Kill();
+            _tween = transform.DOLocalPath(_waypoints, Duration, PathType.Linear);
+        }
     }
 }

@@ -1,8 +1,11 @@
-public class DiedObjectTransition : EnemyTransition
+namespace Scripts.Enemy.Transition
 {
-    private void Update()
+    public class DiedObjectTransition : EnemyTransition
     {
-        if (PeacefulConstruction.IsAlive() == false)
-            NeedTransit = true;
+        private void Update()
+        {
+            if (PeacefulConstruction.IsAlive == false)
+                NeedTransit = true;
+        }
     }
 }

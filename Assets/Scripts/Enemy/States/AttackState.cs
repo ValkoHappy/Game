@@ -1,52 +1,55 @@
 using System.Collections;
 using UnityEngine;
 
-public class AttackState : EnemyState
+namespace Scripts.Enemy.States
 {
-    private const string Attack = "Attack";
-
-    [SerializeField] private float _attackForce;
-    [SerializeField] private float _attackDelay;
-
-    private Coroutine _attackCoroutine;
-    private WaitForSeconds _attackWait;
-
-    private void Awake()
+    public class AttackState : EnemyState
     {
-        _attackWait = new WaitForSeconds(_attackDelay);
-    }
+        private const string Attack = "Attack";
 
-    private void OnEnable()
-    {
-        if(enabled)
-            StartCombat();
-    }
+        [SerializeField] private float _attackForce;
+        [SerializeField] private float _attackDelay;
 
-    private void OnDisable()
-    {
-        if (_attackCoroutine != null)
-            StopCoroutine(_attackCoroutine);
-    }
+        private Coroutine _attackCoroutine;
+        private WaitForSeconds _attackWait;
 
-    private void StartCombat()
-    {
-        if (_attackCoroutine != null)
+        private void Awake()
         {
-            StopCoroutine(_attackCoroutine);
-            _attackCoroutine = null;
+            _attackWait = new WaitForSeconds(_attackDelay);
         }
 
-        _attackCoroutine = StartCoroutine(ExecuteCombat());
-    }
+        private void OnEnable()
+        {
+            if (enabled)
+                StartCombat();
+        }
 
-    private IEnumerator ExecuteCombat()
-    {
-        Animator.SetTrigger(Attack);
-    
-        PeacefulConstruction.ApplyDamage(_attackForce);
-        yield return _attackWait;
+        private void OnDisable()
+        {
+            if (_attackCoroutine != null)
+                StopCoroutine(_attackCoroutine);
+        }
 
-        if(PeacefulConstruction.IsAlive())
-            StartCombat();
+        private void StartCombat()
+        {
+            if (_attackCoroutine != null)
+            {
+                StopCoroutine(_attackCoroutine);
+                _attackCoroutine = null;
+            }
+
+            _attackCoroutine = StartCoroutine(ExecuteCombat());
+        }
+
+        private IEnumerator ExecuteCombat()
+        {
+            Animator.SetTrigger(Attack);
+
+            PeacefulConstruction.ApplyDamage(_attackForce);
+            yield return _attackWait;
+
+            if (PeacefulConstruction.IsAlive)
+                StartCombat();
+        }
     }
 }

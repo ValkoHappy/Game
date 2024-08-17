@@ -1,160 +1,165 @@
 using System;
+using Scripts.UI;
+using Scripts.UI.Building;
+using static Scripts.UI.Building.MoveSelection;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static MoveSelection;
 
-public class BuildingsGrid : MonoBehaviour
+namespace Scripts.Build
 {
-    [SerializeField] private BuildingsHandler _buildingsHandler;
-
-    [SerializeField] private Vector2Int _gridSize;
-    [SerializeField] private Transform _container;
-    [SerializeField] private Building _towerHall;
-    [SerializeField] private StarsScore _starsScore;
-
-    private Building[,] _grid;
-    private Building _flyingBuilding;
-    private Camera _camera;
-    private bool _isBuildingSelected = false;
-    private bool _isBuild;
-
-    private MoveSelection _moveSelection;
-
-    public event Action BuildingCreated;
-    public event Action BuildingDelivered;
-    public event Action<Building> BuildingDestroyed;
-    public event Action<Building> BuildingSupplied;
-    public event Action BuildingRemoved;
-
-    private void Awake()
+    public class BuildingsGrid : MonoBehaviour
     {
-        _grid = new Building[_gridSize.x, _gridSize.y];
-        _moveSelection = GetComponent<MoveSelection>();
-        _camera = Camera.main;
-    }
+        [SerializeField] private BuildingsHandler _buildingsHandler;
 
-    private void Start()
-    {
-        CreateTowerHall();
-    }
+        [SerializeField] private Vector2Int _gridSize;
+        [SerializeField] private Transform _container;
+        [SerializeField] private Building _towerHall;
+        [SerializeField] private StarsScore _starsScore;
 
-    private void Update()
-    {
-        if (_flyingBuilding != null)
+        private Building[,] _grid;
+        private Building _flyingBuilding;
+        private UnityEngine.Camera _camera;
+        private bool _isBuildingSelected = false;
+        private bool _isBuild;
+
+        private MoveSelection _moveSelection;
+
+        public event Action BuildingCreated;
+        public event Action BuildingDelivered;
+        public event Action<Building> BuildingDestroyed;
+        public event Action<Building> BuildingSupplied;
+        public event Action BuildingRemoved;
+
+        private void Awake()
         {
-            int x = Mathf.RoundToInt(_flyingBuilding.transform.position.x);
-            int y = Mathf.RoundToInt(_flyingBuilding.transform.position.z);
+            _grid = new Building[_gridSize.x, _gridSize.y];
+            _moveSelection = GetComponent<MoveSelection>();
+            _camera = UnityEngine.Camera.main;
+        }
 
-            if (x < 0 || y < 0 || x + _flyingBuilding.TileSize.x > _gridSize.x || y + _flyingBuilding.TileSize.y > _gridSize.y || GetIsPlaceTaken(x, y))
+        private void Start()
+        {
+            CreateTowerHall();
+        }
+
+        private void Update()
+        {
+            if (_flyingBuilding != null)
             {
-                _flyingBuilding.SetTransparent(false);
-                _isBuild = false;
-            }
-            else
-            {
-                _flyingBuilding.SetTransparent(true);
-                _isBuild = true;
+                int x = Mathf.RoundToInt(_flyingBuilding.transform.position.x);
+                int y = Mathf.RoundToInt(_flyingBuilding.transform.position.z);
 
-                if (_moveSelection.Mode == BuildingMode.Insert && _isBuild)
-                    PlaceFlyingBuilding(x, y);
-            }
-
-            if (_moveSelection.Mode == BuildingMode.Delete)
-            {
-                BuildingDestroyed?.Invoke(_flyingBuilding);
-                Destroy(_flyingBuilding.gameObject);
-                _flyingBuilding = null;
-                BuildingRemoved?.Invoke();
-            }
-
-            _moveSelection.SetBuildingModeMovement();
-
-            if (_isBuildingSelected && Input.GetMouseButton(0))
-            {
-                var groundPlane = new Plane(Vector3.up, Vector3.zero);
-                Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
-
-                if (EventSystem.current.IsPointerOverGameObject())
-                    return;
-
-                if (groundPlane.Raycast(ray, out float hit))
+                if (x < 0 || y < 0 || x + _flyingBuilding.TileSize.x > _gridSize.x || y + _flyingBuilding.TileSize.y > _gridSize.y || GetIsPlaceTaken(x, y))
                 {
-                    Vector3 newPosition = ray.GetPoint(hit);
-                    int positionX = Mathf.RoundToInt(newPosition.x);
-                    int positionY = Mathf.RoundToInt(newPosition.z);
-                    positionX = Mathf.Clamp(positionX, 0, _gridSize.x - _flyingBuilding.TileSize.x);
-                    positionY = Mathf.Clamp(positionY, 0, _gridSize.y - _flyingBuilding.TileSize.y);
-                    _flyingBuilding.transform.position = new Vector3(positionX, 0, positionY);
+                    _flyingBuilding.SetTransparent(false);
+                    _isBuild = false;
+                }
+                else
+                {
+                    _flyingBuilding.SetTransparent(true);
+                    _isBuild = true;
+
+                    if (_moveSelection.Mode == BuildingMode.Insert && _isBuild)
+                        PlaceFlyingBuilding(x, y);
+                }
+
+                if (_moveSelection.Mode == BuildingMode.Delete)
+                {
+                    BuildingDestroyed?.Invoke(_flyingBuilding);
+                    Destroy(_flyingBuilding.gameObject);
+                    _flyingBuilding = null;
+                    BuildingRemoved?.Invoke();
+                }
+
+                _moveSelection.SetBuildingModeMovement();
+
+                if (_isBuildingSelected && Input.GetMouseButton(0))
+                {
+                    var groundPlane = new Plane(Vector3.up, Vector3.zero);
+                    Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
+
+                    if (EventSystem.current.IsPointerOverGameObject())
+                        return;
+
+                    if (groundPlane.Raycast(ray, out float hit))
+                    {
+                        Vector3 newPosition = ray.GetPoint(hit);
+                        int positionX = Mathf.RoundToInt(newPosition.x);
+                        int positionY = Mathf.RoundToInt(newPosition.z);
+                        positionX = Mathf.Clamp(positionX, 0, _gridSize.x - _flyingBuilding.TileSize.x);
+                        positionY = Mathf.Clamp(positionY, 0, _gridSize.y - _flyingBuilding.TileSize.y);
+                        _flyingBuilding.transform.position = new Vector3(positionX, 0, positionY);
+                    }
                 }
             }
         }
-    }
 
-    public Building CreateBuilding(Building buildingPrefab)
-    {
-        if (_flyingBuilding != null)
-            Destroy(_flyingBuilding.gameObject);
-
-        _isBuildingSelected = true;
-        _flyingBuilding = Instantiate(buildingPrefab, _container);
-        BuildingCreated?.Invoke();
-        _flyingBuilding.Create();
-
-        return _flyingBuilding;
-    }
-
-    public void RemoveGrid()
-    {
-        _grid = new Building[_gridSize.x, _gridSize.y];
-    }
-
-    public void CreateTowerHall()
-    {
-        _flyingBuilding = Instantiate(_towerHall, _container);
-        _buildingsHandler.AddBuilding(_flyingBuilding.PeacefulConstruction);
-        int placeX = Mathf.RoundToInt(_flyingBuilding.transform.position.x);
-        int placeY = Mathf.RoundToInt(_flyingBuilding.transform.position.z);
-
-        for (int i = 0; i < _flyingBuilding.TileSize.x; i++)
+        public Building CreateBuilding(Building buildingPrefab)
         {
-            for (int j = 0; j < _flyingBuilding.TileSize.y; j++)
-            {
-                _grid[placeX + i, placeY + j] = _flyingBuilding;
-            }
+            if (_flyingBuilding != null)
+                Destroy(_flyingBuilding.gameObject);
+
+            _isBuildingSelected = true;
+            _flyingBuilding = Instantiate(buildingPrefab, _container);
+            BuildingCreated?.Invoke();
+            _flyingBuilding.Create();
+
+            return _flyingBuilding;
         }
 
-        _flyingBuilding = null;
-    }
-
-    private bool GetIsPlaceTaken(int placeX, int placeY)
-    {
-        for (int i = 0; i < _flyingBuilding.TileSize.x; i++)
+        public void RemoveGrid()
         {
-            for (int j = 0; j < _flyingBuilding.TileSize.y; j++)
-            {
-                if (placeX + i >= _gridSize.x || placeY + j >= _gridSize.y || _grid[placeX + i, placeY + j] != null)
-                    return true;
-            }
+            _grid = new Building[_gridSize.x, _gridSize.y];
         }
 
-        return false;
-    }
-
-    private void PlaceFlyingBuilding(int placeX, int placeY)
-    {
-        for (int i = 0; i < _flyingBuilding.TileSize.x; i++)
+        public void CreateTowerHall()
         {
-            for (int j = 0; j < _flyingBuilding.TileSize.y; j++)
+            _flyingBuilding = Instantiate(_towerHall, _container);
+            _buildingsHandler.AddBuilding(_flyingBuilding.PeacefulConstruction);
+            int placeX = Mathf.RoundToInt(_flyingBuilding.transform.position.x);
+            int placeY = Mathf.RoundToInt(_flyingBuilding.transform.position.z);
+
+            for (int i = 0; i < _flyingBuilding.TileSize.x; i++)
             {
-                _grid[placeX + i, placeY + j] = _flyingBuilding;
+                for (int j = 0; j < _flyingBuilding.TileSize.y; j++)
+                {
+                    _grid[placeX + i, placeY + j] = _flyingBuilding;
+                }
             }
+
+            _flyingBuilding = null;
         }
 
-        _isBuildingSelected = false;
-        _flyingBuilding.SetNormal();
-        BuildingSupplied?.Invoke(_flyingBuilding);
-        BuildingDelivered?.Invoke();
-        _starsScore.AddBuildingsCount();
-        _flyingBuilding = null;
+        private bool GetIsPlaceTaken(int placeX, int placeY)
+        {
+            for (int i = 0; i < _flyingBuilding.TileSize.x; i++)
+            {
+                for (int j = 0; j < _flyingBuilding.TileSize.y; j++)
+                {
+                    if (placeX + i >= _gridSize.x || placeY + j >= _gridSize.y || _grid[placeX + i, placeY + j] != null)
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void PlaceFlyingBuilding(int placeX, int placeY)
+        {
+            for (int i = 0; i < _flyingBuilding.TileSize.x; i++)
+            {
+                for (int j = 0; j < _flyingBuilding.TileSize.y; j++)
+                {
+                    _grid[placeX + i, placeY + j] = _flyingBuilding;
+                }
+            }
+
+            _isBuildingSelected = false;
+            _flyingBuilding.SetNormal();
+            BuildingSupplied?.Invoke(_flyingBuilding);
+            BuildingDelivered?.Invoke();
+            _starsScore.AddBuildingsCount();
+            _flyingBuilding = null;
+        }
     }
 }
