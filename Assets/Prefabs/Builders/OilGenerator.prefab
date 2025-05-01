@@ -26,6 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4214112405864594302}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -35,7 +36,6 @@ Transform:
   - {fileID: 6501618529520420959}
   - {fileID: 173432844115837611}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1833638821257500497
 MonoBehaviour:
@@ -85,6 +85,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4050115909143557992}
     m_Modifications:
     - target: {fileID: 1025462026, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
@@ -130,6 +131,10 @@ PrefabInstance:
     - target: {fileID: 4025089408759992391, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586724218947326965, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
+      propertyPath: _health
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4926189267033196496, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
       propertyPath: m_Layer
@@ -205,6 +210,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8857306475806494337, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
+    - {fileID: 1025462025, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
 --- !u!114 &594211053729478140 stripped
 MonoBehaviour:
@@ -228,15 +237,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1be987cb6ad244d8381dd1b674bcd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &594211053729478143 stripped
+--- !u!114 &4006055970218305795 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1025462025, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4586724218947326965, guid: 5794b66230e79ed47aaf6c8422b3d87b, type: 3}
   m_PrefabInstance: {fileID: 594211053915126518}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eb14b2519499d24ab641a071a2107de, type: 3}
+  m_Script: {fileID: 11500000, guid: 664fad8856dec2740b8e59636ef9efb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8705457523081351370 stripped
@@ -249,6 +258,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4050115909143557992}
     m_Modifications:
     - target: {fileID: 476642586738642178, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
@@ -315,10 +325,6 @@ PrefabInstance:
       propertyPath: _extraction
       value: 
       objectReference: {fileID: 594211053729478141}
-    - target: {fileID: 3920417545245233639, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
-      propertyPath: _healthContainer
-      value: 
-      objectReference: {fileID: 594211053729478143}
     - target: {fileID: 4324659061314498083, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -488,6 +494,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723596f61c20caa4ebae77b4c8248df6, type: 3}
 --- !u!114 &5995226244394993973 stripped
 MonoBehaviour:
@@ -521,12 +530,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4050115909143557992}
     m_Modifications:
     - target: {fileID: 2632820826197489230, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: _healthContainer
       value: 
-      objectReference: {fileID: 594211053729478143}
+      objectReference: {fileID: 4006055970218305795}
     - target: {fileID: 2632820826197489230, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
       propertyPath: _peacefulConstruction
       value: 
@@ -656,6 +666,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8a094081b71ee848bb1397b2ef5373a, type: 3}
 --- !u!224 &173432844115837611 stripped
 RectTransform:

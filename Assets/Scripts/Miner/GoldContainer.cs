@@ -1,5 +1,4 @@
 using System;
-using Agava.YandexGames;
 using Scripts.SO;
 using UnityEngine;
 
@@ -24,10 +23,10 @@ namespace Scripts.Miner
             _allGoldReceived += value;
             GoldChanged?.Invoke(_gold);
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-        if (PlayerAccount.IsAuthorized)
-            Leaderboard.SetScore(Coins, _allGoldReceived);
-#endif
+//#if UNITY_WEBGL && !UNITY_EDITOR
+        //if (PlayerAccount.IsAuthorized)
+        //    Leaderboard.SetScore(Coins, _allGoldReceived);
+//#endif
         }
 
         public void BuyBuilding(Goods statsBuilding)

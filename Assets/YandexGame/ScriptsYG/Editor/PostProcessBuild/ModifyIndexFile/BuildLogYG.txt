@@ -1,0 +1,2 @@
+Build path: C:/Users/Алексей/Downloads/Build
+Build number: 1

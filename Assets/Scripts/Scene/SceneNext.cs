@@ -5,7 +5,7 @@ namespace Scripts.Scene
 {
     public class SceneNext : MonoBehaviour
     {
-        private int _sceneIndex = 1;
+        private int _sceneIndex = 2;
         private int _addNumber = 1;
 
         public int SceneIndex => _sceneIndex;
@@ -22,7 +22,7 @@ namespace Scripts.Scene
 
         public void Open()
         {
-            SceneManager.LoadScene(_sceneIndex);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + _addNumber);
         }
 
         public void Init(int sceneIndex)

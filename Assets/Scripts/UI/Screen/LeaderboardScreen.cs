@@ -1,4 +1,4 @@
-using Agava.YandexGames;
+//using Agava.YandexGames;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -51,65 +51,65 @@ namespace Scripts.UI.Screen
         {
             OnOpen();
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-        if (!PlayerAccount.IsAuthorized)
-        {
-            _authorizationPanel.SetActive(true);
-            _leaderboardPanel.SetActive(false);
-        }
-        else
-            Open();
-#endif
+//#if UNITY_WEBGL && !UNITY_EDITOR
+//        if (!PlayerAccount.IsAuthorized)
+//        {
+//            _authorizationPanel.SetActive(true);
+//            _leaderboardPanel.SetActive(false);
+//        }
+//        else
+//            Open();
+//#endif
         }
 
         public void Open()
         {
-            PlayerAccount.RequestPersonalProfileDataPermission();
+            //PlayerAccount.RequestPersonalProfileDataPermission();
 
-            if (!PlayerAccount.IsAuthorized)
-                PlayerAccount.Authorize();
+            //if (!PlayerAccount.IsAuthorized)
+            //    PlayerAccount.Authorize();
 
-            Leaderboard.GetEntries(LeaderboardName, (result) =>
-            {
-                int leadersNumber = result.entries.Length >= _leaderNames.Length ? _leaderNames.Length : result.entries.Length;
-                for (int i = 0; i < leadersNumber; i++)
-                {
-                    _players[i].SetActive(true);
-                    string name = result.entries[i].player.publicName;
-                    if (string.IsNullOrEmpty(name))
-                        name = Anonimus;
+            //Leaderboard.GetEntries(LeaderboardName, (result) =>
+            //{
+            //    int leadersNumber = result.entries.Length >= _leaderNames.Length ? _leaderNames.Length : result.entries.Length;
+            //    for (int i = 0; i < leadersNumber; i++)
+            //    {
+            //        _players[i].SetActive(true);
+            //        string name = result.entries[i].player.publicName;
+            //        if (string.IsNullOrEmpty(name))
+            //            name = Anonimus;
 
-                    _leaderNames[i].text = name;
-                    _scoreList[i].text = result.entries[i].formattedScore;
-                    _ranks[i].text = result.entries[i].rank.ToString();
-                }
-            });
+            //        _leaderNames[i].text = name;
+            //        _scoreList[i].text = result.entries[i].formattedScore;
+            //        _ranks[i].text = result.entries[i].rank.ToString();
+            //    }
+            //});
         }
 
         public void SetScore()
         {
-            if (YandexGamesSdk.IsInitialized)
-                Leaderboard.GetPlayerEntry(LeaderboardName, OnSuccessCallback);
+            //if (YandexGamesSdk.IsInitialized)
+            //    Leaderboard.GetPlayerEntry(LeaderboardName, OnSuccessCallback);
         }
 
         private void OpenPanel()
         {
-#if UNITY_WEBGL && !UNITY_EDITOR
-        SetLeaderboardScore();
-        OpenYandexLeaderboard();
+//#if UNITY_WEBGL && !UNITY_EDITOR
+//        SetLeaderboardScore();
+//        OpenYandexLeaderboard();
 
-        if (PlayerAccount.IsAuthorized)
-        {
-            _authorizationPanel.SetActive(false);
-            _leaderboardPanel.SetActive(true);
-        }
-#endif
+//        if (PlayerAccount.IsAuthorized)
+//        {
+//            _authorizationPanel.SetActive(false);
+//            _leaderboardPanel.SetActive(true);
+//        }
+//#endif
         }
 
-        private void OnSuccessCallback(LeaderboardEntryResponse result)
-        {
-            if (result == null || _playerScore > result.score)
-                Leaderboard.SetScore(LeaderboardName, _playerScore);
-        }
+        //private void OnSuccessCallback(LeaderboardEntryResponse result)
+        //{
+        //    if (result == null || _playerScore > result.score)
+        //        Leaderboard.SetScore(LeaderboardName, _playerScore);
+        //}
     }
 }

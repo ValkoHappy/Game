@@ -1,6 +1,7 @@
 using System.Collections;
-using Agava.YandexGames;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using YG;
 
 namespace Scripts.Yandex
 {
@@ -11,30 +12,33 @@ namespace Scripts.Yandex
         [SerializeField] private Localization _localization;
         [SerializeField] private YandexAds _yandexAds;
 
-        private float _wait = 0.5f;
+        private float _delay = 1f;
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-    private void Awake()
-    {
-        YandexGamesSdk.CallbackLogging = true;
-    }
+        //#if UNITY_WEBGL && !UNITY_EDITOR
+        private void OnEnable()
+        {
+            YandexGame.GetDataEvent += OnInitialize;
+        }
 
-    private IEnumerator Start()
-    {
-        yield return YandexGamesSdk.Initialize(OnInitialized);
-        yield return new WaitForSeconds(_wait);
+        private void OnDisable()
+        {
+            YandexGame.GetDataEvent -= OnInitialize;
+        }
 
-        if (_yandexAds != null)
-            _yandexAds.ShowInterstitial();
-    }
+        private void OnInitialize()
+        {
+            //SaveGame.GetCloudSaveData();
+            _localization.SetLanguage(YandexGame.lang.ToLower());
+            YandexGame.GameplayStop();
+            StartCoroutine(SwitchScene());
+        }
+//#endif
 
-    private void OnInitialized()
-    {
-        if(PlayerPrefs.HasKey(Language))
-            _localization.SetLanguage(Language);
-        else
-            _localization.SetLanguage(YandexGamesSdk.Environment.i18n.lang);
-    }
-#endif
+        private IEnumerator SwitchScene()
+        {
+            yield return new WaitForSeconds(_delay);
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
